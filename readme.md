@@ -15,3 +15,7 @@ https://timonweb.com/javascript/running-expressjs-server-over-https/
 # NexJS Refactor docs
 
 https://nextjs.org/docs/getting-started
+
+# NextJS - GetServerSideProps example
+
+https://nextjs.org/learn/basics/data-fetching/request-time
