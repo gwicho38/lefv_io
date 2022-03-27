@@ -283,3 +283,19 @@ https://nextjs.org/docs/api-routes/response-helpers
 ## Dynamic API Routes
 
 https://nextjs.org/docs/api-routes/dynamic-api-routes
+
+# Add Custom Domain
+
+https://vercel.com/docs/concepts/projects/custom-domains
+
+# Deployment
+
+https://nextjs.org/learn/basics/deploying-nextjs-app/other-hosting-options
+
+# Environment Variables
+
+https://nextjs.org/docs/basic-features/environment-variables
+
+# AMP
+
+https://nextjs.org/docs/advanced-features/amp-support/introduction
