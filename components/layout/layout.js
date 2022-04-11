@@ -6,7 +6,7 @@ import styles from './layout.module.css'
 export default function Layout({ home, children }) {
   return (
     <div className={styles.container}>
-      <head>{<CustomHead />}</head>
+      {<CustomHead />}
       <header className={styles.header}>
         {home ? <Header /> : <Header props={"Going home"}/>}
       </header>
