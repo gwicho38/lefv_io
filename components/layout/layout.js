@@ -1,29 +1,12 @@
-import Head from 'next/head'
-import styles from './layout.module.css'
+import CustomHead from '../customhead/customhead'
 import Header from '../header/header'
 import Footer from '../footer/footer'
+import styles from './layout.module.css'
 
-const name = 'lefv'
-export const siteTitle = 'A place built for all'
-
-export default function Layout({ children, home }) {
+export default function Layout({ home, children }) {
   return (
     <div className={styles.container}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="A place built for all."
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+      <head>{<CustomHead />}</head>
       <header className={styles.header}>
         {home ? <Header /> : <Header props={"Going home"}/>}
       </header>
