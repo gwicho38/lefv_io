@@ -117,3 +117,5 @@ dist
 
 # private key information
 *.key
+
+node_modules/**
