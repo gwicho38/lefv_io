@@ -1,9 +1,3 @@
-/**
-* Template Name: MyResume - v4.1.0
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 (function() {
   "use strict";
 
@@ -34,7 +28,7 @@
   }
 
   /**
-   * Easy on scroll event listener 
+   * Easy on scroll event listener
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
@@ -199,14 +193,14 @@
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   const portfolioLightbox = GLightbox({
     selector: '.portfolio-lightbox'
   });
 
   /**
-   * Initiate portfolio details lightbox 
+   * Initiate portfolio details lightbox
    */
   const portfolioDetailsLightbox = GLightbox({
     selector: '.portfolio-details-lightbox',
