@@ -15,7 +15,7 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.14",
+    "browser-sync": "^3.0.2",
     "nodemon": "^2.0.7"
   }
 }
