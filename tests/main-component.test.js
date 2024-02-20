@@ -7,6 +7,10 @@ import { describe, expect, test } from '@jest/globals';
 import MainComponent from '../path/to/main-component.js'; // Adjust the path as necessary
 
 describe('MainComponent functionality', () => {
+  /**
+   * Test for the initialization of MainComponent.
+   * This test verifies that MainComponent initializes correctly.
+   */
   test('should correctly initialize', () => {
     const component = new MainComponent();
     expect(component).toBeDefined();
