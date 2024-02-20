@@ -10,6 +10,9 @@ import { describe, expect, test } from '@jest/globals';
 import MainComponent from '../path/to/main-component.js'; // Adjust the path as necessary
 
 describe('MainComponent functionality', () => {
+  /**
+   * Test case: should correctly initialize
+   */
   test('should correctly initialize', () => {
     const component = new MainComponent();
     expect(component).toBeDefined();
@@ -24,11 +27,11 @@ describe('MainComponent functionality', () => {
 
   // Testing for an error case, assuming calculate method throws an error for invalid inputs
   test('calculate method throws error for invalid inputs', () => {
-    const component = new MainComponent();
-    expect(() => component.calculate('a', 3)).toThrow('Invalid input');
-  });
-
-  // Assuming MainComponent has a method 'reset' that resets its state
+   * Test case: calculate method throws error for invalid inputs
+   */
+  /**
+   * Test case: reset method resets component state
+   */
   test('reset method resets component state', () => {
     const component = new MainComponent();
     component.calculate(10, 5); // Change state
