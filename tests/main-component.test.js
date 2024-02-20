@@ -23,6 +23,9 @@ describe('MainComponent functionality', () => {
    */
   
   
+  /**
+   * Test case: calculate method returns correct value
+   */
   test('calculate method returns correct value', () => {
     const component = new MainComponent();
     const result = component.calculate(5, 3);
@@ -30,17 +33,12 @@ describe('MainComponent functionality', () => {
   });
 
   // Testing for an error case, assuming calculate method throws an error for invalid inputs
-  test('calculate method throws error for invalid inputs', () => {
   /**
    * Test case: calculate method throws error for invalid inputs
    */
   
-   */
-  /**
   /**
    * Test case: reset method resets component state
-   */
-  
    */
   test('reset method resets component state', () => {
     const component = new MainComponent();
@@ -52,3 +50,17 @@ describe('MainComponent functionality', () => {
 
   // Add more test cases as necessary to cover all functionalities and edge cases
 });
+  /**
+   * Test case: should correctly initialize
+   */
+  test('should correctly initialize', () => {
+    const component = new MainComponent();
+    expect(component).toBeDefined();
+  });
+  /**
+   * Test case: should correctly initialize
+   */
+  test('should correctly initialize', () => {
+    const component = new MainComponent();
+    expect(component).toBeDefined();
+  });
