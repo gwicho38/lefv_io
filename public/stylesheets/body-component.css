@@ -1,0 +1,6 @@
+:host {
+  flex: 1 1 auto;
+  /* Grow to fill available space */
+  overflow-y: auto;
+  /* Add scroll if content overflows */
+}
