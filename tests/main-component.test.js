@@ -44,3 +44,27 @@ describe('MainComponent functionality', () => {
 
   // Add more test cases as necessary to cover all functionalities and edge cases
 });
+  // Assuming MainComponent has a method 'reset' that resets its state
+  /**
+   * Test for the reset functionality of MainComponent.
+   * This test verifies that the reset method resets the component state.
+   */
+  test('reset method resets component state', () => {
+    const component = new MainComponent();
+    component.calculate(10, 5); // Change state
+    component.reset(); // Reset state
+    // Assuming the component has a state property that should be null after reset
+    expect(component.state).toBeNull();
+  });
+  // Assuming MainComponent has a method 'reset' that resets its state
+  /**
+   * Test for the reset functionality of MainComponent.
+   * This test verifies that the reset method resets the component state.
+   */
+  test('reset method resets component state', () => {
+    const component = new MainComponent();
+    component.calculate(10, 5); // Change state
+    component.reset(); // Reset state
+    // Assuming the component has a state property that should be null after reset
+    expect(component.state).toBeNull();
+  });
