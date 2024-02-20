@@ -17,6 +17,10 @@ describe('MainComponent functionality', () => {
   });
 
   // Assuming MainComponent has a method named 'calculate' for demonstration
+  /**
+   * Test for the calculation functionality of MainComponent.
+   * This test verifies that the calculate method returns the correct value.
+   */
   test('calculate method returns correct value', () => {
     const component = new MainComponent();
     const result = component.calculate(5, 3);
