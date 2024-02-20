@@ -1,4 +1,9 @@
 import { describe, expect, test } from '@jest/globals';
+
+/**
+ * Test file for MainComponent functionality.
+ * This file contains tests for the MainComponent class.
+ */
 import MainComponent from '../path/to/main-component.js'; // Adjust the path as necessary
 
 describe('MainComponent functionality', () => {
