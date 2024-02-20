@@ -1,0 +1,53 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lefv-io 
+  labels:
+    app: lefv-io
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lefv-io 
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: lefv-io 
+    spec:
+      containers:
+      - name: lefv-io 
+        image: lefv.io 
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 100m
+      imagePullSecrets:
+      - name: asb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lefv-io-service 
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: "doctl-action.do-api.dev"
+    service.beta.kubernetes.io/do-loadbalancer-name: "doctl-action.do-api.dev"
+    service.beta.kubernetes.io/do-loadbalancer-certificate-id: "913a4f25-dd44-47e0-8588-eb09f095c7e2"
+    service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: "true"
+spec:
+  type: LoadBalancer
+  ports:
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 5000
+  selector:
+    app: static-example
