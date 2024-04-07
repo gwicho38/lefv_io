@@ -2,5 +2,8 @@
   flex: 1 1 auto;
   /* Grow to fill available space */
   overflow-y: auto;
+  align-content: center;
+  justify-content: center;
+  margin: 10vh;
   /* Add scroll if content overflows */
 }

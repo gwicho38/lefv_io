@@ -14,4 +14,6 @@ class MainComponent extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 }
+
+// declare component
 customElements.define('main-component', MainComponent);
