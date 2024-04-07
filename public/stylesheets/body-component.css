@@ -1,9 +1,18 @@
 :host {
-  flex: 1 1 auto;
-  /* Grow to fill available space */
-  overflow-y: auto;
-  align-content: center;
-  justify-content: center;
-  margin: 10vh;
-  /* Add scroll if content overflows */
+  display: block;
+  width: 100%; /* Set the component to fill its parent horizontally */
+  height: 100%; /* Set the component to fill its parent vertically */
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center; /* Center the flex items horizontally */
+  align-items: center; /* Center the flex items vertically */
+  height: 75vh; /* Set the height to 75% of the viewport height */
+  padding-top: 5vh;
+  margin-top: 5vh;
+  padding-bottom: 1vh;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }

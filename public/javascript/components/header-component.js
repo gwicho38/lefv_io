@@ -10,8 +10,8 @@ class HeaderComponent extends HTMLElement {
             <style>
               @import "../../stylesheets/header-component.css"
             </style>
-            <header class="justify-center items-center bg-blue-500 text-white p-4">
-                <h1>Welcome to My Website</h1>
+            <header class="justify-center items-center  bg-gray-700 text-white p-4">
+                <h1>lefv.io</h1>
             </header>
         `;
     this.shadowRoot.appendChild(template.content.cloneNode(true));

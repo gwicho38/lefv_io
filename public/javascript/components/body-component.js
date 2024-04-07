@@ -9,12 +9,9 @@ class BodyComponent extends HTMLElement {
               @import "../../stylesheets/body-component.css";
           </style>
           <div class="flex-container" id="flexContainer">
-            <slot name="lefv-io-container"></slot>
+            <slot name="lefv-io-container">${this.content}</slot>
           </div>
-          <input type="text" id="styleInput" placeholder="Enter style value">
-          <button id="applyStyleBtn">Apply Style</button>
-          <button id="addChildBtn">Add Child</button>
-          <button id="incrementSlotBtn">Increment Slot</button>
+          </div>
         `;
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
@@ -30,6 +27,9 @@ class BodyComponent extends HTMLElement {
       this.incrementSlot();
     });
   };
+
+  content = `<iframe width="100%" height="100%" src="https://ambientweather.net/devices/public/5433c07a4d144ebbe63a450ecc7879e7?embed=true"></iframe>`;
+
 
   // Method to add child elements
   addChild() {
