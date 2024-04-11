@@ -28,8 +28,7 @@ class BodyComponent extends HTMLElement {
     });
   };
 
-  content = `<iframe width="100%" height="100%" src="https://ambientweather.net/devices/public/5433c07a4d144ebbe63a450ecc7879e7?embed=true"></iframe>`;
-
+  content = `<iframe src="https://www.lexaloffle.com/bbs/widget.php?pid=picochill" allowfullscreen width="621" height="100%" style="border:solid; overflow:hidden"></iframe>`;
 
   // Method to add child elements
   addChild() {

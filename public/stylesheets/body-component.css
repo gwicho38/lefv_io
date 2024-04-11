@@ -10,9 +10,8 @@
   align-items: center; /* Center the flex items vertically */
   height: 75vh; /* Set the height to 75% of the viewport height */
   padding-top: 5vh;
-  margin-top: 5vh;
   padding-bottom: 1vh;
-  padding-left: 5vh;
-  padding-right: 5vh;
+  padding-left: 1vh;
+  padding-right: 1vh;
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
