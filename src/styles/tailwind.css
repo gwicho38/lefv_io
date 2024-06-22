@@ -1,0 +1,16 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-aqua-100 {
+  background-color: #e0f7fa;
+}
+
+.bg-aqua-500 {
+  background-color: #00acc1;
+}
+
+.text-aqua-500 {
+  color: #00acc1;
+}
