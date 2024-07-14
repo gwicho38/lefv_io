@@ -1,0 +1,1344 @@
+1
+00:00:00,000 --> 00:00:08,504
+[MUSIC]
+
+2
+00:00:08,504 --> 00:00:11,500
+So I have here an example
+from the fine arts.
+
+3
+00:00:11,500 --> 00:00:15,790
+And I have a question that relates to
+the following, one of these paintings,
+
+4
+00:00:15,790 --> 00:00:19,970
+the original paintings,
+has been sold for nearly $180 million,
+
+5
+00:00:19,970 --> 00:00:23,550
+which is a non-trivial amount,
+but the other one hasn't.
+
+6
+00:00:23,550 --> 00:00:27,260
+It has been sold for a much smaller
+amount, in the thousands, or
+
+7
+00:00:27,260 --> 00:00:28,750
+tens of thousands of dollars.
+
+8
+00:00:28,750 --> 00:00:32,230
+But maybe, it would also be
+worth as much as the other one.
+
+9
+00:00:32,230 --> 00:00:36,520
+So I'll leave it to you to guess
+which one is the expensive one,
+
+10
+00:00:36,520 --> 00:00:40,740
+currently and
+which one is the bargain, currently.
+
+11
+00:00:40,740 --> 00:00:44,680
+But I want to point out that there is
+a reason why one of them is much more
+
+12
+00:00:44,680 --> 00:00:45,890
+expensive than the other.
+
+13
+00:00:45,890 --> 00:00:48,730
+And that differences is the provenance or
+chain of custody.
+
+14
+00:00:48,730 --> 00:00:53,220
+So we know that one of these
+paintings was painted by Picasso, so
+
+15
+00:00:53,220 --> 00:00:54,650
+maybe that gives it away.
+
+16
+00:00:54,650 --> 00:00:57,440
+And in the other case,
+we suspect, but are not sure,
+
+17
+00:00:57,440 --> 00:00:59,300
+whether it was painted
+by Leonardo da Vinci.
+
+18
+00:00:59,300 --> 00:01:02,650
+In one case, we have the provenance
+record, we know for sure,
+
+19
+00:01:02,650 --> 00:01:06,140
+we can prove that it is
+original work of art.
+
+20
+00:01:06,140 --> 00:01:09,460
+In the other case, we suspect but
+don't have the proof.
+
+21
+00:01:09,460 --> 00:01:13,433
+So this is meant as an illustration
+how provenance, in this case,
+
+22
+00:01:13,433 --> 00:01:17,380
+in the case of art, chain of custody
+records that establish the authenticity
+
+23
+00:01:17,380 --> 00:01:19,370
+of the work of art can
+make a big difference.
+
+24
+00:01:19,370 --> 00:01:22,630
+And in the similar way,
+we have this also with data artifacts.
+
+25
+00:01:22,630 --> 00:01:27,940
+When we produce data, we throw out results
+In our maybe scientific analysis or
+
+26
+00:01:27,940 --> 00:01:29,230
+put it out on the Internet.
+
+27
+00:01:29,230 --> 00:01:32,350
+The value of these artifacts we
+reproduce is often increased
+
+28
+00:01:32,350 --> 00:01:34,360
+if we document how we arrived at them.
+
+29
+00:01:34,360 --> 00:01:35,760
+So that's the connection here.
+
+30
+00:01:35,760 --> 00:01:37,500
+So how is provenance defined?
+
+31
+00:01:37,500 --> 00:01:39,360
+According to
+the Oxford English dictionary,
+
+32
+00:01:39,360 --> 00:01:43,440
+provenance is the place of origin or
+earliest known history of something.
+
+33
+00:01:43,440 --> 00:01:47,180
+An example would be an orange
+rug of Iranian provenance.
+
+34
+00:01:47,180 --> 00:01:51,080
+So we have a rug or a carpet and
+we know where it came from,
+
+35
+00:01:51,080 --> 00:01:54,970
+we may know the location and we might
+know how old it is and so on and so on.
+
+36
+00:01:54,970 --> 00:01:56,230
+So how did it come to us?
+
+37
+00:01:56,230 --> 00:01:58,590
+It's also the beginning
+of something existence so
+
+38
+00:01:58,590 --> 00:02:00,780
+the origin, and here's an example.
+
+39
+00:02:00,780 --> 00:02:03,820
+They try to understand the whole universe,
+its provenance and fate.
+
+40
+00:02:03,820 --> 00:02:05,480
+Also where did everything come from.
+
+41
+00:02:05,480 --> 00:02:07,580
+That's a pretty tall order.
+
+42
+00:02:07,580 --> 00:02:09,890
+So it's not something we're
+going to study in this class.
+
+43
+00:02:09,890 --> 00:02:12,900
+But it is useful to know that
+this is where the word or
+
+44
+00:02:12,900 --> 00:02:15,260
+what provenance means in general terms.
+
+45
+00:02:15,260 --> 00:02:19,960
+And as we see in the case of art,
+a record of ownership of a work of art or
+
+46
+00:02:19,960 --> 00:02:23,660
+an antique, used as a guide
+to authenticity or quality.
+
+47
+00:02:23,660 --> 00:02:26,630
+So for example, you might have a
+manuscript and say it has a distinguished
+
+48
+00:02:26,630 --> 00:02:30,150
+provenance, because this manuscript
+was pass through certain hands and
+
+49
+00:02:30,150 --> 00:02:35,830
+you know its authentic, it is from
+whom it is claimed that it originates.
+
+50
+00:02:35,830 --> 00:02:39,750
+The word provenance
+itself has an origin and
+
+51
+00:02:39,750 --> 00:02:43,370
+it comes from Latin,
+provenire, to come from, okay?
+
+52
+00:02:43,370 --> 00:02:46,390
+And that's how it arrived
+in English today.
+
+53
+00:02:46,390 --> 00:02:51,430
+So you can easily see even using
+the word provenance itself that
+
+54
+00:02:51,430 --> 00:02:56,380
+it is a useful concept that helps
+you explain and understand things.
+
+55
+00:02:56,380 --> 00:02:57,640
+And again, in our context,
+
+56
+00:02:57,640 --> 00:03:00,320
+we want to understand whether
+we could trust some data.
+
+57
+00:03:00,320 --> 00:03:04,460
+We want to understand where it came from,
+and that's why we study these provenance.
+
+58
+00:03:04,460 --> 00:03:09,320
+So data quality is in that sense,
+intimately related to provenance.
+
+59
+00:03:09,320 --> 00:03:15,280
+Because, if we have data of suspicious
+origins, of unknown processing history,
+
+60
+00:03:15,280 --> 00:03:20,110
+that reduces our trust and
+confidence in the quality of the data.
+
+61
+00:03:20,110 --> 00:03:22,520
+And then we might not use this data.
+
+62
+00:03:22,520 --> 00:03:27,040
+Now provenance also has been defined by
+the W3C, the World Wide Web Consortium.
+
+63
+00:03:27,040 --> 00:03:32,210
+And they've come up with a definition
+that tries to be of a minimal
+
+64
+00:03:32,210 --> 00:03:35,080
+standard that's brought
+in all encompassing.
+
+65
+00:03:35,080 --> 00:03:40,530
+So W3C defines provenance as a description
+of how things came to be and
+
+66
+00:03:40,530 --> 00:03:43,970
+how they came to be in
+the state they are in today.
+
+67
+00:03:43,970 --> 00:03:47,330
+So that's very similar to the use
+of dictionary definition.
+
+68
+00:03:47,330 --> 00:03:50,490
+But if we apply it now to
+technical artifacts, and data, for
+
+69
+00:03:50,490 --> 00:03:51,880
+example in particular,
+
+70
+00:03:51,880 --> 00:03:55,700
+we can also say that provenance
+refers to the sources of information,
+
+71
+00:03:55,700 --> 00:03:59,290
+including entities and processes, and
+there's the connection to workflows.
+
+72
+00:03:59,290 --> 00:04:02,270
+Involved in producing or
+delivering an artifact.
+
+73
+00:04:02,270 --> 00:04:05,440
+And then provenance is a record
+that describes the people,
+
+74
+00:04:05,440 --> 00:04:10,020
+institutions, entities, and
+activities involved in producing,
+
+75
+00:04:10,020 --> 00:04:13,610
+influencing, or delivering a piece
+of data or a thing in the world.
+
+76
+00:04:13,610 --> 00:04:16,910
+So again, it's a very general definition.
+
+77
+00:04:16,910 --> 00:04:22,320
+They try to be all income passing and
+we will use much narrower, very particular
+
+78
+00:04:22,320 --> 00:04:27,070
+notions of provenance in our context
+in the context of workflows,
+
+79
+00:04:27,070 --> 00:04:30,560
+automation, scripts and data products.
+
+80
+00:04:30,560 --> 00:04:36,060
+But it's good to see that W3C is
+defined a rather broad notion.
+
+81
+00:04:36,060 --> 00:04:38,690
+One thing I want to point out
+right away here is that they
+
+82
+00:04:38,690 --> 00:04:40,980
+think of the word provenance
+in the past tense.
+
+83
+00:04:40,980 --> 00:04:44,220
+So provenance is really as the name
+suggest where does something come from.
+
+84
+00:04:44,220 --> 00:04:48,890
+So it seems to indicate really
+something about the past.
+
+85
+00:04:48,890 --> 00:04:53,390
+But as we shall see some
+researchers have found this notion
+
+86
+00:04:53,390 --> 00:04:58,580
+of prospective provenance which sounds
+like a contradiction in terms to be rather
+
+87
+00:04:58,580 --> 00:04:59,710
+helpful as well.
+
+88
+00:04:59,710 --> 00:05:04,200
+So here's the PROV-DM, the provenance
+data model, which is a W3C standard.
+
+89
+00:05:04,200 --> 00:05:07,560
+And you can find it on the web.
+
+90
+00:05:07,560 --> 00:05:10,710
+And unfortunately,
+how these standards sometimes go,
+
+91
+00:05:10,710 --> 00:05:14,320
+they're part of a whole
+family of related standards.
+
+92
+00:05:14,320 --> 00:05:17,650
+So I just want to give you
+a glimpse of how that looks like.
+
+93
+00:05:17,650 --> 00:05:20,350
+So if you look at the W3C
+recommendation for
+
+94
+00:05:20,350 --> 00:05:24,840
+provenance, there is the provenance
+of PROV, as the family's called.
+
+95
+00:05:24,840 --> 00:05:29,630
+PROV for provenance, it's not an extremely
+original name, but there you go.
+
+96
+00:05:29,630 --> 00:05:32,740
+So there"s a date model called PROV-DM.
+
+97
+00:05:32,740 --> 00:05:35,440
+There's an ontology, PROV-O.
+
+98
+00:05:35,440 --> 00:05:37,130
+There are constraints, so
+
+99
+00:05:37,130 --> 00:05:40,220
+these are constraints not unlike
+the ones we've seen before.
+
+100
+00:05:40,220 --> 00:05:42,820
+Basically logic formulas or
+
+101
+00:05:42,820 --> 00:05:47,480
+rules that say what things are implied or
+allowed and not allowed.
+
+102
+00:05:47,480 --> 00:05:51,720
+And there's of course a rotation when you
+exchange providence you have to have some
+
+103
+00:05:51,720 --> 00:05:54,810
+sort of notation and
+there were these works and
+
+104
+00:05:54,810 --> 00:06:00,380
+these standards came out of a community
+effort and committees and working groups.
+
+105
+00:06:00,380 --> 00:06:02,430
+Here on the lower part of the figure,
+
+106
+00:06:02,430 --> 00:06:07,130
+you see how these different
+standards relate to one another.
+
+107
+00:06:08,330 --> 00:06:10,140
+It can be a little bit confusing and
+
+108
+00:06:10,140 --> 00:06:12,180
+we don't need to go into
+all of the details of that.
+
+109
+00:06:12,180 --> 00:06:16,309
+I just want to point out here
+that there are a number of these
+
+110
+00:06:17,470 --> 00:06:18,710
+standards that are related.
+
+111
+00:06:18,710 --> 00:06:21,450
+So we'll going to mostly
+scratch the surface and
+
+112
+00:06:21,450 --> 00:06:25,170
+then really look at the underlying
+principles really more so
+
+113
+00:06:25,170 --> 00:06:27,270
+than the particular
+details of the standard.
+
+114
+00:06:27,270 --> 00:06:30,940
+Having said that, I do want to
+show you how provenance fits into
+
+115
+00:06:30,940 --> 00:06:34,600
+something larger that's called
+the Semantic Web Layer Cake.
+
+116
+00:06:34,600 --> 00:06:35,720
+Nothing you can eat.
+
+117
+00:06:35,720 --> 00:06:41,130
+This is something that tries to put
+various web stems together from the W3C,
+
+118
+00:06:41,130 --> 00:06:43,320
+from the World Wide Web Consortium.
+
+119
+00:06:43,320 --> 00:06:47,790
+You just see here where this is situated.
+
+120
+00:06:47,790 --> 00:06:55,210
+So there's lots of standards that
+the W3C advocates and provides.
+
+121
+00:06:55,210 --> 00:07:01,180
+So there's things like URIs and
+how to describe URIs, there's XML.
+
+122
+00:07:01,180 --> 00:07:04,900
+Then there's for
+data interchange, there's RDF.
+
+123
+00:07:04,900 --> 00:07:09,210
+There's query language called
+SPARQL that's somewhat popular
+
+124
+00:07:09,210 --> 00:07:11,480
+in semantic web circles.
+
+125
+00:07:11,480 --> 00:07:13,210
+There's RDF schema language, RDFS.
+
+126
+00:07:13,210 --> 00:07:18,610
+There's a Rule language and then
+there's the ontology web standard, OWL.
+
+127
+00:07:18,610 --> 00:07:20,470
+So it's the ontology web language.
+
+128
+00:07:20,470 --> 00:07:24,030
+And then if you think of the semantic web,
+there's
+
+129
+00:07:24,030 --> 00:07:28,640
+quality of something called the unifying
+logic, proof and then trust on top of it.
+
+130
+00:07:28,640 --> 00:07:32,310
+So this might provide you at least some
+
+131
+00:07:32,310 --> 00:07:36,950
+context of web provenance fits
+in this larger picture, trust is
+
+132
+00:07:36,950 --> 00:07:40,550
+derived from provenance information if
+you know where something comes from.
+
+133
+00:07:40,550 --> 00:07:43,830
+This might increase your trust,
+or you might distrust the source,
+
+134
+00:07:43,830 --> 00:07:45,920
+specifically because you
+know where it comes from.
+
+135
+00:07:45,920 --> 00:07:49,430
+There might be even notions of proof, can
+you verify for example the authenticity?
+
+136
+00:07:49,430 --> 00:07:53,180
+So there's technical ways to
+
+137
+00:07:53,180 --> 00:07:57,020
+check the authenticity of things although
+this is not really the focus here.
+
+138
+00:07:57,020 --> 00:08:02,450
+So the W3C PROV effort came
+out of a community effort that
+
+139
+00:08:02,450 --> 00:08:07,290
+led to an earlier standard, if you like,
+called OPM, the Open Provenance Model.
+
+140
+00:08:07,290 --> 00:08:10,590
+And this is was mostly
+a community of researchers
+
+141
+00:08:10,590 --> 00:08:12,120
+working in scientific workflows.
+
+142
+00:08:12,120 --> 00:08:14,910
+So there's another connection
+between workflows and provenance.
+
+143
+00:08:14,910 --> 00:08:18,680
+One connection is, that workflows and
+provenance are kind of two sides of
+
+144
+00:08:18,680 --> 00:08:23,920
+a coin, the future and the past of
+a competition pipeline if you like.
+
+145
+00:08:25,020 --> 00:08:28,310
+But there's also another connection.
+
+146
+00:08:28,310 --> 00:08:31,200
+It is the scientific
+workflow research community
+
+147
+00:08:31,200 --> 00:08:33,030
+who developed this model called OPM.
+
+148
+00:08:34,400 --> 00:08:37,780
+And in some ways the OPM model is still
+
+149
+00:08:37,780 --> 00:08:40,950
+maybe a good starting point
+to learn about provenance.
+
+150
+00:08:40,950 --> 00:08:47,250
+Because it's maybe somewhat simpler and
+the terminology is quite accessible.
+
+151
+00:08:47,250 --> 00:08:51,140
+So here on the left you see
+different notes that are connected.
+
+152
+00:08:51,140 --> 00:08:54,910
+So the first one is A,
+stands for an artifact.
+
+153
+00:08:54,910 --> 00:08:56,540
+Think of it as data.
+
+154
+00:08:56,540 --> 00:08:58,620
+And P stands for process.
+
+155
+00:08:58,620 --> 00:09:02,450
+So a process maybe used at data item.
+
+156
+00:09:02,450 --> 00:09:07,650
+So if you see that arrow going from the P
+to the A backwards, that's on purpose.
+
+157
+00:09:07,650 --> 00:09:11,440
+It goes backwards because
+the process used that data.
+
+158
+00:09:11,440 --> 00:09:15,510
+So whereas in workflows we often see
+the data flow going from left to right,
+
+159
+00:09:15,510 --> 00:09:17,510
+like time flows from left to right,
+
+160
+00:09:17,510 --> 00:09:21,550
+provenance in the retrospective sense
+typically goes from right to left.
+
+161
+00:09:21,550 --> 00:09:23,810
+It describes sort of dependencies or
+what happened.
+
+162
+00:09:23,810 --> 00:09:25,875
+Where did come from?
+
+163
+00:09:25,875 --> 00:09:30,510
+So P, the process used the artifact,
+or data A.
+
+164
+00:09:30,510 --> 00:09:34,550
+Then in the next item below,
+you see that A, an artifact.
+
+165
+00:09:34,550 --> 00:09:36,200
+What do you think that label says there?
+
+166
+00:09:36,200 --> 00:09:37,820
+It's maybe a little small to read here.
+
+167
+00:09:38,960 --> 00:09:40,250
+But it's going to be in the readings.
+
+168
+00:09:40,250 --> 00:09:42,980
+So A was generated by P.
+
+169
+00:09:44,970 --> 00:09:49,780
+So if you want to use sort of more common
+terminology you could say the process P
+
+170
+00:09:49,780 --> 00:09:55,080
+was maybe reading some data A, and
+the process P was writing some data A.
+
+171
+00:09:55,080 --> 00:09:56,540
+Those are the first two edges.
+
+172
+00:09:56,540 --> 00:09:59,130
+But again,
+it's in the direction from right to left,
+
+173
+00:09:59,130 --> 00:10:03,130
+the process used A, and
+A was generated by P.
+
+174
+00:10:04,380 --> 00:10:07,140
+So this is really in some sense the core,
+
+175
+00:10:07,140 --> 00:10:10,580
+the most basic core of these provenance
+standards in this case the OPM model.
+
+176
+00:10:10,580 --> 00:10:14,375
+And then there are some additional
+relationships I want to briefly mention.
+
+177
+00:10:14,375 --> 00:10:21,730
+So the process p was maybe
+controlled by an agent.
+
+178
+00:10:21,730 --> 00:10:22,480
+That's what you see there.
+
+179
+00:10:22,480 --> 00:10:23,710
+That's the third.
+
+180
+00:10:23,710 --> 00:10:25,570
+Ag that you see here on the left so
+
+181
+00:10:25,570 --> 00:10:29,920
+P was generated,
+was controlled by rather, by an agent.
+
+182
+00:10:29,920 --> 00:10:34,970
+So what was that agent if the process P
+was a human process it might be human, or
+
+183
+00:10:34,970 --> 00:10:39,980
+it might be a program that executes
+a certain function, maybe a data
+
+184
+00:10:39,980 --> 00:10:45,840
+cleaning service or a look up service or
+some other data analysis function.
+
+185
+00:10:45,840 --> 00:10:47,180
+So who's the agent there?
+
+186
+00:10:47,180 --> 00:10:51,400
+It depends how you want to model that but
+it could be, for
+
+187
+00:10:51,400 --> 00:10:54,730
+example the process that executes it,
+that would be an example.
+
+188
+00:10:55,840 --> 00:10:58,150
+Processes themselves can be connected.
+
+189
+00:10:58,150 --> 00:11:01,660
+So kind of, you're jumping over
+the data that flows between them.
+
+190
+00:11:01,660 --> 00:11:05,023
+So normally the way I like to think
+of workflow as a processes or
+
+191
+00:11:05,023 --> 00:11:09,890
+steps that connected through data channels
+so it some data flow between them.
+
+192
+00:11:09,890 --> 00:11:12,440
+But you can also connect
+the processes directly in some sense.
+
+193
+00:11:12,440 --> 00:11:17,352
+You can say well this particular process
+was triggered by this other process.
+
+194
+00:11:17,352 --> 00:11:21,939
+And then in similar ways and in a way
+a more important way is this is really
+
+195
+00:11:21,939 --> 00:11:24,998
+another of the holy grails
+of provenance here,
+
+196
+00:11:24,998 --> 00:11:28,720
+this relationship that
+relates to artifacts.
+
+197
+00:11:28,720 --> 00:11:30,210
+What do you think that might be called?
+
+198
+00:11:30,210 --> 00:11:32,910
+So we have an artifact 2, and
+
+199
+00:11:32,910 --> 00:11:37,570
+we kind of go into the past
+towards an artifact A on the left.
+
+200
+00:11:38,760 --> 00:11:42,390
+So this relationship is called was
+derived from so what does that mean.
+
+201
+00:11:42,390 --> 00:11:45,645
+That's really the lineage it's the data
+lineage you have a new artifact
+
+202
+00:11:45,645 --> 00:11:48,950
+A2 that was derived another artifact A1.
+
+203
+00:11:48,950 --> 00:11:52,036
+Maybe it's an update maybe
+you clean the dataset and
+
+204
+00:11:52,036 --> 00:11:57,950
+A1 is the original dataset and A2 is
+the derived data set that was cleaned.
+
+205
+00:11:57,950 --> 00:12:02,000
+This can happen at the set level,
+at the whole collection level or it might
+
+206
+00:12:02,000 --> 00:12:06,140
+happen at an individual record level,
+or maybe at an individual field level.
+
+207
+00:12:06,140 --> 00:12:09,030
+So standards says nothing about that,
+it's really something that you have to
+
+208
+00:12:09,030 --> 00:12:12,040
+worry about when you work
+with these standards and
+
+209
+00:12:12,040 --> 00:12:15,710
+have tools that create prominence,
+that keep create that history.
+
+210
+00:12:15,710 --> 00:12:19,450
+I should mention one particular
+aspect of the OPM standard and
+
+211
+00:12:19,450 --> 00:12:23,740
+it's also has been inherited
+to the W3C PROV standard.
+
+212
+00:12:23,740 --> 00:12:27,740
+Which is, if you have a process,
+if you have a chain that goes like this,
+
+213
+00:12:27,740 --> 00:12:31,340
+if you look at the first two edges
+here on the slide, on the left,
+
+214
+00:12:32,420 --> 00:12:38,320
+you can say A was generated by P.
+
+215
+00:12:38,320 --> 00:12:39,500
+So the artifact A was generated by P.
+
+216
+00:12:39,500 --> 00:12:42,840
+And then the P itself used
+maybe another A, right?
+
+217
+00:12:42,840 --> 00:12:46,350
+So if you look at the first
+two edges on the top,
+
+218
+00:12:46,350 --> 00:12:52,340
+maybe you have an A2 coming out of the P,
+and then A1 going into the P.
+
+219
+00:12:52,340 --> 00:12:56,390
+Now it is very tempting to say,
+because the A1 went into the P and
+
+220
+00:12:56,390 --> 00:13:01,110
+the A2 came out of the P,
+to say A2 was derived from A1.
+
+221
+00:13:01,110 --> 00:13:05,190
+Very tempting and
+often correct but not always.
+
+222
+00:13:05,190 --> 00:13:08,700
+And it occasionally does happen and
+there's good reasons for
+
+223
+00:13:08,700 --> 00:13:13,250
+this that a process reads something and it
+writes something and what is being written
+
+224
+00:13:13,250 --> 00:13:16,370
+does not depend on and is not derived
+from the thing that was read.
+
+225
+00:13:17,650 --> 00:13:22,390
+And since in general we cannot infer
+that reading and writing something
+
+226
+00:13:22,390 --> 00:13:27,530
+makes those things connected through
+what's derived from relationship.
+
+227
+00:13:27,530 --> 00:13:35,120
+This means that the OPM standard makes a
+point about not implying or not inferring
+
+228
+00:13:35,120 --> 00:13:41,330
+from this chain that I mentioned before,
+was the derived relationship.
+
+229
+00:13:41,330 --> 00:13:46,560
+So again if process P uses A1 and
+then generates A2.
+
+230
+00:13:46,560 --> 00:13:50,435
+This does not necessarily imply
+that A 2 was derived by A1.
+
+231
+00:13:51,790 --> 00:13:53,230
+It may imply or it may not.
+
+232
+00:13:53,230 --> 00:13:55,620
+It's considered a separate assertion.
+
+233
+00:13:55,620 --> 00:13:59,450
+If you want to say that you have to
+assert that as a separate fact in your
+
+234
+00:13:59,450 --> 00:14:01,690
+Provenance database Okay?
+
+235
+00:14:01,690 --> 00:14:04,560
+So there's a reading associated with this.
+
+236
+00:14:04,560 --> 00:14:09,130
+And I recommend,
+as we go into provenance in more detail,
+
+237
+00:14:09,130 --> 00:14:13,990
+to look at this, OPM.
+
+238
+00:14:13,990 --> 00:14:18,720
+Now OPM was sort of overhauled,
+if you like, and made the W3C standard.
+
+239
+00:14:18,720 --> 00:14:20,860
+And so it has now a new vocabulary.
+
+240
+00:14:20,860 --> 00:14:22,370
+Things are called a little differently but
+
+241
+00:14:22,370 --> 00:14:24,490
+the underlying essence is
+still very much the same.
+
+242
+00:14:24,490 --> 00:14:26,250
+And this new model is called Prov.
+
+243
+00:14:26,250 --> 00:14:31,750
+So you see on the right hand
+the kind of a meta model of Prov.
+
+244
+00:14:32,880 --> 00:14:35,170
+So what are the things we
+talk about in Prov a lot.
+
+245
+00:14:36,360 --> 00:14:40,610
+Something called an entity that
+used to be called an artifact.
+
+246
+00:14:40,610 --> 00:14:44,150
+And both entities and
+artifacts in our regular terminology,
+
+247
+00:14:44,150 --> 00:14:46,190
+we'll just call it data.
+
+248
+00:14:46,190 --> 00:14:47,650
+For us, this is often data.
+
+249
+00:14:47,650 --> 00:14:54,000
+Might be a data set, a table, a CSV
+file or it might be a row in a CSV file.
+
+250
+00:14:54,000 --> 00:14:58,190
+Or it might be a field, a slot,
+a variable even, in a script.
+
+251
+00:14:58,190 --> 00:14:59,670
+So that's data.
+
+252
+00:14:59,670 --> 00:15:02,600
+And then activity, which is now more or so
+
+253
+00:15:02,600 --> 00:15:06,030
+the center activity,
+we use to call it process.
+
+254
+00:15:06,030 --> 00:15:08,760
+I mean, OPM called it process.
+
+255
+00:15:08,760 --> 00:15:12,150
+The W3C Prov model calls it activity.
+
+256
+00:15:12,150 --> 00:15:15,090
+And we could think of it as a step,
+computational step.
+
+257
+00:15:15,090 --> 00:15:16,280
+Block of code, a function.
+
+258
+00:15:17,320 --> 00:15:20,560
+Yeah, in most general terms,
+it is an activity.
+
+259
+00:15:20,560 --> 00:15:21,400
+That's why they call it that.
+
+260
+00:15:23,340 --> 00:15:24,870
+The word agent hasn't changed.
+
+261
+00:15:24,870 --> 00:15:30,010
+So an activity can be
+controlled by an agent.
+
+262
+00:15:30,010 --> 00:15:33,450
+That was the terminology
+that was used by OPM.
+
+263
+00:15:34,540 --> 00:15:39,370
+But the W3C Prov calls
+it was associated with.
+
+264
+00:15:39,370 --> 00:15:43,190
+It's sort of a weaker relationship,
+at least, a name such as that.
+
+265
+00:15:43,190 --> 00:15:49,730
+But by and large, these are the same kind
+of relationships that we see in OPM.
+
+266
+00:15:49,730 --> 00:15:54,980
+And the ones that are really
+important here are the used and
+
+267
+00:15:54,980 --> 00:15:56,680
+the ones generated by relationships.
+
+268
+00:15:56,680 --> 00:15:58,040
+They haven't changed.
+
+269
+00:15:58,040 --> 00:16:00,760
+So if you look between activity.
+
+270
+00:16:00,760 --> 00:16:03,470
+You can say an activity used in entity.
+
+271
+00:16:03,470 --> 00:16:06,260
+Or if we translate it into our
+specialized language, we could say,
+
+272
+00:16:06,260 --> 00:16:09,208
+a process or step used a data item.
+
+273
+00:16:09,208 --> 00:16:12,710
+And then conversely, an entity or
+
+274
+00:16:14,010 --> 00:16:18,870
+an artifact or a data item,
+may have been generated by an activity.
+
+275
+00:16:18,870 --> 00:16:23,370
+So you have this back and fourth between
+data and steps, with data and computation.
+
+276
+00:16:24,610 --> 00:16:28,200
+And then another very important
+relationship is between entities and
+
+277
+00:16:28,200 --> 00:16:29,460
+entities, or between data and data.
+
+278
+00:16:29,460 --> 00:16:31,770
+And this is the what's
+derived from relationship.
+
+279
+00:16:31,770 --> 00:16:35,310
+And as I mentioned, the what's derived
+from relationship is not implied
+
+280
+00:16:35,310 --> 00:16:39,440
+by chains of used and
+was generated by relationships.
+
+281
+00:16:39,440 --> 00:16:44,970
+It's very tempting to say a data
+was used by an activity and
+
+282
+00:16:44,970 --> 00:16:47,600
+another data was generated
+by that same activity.
+
+283
+00:16:47,600 --> 00:16:51,810
+It's very tempting to say that what
+comes out, depends on what goes in.
+
+284
+00:16:51,810 --> 00:16:54,690
+And it is often correct but
+it's not always the case so
+
+285
+00:16:54,690 --> 00:16:57,255
+you need to separately
+assert it in your model.
+
+286
+00:16:57,255 --> 00:17:07,255
+[MUSIC]

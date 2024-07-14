@@ -1,0 +1,149 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h1 level="1" variant="h1semibold">
+  Problem 1: Rules and Integrity Constraints (Family Data)
+ </h1>
+ <h2 level="2" variant="h2semibold">
+  Notes about Datalog (Clingo) in the Jupyter Notebook environment:
+ </h2>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Refer to
+    <a href="https://instructorbusdovze.labs.coursera.org/notebooks/source/datalog_2/Clingo_with_Jupyter_Intro.ipynb" title="">
+     Clingo with Jupyter Intro
+    </a>
+    before attempting this notebook.
+   </p>
+  </li>
+  <li>
+   <p>
+    It is important to run the following cells first for the rest of  the notebook to work. (It's usually a good idea to run cells in order.  In case you have run cells out of order and want to start over, simply  restart the kernel from the menu.)
+   </p>
+  </li>
+  <li>
+   <p>
+    All clingo cells start with
+    <var>
+     %%clingo
+    </var>
+    .
+   </p>
+  </li>
+  <li>
+   <p>
+    You can run your clingo cell against the facts and rules from a file.
+    <var>
+     set_db_file $filepath
+    </var>
+    sets the file against which your clingo cells will run.
+   </p>
+  </li>
+  <li>
+   <p>
+    The clingo cells are
+    <em>
+     independent
+    </em>
+    of each other. Rules defined in one cell won't be visible in others!
+   </p>
+  </li>
+  <li>
+   <p>
+    When you submit the assignment, we will run your code against different sets of facts. (So don't "hardcode" your answers ;-)
+   </p>
+  </li>
+  <li>
+   <p>
+    If you want to practice a bit more with clingo, you can go to
+    <a href="https://potassco.org/clingo/run/" title="">
+     https://potassco.org/clingo/run/
+    </a>
+    and experiment with the small (but interesting!) examples there. Alternatively, you can install clingo on your own computer:
+    <a href="https://potassco.org/doc/start" title="">
+     https://potassco.org/doc/start
+    </a>
+    . If you want to go "all in", there is also an online course (
+    <a href="https://teaching.potassco.org/" title="">
+     https://teaching.potassco.org/
+    </a>
+    ). But don't worry:
+    <em>
+     none of this is required to do this assignment!
+    </em>
+   </p>
+  </li>
+  <li>
+   <p>
+    FYI:
+    <var>
+     %%clingo
+    </var>
+    is just a thin wrapper for running the tool in command line mode.
+   </p>
+  </li>
+ </ul>
+ <h2 level="2" variant="h2semibold">
+  Family data and rules in Datalog (clingo):
+ </h2>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Consider the family relation which is shown as a graph below (edges  point from a parent to a child)! We will work with Datalog rules to  query data from this graph and check for integrity violations.
+   </p>
+  </li>
+ </ul>
+ <h3 level="3" variant="h3bold">
+  Good luck!!
+ </h3>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

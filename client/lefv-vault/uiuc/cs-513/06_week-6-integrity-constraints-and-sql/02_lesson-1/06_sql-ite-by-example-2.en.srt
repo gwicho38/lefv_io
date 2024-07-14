@@ -1,0 +1,181 @@
+1
+00:00:00,003 --> 00:00:07,875
+[MUSIC]
+
+2
+00:00:07,875 --> 00:00:11,770
+We're going to go to this website
+from Southwest Carpentry.
+
+3
+00:00:11,770 --> 00:00:15,315
+And they have a nice small
+database called surveydb,
+
+4
+00:00:15,315 --> 00:00:18,949
+and we're going to walk through
+some of these examples.
+
+5
+00:00:20,250 --> 00:00:23,195
+So in particular, if you walk through
+here, you see further details, and
+
+6
+00:00:23,195 --> 00:00:24,660
+I'm going to do some of that right now.
+
+7
+00:00:25,778 --> 00:00:31,220
+So I'm going to use, for this part,
+I'm going to use my friend, the Emacs or
+
+8
+00:00:31,220 --> 00:00:37,320
+AquaMax editor, since that will help me
+to keep track of what I've seen already.
+
+9
+00:00:37,320 --> 00:00:41,540
+So we're going to run a couple
+of queries that I have here.
+
+10
+00:00:41,540 --> 00:00:43,550
+So we're going to start.
+
+11
+00:00:43,550 --> 00:00:50,040
+Maybe I'm going to do it like this, I'm
+going to open two windows, side-by-side,
+
+12
+00:00:50,040 --> 00:00:53,930
+and one of them will
+have the SQLite running.
+
+13
+00:00:53,930 --> 00:00:55,920
+Or you could also use the terminal.
+
+14
+00:00:55,920 --> 00:01:01,445
+Again, I'm going to cheat
+a little bit by using Emacs here.
+
+15
+00:01:01,445 --> 00:01:06,438
+I can go more easily back and
+forth in the history, okay?
+
+16
+00:01:09,224 --> 00:01:12,990
+And we have to first find surveydb.
+
+17
+00:01:12,990 --> 00:01:16,770
+Let's see if I have this available here,
+anywhere on the desktop.
+
+18
+00:01:16,770 --> 00:01:20,913
+So I'm going to go to a sub folder,
+
+19
+00:01:20,913 --> 00:01:25,770
+which I hope has the serverdb in it.
+
+20
+00:01:25,770 --> 00:01:28,930
+Now here it is, okay?
+
+21
+00:01:28,930 --> 00:01:32,052
+So this is going to be
+my shell on the right.
+
+22
+00:01:34,567 --> 00:01:38,386
+And on the left, I'm going to have
+the examples that I'm going to go through.
+
+23
+00:01:40,662 --> 00:01:46,037
+So, in order to start the SQLite system,
+again, we need to say sqlite3.
+
+24
+00:01:46,037 --> 00:01:50,969
+And if you already have a database, for
+example here we might have downloaded,
+
+25
+00:01:50,969 --> 00:01:52,820
+actually let me do this here.
+
+26
+00:01:52,820 --> 00:01:56,290
+I'm going to download this database,
+why don't I do this right now.
+
+27
+00:01:56,290 --> 00:01:57,349
+Download this database.
+
+28
+00:01:58,730 --> 00:02:01,580
+Okay, here it is and
+it's now in my Downloads folder.
+
+29
+00:02:01,580 --> 00:02:04,980
+So I should probably,
+so where are we here?
+
+30
+00:02:04,980 --> 00:02:11,797
+I want to copy from
+the Downloads folder survey.db.
+
+31
+00:02:11,797 --> 00:02:15,440
+I'm going to copy it
+into my current folder.
+
+32
+00:02:15,440 --> 00:02:17,499
+So as you've seen how that works.
+
+33
+00:02:18,760 --> 00:02:24,210
+And now I can run sqlite3
+with that survey.db.
+
+34
+00:02:24,210 --> 00:02:26,305
+Okay, so
+I'm using the latest version of SQLite.
+
+35
+00:02:26,305 --> 00:02:28,652
+As you see, it's from 2017.
+
+36
+00:02:28,652 --> 00:02:32,180
+Help for usage hints, so
+that's not a bad idea.
+
+37
+00:02:32,180 --> 00:02:36,970
+And maybe the first thing I want to do is
+I want to look at what tables are there.
+
+38
+00:02:36,970 --> 00:02:39,322
+So is there a command that
+tells me what tables are there?
+
+39
+00:02:41,435 --> 00:02:49,759
+[MUSIC]

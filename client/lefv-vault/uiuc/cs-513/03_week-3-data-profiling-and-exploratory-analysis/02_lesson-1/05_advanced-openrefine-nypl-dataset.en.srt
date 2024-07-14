@@ -1,0 +1,655 @@
+1
+00:00:07,190 --> 00:00:10,875
+Welcome to this demonstration of the OpenRefine tool.
+
+2
+00:00:10,875 --> 00:00:12,595
+In this particular demonstration,
+
+3
+00:00:12,595 --> 00:00:14,570
+we want to look at a new dataset.
+
+4
+00:00:14,570 --> 00:00:18,210
+So we had previously looked at Farmers Market dataset and in this case,
+
+5
+00:00:18,210 --> 00:00:21,989
+we want to look at another data set from the New York Public Library and
+
+6
+00:00:21,989 --> 00:00:28,185
+the menus that were collected in a crowdsourcing effort.
+
+7
+00:00:28,185 --> 00:00:32,244
+And this dataset is a little bit more messy than the Farmers Markets data.
+
+8
+00:00:32,244 --> 00:00:37,659
+And we'll also look at some advanced operations with this dataset.
+
+9
+00:00:37,659 --> 00:00:40,329
+So first, we have to create a project.
+
+10
+00:00:40,329 --> 00:00:43,829
+As before, we're gonna import a file.
+
+11
+00:00:43,829 --> 00:00:46,274
+So the file here has already downloaded to the desktop.
+
+12
+00:00:46,274 --> 00:00:47,975
+It's called menu.csv.
+
+13
+00:00:47,975 --> 00:00:52,479
+It was earlier downloaded from the New York Public Library dataset.
+
+14
+00:00:52,479 --> 00:00:54,255
+So we're gonna choose a file.
+
+15
+00:00:54,255 --> 00:00:55,695
+We go to the Desktop.
+
+16
+00:00:55,695 --> 00:00:58,490
+We say menu.csv, open that,
+
+17
+00:00:58,490 --> 00:00:59,869
+and then hit the next button.
+
+18
+00:00:59,869 --> 00:01:03,409
+And OpenRefine gives us here a preview of how
+
+19
+00:01:03,409 --> 00:01:06,890
+the data is currently understood by the OpenRefine tool.
+
+20
+00:01:06,890 --> 00:01:09,739
+So we see that the headers have already been identified,
+
+21
+00:01:09,739 --> 00:01:12,920
+there's an ID, a name, a sponsor, an event.
+
+22
+00:01:12,920 --> 00:01:14,500
+And then there are all these different rows.
+
+23
+00:01:14,500 --> 00:01:16,375
+So this seems to have worked just fine.
+
+24
+00:01:16,375 --> 00:01:19,730
+And so we could look in more detail into the parsing options.
+
+25
+00:01:19,730 --> 00:01:22,415
+But since the preview indicates that everything is fine,
+
+26
+00:01:22,415 --> 00:01:24,575
+we can just create the project.
+
+27
+00:01:24,575 --> 00:01:26,435
+Maybe before creating the project,
+
+28
+00:01:26,435 --> 00:01:31,060
+we want to rename the project into something slightly more meaningful.
+
+29
+00:01:31,060 --> 00:01:38,885
+Maybe we want to call it New York Public Library menu or menus dot csv.
+
+30
+00:01:38,885 --> 00:01:41,155
+So this indicates where the data came from,
+
+31
+00:01:41,155 --> 00:01:43,049
+and it's a little bit more meaningful name.
+
+32
+00:01:43,049 --> 00:01:44,784
+Let's create this project.
+
+33
+00:01:44,784 --> 00:01:46,909
+And just like previously with the Farmers Markets data,
+
+34
+00:01:46,909 --> 00:01:53,189
+we see a number of rows have been imported and we get a first overview of the data here.
+
+35
+00:01:53,189 --> 00:01:56,394
+Now, let's start to clean a particular column.
+
+36
+00:01:56,394 --> 00:01:58,125
+Let's have a look, for example,
+
+37
+00:01:58,125 --> 00:02:01,859
+at the event column, describing what the event is.
+
+38
+00:02:01,859 --> 00:02:07,359
+So as usual, we click here on the little triangle next to the column name.
+
+39
+00:02:07,359 --> 00:02:09,199
+We select the Facet,
+
+40
+00:02:09,199 --> 00:02:11,680
+and then we could, for example,
+
+41
+00:02:11,680 --> 00:02:13,134
+work with a Text facet.
+
+42
+00:02:13,134 --> 00:02:17,990
+Maybe for good practice, let's just start with a common transformation, maybe first.
+
+43
+00:02:17,990 --> 00:02:22,969
+So, we can look at Edit cells, Transform,
+
+44
+00:02:22,969 --> 00:02:27,280
+Common transform, and then there's things like leaping,
+
+45
+00:02:27,280 --> 00:02:30,189
+trimming the leading, and trailing white spaces.
+
+46
+00:02:30,189 --> 00:02:34,375
+This is often a good standard operation we can do.
+
+47
+00:02:34,375 --> 00:02:36,485
+In this particular case,
+
+48
+00:02:36,485 --> 00:02:38,254
+there were only three cells updated.
+
+49
+00:02:38,254 --> 00:02:44,175
+That means our data was fairly clean with respect to trailing and leaving white spaces,
+
+50
+00:02:44,175 --> 00:02:47,594
+so let's have another look at these common transformations.
+
+51
+00:02:47,594 --> 00:02:50,629
+So Edit cells, Common transformations.
+
+52
+00:02:50,629 --> 00:02:54,705
+How about collapsing consecutive whitespace? What is that?
+
+53
+00:02:54,705 --> 00:02:58,460
+That is when two or more whitespace characters,
+
+54
+00:02:58,460 --> 00:03:01,525
+such as blanks, are together in that column,
+
+55
+00:03:01,525 --> 00:03:04,349
+they will be collapsed into a single one.
+
+56
+00:03:04,349 --> 00:03:06,064
+Let's see what happens here.
+
+57
+00:03:06,064 --> 00:03:11,409
+And we see here, there were six cells, now, updated again.
+
+58
+00:03:11,409 --> 00:03:14,449
+That's not a lot. So our data seems to be fairly
+
+59
+00:03:14,449 --> 00:03:17,930
+clean with respect to these little syntactic variations.
+
+60
+00:03:17,930 --> 00:03:19,775
+Now let's have a look, though,
+
+61
+00:03:19,775 --> 00:03:22,409
+at the Text facet,
+
+62
+00:03:22,409 --> 00:03:24,326
+and this gives us an idea,
+
+63
+00:03:24,326 --> 00:03:26,474
+when we look at this column as a text,
+
+64
+00:03:26,474 --> 00:03:29,805
+what other values showing up in that particular column.
+
+65
+00:03:29,805 --> 00:03:33,610
+So we have about 17,000 rows overall in this dataset,
+
+66
+00:03:33,610 --> 00:03:37,375
+and there are 1,700 or so choices of values.
+
+67
+00:03:37,375 --> 00:03:40,659
+So clearly, certain values must occur more common.
+
+68
+00:03:40,659 --> 00:03:46,770
+So we can sort this particular widget here by count, and we see,
+
+69
+00:03:46,770 --> 00:03:50,205
+for example, that in this column,
+
+70
+00:03:50,205 --> 00:03:53,280
+the event column DINNER is the most frequent term.
+
+71
+00:03:53,280 --> 00:03:55,800
+It occurs 1,827 times.
+
+72
+00:03:55,800 --> 00:03:58,139
+BREAKFAST, 830 times.
+
+73
+00:03:58,139 --> 00:04:01,134
+LUNCHEON, 532 and so on.
+
+74
+00:04:01,134 --> 00:04:03,375
+Now, we also notice as we scroll down,
+
+75
+00:04:03,375 --> 00:04:05,340
+that there are variant spellings.
+
+76
+00:04:05,340 --> 00:04:07,990
+For example, here, something called ANNUAL DINNER.
+
+77
+00:04:07,990 --> 00:04:09,479
+Should that be fused together,
+
+78
+00:04:09,479 --> 00:04:11,070
+is that the same as DINNER?
+
+79
+00:04:11,070 --> 00:04:13,699
+Or here's DINNER in brackets.
+
+80
+00:04:13,699 --> 00:04:18,495
+So we see there's lots of different data values or DINNER written in lower case.
+
+81
+00:04:18,495 --> 00:04:21,629
+That would be nice if they were clustered together and
+
+82
+00:04:21,629 --> 00:04:24,430
+then replaced with a canonical name.
+
+83
+00:04:24,430 --> 00:04:28,449
+So this is one of the main functions that OpenRefine is really good at.
+
+84
+00:04:28,449 --> 00:04:30,915
+So in order to invoke that feature,
+
+85
+00:04:30,915 --> 00:04:33,139
+we click on the Cluster button.
+
+86
+00:04:33,139 --> 00:04:38,649
+And then OpenRefine will employ one of different methods.
+
+87
+00:04:38,649 --> 00:04:43,834
+For example, here, key collision and using a particular keying function,
+
+88
+00:04:43,834 --> 00:04:45,610
+in this case fingerprint,
+
+89
+00:04:45,610 --> 00:04:49,060
+in order to build clusters of terms that OpenRefine
+
+90
+00:04:49,060 --> 00:04:53,710
+suggests that might refer to the same entity, for example, dinner.
+
+91
+00:04:53,710 --> 00:04:55,540
+And indeed we see here that all of
+
+92
+00:04:55,540 --> 00:05:00,120
+these different dinner values look as if they should be put into canonical form,
+
+93
+00:05:00,120 --> 00:05:07,745
+maybe you want to write it as capital DINNER and merge all of these different values.
+
+94
+00:05:07,745 --> 00:05:13,019
+So we have 2,148 row counts.
+
+95
+00:05:13,019 --> 00:05:15,639
+We have 14 different ways of spelling dinner,
+
+96
+00:05:15,639 --> 00:05:19,060
+and we can now click on this button here on the bottom,
+
+97
+00:05:19,060 --> 00:05:21,805
+merge the selected, you know,
+
+98
+00:05:21,805 --> 00:05:25,310
+the selected clusters and then re-cluster.
+
+99
+00:05:25,310 --> 00:05:29,084
+And, so a number of changes were made.
+
+100
+00:05:29,084 --> 00:05:31,550
+And we will can later see what those changes were.
+
+101
+00:05:31,550 --> 00:05:38,680
+And we can now keep going and cluster additional groups of values here.
+
+102
+00:05:38,680 --> 00:05:43,959
+Now, one particular feature I want to show with this dataset is maybe we were a little
+
+103
+00:05:43,959 --> 00:05:50,584
+bit too quick in clustering all of these dinner entries.
+
+104
+00:05:50,584 --> 00:05:51,939
+So let's go back.
+
+105
+00:05:51,939 --> 00:05:56,925
+We can go to the history and see what have we done so far.
+
+106
+00:05:56,925 --> 00:06:03,519
+We did some simple text transformations and then we did a mass edit of 2,148 cells.
+
+107
+00:06:03,519 --> 00:06:05,480
+So we made all these changes.
+
+108
+00:06:05,480 --> 00:06:08,884
+We can look at what these changes were.
+
+109
+00:06:08,884 --> 00:06:13,329
+So if we select here from the history only the mass edit in column events,
+
+110
+00:06:13,329 --> 00:06:20,579
+we can now see that these values have all been replaced with the canonical name.
+
+111
+00:06:20,579 --> 00:06:22,930
+So that's very helpful. As we inspect this,
+
+112
+00:06:22,930 --> 00:06:25,810
+however, we are having second thoughts and think, well,
+
+113
+00:06:25,810 --> 00:06:27,655
+wherever there was a question mark,
+
+114
+00:06:27,655 --> 00:06:29,906
+maybe this indicates that whoever entered the data
+
+115
+00:06:29,906 --> 00:06:32,644
+wasn't quite sure themselves whether this was dinner or not.
+
+116
+00:06:32,644 --> 00:06:34,779
+So maybe what we should do instead of
+
+117
+00:06:34,779 --> 00:06:37,839
+clustering all of that and asserting this is definitely a dinner entry,
+
+118
+00:06:37,839 --> 00:06:43,550
+maybe we should only do this for the values that do not have question mark in them.
+
+119
+00:06:43,550 --> 00:06:47,814
+So let's do that. So let's go basically back to our earlier datasets,
+
+120
+00:06:47,814 --> 00:06:50,370
+so we're gonna undo this step.
+
+121
+00:06:50,370 --> 00:06:52,340
+And how do we undo this?
+
+122
+00:06:52,340 --> 00:06:57,305
+Well, we basically clicked back here on the second level, to the second step,
+
+123
+00:06:57,305 --> 00:06:59,620
+and then we go back here to our dataset,
+
+124
+00:06:59,620 --> 00:07:05,529
+and then we cluster once again by the Text facet here.
+
+125
+00:07:05,529 --> 00:07:08,464
+And if we had,
+
+126
+00:07:08,464 --> 00:07:13,100
+actually we just did this before so we can still use this previous facet and hit Cluster.
+
+127
+00:07:13,100 --> 00:07:15,839
+And we see our dinner values are back.
+
+128
+00:07:15,839 --> 00:07:21,674
+Now, how would I go about selecting only some of these and not the others?
+
+129
+00:07:21,674 --> 00:07:24,105
+So there are different ways to go about doing this.
+
+130
+00:07:24,105 --> 00:07:26,050
+I'll show you one particular.
+
+131
+00:07:26,050 --> 00:07:31,084
+So, if I know I want to update this particular cluster from the event column,
+
+132
+00:07:31,084 --> 00:07:33,230
+the one for dinners, and I want to only
+
+133
+00:07:33,230 --> 00:07:36,035
+include the values that do not have a question mark,
+
+134
+00:07:36,035 --> 00:07:37,430
+here's one way I can do this.
+
+135
+00:07:37,430 --> 00:07:41,420
+I can say I want to just browse this particular cluster.
+
+136
+00:07:41,420 --> 00:07:44,573
+And you see, a new tab was opened,
+
+137
+00:07:44,573 --> 00:07:48,871
+and now we have only 2,148 matching rows.
+
+138
+00:07:48,871 --> 00:07:54,560
+So we're working with this subset of 2,148 matching rows,
+
+139
+00:07:54,560 --> 00:08:01,139
+and we can now look more closely by once
+
+140
+00:08:01,139 --> 00:08:07,504
+again selecting the event Text facet.
+
+141
+00:08:07,504 --> 00:08:11,230
+You see, we have only now these dinner values show up here.
+
+142
+00:08:11,230 --> 00:08:15,560
+If we decide -- let me see what I can move this up here a little bit -- if we
+
+143
+00:08:15,560 --> 00:08:20,610
+decide that we should only include dinner values that do not have a question mark,
+
+144
+00:08:20,610 --> 00:08:22,040
+then we can do as follows.
+
+145
+00:08:22,040 --> 00:08:24,919
+We just say, okay well, dinner occurs 1,800 times,
+
+146
+00:08:24,919 --> 00:08:26,685
+we want to include that.
+
+147
+00:08:26,685 --> 00:08:28,370
+Also, this one.
+
+148
+00:08:28,370 --> 00:08:32,784
+And so we keep selecting those that we want to include,
+
+149
+00:08:32,784 --> 00:08:35,815
+but we skipp the ones that have a question mark.
+
+150
+00:08:35,815 --> 00:08:39,240
+So DINNER?, maybe we're not quite sure here whether we should include this.
+
+151
+00:08:39,240 --> 00:08:42,039
+So we're going to skip all of these and just include
+
+152
+00:08:42,039 --> 00:08:46,199
+the ones that do not have a question mark. Okay?
+
+153
+00:08:46,199 --> 00:08:48,455
+Now that we've done this,
+
+154
+00:08:48,455 --> 00:08:51,365
+if we hit the Cluster button one more time,
+
+155
+00:08:51,365 --> 00:08:57,565
+we see only a smaller subset now of 2,134 rows has been selected,
+
+156
+00:08:57,565 --> 00:09:02,602
+and maybe it is only these that we want to merge and call them DINNER,
+
+157
+00:09:02,602 --> 00:09:09,024
+or these are maybe the definite dinner events.
+
+158
+00:09:09,024 --> 00:09:11,145
+And so, we've done these.
+
+159
+00:09:11,145 --> 00:09:14,669
+And then maybe the other ones we can, in a separate step,
+
+160
+00:09:14,669 --> 00:09:20,174
+inspect or maybe replace them with another value called
+
+161
+00:09:20,174 --> 00:09:23,955
+tentative dinner or possibly
+
+162
+00:09:23,955 --> 00:09:27,440
+dinner to indicate that we're not quite sure about these particular values.
+
+163
+00:09:27,440 --> 00:09:29,700
+All right, so this is
+
+164
+00:09:29,700 --> 00:09:36,080
+our first exploration of the New York Public Library dataset using OpenRefine.

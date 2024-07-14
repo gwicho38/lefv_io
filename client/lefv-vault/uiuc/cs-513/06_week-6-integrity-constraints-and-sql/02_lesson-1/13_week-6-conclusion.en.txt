@@ -1,0 +1,9 @@
+[MUSIC] Welcome back, now let's wrap up what
+we have learned about SQL queries and integrity constraints this week. Now overall data cleaning life cycle
+we have moved from this enthectic and pedal level data cleaning through
+the logical or semantic level. First using data log as our main language. In this week, we have done a recap or crush course depending on
+your prior knowledge on SQL. We have seen how to formulate general
+queries in SQL as well as written special queries for
+identifying integrity violations. This is also the subject
+of the assignment. In future lectures we will then zoom out
+and look at the larger data cleaning and analysis workflows. [MUSIC]

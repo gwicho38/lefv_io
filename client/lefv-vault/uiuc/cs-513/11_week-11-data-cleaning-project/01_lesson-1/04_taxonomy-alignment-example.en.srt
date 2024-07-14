@@ -1,0 +1,1427 @@
+1
+00:00:00,000 --> 00:00:08,938
+[MUSIC]
+
+2
+00:00:08,938 --> 00:00:12,460
+[SOUND] Let's just go back
+quickly to our toy example,
+
+3
+00:00:12,460 --> 00:00:14,820
+with the geo-taxonomies before.
+
+4
+00:00:14,820 --> 00:00:15,640
+So let me show this one more time.
+
+5
+00:00:15,640 --> 00:00:19,500
+So again, we can look at a map like
+this and think of it as taxonomy.
+
+6
+00:00:19,500 --> 00:00:22,500
+In this case,
+splitting the US up into five regions, or
+
+7
+00:00:22,500 --> 00:00:24,640
+splitting it up into four regions.
+
+8
+00:00:24,640 --> 00:00:28,870
+In this case, one particular point of
+contention is, is DC in the Northeast or
+
+9
+00:00:28,870 --> 00:00:29,780
+is it in the South?
+
+10
+00:00:29,780 --> 00:00:32,000
+The answer is yes,
+depending on who you ask.
+
+11
+00:00:32,000 --> 00:00:33,210
+It's yes in both cases.
+
+12
+00:00:33,210 --> 00:00:36,545
+You can overlay this with PowerPoint,
+which is not so ideal,
+
+13
+00:00:36,545 --> 00:00:38,355
+but you see already what emerges.
+
+14
+00:00:38,355 --> 00:00:40,025
+There's something that
+was called the South, but
+
+15
+00:00:40,025 --> 00:00:42,015
+the other guy calls it the Southwest and
+the Southeast.
+
+16
+00:00:42,015 --> 00:00:45,025
+And that big West is actually
+cut up in the other, right?
+
+17
+00:00:45,025 --> 00:00:47,235
+That big West is actually smaller here,
+
+18
+00:00:47,235 --> 00:00:49,650
+that West is smaller because
+there's a Southwest.
+
+19
+00:00:49,650 --> 00:00:52,430
+Or you can overlap it properly with a GIS,
+which I did here.
+
+20
+00:00:52,430 --> 00:00:54,310
+And then you get these new regions.
+
+21
+00:00:54,310 --> 00:00:56,830
+And now the question is,
+okay how can we compute this?
+
+22
+00:00:56,830 --> 00:00:59,360
+In the case of a GIS, we can use GIS.
+
+23
+00:00:59,360 --> 00:01:00,980
+But what do we do in
+the case of the insects?
+
+24
+00:01:00,980 --> 00:01:04,440
+Or the birds or
+your vocabulary that you have if you
+
+25
+00:01:04,440 --> 00:01:08,780
+cross walk some subject color works say
+as a [INAUDIBLE] expression for example.
+
+26
+00:01:08,780 --> 00:01:11,760
+Now this particular example
+can actually be resolved
+
+27
+00:01:11,760 --> 00:01:13,140
+on automatically which is nice.
+
+28
+00:01:13,140 --> 00:01:16,397
+We could try to solve the problem
+here at the level of the regions.
+
+29
+00:01:16,397 --> 00:01:20,061
+We could have a mini taxonomy that
+has five children and one route.
+
+30
+00:01:20,061 --> 00:01:24,050
+Or four children, four regions,
+and one route for the US.
+
+31
+00:01:24,050 --> 00:01:25,410
+Or we say, you know what?
+
+32
+00:01:25,410 --> 00:01:26,260
+Let's not do that.
+
+33
+00:01:26,260 --> 00:01:29,000
+Let's just go to the level
+of the states and
+
+34
+00:01:29,000 --> 00:01:32,620
+we can automatic alignment
+because we know the states match.
+
+35
+00:01:32,620 --> 00:01:33,450
+And get that.
+
+36
+00:01:33,450 --> 00:01:35,560
+So I'm going to show
+that in a little demo.
+
+37
+00:01:35,560 --> 00:01:38,080
+So here is everything in one slide.
+
+38
+00:01:38,080 --> 00:01:40,420
+Here at the regional level, so
+here we don't use the states.
+
+39
+00:01:40,420 --> 00:01:41,950
+I'm going to show this in
+a moment with the states.
+
+40
+00:01:41,950 --> 00:01:46,340
+If you don't use the states, you can have
+two small taxonomies corresponding to
+
+41
+00:01:46,340 --> 00:01:49,380
+senses and NDC vocabularies,
+four, five regions.
+
+42
+00:01:49,380 --> 00:01:52,120
+The next thing you would do is say,
+okay, let's put some articulations.
+
+43
+00:01:52,120 --> 00:01:54,700
+Where do you get those
+input articulations from?
+
+44
+00:01:54,700 --> 00:01:56,820
+First of all,
+what is the language of articulations?
+
+45
+00:01:56,820 --> 00:01:57,980
+I didn't quite specify that.
+
+46
+00:01:57,980 --> 00:01:58,670
+What can you say?
+
+47
+00:01:58,670 --> 00:02:02,630
+There's exactly five things you can say
+in this language, is also called RCC5,
+
+48
+00:02:02,630 --> 00:02:06,270
+the reach and connection calculus
+based on five base relations.
+
+49
+00:02:06,270 --> 00:02:08,600
+The five basic relations are,
+let's see which ones.
+
+50
+00:02:08,600 --> 00:02:09,800
+Maybe, we can find them here.
+
+51
+00:02:09,800 --> 00:02:10,770
+First is equality.
+
+52
+00:02:10,770 --> 00:02:14,810
+We can claim that this Midwest is
+exactly the same as that Midwest.
+
+53
+00:02:14,810 --> 00:02:18,650
+If you look at the map, sort of visually,
+so this Midwest and that Midwest,
+
+54
+00:02:18,650 --> 00:02:20,274
+they look pretty much the same.
+
+55
+00:02:20,274 --> 00:02:20,860
+Don't they?
+
+56
+00:02:20,860 --> 00:02:24,590
+So, as an expert we might look at this and
+say well the Midwest is the same.
+
+57
+00:02:24,590 --> 00:02:25,650
+Now let's look at something else.
+
+58
+00:02:25,650 --> 00:02:27,490
+What about the west here and
+the west there?
+
+59
+00:02:27,490 --> 00:02:29,930
+So, there's two West worlds.
+
+60
+00:02:29,930 --> 00:02:33,340
+The West world according
+to NDC which is smaller
+
+61
+00:02:33,340 --> 00:02:34,790
+than the west according to the CEN region.
+
+62
+00:02:34,790 --> 00:02:38,960
+So we make another articulation
+with the subset relationship here.
+
+63
+00:02:38,960 --> 00:02:42,010
+This is our Blueman's version of subset,
+less than here.
+
+64
+00:02:42,010 --> 00:02:45,330
+And so, we find equality,
+containment in one direction or the other.
+
+65
+00:02:45,330 --> 00:02:47,110
+That gives us three relationships.
+
+66
+00:02:47,110 --> 00:02:49,020
+Then, there's this funny
+thing called overlapse.
+
+67
+00:02:49,020 --> 00:02:50,970
+We write it like this funny symbol,
+overlapse.
+
+68
+00:02:50,970 --> 00:02:54,310
+Looks a little bit like a joint or
+a cross, for multiplication.
+
+69
+00:02:54,310 --> 00:02:58,370
+So for example, the claim here that we're
+making input that we say that the west
+
+70
+00:02:58,370 --> 00:03:00,150
+overlaps with the southwest.
+
+71
+00:03:00,150 --> 00:03:02,830
+The west overlaps with the southwest.
+
+72
+00:03:02,830 --> 00:03:05,480
+That's true because
+look at this part here.
+
+73
+00:03:05,480 --> 00:03:08,250
+This part certainly is in
+the west over here and
+
+74
+00:03:08,250 --> 00:03:09,710
+this is in the southwest over here.
+
+75
+00:03:09,710 --> 00:03:10,920
+So there must be some states or
+
+76
+00:03:10,920 --> 00:03:15,540
+some parts of the country that are both
+in the southwest, if you ask this people.
+
+77
+00:03:15,540 --> 00:03:19,300
+And not in the west mind you, so
+then the southwest but not in the west.
+
+78
+00:03:19,300 --> 00:03:21,920
+But if you ask these people they say,
+yes they are in the west.
+
+79
+00:03:21,920 --> 00:03:23,670
+That's the conflict,
+that's the disagreement.
+
+80
+00:03:23,670 --> 00:03:26,820
+But we can sort this out by saying well,
+there's this overlaps.
+
+81
+00:03:26,820 --> 00:03:30,800
+So five relations, equality,
+inclusion in one direction or the other.
+
+82
+00:03:30,800 --> 00:03:31,570
+This makes three.
+
+83
+00:03:31,570 --> 00:03:32,595
+Overlaps makes four, and
+
+84
+00:03:32,595 --> 00:03:37,010
+also the fifth, relation, disjointness,
+nothing to do with one another.
+
+85
+00:03:37,010 --> 00:03:41,490
+So sometimes we might want to say, for
+example, the west of the census region
+
+86
+00:03:41,490 --> 00:03:47,560
+here, the west of this here, is completely
+disjoint from the northeast over here.
+
+87
+00:03:47,560 --> 00:03:50,310
+So disjointness is, of course, something
+that you typically don't want to say.
+
+88
+00:03:50,310 --> 00:03:51,780
+Isn't it obvious?
+
+89
+00:03:51,780 --> 00:03:54,820
+But, of course,
+If you don't put that assertion there,
+
+90
+00:03:54,820 --> 00:03:57,460
+the system can generate
+alternative possible worlds.
+
+91
+00:03:57,460 --> 00:04:00,550
+Where in fact the west and
+the northeast overlap.
+
+92
+00:04:00,550 --> 00:04:01,760
+So in this particular case,
+
+93
+00:04:01,760 --> 00:04:05,610
+you need to just state all the things
+that are convenient for you to discover.
+
+94
+00:04:05,610 --> 00:04:06,360
+And state them all.
+
+95
+00:04:06,360 --> 00:04:07,960
+And state them hopefully correctly.
+
+96
+00:04:07,960 --> 00:04:10,450
+And then the system will
+come up with a solution.
+
+97
+00:04:10,450 --> 00:04:12,860
+And this solution here, down here.
+
+98
+00:04:12,860 --> 00:04:16,110
+Basically, corresponds to
+a symbolic representation
+
+99
+00:04:16,110 --> 00:04:18,590
+of what the GIS system does
+when you overlay the maps.
+
+100
+00:04:18,590 --> 00:04:20,600
+And I'm going to show
+this in a actual demo.
+
+101
+00:04:20,600 --> 00:04:22,450
+Again, one more time, here's the input.
+
+102
+00:04:22,450 --> 00:04:24,990
+If you solve this, there's two ways.
+
+103
+00:04:24,990 --> 00:04:28,270
+We have these tool that we call
+Euler because the diagrams,
+
+104
+00:04:28,270 --> 00:04:29,970
+its drawing, these trees.
+
+105
+00:04:29,970 --> 00:04:33,730
+Can be thought of as another notation for
+Euler diagram.
+
+106
+00:04:33,730 --> 00:04:37,380
+With a Euler diagram, named after
+Leonard Euler, the mathematician.
+
+107
+00:04:37,380 --> 00:04:41,450
+The Euler diagrams are kind of
+earlier versions of vin diagrams, and
+
+108
+00:04:41,450 --> 00:04:44,930
+actually they more directly represent
+the relationship between sets.
+
+109
+00:04:44,930 --> 00:04:47,570
+In vin diagrams if you look at
+how different sets overlap you
+
+110
+00:04:47,570 --> 00:04:52,380
+know that you need to shade some parts and
+color and un-color some parts.
+
+111
+00:04:52,380 --> 00:04:55,320
+In the Euler diagram if a set
+is the subset of the other.
+
+112
+00:04:55,320 --> 00:04:58,700
+You don't throw out the normal
+ovals that overlay and
+
+113
+00:04:58,700 --> 00:05:00,410
+then shade some parts as empty.
+
+114
+00:05:00,410 --> 00:05:03,530
+You just put that smaller
+set inside of the other set.
+
+115
+00:05:03,530 --> 00:05:05,560
+That's the Euler diagram.
+
+116
+00:05:05,560 --> 00:05:07,800
+And we have sort of a tree
+notation of that, and
+
+117
+00:05:07,800 --> 00:05:12,150
+that's why we call this the tool that
+computes that Euler, the Euler tool.
+
+118
+00:05:12,150 --> 00:05:15,600
+So if you give this input, you get one
+solution which is of the simple solution
+
+119
+00:05:15,600 --> 00:05:19,600
+that says well, the west, this west
+is properly contained in that west.
+
+120
+00:05:19,600 --> 00:05:23,680
+So, the NDC's west is strictly
+smaller than the CEN's West.
+
+121
+00:05:23,680 --> 00:05:28,142
+And CEN'S northeast is strictly
+smaller than the NDC northeast.
+
+122
+00:05:28,142 --> 00:05:32,115
+So you see some concept it goes like this,
+some concept it goes like that,
+
+123
+00:05:32,115 --> 00:05:35,255
+that's a really example, that's really,
+the southeast is containing the south.
+
+124
+00:05:35,255 --> 00:05:36,655
+But then there's seas overlap relation.
+
+125
+00:05:36,655 --> 00:05:38,395
+Some of this you have set as an input.
+
+126
+00:05:38,395 --> 00:05:41,575
+So for example, already the input you
+said that the southwest is part of,
+
+127
+00:05:41,575 --> 00:05:42,815
+overlaps with the west.
+
+128
+00:05:42,815 --> 00:05:44,197
+Excuse me, some part of the west.
+
+129
+00:05:44,197 --> 00:05:49,100
+So, they're really overlapping in a way
+that all three parts of the overlap exist.
+
+130
+00:05:49,100 --> 00:05:51,290
+There are things about west but
+now southwest.
+
+131
+00:05:51,290 --> 00:05:52,340
+There are things about Southwest but
+not west.
+
+132
+00:05:52,340 --> 00:05:54,136
+And there are things about both west and
+
+133
+00:05:54,136 --> 00:05:56,640
+southwest in these
+different terminologies.
+
+134
+00:05:56,640 --> 00:06:01,130
+But there's also overlaps that we're
+not given as part of the input,
+
+135
+00:06:01,130 --> 00:06:02,110
+they were inferred.
+
+136
+00:06:02,110 --> 00:06:05,620
+The reason is not, okay, given all
+of what I know, this must overlap.
+
+137
+00:06:05,620 --> 00:06:07,960
+Now if you want to look closer,
+you want to zoom in.
+
+138
+00:06:07,960 --> 00:06:12,906
+When I put the, more of a magnification
+of high resolution conceptually, you can
+
+139
+00:06:12,906 --> 00:06:18,010
+now resolve these overlaps as boolean
+combinations basically of what's going on.
+
+140
+00:06:18,010 --> 00:06:21,270
+For example, you could say, all right,
+you're telling me that the northeast and
+
+141
+00:06:21,270 --> 00:06:22,740
+the south overlap?
+
+142
+00:06:22,740 --> 00:06:26,370
+So how is that the northeast and
+the south overlap?
+
+143
+00:06:26,370 --> 00:06:29,081
+So this is a child and that's child.
+
+144
+00:06:29,081 --> 00:06:31,010
+Well, the overlap, what does it mean?
+
+145
+00:06:31,010 --> 00:06:34,890
+They have must common descendants,
+its would be a like family example.
+
+146
+00:06:34,890 --> 00:06:36,865
+They must have common descendants.
+
+147
+00:06:36,865 --> 00:06:40,710
+So, the northeast and
+the south have a common child or
+
+148
+00:06:40,710 --> 00:06:43,882
+grandchild depending
+on how you look at it.
+
+149
+00:06:43,882 --> 00:06:47,210
+Which is called the intersection
+of the northeast and the south.
+
+150
+00:06:48,460 --> 00:06:51,780
+Sends the south intersect
+with the NDC northeast.
+
+151
+00:06:51,780 --> 00:06:55,450
+This particular area is the one
+that has the half smokes
+
+152
+00:06:55,450 --> 00:06:58,100
+because that's the one that is both
+in the south and in the northeast.
+
+153
+00:06:58,100 --> 00:07:01,970
+So the times here is an end
+a little bit like [INAUDIBLE].
+
+154
+00:07:01,970 --> 00:07:06,270
+It's an end so the region is both
+in the northeast and in the south.
+
+155
+00:07:06,270 --> 00:07:10,708
+So although we haven't put on any state so
+we could fuzzify that map.
+
+156
+00:07:10,708 --> 00:07:15,910
+It tells us everything symbolically we are
+not at the resolution of the states yet.
+
+157
+00:07:15,910 --> 00:07:19,630
+However, we can already talked
+about the parts where the concepts
+
+158
+00:07:19,630 --> 00:07:21,740
+overlap one minus the other and so on.
+
+159
+00:07:21,740 --> 00:07:23,757
+So for example this notation means,
+
+160
+00:07:23,757 --> 00:07:27,216
+we talking here the part of
+the south that is not the southwest.
+
+161
+00:07:27,216 --> 00:07:31,418
+What CENs is close this out which
+is not the southwest of NDC.
+
+162
+00:07:31,418 --> 00:07:33,233
+Lots of good stuff going on there.
+
+163
+00:07:33,233 --> 00:07:36,980
+So, I've put this
+solution here on the map.
+
+164
+00:07:36,980 --> 00:07:40,418
+So, this is what the tool gives
+us,this is what GIS gives us.
+
+165
+00:07:40,418 --> 00:07:44,495
+And because I picked the geographic
+example I can see the correspondence right
+
+166
+00:07:44,495 --> 00:07:45,130
+directly.
+
+167
+00:07:45,130 --> 00:07:46,790
+So everybody agrees on the midwest,
+
+168
+00:07:46,790 --> 00:07:50,980
+because the midwest is kind of identical,
+by definition.
+
+169
+00:07:50,980 --> 00:07:53,310
+So we can't make it gray.
+
+170
+00:07:53,310 --> 00:07:57,260
+Over here, this region with the hash
+marks is the intersection of
+
+171
+00:07:57,260 --> 00:07:58,640
+Northeast and South.
+
+172
+00:07:58,640 --> 00:08:00,780
+So if you look very carefully
+here where the red dot is,
+
+173
+00:08:00,780 --> 00:08:04,920
+you see it's part of this south, but
+it's also part of this northeast.
+
+174
+00:08:04,920 --> 00:08:06,541
+And if you intersected them in GIS,
+
+175
+00:08:06,541 --> 00:08:10,172
+you get a little patch that's barely
+visible here, has a bunch of states here.
+
+176
+00:08:10,172 --> 00:08:14,222
+And so depending also the colour
+coding was really carefully chosen,
+
+177
+00:08:14,222 --> 00:08:17,263
+we want to reuse the vocabulary
+that we already know.
+
+178
+00:08:17,263 --> 00:08:20,486
+So if you see a green term,
+it's an NDC terminology,
+
+179
+00:08:20,486 --> 00:08:22,430
+coming from that one taxonomy.
+
+180
+00:08:22,430 --> 00:08:26,250
+If its yellow,
+it's from the other terminology.
+
+181
+00:08:26,250 --> 00:08:28,410
+If it's grey, it's like it's in both.
+
+182
+00:08:28,410 --> 00:08:30,630
+Don't worry, we're all in the clear here.
+
+183
+00:08:30,630 --> 00:08:34,788
+But if it's reddish,
+it means something new going on.
+
+184
+00:08:34,788 --> 00:08:36,271
+We did not have a word for this thing.
+
+185
+00:08:36,271 --> 00:08:38,920
+We did not have a word for
+this little patch of R2.
+
+186
+00:08:38,920 --> 00:08:40,010
+Well what is it?
+
+187
+00:08:40,010 --> 00:08:41,120
+How is it defined?
+
+188
+00:08:41,120 --> 00:08:42,400
+Maybe we could give it a name.
+
+189
+00:08:42,400 --> 00:08:47,180
+Well, we could call it the NDC Southwest
+intersected with the census West.
+
+190
+00:08:47,180 --> 00:08:50,470
+Maybe you want to give it a new name,
+but that's what it is logically.
+
+191
+00:08:50,470 --> 00:08:51,410
+It has actually a synonym,
+
+192
+00:08:51,410 --> 00:08:56,080
+you could also call it,
+the NDC Southwest minus the census South.
+
+193
+00:08:56,080 --> 00:08:57,550
+That's exactly the same thing.
+
+194
+00:08:57,550 --> 00:09:02,340
+That's a logical consequence of your
+input, your input alignment, previously.
+
+195
+00:09:02,340 --> 00:09:05,590
+So whether you like it or not,
+that's a consequence of your assumptions.
+
+196
+00:09:05,590 --> 00:09:07,990
+Similar down here,
+well the Southeast, for example,
+
+197
+00:09:07,990 --> 00:09:09,690
+we don't need a new name for that.
+
+198
+00:09:09,690 --> 00:09:14,830
+So you see, we can mix the Census
+Northeast and the NDC Southeast.
+
+199
+00:09:14,830 --> 00:09:16,930
+No controversy, we can all agree.
+
+200
+00:09:16,930 --> 00:09:18,600
+But up here we disagree.
+
+201
+00:09:18,600 --> 00:09:23,396
+It's part of the NDC Northeast or
+the Census South, depending on you ask.
+
+202
+00:09:23,396 --> 00:09:25,790
+So we need to give this a new name,
+a new label.
+
+203
+00:09:25,790 --> 00:09:27,800
+That's how we sort out
+our vocabulary conflict.
+
+204
+00:09:27,800 --> 00:09:32,980
+So in this merged taxonomy we have
+the old names whenever we can.
+
+205
+00:09:32,980 --> 00:09:36,142
+Let's say for example old and
+new, let's just say for
+
+206
+00:09:36,142 --> 00:09:40,910
+the sake of argument that CEN was the old
+taxonomy and NDC was the new taxonomy.
+
+207
+00:09:40,910 --> 00:09:43,114
+So we can have the new
+name where it applies.
+
+208
+00:09:43,114 --> 00:09:46,130
+We can keep the old name where it applies.
+
+209
+00:09:46,130 --> 00:09:48,852
+With also some agreement where the old and
+the new name is the same.
+
+210
+00:09:48,852 --> 00:09:51,691
+And then we have regions
+where the old name nor
+
+211
+00:09:51,691 --> 00:09:55,586
+the new name, neither census
+where not everything will fit.
+
+212
+00:09:55,586 --> 00:09:58,978
+And we have to make up new names, based
+on intersections or set difference or
+
+213
+00:09:58,978 --> 00:10:00,920
+something of these old names.
+
+214
+00:10:00,920 --> 00:10:01,979
+And that's what this gives us.
+
+215
+00:10:01,979 --> 00:10:04,650
+So I think I showed you
+all of that all ready.
+
+216
+00:10:04,650 --> 00:10:07,003
+And now I'm going to show
+this with a little demo.
+
+217
+00:10:07,003 --> 00:10:09,300
+I'm going to show this live, okay?
+
+218
+00:10:09,300 --> 00:10:13,660
+So first, let's look how would I
+encode and input like the one we have.
+
+219
+00:10:13,660 --> 00:10:15,561
+In this tool,
+I write the taxonomy like this.
+
+220
+00:10:15,561 --> 00:10:19,010
+I say, here is the taxonomy CEN census.
+
+221
+00:10:19,010 --> 00:10:20,410
+Here's the NDC taxonomy.
+
+222
+00:10:20,410 --> 00:10:24,050
+And I write just the parent note
+as the first note in the list and
+
+223
+00:10:24,050 --> 00:10:25,190
+then the children are below.
+
+224
+00:10:25,190 --> 00:10:29,590
+So for example, according to the census,
+the US consists of the Northeast,
+
+225
+00:10:29,590 --> 00:10:31,470
+the Midwest, South and the West.
+
+226
+00:10:31,470 --> 00:10:34,000
+So there are four children of the USA.
+
+227
+00:10:34,000 --> 00:10:37,660
+For NDC there are five, something called
+the Midwest, the Northeast, the Southeast,
+
+228
+00:10:37,660 --> 00:10:38,990
+the Southwest and the West, is that five?
+
+229
+00:10:38,990 --> 00:10:42,820
+And then somebody must have given
+me this input articulations,
+
+230
+00:10:42,820 --> 00:10:44,830
+these are the stitching together.
+
+231
+00:10:44,830 --> 00:10:47,440
+But there are consequences of this
+stitching together in this taxonomy.
+
+232
+00:10:47,440 --> 00:10:49,090
+That's what the tool computes.
+
+233
+00:10:49,090 --> 00:10:51,100
+So we say, well, the USA is the same.
+
+234
+00:10:51,100 --> 00:10:54,320
+This west includes other west,
+this one overlaps this one and so on.
+
+235
+00:10:54,320 --> 00:10:55,410
+So how do I run this?
+
+236
+00:10:55,410 --> 00:10:56,750
+Let's see where I can run this.
+
+237
+00:10:56,750 --> 00:11:00,030
+The tool is called Euler or
+this euler2 align,
+
+238
+00:11:00,030 --> 00:11:04,120
+I just say align CEN-NDC
+at the regions level.
+
+239
+00:11:04,120 --> 00:11:06,340
+We're going to do in
+a moment At the state level,
+
+240
+00:11:06,340 --> 00:11:07,670
+which would also be very interesting.
+
+241
+00:11:07,670 --> 00:11:10,210
+But let's just say we do at
+the recent regions level.
+
+242
+00:11:10,210 --> 00:11:11,730
+So it's a small taxonomy.
+
+243
+00:11:11,730 --> 00:11:12,380
+We run this.
+
+244
+00:11:12,380 --> 00:11:17,770
+And we get a possible solution, other
+solution, is maybe not very easy to read.
+
+245
+00:11:17,770 --> 00:11:20,550
+But this has basically computed
+the relationships that
+
+246
+00:11:20,550 --> 00:11:22,140
+are logical consequences of the input.
+
+247
+00:11:22,140 --> 00:11:24,210
+Let's just show these visually.
+
+248
+00:11:24,210 --> 00:11:29,830
+So I can say show the input visualization,
+the original taxonomy view.
+
+249
+00:11:29,830 --> 00:11:31,060
+And let's look at the possible world.
+
+250
+00:11:31,060 --> 00:11:35,170
+So the tool has create these, has
+created in a subfolder, these products.
+
+251
+00:11:35,170 --> 00:11:36,510
+Okay.
+So here are the products.
+
+252
+00:11:36,510 --> 00:11:39,590
+The input is our original input
+text file that we just had.
+
+253
+00:11:39,590 --> 00:11:40,170
+That was the input.
+
+254
+00:11:40,170 --> 00:11:43,550
+And it creates a copy for good providence,
+you know, record keeping purposes.
+
+255
+00:11:43,550 --> 00:11:46,840
+But there's now also a visualization
+of the original taxonomies.
+
+256
+00:11:46,840 --> 00:11:48,460
+So those are the original taxonomies.
+
+257
+00:11:48,460 --> 00:11:50,100
+We see that's, yeah.
+
+258
+00:11:50,100 --> 00:11:54,780
+The USA split into four or five regions,
+with think of this edges as relationships,
+
+259
+00:11:54,780 --> 00:11:55,480
+okay, that's good.
+
+260
+00:11:55,480 --> 00:11:59,130
+But then we also have the input alignment,
+so how does that look like?
+
+261
+00:11:59,130 --> 00:12:00,460
+So, this our input alignment.
+
+262
+00:12:00,460 --> 00:12:05,111
+So, some expert or maybe by looking at
+the map, we've got this pink connections.
+
+263
+00:12:05,111 --> 00:12:07,950
+But we still don't know all
+the consequences, how everything relates.
+
+264
+00:12:07,950 --> 00:12:09,920
+But the tool has computed this for us and
+
+265
+00:12:09,920 --> 00:12:14,080
+it put it in a folder,
+a product called PWs, possible worlds.
+
+266
+00:12:14,080 --> 00:12:17,430
+This case is exactly one possible
+world which comes in different forms
+
+267
+00:12:17,430 --> 00:12:20,660
+whether it's a PDF file, or
+a graphics file, or a YAML file.
+
+268
+00:12:20,660 --> 00:12:23,410
+So here's the possible world
+hears a single possible world.
+
+269
+00:12:23,410 --> 00:12:27,190
+In a way put everything together,
+this isn't overly impressive right now.
+
+270
+00:12:27,190 --> 00:12:31,790
+Because in a way we give a lot of the
+input already by the initial alignments.
+
+271
+00:12:31,790 --> 00:12:34,481
+But we know some connections
+we can see some overlaps but
+
+272
+00:12:34,481 --> 00:12:36,610
+they were probably part of the input.
+
+273
+00:12:36,610 --> 00:12:40,310
+It also haven't resolved things,
+it hasn't introduced new vocabulary,
+
+274
+00:12:40,310 --> 00:12:43,520
+it just says, the West and
+the Southwest overlap.
+
+275
+00:12:43,520 --> 00:12:44,940
+And the Southwest and the South overlap.
+
+276
+00:12:44,940 --> 00:12:48,690
+And the Northeast and the South overlap
+from the different vocabularies.
+
+277
+00:12:48,690 --> 00:12:50,140
+But how do they overlap exactly.
+
+278
+00:12:50,140 --> 00:12:51,170
+We don't know from this.
+
+279
+00:12:51,170 --> 00:12:56,420
+So what we can do is we run the tool
+again with the sort of zoom in option.
+
+280
+00:12:56,420 --> 00:13:01,210
+So just like I ran the tool before,
+I said align these things.
+
+281
+00:13:01,210 --> 00:13:06,350
+I can now To a particular
+evaluation option called MNCB.
+
+282
+00:13:06,350 --> 00:13:08,120
+This means combined concepts.
+
+283
+00:13:08,120 --> 00:13:12,450
+It's trying to increase the conceptual
+resolution by sorting out the overlaps.
+
+284
+00:13:12,450 --> 00:13:13,990
+It's sorting out the overlaps.
+
+285
+00:13:13,990 --> 00:13:19,230
+Bigger answer, [LAUGH] but still a single
+possible world, the possible world.
+
+286
+00:13:19,230 --> 00:13:20,700
+Beware of the consequences.
+
+287
+00:13:20,700 --> 00:13:22,750
+So now we're going to show this solution.
+
+288
+00:13:24,440 --> 00:13:28,880
+And to keep it neat, we say hide overlaps.
+
+289
+00:13:28,880 --> 00:13:32,340
+Okay, so we look at the possible
+world is just now being created.
+
+290
+00:13:32,340 --> 00:13:36,930
+So, you see this now as new folder,
+just a few minutes later.
+
+291
+00:13:36,930 --> 00:13:38,690
+And here we go to the possible world.
+
+292
+00:13:38,690 --> 00:13:42,070
+This is just now created.
+
+293
+00:13:42,070 --> 00:13:43,790
+And I open it and now we get this.
+
+294
+00:13:43,790 --> 00:13:46,380
+And this should look familiar
+you've seen this before.
+
+295
+00:13:46,380 --> 00:13:48,170
+Now, this is sorted out with everything.
+
+296
+00:13:48,170 --> 00:13:52,750
+It tells us now that the southeast
+is contained in the region
+
+297
+00:13:52,750 --> 00:13:56,215
+that is the south minus the southwest and
+also minus the northeast.
+
+298
+00:13:56,215 --> 00:14:00,861
+So it has this higher resolution
+where's the half smokes that's
+
+299
+00:14:00,861 --> 00:14:03,741
+CEN south into Sec south NDC northeast.
+
+300
+00:14:03,741 --> 00:14:05,590
+Now, how do I know that's half smokes?
+
+301
+00:14:05,590 --> 00:14:06,110
+What can I do?
+
+302
+00:14:06,110 --> 00:14:09,544
+Of course, I can often in reality
+I can just go in my vocabulary to
+
+303
+00:14:09,544 --> 00:14:12,102
+find a grand level maybe
+to individuals level.
+
+304
+00:14:12,102 --> 00:14:15,490
+If I don't know what the concept
+stand maybe I can enumerate it.
+
+305
+00:14:15,490 --> 00:14:19,310
+I can [INAUDIBLE] sample it and that
+going to be the last part of the demo.
+
+306
+00:14:19,310 --> 00:14:21,730
+Now we're going to go one level down,
+
+307
+00:14:21,730 --> 00:14:25,730
+and get a fully automatic alignment,
+that way which is really neat.
+
+308
+00:14:25,730 --> 00:14:34,722
+[MUSIC]
+
+309
+00:14:34,722 --> 00:14:37,751
+[SOUND]

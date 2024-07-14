@@ -1,0 +1,133 @@
+[MUSIC] We think of a script as an overall box, so
+there's an interface to the outside and then on the inside, typically, we tell
+more about the workflow on the inside. This case on the inside
+there's not a lot going on, so It's really just this code
+called print_greeting. Just greet the program user, maybe we
+want to see, we say program users, you see it dynamically updates this. It's actually fairly dynamic for
+the fact that behind it is a somewhat old fashioned clunky,command line
+base tool called Graphis. But, you know, the web set up is in such
+a way that it uses micro service and it's fairly efficient in that. So greet the program user I can say,
+maybe with an exclamation mark, it's interactive this way. If I had additional outputs,
+I could create also more outputs. Maybe happiness is another
+side effect of this output. And these annotations are done with this
+ampersand sign, in, out, begin and end. But they have to be inside of a comment. So yes only looks inside of comments. So since this is not inside of
+a comment yet, ignores this. Once I put the hash sign there, it becomes recognized as a comment and
+that's now why you see this output. And I could say similar things like here, I guess it's yeah stream standard out. Could be modeled, why does it? Okay so we have the first question. Why does this output, why is that not
+shown in the same way as this one. Anybody see why that might be the case. Actually, I don't see it. What is different, between those two? Find the one difference. Okay, I see the difference. So we're declaring that
+the print_greeting step has two outputs, happiness and greetings. But the happiness is not declared
+as an output of the overall steps. This is like intermediate data. But let's say we want to advertise this,
+this is a global output. Then we need to do a similar thing here, we need to declare
+another output globally. And let's say maybe happiness is
+something that we're going to export. And again I'm writing it first without
+the comment syntax so the system doesn't try to proactively render it
+while I'm still creating the annotation. So once I've created the annotation I can
+put the pound sign in front which makes it a comment which make this workflow
+react to it, so that it is, okay. So now print greetings has to
+outputs the greeting itself and also happiness is somehow
+created that way. So let's loop before we move on or
+before we finish up here, let me just show slightly
+more advance examples. So here is the greetings example. Now you see this is more
+realistic workflow. So it has three input, greeting is
+provided, there's an emphasis and then there's an emphasis count. You see also a difference. We can distinguish between data and
+parameters. This is something a script
+could not tell you, why? Because it's the eye of the beholder. What is the difference normally
+between data and a parameter? We think of it in a model, we say,
+well parameters are meant to change the behavior may be of the system and the
+data is the thing that's being consumed. So there's some sort of a qualitative or
+conceptual difference, it's hard to pin down, and
+that you wouldn't see in the code. It's really in the way you think about it,
+so we think of the emphasis count as a parameter that changes
+the behavior of the script. Maybe if the emphasis count is ten,
+you say print hello world ten times. And if the count is three,
+you put the three times. That changes the behavior but
+the provided greeting and the provided emphasis are really
+data that are sort of consumed and in this case we use to
+produce the desired output. So in this case again you have
+the very similar set up as before. You declare the overall workflow and
+declare the global inputs and outputs. You see here are two inputs,
+the provided_greeting, the provided_emphasis,
+and the emphasis_count. And so you can interactively change that. And there's a single output overall,
+which is the displayed_greeting. And then inside you will
+have the emphasis_greeting, which is this code block, and then the
+print_greeting, which is this code block. And you see in this case, there's a simple
+loop that repeats a number of times, your greeting, which is the greeting
+plus the emphasis, yeah. And so it goes. Now, so you've created this model, again
+it becomes an artifact that you can use, and you can do certain things now for
+free with this. So you can display it maybe top down or
+left to right, yeah because this is in the system
+modeled as a data structure, you can tell it, tell the underlined graph
+is tool to render it in different ways. Or you can emphasize maybe just the steps,
+so you switch off the data. This is sometimes a bit confusing, which
+button is on and which button is off. So I clicked on data,
+to switch off the data. Therefore, I now see the steps. The steps are really only two steps. Or if I switch off the steps,
+in this case, I must show the data. And this, this is just the data. Where I can have them
+both connected together. There is also another little setting
+where you can switch off and on the port to the outside. Yeah, If you are not interested in the
+interface to the outside you switch off the ports, or you switch the ports on and then you see that this workflow
+has three inputs, one output. Can switch off the title and some, okay. So again, this is meant as a first
+introduction to, yes, workflow and here's the particular workflow or
+script that we've looked at before. It has this energy levels and all of that good stuff so
+you see there's a quite bit of code. And in the realistic example the number of annotations to the code
+is actually not that bad. In the toy example you see a lot of
+annotation, very little code, in the realistic example you would have lots
+of code, and not too many annotations. And then you get this rather
+detailed picture here. So, let's switch off the data for
+a moment, and focus on the steps, so you can see you get an overview
+of what the script is doing already, by just looking at the steps. Let's actually switch off
+the ports as well, and we have a nicer cleaner picture here. So, there's a step,
+called, initialize_run. At this point seems to be disconnected,
+that's going to be an interesting puzzle, how that factors in. And then there's a connected component,
+we load screening results, we calculate a strategy. And then we have two outcomes,
+or two branches, one is logging the rejected samples. So these are the samples. That we put in our machine but we said
+well this is not a good enough quality. I'm not going to use that to
+make an image of that and then the other ones are going
+in the collect data set step. And then we transform the images and
+then we also log some other result. So if I switch on this thing again, lets zoom in a little bit to
+see whether we can, 150%. So this is a more detailed
+view of the script, lets test something in between,
+okay so yeah. So you see how the different steps
+are connected through these data items. You see a lot of white boxes here. The white boxes are parameters. Yeah, so we don't think of them as data,
+we think of them as parameters. And there's log files, and here's something that I mentioned earlier
+that might have gone lost before. So I'm going to zoom into
+this quite a bit more. You recall that we talked
+earlier about UriTemplates. So what is a UriTemplate? So conceptually what I want to say, here's
+maybe a step called transform_images and what transform_images does, it takes raw
+images and produces corrected images. Easy enough to understand
+once we look at this. But where are the raw images? Well the raw images are sitting on a file,
+it could be reachable via URL, but in this case we are a file. What is the structure or
+where is the location of this file? Well there's a run folder. Which has a raw images sub-folder,
+and now here the fun starts. There is another sub-folder but
+you see those curly braces, you see how it says cassette -id. This is a template variable, this tells us that under the raw
+sub-folder in the run folder, there are these cassette id sub-folders,
+maybe two, maybe one, maybe ten. It also tells us that whatever that folder
+name is, we're going to use that as a cassette_id, so we can have
+harvest that and figure it out. Now within the cassette, every cassette
+consists of a bunch of samples so what are the sample_ids? Well we go into the cassette folder and
+look at the samples in there. And so
+this is the sample id that we can extract. And then for each sample we might have
+taken images at different energy levels and this is indicated here so the folder
+is actually called e10000 or e11000. And so we cam extract just like for
+the regular expression we could extract the number after the e and
+have that metadata. So this is part of the model
+that the user has to create. So whoever wrote this script, right,
+somebody writes the script, so somebody is creating a folder structure. And that same person
+would probably be a very ideal candidate to write
+these annotations. So basically declaring, this is what
+I've done so it's an explicit step but by doing so now the system can extract
+that information and now work with it. So if you look at the raw image and
+then you look at the corrected image, so here's your sort of secret sauce. You have described the structure of
+the raw images folder here, run raw. And then for the transform, for the corrected images
+you have a run data folder. Could call it run corrected right? Raw and data could also be called raw and
+corrected. And you see the correspondence here
+in the structure and of course, you can then use that to
+write queries against it. So somebody has to this, yes. All right,
+I think I want to leave it at that, that gives you a first idea and
+this tool, you're going to be able, in fact you need to use for
+your group project. So when you model your data cleaning
+workflow, you may not have a script you might just have your overall
+workflow but you start with open refine. And maybe you have a load script
+you load it into SQL lite and then maybe you create some reports. And maybe you visualise the reports and
+then you can write sort of a workflow model that you can devise a workflow model
+that That documents what you've done. And then you can, again,
+ask questions about that. All right, so
+we'll leave it at this for now. And then next week we continue with prominence and also continuous of this demonstration [MUSIC]

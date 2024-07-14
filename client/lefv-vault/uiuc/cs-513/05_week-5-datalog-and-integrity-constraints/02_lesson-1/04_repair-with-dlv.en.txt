@@ -1,0 +1,227 @@
+[MUSIC] So we have a student table and we have
+functional dependency, so FD not FK. It was a mistake on the previous slide. So FD functional dependency,
+we want that the ID implies the name. How would I check that
+this is not violated? So I just put what I call
+a soft constraint here. And I say if I have student X, Y and
+another one X, Z but for the same X right sometimes I've written this in the past a
+little bit more laboriously like X1 = X2. And I can write it just to make it
+a little more explicit for a moment. I say, let me make it really clear. I think this notation makes it a little
+clearer, if I rename the variables. So what does this rule say? It says I have two student tuples,
+X1, Y1, and X2, Y2, right? I want it to be the case that X1 = X2,
+so they agree on the key but they shall disagree on the second column. So the Y1 and the Y2 are different. That's a situation we don't want to have. If we have this situation, however, we
+want to report this in an auxiliary table called integrity constraint violation for
+dysfunctional dependency. So, we've seen this before,
+so I'll run this again. And I'm going to just comment out any
+other rules that we don't want to get in our way here. And then we're going to try this out. So if you can try this out also
+from the command line, on a Mac, on Windows, on Linux. I'll do it here inside of this editor
+because I find this somewhat convenient, I'm going to have to save this first. And I create a new shell, for some reason
+it puts it here next to each other. Hopefully that works
+reasonably well as well. So when I call, the system is called dlv
+as you recall, I say repair and maybe I want to filter a particular relationship I
+only want to see maybe the student table. And I see here that I have
+a couple of student tuples. It's not particularly pretty the way these
+tuples are output, but it's all there. Actually, let me try to do
+a horizontal split here. Yeah, so
+you see a little bit more of this, okay? Now we want to find out who is
+violating this integrity constraint and we should already see this, right? So how many answers will we get? Two, for bell and logan, yeah? So let's look at,
+let's filter on this icv_fd relationship. So 101, bell and logan and logan and bell, they both share the key 101, which is
+a problem, so we need to fix that. And then stevens and ftevens,
+may be that was an OCR error, right? So may be this was automatically entered
+into the database, so stevens and ftevens may be it should also be stevens. And that shows also up twice. So first of all I want to show you, again,
+to simplify this rule instead of X1 = X2, I can just replace X here and
+get rid of this X1 = X2. And again, this X1 here just becomes an X. I have done a logic transformation. This is exactly the same rule,
+it just looks simpler. And that's why normally
+we would prefer this. So let's run this again, we get exactly
+the same answer, not surprisingly. All right, so so far so good. Now if we add another person called ball,
+maybe a typo of bell or just really a different person
+who also gets student id 101, how many violations should I get now? So somehow we got two until
+we got four answers but there's really two pairs, right,
+because we got each pair reported twice. So how many pairs should I get,
+eight, six? Any other numbers? So ball with bell, ball with logan,
+and bell with logan. One, two, three pairs. So six maybe, sixes or four? Let's see. All right and since this is hard to count,
+instead of saying Y1 not equal to Y2, we just say less. We get half of the solutions. And counting half is,
+in this case, a good idea, because then we can multiply it by 2,
+okay? And to see what we would
+have gotten otherwise. So we got ball and bell, ball and
+logan, bell and logan, and ftevens and,
+sorry I forgot the number four guy. So this guy is destroying our little
+calculation, so I'm going to kill Mr. stevens. Stevens got to go, right? So if I kick out stevens, we've got
+indeed three pairs that are a problem, just as expected. And if we bring back the symmetric
+pair the other way around, so I should get six now, right? One, two, three, four, five, six. Three pairs, six double pairs. Now if I bring back Mr.
+stevens, or rather ftevens, how's that going to affect things? Then we're going to get another two,
+right? And here is I think the eighth. So six and eight were both right in a way, depending on whether you
+counted stevens or not. Okay great, so
+we got lots of violations here. So how can we fix things here? Let me first get rid of Mr. ftevens here
+and also let me get rid of maybe logan. We got still a violation, right? We still got one pair. Bell and ball. There's something with them. And now what we want to do is we want to,
+okay, before I go to the repair, I want to just give one example
+how these logic systems, this answer set programming
+system normally is used. Here we're using the system
+to check violations, but then we don't reject the answer. We kind of try to do something with it,
+like deleting one of the bad guys, right? Something like that. When we use a system like this in
+a logic setting as a constraint solver, we actually don't work
+with soft constraints, which are really just queries that
+give us answers of problematic tuples. But instead,
+we kind of kill the whole model. We say, no, if there's an inconsistency,
+don't even show me the thing. I just want to point this out,
+what this is. This is called a hard constraint. So when you have nothing in the head, or you can think of it as having
+false in the head, this says, if I have an integrity constraint
+violation, whatsoever, I want to stop. Just don't show me that. And instead of false,
+I write literally nothing there. This is sort of a very subtle syntax
+if I did the little not insidious, but there's a lot of power
+behind this little rule. And you have to know that this is what
+it's doing to see what's happening. So this is basically saying if there's
+any integrity constraint validation, I will not report anything. So if I run this program now, you see, even if I switch off the filter,
+there's no answer. This says the set of rules that
+you've given to me are inconsistent. There is a contradiction. So this is a useful feature when you
+have lots of possibilities, thousands or maybe millions of combinations and
+you want to kill off those that make the system inconsistent and
+only report on the consistent ones. Here we're sort of using
+a variation of the theme. We don't use these hard constraints. We use the soft constraints to
+report on the bad guys and then try out some repair actions and then let
+the system report on those repair actions. So that's a subtle difference
+I wanted to point out. So if we want to, ourself,
+fix the database by say, well, bell was wrong, it's ball. And ftevens is wrong, it's stevens. Now the database should be consistent. And if I run this repair example, it will
+tell us there's these three students, it's all good. But once we introduce an inconsistency, never mind which ones, stevens and
+ftevens, there's no answer. So this is of course
+a rather drastic measure. Again, there are applications
+where this is useful. For our purposes, this is too drastic. So we don't want to think of
+this hard constraint saying, if there is a violation, abort. No, that's not what we want to do. We say, okay fine,
+we're not going to use that. Instead, if there's a violation,
+let's report on the violation. And now let's try and
+do something about it. And that again is the idea of the repair. What are we going to do about it is rather
+simple and this is where the system is so powerful that you can just
+write down the following rule. It says,
+if there's an integrity violation and let's use this new notation with Y1 and
+Y2. If you rename things, clearly that doesn't
+change the meaning of a rule, right? Renaming variables in your Java program
+doesn't change the Java program, it might change the readability. Similar here in logic, if I rename
+the variables in a consistent manner, it helps the readability
+along a little bit. So here we have a rule that is a little
+bit unusual from the rules we've seen so far. It has a body, which is a query, but then in the head there's
+something really strange going on. There's this funny or symbol, and again normal systems, normal data lock
+systems will not give you that power. Here, it just says, well, if I have two
+values, Y1 and Y2, I don't have to check that they are different, why don't I
+have to check that they are different? Because they only got in there if
+they were different to begin with. So I know Y1 and Y2 are different,
+I could possibly write it there again, but at this point it's not really needed. So they only got in there if Y1 and
+Y2 are different. This is clearly a violation, so
+one of the two has to go, so this is what I write here. So maybe let's run this program and
+see what's going to happen. The hard constraint,
+if I had both, if I had this and that together that basically,
+these are not really kind of alternatives. What's happening is this one collects
+the integrity constraint violations in an auxiliary table,
+auxiliary relation, if you like. And this one acts upon it. Only that the action of killing off
+the model is a little drastic for our purposes. Again in sort of AI settings or
+where we use this to generate answers and then filter out the ones that work,
+this is the way to go, it's not for us. So here, we literally switch it off but
+we collect the integrity constraint violators and then we offer to
+delete one of the violators. And let's have a look here. Right now, let's bring stevens
+here out of the picture and look just at bell and ball. What should we see? What do you think
+the answer will look like? So I have a violation between ball and
+bell. Everything else is okay. The violation will be
+reported kind of both ways. And then this rule will say,
+well, if I have a violation, then I should either delete this guy or
+that guy. So what do you think we
+should see when we run this? Well, let's try it out. That's the beauty of it. Aha, so we get somehow two answers. Let's just filter on
+the student deletion table, to really zoom in on what's going on. So there are two answers, one says, you gotta delete bell, then
+the word's okay, or you gotta delete ball. But notice there is this
+sort of two separate lines. It's really two separate worlds. In fact I can count the possible worlds
+as we'll show in a moment using certain trick. Does it delete randomly? No, the answer is right now this is
+just an auxiliary table that we've created to identify the candidates,
+the deletion candidates. And nobody has been deleted so
+far at this point. When I have ball and bell and
+logan, all sharing the same id, then we can either delete ball and
+bell, logan wins, or ball and logan, bell wins or
+bell and logan, ball wins. Now that's of course is
+a little bit complicated and tedious to keep track of
+all these combinations. So what we should do is we should execute
+the deletion by computing a new table. Whoever we deleted is no longer there. So how do we do this? So we create a new students table,
+I call it new student. And it has an interesting
+body of the rule. It says, well take any student X,
+Y that you have and as long as they're not deleted,
+they'll make it into the next round. It's a little bit like what is it? Survivor or getting into the next round. Not getting voted off the island,
+that's what's happening here. So whoever's been deleted, will not
+make it into the new student table. What we should see now instead of,
+in this case, these three alternative variants
+of what needs to be deleted. You see in each of these three variants,
+two guys need be deleted but one survives, who survives? That should be now in the new student
+table, should be a little easier to see. So we run the program again, and
+instead of looking a the deleted students, we just look at who is there after
+getting voted off the island, okay? If you look at,
+it's sort of little bit backwards but you see 101 is either logan, bell or ball. And stevens and norton are untouched,
+so there are three possible worlds. I can actually count the possible
+worlds if I pipe this into word count, which is a tool that's available
+on Unix based systems. It'll tell us, so this vertical symbol
+is a pipe, whatever the output from the previous program is sent into this
+word count program, the word count program tells us there are 7 lines in the answer,
+22 words and 301 characters. But the number of lines is for
+us, an indication. Now something is a little wrong here,
+because we've one line here, second, third, four, five,
+six, seven, seven lines. But only three of these seven
+lines are meaningful and four lines are kind of useless. So there is an option called silent,
+command line option. When I run silent,
+it will just give me one answer per line. And if I count them now,
+this is very convenient, now I see there are three
+different solutions. For three, it's easy to see, for
+10,000, it's harder to count. So that's a useful trick here. This will work on your Unix
+based system or a Mac or it will work on a Windows based system,
+if you use a bash or similar sort of Unix type shell,
+then you'll get the benefits here as well. So let's try to make a little prediction
+and then we'll take a little break. Let's try to make a little prediction and
+see what's going to happen. We have three different kinds of repairs. If I switch off the word count,
+I see the three repairs. They all have to do with 101. Instead of filtering on new student,
+I can also look at the delete. Now what was that delete student
+relationship, so they all go together. Let's have a look. So if you look at each line separately. Actually here I can
+switch off the silent to give us an empty line between the answers. This makes it little easier to read. So again,
+we see the same what we saw before. Stevens and norton always make it because
+there's no problem with their id, but there's sort of
+a contention about the id 101. And either you delete ball and bell and
+you keep logan, or you delete ball and logan and you keep bell, or you delete
+bell and logan and you keep ball, okay? So you see, it's all these combinations,
+it'll all make some sense, you delete two, you keep the third. So each world, what is called a possible
+world in the terminology of this approach or each answer set. That's why it's called
+answer set programming. There's three answer sets. Each world corresponds to one answer set. And so each answer set gives you one
+consistent way how you can repair. And if you think about what we've done,
+this was pretty straight forward. We had an integrity constraint
+that we could check. We can come up with any
+integrity constraint really. And the meta approach, the Uber approach
+if you like to this is, we'll just invent some rules to tell you, in case of a
+violation, what is it that you want to do? So that's what we've done here. We said well, if I have a violation,
+we'll delete one or delete the other. If you have more complicated situations,
+you can do other things as well. But the key to the power of this approach
+is that we generate different possible answers with the or, and then the system sort of figures out which
+of these various answers work together. And in this particular case we said, okay, we need the final step where we say in
+the new state, the repaired state, we take a copy of what was previously the case and
+then we execute in a way the action. Or we filter out, in this case,
+the tuples that should be deleted, we don't let them go into the next state. So, again, it's a simple example,
+but a lot is going on. And if you generalize that, that's behind all of these or most of
+these repair approaches in databases. So the foundations of it, I think,
+we got pretty much worked out. We have a database, in this case,
+a very simple constraint, which is a functional dependency. And then we have a generation
+of possible repairs. And then we have an execution
+of these repairs. How is it chosen which
+student is to be deleted? Well, the answer is it's systematically
+enumerating all possible repairs. It's choosing by looking at all of them,
+trying to be fair. That's why we have three answers here. A real database system, sometimes you are
+stuck because you have to make a decision. You have to decide which of these three
+possible worlds do I want to have. In a more complex situation, you might
+have other rules that point out, well, just this bell guy show up somewhere
+else in the database in another table. Or does logan or ball show up somewhere? Or if something shows up in
+a dictionary as a valid name and the ftevens probably doesn't show up
+in a dictionary, that's not a name. And then more comprehensive solution, you will probably want to post process
+your choices, and then rank them somehow. Before I break, let me just do, just to see a sort of
+a multiplication effect here that occurs. So you see ball, bell and
+logan were three possible worlds. And now I'm going to say stevens and
+ftevens are also ending up in the database,
+maybe a transcription error for 104. How many possible worlds
+do you think we get now? So one idea could be let's
+see what happens if we get rid of the problem with the 101s. Let's just say ball is the guy,
+then for stevens, right, we should get two different worlds. Either we delete ftevens and we keep stevens or
+we delete stevens and we keep ftevens. In this particular case, if I bring back the other three choices,
+those are independent. Sometimes they might actually
+interact in complex ways. That's where the power of the system lies,
+that it can keep also track of maybe one of the solutions, interact somehow,
+correlate with the other ones. In this case, they're really independent. So I think we will get three times two. Let's try it out, okay? Well now we have to start counting or
+we use our trick from before. First of all, we use this silent
+option to get rid of the white space, the extra lines. And then we pipe it into
+tool called word count, and it tells us there are six worlds. [MUSIC]

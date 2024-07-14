@@ -1,0 +1,379 @@
+1
+00:00:00,000 --> 00:00:02,390
+Hello everyone, welcome to CS 421.
+
+2
+00:00:02,390 --> 00:00:05,080
+Today we're going to talk about recursive functions.
+
+3
+00:00:05,080 --> 00:00:09,750
+To get us started, I also wanted to go over proof by induction because it turns
+
+4
+00:00:09,750 --> 00:00:14,710
+out that induction proofs and recursive functions are pretty much the same kind of thing.
+
+5
+00:00:14,710 --> 00:00:16,890
+And we'll just talk about the different parts of
+
+6
+00:00:16,890 --> 00:00:19,850
+it and show how they match up to each other.
+
+7
+00:00:19,850 --> 00:00:21,870
+So, I assume that you've done
+
+8
+00:00:21,870 --> 00:00:24,540
+induction before and that you are reasonably comfortable with it,
+
+9
+00:00:24,540 --> 00:00:26,370
+but let's just go over it anyway.
+
+10
+00:00:26,370 --> 00:00:28,480
+What we're going to do is, we're going to pick a property,
+
+11
+00:00:28,480 --> 00:00:31,530
+we'll call it P. And we want to prove that
+
+12
+00:00:31,530 --> 00:00:36,765
+this property P is true for all n. Typically in things like integers,
+
+13
+00:00:36,765 --> 00:00:40,640
+but it can be any structure as long as there's a sense of ordering to it.
+
+14
+00:00:40,640 --> 00:00:42,610
+There must be some kind of concept,
+
+15
+00:00:42,610 --> 00:00:44,850
+that one thing being smaller than another.
+
+16
+00:00:44,850 --> 00:00:48,865
+So link list is another good example are trees.
+
+17
+00:00:48,865 --> 00:00:51,215
+But anyway, we have two cases.
+
+18
+00:00:51,215 --> 00:00:52,460
+You have a base case,
+
+19
+00:00:52,460 --> 00:00:54,930
+where whatever the smallest value of n should be,
+
+20
+00:00:54,930 --> 00:00:57,625
+like maybe zero one,
+
+21
+00:00:57,625 --> 00:01:00,230
+or if it's linked list it can be the empty list.
+
+22
+00:01:00,230 --> 00:01:02,935
+That kind of thing. You prove that,
+
+23
+00:01:02,935 --> 00:01:05,660
+and typically it's very straightforward to prove,
+
+24
+00:01:05,660 --> 00:01:07,950
+but then you also want to do the inductive case.
+
+25
+00:01:07,950 --> 00:01:11,450
+And here what we do is we assume that P of n minus one is true.
+
+26
+00:01:11,450 --> 00:01:15,560
+In fact, you assume that P is true for all n smaller than the current one.
+
+27
+00:01:15,560 --> 00:01:17,720
+And then you use that information to prove that
+
+28
+00:01:17,720 --> 00:01:20,615
+the current property P event of n is also true.
+
+29
+00:01:20,615 --> 00:01:23,420
+So it's really nice way of being lazy because we can do
+
+30
+00:01:23,420 --> 00:01:26,520
+an infinite number of cases and we collapse it down into two.
+
+31
+00:01:26,520 --> 00:01:27,940
+Let's do an example.
+
+32
+00:01:27,940 --> 00:01:31,550
+Though this is actually a very old proof.
+
+33
+00:01:31,550 --> 00:01:34,180
+The sum of the first n odd numbers is n squared,
+
+34
+00:01:34,180 --> 00:01:38,365
+it's one of the earliest formally written out proof by induction actually.
+
+35
+00:01:38,365 --> 00:01:40,710
+So your base case, let's let n equal to one.
+
+36
+00:01:40,710 --> 00:01:42,750
+So you say n squared is equal to one,
+
+37
+00:01:42,750 --> 00:01:44,880
+and the sum of the list one is one.
+
+38
+00:01:44,880 --> 00:01:48,685
+So therefore our base case is proven. Very simple.
+
+39
+00:01:48,685 --> 00:01:50,225
+So the induction case,
+
+40
+00:01:50,225 --> 00:01:55,590
+you want to show that the property is true for sum n. So you prove that basically,
+
+41
+00:01:55,590 --> 00:01:58,590
+we assume that P of n minus one is also true.
+
+42
+00:01:58,590 --> 00:02:01,245
+In fact P of n minus two all of the ends.
+
+43
+00:02:01,245 --> 00:02:03,250
+The way I have this presented here,
+
+44
+00:02:03,250 --> 00:02:05,040
+I'm showing you P of n minus one,
+
+45
+00:02:05,040 --> 00:02:06,745
+and that's called simple induction.
+
+46
+00:02:06,745 --> 00:02:08,845
+But there's also a stronger one,
+
+47
+00:02:08,845 --> 00:02:13,535
+a well-founded induction you show that all the P for anything smaller than n is true.
+
+48
+00:02:13,535 --> 00:02:15,590
+So here's how the proof works.
+
+49
+00:02:15,590 --> 00:02:18,295
+If we assume that P of n minus one is true,
+
+50
+00:02:18,295 --> 00:02:21,740
+we have one plus three plus five to two and minus three,
+
+51
+00:02:21,740 --> 00:02:24,420
+and we're going to assume that's equal to n minus one squared.
+
+52
+00:02:24,420 --> 00:02:25,540
+So then what we're going to do,
+
+53
+00:02:25,540 --> 00:02:27,140
+is we're going to add two n minus one,
+
+54
+00:02:27,140 --> 00:02:29,375
+that's the nth odd number to both sides.
+
+55
+00:02:29,375 --> 00:02:31,575
+There's a huge cloud of algebra when you do that,
+
+56
+00:02:31,575 --> 00:02:33,950
+and then you turn out you get your n squared.
+
+57
+00:02:33,950 --> 00:02:36,155
+So that proves our induction case.
+
+58
+00:02:36,155 --> 00:02:38,690
+Now when you write something using recursion,
+
+59
+00:02:38,690 --> 00:02:40,980
+you actually follow the same kind of structure.
+
+60
+00:02:40,980 --> 00:02:42,500
+Instead of a property P,
+
+61
+00:02:42,500 --> 00:02:47,970
+we have a function f and we want to compute f of n for all n that we're interested in.
+
+62
+00:02:47,970 --> 00:02:49,110
+You have to have two cases.
+
+63
+00:02:49,110 --> 00:02:52,090
+You have a base case so f of one, for instance,
+
+64
+00:02:52,090 --> 00:02:54,960
+or f of empty list or whatever it is your structure is,
+
+65
+00:02:54,960 --> 00:02:56,505
+the smallest value should be,
+
+66
+00:02:56,505 --> 00:02:59,420
+and then you have a recursive case where you can
+
+67
+00:02:59,420 --> 00:03:02,810
+call f of n minus one or something like that,
+
+68
+00:03:02,810 --> 00:03:05,570
+and then use that value to compute f of n. So
+
+69
+00:03:05,570 --> 00:03:08,680
+here's the nth square function that you see here.
+
+70
+00:03:08,680 --> 00:03:10,190
+We have n square of one is one,
+
+71
+00:03:10,190 --> 00:03:11,415
+that's our base case,
+
+72
+00:03:11,415 --> 00:03:15,920
+n square of n is two n minus one plus n square of n minus one.
+
+73
+00:03:15,920 --> 00:03:19,975
+The other thing that you should notice in Haskell is how we use pattern matching.
+
+74
+00:03:19,975 --> 00:03:23,495
+So the first line says n squared applied to one is equal to one.
+
+75
+00:03:23,495 --> 00:03:27,695
+n square applied to n is this other thing and so it checks the cases in order.
+
+76
+00:03:27,695 --> 00:03:30,510
+So for one it will take the first class for anything else,
+
+77
+00:03:30,510 --> 00:03:33,855
+it will just assign the variable n. So in recursion,
+
+78
+00:03:33,855 --> 00:03:36,395
+there's a couple of things that you have to bear in mind
+
+79
+00:03:36,395 --> 00:03:39,985
+to make sure that the recursive function works properly.
+
+80
+00:03:39,985 --> 00:03:42,065
+Your base case has to stop the computation,
+
+81
+00:03:42,065 --> 00:03:43,630
+otherwise it's not really a base case.
+
+82
+00:03:43,630 --> 00:03:45,680
+And the other thing that you have to
+
+83
+00:03:45,680 --> 00:03:48,754
+understand about recursion is when you make a recursive call,
+
+84
+00:03:48,754 --> 00:03:53,845
+then the argument to that function should get you closer to the base case somehow.
+
+85
+00:03:53,845 --> 00:03:56,840
+So here we have n square of n minus one,
+
+86
+00:03:56,840 --> 00:04:00,600
+sets closer to the one case than what was there.
+
+87
+00:04:00,600 --> 00:04:04,720
+Of course this particular function we don't handle negative numbers.
+
+88
+00:04:04,720 --> 00:04:08,390
+If you put in a negative number here then it's going to loop forever
+
+89
+00:04:08,390 --> 00:04:13,290
+because you're getting farther away from the base case rather than closer to it.
+
+90
+00:04:13,290 --> 00:04:15,380
+So that's a quick overview of proof by
+
+91
+00:04:15,380 --> 00:04:18,440
+induction and recursive functions written in Haskell.
+
+92
+00:04:18,440 --> 00:04:19,700
+In the next video,
+
+93
+00:04:19,700 --> 00:04:21,709
+we're going to talk about other kinds of recursion,
+
+94
+00:04:21,709 --> 00:04:23,715
+particularly something called tail recursion,
+
+95
+00:04:23,715 --> 00:04:29,390
+which is a very nice optimization that will turn out to be very useful.

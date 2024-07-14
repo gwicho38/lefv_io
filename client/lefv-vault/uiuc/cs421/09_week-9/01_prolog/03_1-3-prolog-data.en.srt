@@ -1,0 +1,511 @@
+1
+00:00:00,000 --> 00:00:02,505
+Hello everyone, and welcome back.
+
+2
+00:00:02,505 --> 00:00:05,865
+So, being able to specify effects and rules is powerful,
+
+3
+00:00:05,865 --> 00:00:07,800
+but so far we've treated Prolog as
+
+4
+00:00:07,800 --> 00:00:11,610
+a static build the system then solve the problem kind of language,
+
+5
+00:00:11,610 --> 00:00:17,460
+and actually Prolog can modify its database enabling a Prolog program to learn.
+
+6
+00:00:17,460 --> 00:00:20,280
+When we're done with this lesson, you'll be able to use findall and
+
+7
+00:00:20,280 --> 00:00:23,550
+checklists to perform queries over a range of values.
+
+8
+00:00:23,550 --> 00:00:27,600
+You'll be able to use call and assert to modify Prolog's database,
+
+9
+00:00:27,600 --> 00:00:33,370
+and finally you'll be able to programatically construct and deconstruct Prolog objects.
+
+10
+00:00:34,460 --> 00:00:38,285
+So, let's first look at findall and checklist.
+
+11
+00:00:38,285 --> 00:00:40,819
+These are some of prologues higher-order functions
+
+12
+00:00:40,819 --> 00:00:43,100
+or maybe I should call them higher-order predicates.
+
+13
+00:00:43,100 --> 00:00:45,395
+Findall has three parameters.
+
+14
+00:00:45,395 --> 00:00:47,570
+The first is a new variable X,
+
+15
+00:00:47,570 --> 00:00:49,910
+the second is a query concerning X,
+
+16
+00:00:49,910 --> 00:00:51,890
+and the output is a variable that will contain
+
+17
+00:00:51,890 --> 00:00:54,575
+the list of patterns that satisfy the query.
+
+18
+00:00:54,575 --> 00:00:57,230
+Think of it as a function that keeps hitting semicolon
+
+19
+00:00:57,230 --> 00:01:00,455
+for you and then presents the whole bunch of results.
+
+20
+00:01:00,455 --> 00:01:04,735
+Checklists takes a predicate as its first parameter and the list of items,
+
+21
+00:01:04,735 --> 00:01:07,235
+and then applies the predicate to each item.
+
+22
+00:01:07,235 --> 00:01:10,610
+Checklist succeeds if the entire list succeeds with the predicate.
+
+23
+00:01:10,610 --> 00:01:14,190
+The assumptions will come in handy a bit later.
+
+24
+00:01:14,590 --> 00:01:18,140
+One very interesting feature Prolog that rarely gets
+
+25
+00:01:18,140 --> 00:01:21,630
+mentioned is that Prolog is a homoiconic language.
+
+26
+00:01:21,630 --> 00:01:25,850
+Data that you put into the database is the same as the queries you run against it,
+
+27
+00:01:25,850 --> 00:01:29,000
+or more generally code and data share the same form.
+
+28
+00:01:29,000 --> 00:01:32,930
+This is also a feature of the list family of languages and allows for some very
+
+29
+00:01:32,930 --> 00:01:37,370
+powerful and most people would say very dangerous styles of programming,
+
+30
+00:01:37,370 --> 00:01:40,610
+namely that programs can examine and write other programs.
+
+31
+00:01:40,610 --> 00:01:43,440
+Personally, I really like it.
+
+32
+00:01:44,390 --> 00:01:47,385
+Now, to have Prolog examine terms,
+
+33
+00:01:47,385 --> 00:01:51,665
+it provides a bunch of predicates that check the kind of thing that the predicate has.
+
+34
+00:01:51,665 --> 00:01:54,110
+So, an atom is a pattern like Socrates,
+
+35
+00:01:54,110 --> 00:01:56,815
+Jane or Eve in the previous lecture.
+
+36
+00:01:56,815 --> 00:01:59,990
+Things that look like variables and other languages basically.
+
+37
+00:01:59,990 --> 00:02:02,600
+To integers and such are not atoms,
+
+38
+00:02:02,600 --> 00:02:04,595
+but these are called atomic and so we have
+
+39
+00:02:04,595 --> 00:02:07,310
+another predicate called atomic to check for those.
+
+40
+00:02:07,310 --> 00:02:11,735
+We also have predicates called integer that checks for integers and so on and so forth.
+
+41
+00:02:11,735 --> 00:02:16,610
+You get the idea. Now, one really nice predicate is called var.
+
+42
+00:02:16,610 --> 00:02:20,500
+You use it to check if a variable has been unified yet or not.
+
+43
+00:02:20,500 --> 00:02:23,510
+So, you can write some really interesting predicates with this.
+
+44
+00:02:23,510 --> 00:02:25,730
+You already have seen that a predicate can use
+
+45
+00:02:25,730 --> 00:02:29,255
+its parameters as either input or output, or sometimes both.
+
+46
+00:02:29,255 --> 00:02:31,040
+Sometimes, you would want to use
+
+47
+00:02:31,040 --> 00:02:33,500
+a different algorithm at the first parameter is a variable,
+
+48
+00:02:33,500 --> 00:02:35,245
+then in the second parameter,
+
+49
+00:02:35,245 --> 00:02:38,070
+then if the second parameter is a variable.
+
+50
+00:02:38,070 --> 00:02:43,410
+The var predicate allows you to check and then pick the best algorithm for the job.
+
+51
+00:02:44,380 --> 00:02:48,530
+Now, if you want to convert between an atom and a string,
+
+52
+00:02:48,530 --> 00:02:51,125
+there's a name predicate that allows you to do that.
+
+53
+00:02:51,125 --> 00:02:53,660
+The list 102, 111, 111,
+
+54
+00:02:53,660 --> 00:02:56,420
+that's just the list of ASCII values for foo,
+
+55
+00:02:56,420 --> 00:02:58,280
+and this is a great predicate to have on hand if you're
+
+56
+00:02:58,280 --> 00:03:01,745
+doing natural language processing.
+
+57
+00:03:01,745 --> 00:03:04,895
+There are predicates that work on functors as well.
+
+58
+00:03:04,895 --> 00:03:06,140
+But before we go to those,
+
+59
+00:03:06,140 --> 00:03:09,290
+I want to show you this one useful utility called listing.
+
+60
+00:03:09,290 --> 00:03:12,440
+You give it a name of an object or a functor and it will show you all of
+
+61
+00:03:12,440 --> 00:03:16,920
+the functors in the database that share that name.
+
+62
+00:03:16,940 --> 00:03:21,365
+So, you've seen ways to look at atomic things to see what kind of things they are.
+
+63
+00:03:21,365 --> 00:03:24,440
+Functors are more complicated because they have arguments.
+
+64
+00:03:24,440 --> 00:03:27,365
+So, here are two predicates to examine functors.
+
+65
+00:03:27,365 --> 00:03:30,110
+The functor predicate takes functor as
+
+66
+00:03:30,110 --> 00:03:34,880
+its first argument and the two outputs are the name and the number of arguments.
+
+67
+00:03:34,880 --> 00:03:39,020
+The arg predicate will return a specific argument for a particular functor.
+
+68
+00:03:39,020 --> 00:03:43,390
+So, these predicates are useful if you want a specific part of the functor,
+
+69
+00:03:43,390 --> 00:03:47,730
+but if you want all of the information you're going to need what's on the next slide.
+
+70
+00:03:48,370 --> 00:03:52,339
+So, if you want to build functors or deconstruct them completely,
+
+71
+00:03:52,339 --> 00:03:55,015
+you're going to need this equal dot dot operator.
+
+72
+00:03:55,015 --> 00:03:58,580
+It takes a functor on the left side and returns a list on the right,
+
+73
+00:03:58,580 --> 00:04:02,390
+but the first element is a functor and the rest are the arguments.
+
+74
+00:04:02,390 --> 00:04:06,670
+This is the same kind of representation you would expect in dialect of list.
+
+75
+00:04:06,670 --> 00:04:08,750
+So, you can see here in the example,
+
+76
+00:04:08,750 --> 00:04:11,150
+I've deconstructed bst five, null,
+
+77
+00:04:11,150 --> 00:04:12,725
+null into L. Now,
+
+78
+00:04:12,725 --> 00:04:14,840
+L is a list of those parts.
+
+79
+00:04:14,840 --> 00:04:18,000
+On line three, I take a list likes,
+
+80
+00:04:18,000 --> 00:04:21,765
+John, X and assemble that into L to get a functor.
+
+81
+00:04:21,765 --> 00:04:24,650
+This works for rules as well as for simple functors.
+
+82
+00:04:24,650 --> 00:04:26,720
+That colon and dash operator we've been using
+
+83
+00:04:26,720 --> 00:04:29,120
+all this time is actually just another functor.
+
+84
+00:04:29,120 --> 00:04:31,635
+Since it's assemble and not alphanumeric,
+
+85
+00:04:31,635 --> 00:04:34,355
+it puts parentheses around it when it stands alone
+
+86
+00:04:34,355 --> 00:04:38,120
+making it look like a smiley face emoticon.
+
+87
+00:04:38,120 --> 00:04:41,600
+So, we've seen how to examine things and create them.
+
+88
+00:04:41,600 --> 00:04:44,825
+Now, let's put these things into the main database.
+
+89
+00:04:44,825 --> 00:04:48,080
+The main commands for this are assert and retract.
+
+90
+00:04:48,080 --> 00:04:51,425
+Assert takes an argument and puts it into the database.
+
+91
+00:04:51,425 --> 00:04:53,650
+In this example, I've asserted that two, three,
+
+92
+00:04:53,650 --> 00:04:55,370
+five and seven are primes,
+
+93
+00:04:55,370 --> 00:04:58,915
+and I can now query them just as if I've loaded them from a program.
+
+94
+00:04:58,915 --> 00:05:02,370
+I can also change my mind and retract the fact.
+
+95
+00:05:02,820 --> 00:05:06,170
+Jucy's predicates you loaded from a file,
+
+96
+00:05:06,170 --> 00:05:10,070
+you need to declare that the predicates are dynamic using the dynamic keyword.
+
+97
+00:05:10,070 --> 00:05:14,630
+The slash two at the end of likes here means that likes takes two parameters.
+
+98
+00:05:14,630 --> 00:05:18,620
+Now, assert can work for both facts and with implications.
+
+99
+00:05:18,620 --> 00:05:22,720
+Is usually assert just puts new information at the end of the database.
+
+100
+00:05:22,720 --> 00:05:26,645
+Now usually, assert puts new information at the end of a database.
+
+101
+00:05:26,645 --> 00:05:28,340
+If you want to insert it, the fact,
+
+102
+00:05:28,340 --> 00:05:32,070
+at the beginning, you have assert a to handle that for you.
+
+103
+00:05:33,850 --> 00:05:38,495
+Now, the last piece of the puzzle you need is this call predicate.
+
+104
+00:05:38,495 --> 00:05:41,375
+Call is like eval and other languages.
+
+105
+00:05:41,375 --> 00:05:44,225
+It takes a structure you've created it and runs it as a query.
+
+106
+00:05:44,225 --> 00:05:47,435
+Here's an example of where right of predicate ask about.
+
+107
+00:05:47,435 --> 00:05:50,660
+You give it an object and the name of a predicate and
+
+108
+00:05:50,660 --> 00:05:54,215
+ask about will assemble them into query and run that query.
+
+109
+00:05:54,215 --> 00:05:56,735
+So, call is not the same thing as asserted.
+
+110
+00:05:56,735 --> 00:05:58,070
+It runs queries only.
+
+111
+00:05:58,070 --> 00:06:00,960
+Assert is for updating the database.
+
+112
+00:06:01,580 --> 00:06:05,780
+So, here's an example program to keep track of student questions.
+
+113
+00:06:05,780 --> 00:06:09,230
+In our database, we have a predicate question with two arguments.
+
+114
+00:06:09,230 --> 00:06:11,420
+The first is a student who ask the question,
+
+115
+00:06:11,420 --> 00:06:14,285
+the second is the query the student would like to run.
+
+116
+00:06:14,285 --> 00:06:18,230
+The answer predicate finds the next question asked by a particular student,
+
+117
+00:06:18,230 --> 00:06:22,320
+then runs the query for the student and also removes a question from the database,
+
+118
+00:06:22,320 --> 00:06:24,605
+so we don't have to answer it again.
+
+119
+00:06:24,605 --> 00:06:27,800
+So, being able to update the database like this makes
+
+120
+00:06:27,800 --> 00:06:30,755
+Prolog much more interesting than what is normally taught about it.
+
+121
+00:06:30,755 --> 00:06:32,450
+On the course website, you'll find a couple of
+
+122
+00:06:32,450 --> 00:06:34,505
+toy programs that you might want to look at.
+
+123
+00:06:34,505 --> 00:06:36,860
+One is an artificial intelligence program that takes
+
+124
+00:06:36,860 --> 00:06:40,115
+a rudimentary natural language queries in response to them.
+
+125
+00:06:40,115 --> 00:06:41,670
+The other is a type inferencer,
+
+126
+00:06:41,670 --> 00:06:43,010
+like the one from your MPs,
+
+127
+00:06:43,010 --> 00:06:47,495
+but you could have written it yourself in about 15 minutes once you know how to do it,
+
+128
+00:06:47,495 --> 00:06:52,950
+and so that's it for our Prolog series and I hope you enjoyed the language.

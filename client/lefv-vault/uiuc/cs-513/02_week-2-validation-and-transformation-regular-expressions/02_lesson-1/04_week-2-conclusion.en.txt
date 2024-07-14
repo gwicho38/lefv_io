@@ -1,0 +1,15 @@
+[MUSIC] Welcome back. Now let's briefly wrap up
+what we covered this week. In the second week, we talked about the
+roots of regular expressions in computer science theory, and we learned about
+practical regular expressions as found for example in R, Python, Java or OpenRefine. And we then exercised our
+regular expression skills on an interactive website that provides
+you with immediate feedback so you can better understand
+how your expressions work. By learning what regular expressions and
+exercising your hands-on skills, you should now be able to situate
+regular expressions among other formal languages in
+computer science theory. And to define simple regular expressions
+for example in Python, to extract or match data and check whether it conforms
+to a certain desired or undesired format. Next week, we will learn about a popular power tool
+for data cleaning called OpenRefine. Regular expressions are only
+one of many features and capabilities that OpenRefine offers for
+syntax based data cleaning. [MUSIC]

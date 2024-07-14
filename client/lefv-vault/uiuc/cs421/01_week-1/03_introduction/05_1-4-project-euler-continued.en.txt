@@ -1,0 +1,92 @@
+Hello, everyone, welcome back. In this video, we're going to talk about the other two
+Euler problems that were on your handout. Euler problem 3 is basically find
+a largest prime factor of a number. To do this, we're going to write something
+that is kind of like the famous sieve. Really, not quite as sophisticated as
+the real sieve, but it's easy to write. So we'll do it this way. In the meantime, I'm going to show you a few more
+features of Haskell as we do this. Now one thing that we can do is
+we can write a function plus. It just adds its two arguments together. And if you ask for the type, you'll see
+that it gives you back a, arrow, a, arrow, a, with the constraint that
+a must be a numeric thing. Now, there are two ways that
+you can read this type. The first is you can think of it as
+a function that takes two arguments and then returns a result. So you see I call plus on 10 and
+20 and get 30 back. But the other way you can look at it is
+if you only give plus 1 of its arguments. Then it's going to
+return another function. So if I call plus 1 and look for the type,
+that 1 goes into the first a in the type. And then you get an a or a back. So you get another function back. And when a function is written this
+way it's called a curried function. And we'll have occasion to talk about
+this a little bit more in a future video. But as you see what we can do
+is I can call plus on 2, so that's partially applied. And then save that into
+another function like addTwo. This is a very common
+technique used in Haskell. The way we're going to make use of this
+is we're going to have a function called notDivides that we can use to filter out
+all the things that aren't divisible by a certain number. And this is how we're going to
+be able to build up our primes. So you see if I call filter notDivides
+3 on the list 1 through 10, then it's throwing out all
+the multiples of 3 for us. So in order to build up a list,
+we're going to need some more syntax. Now you saw on the previous video,
+we could use the square brackets and just write in all the elements. But here we're going to have to build
+it up a little bit more piece meal. So what we're going to do
+is use this colon notation. Now if you use the language with linked
+lists and singly linked lists, a lot of times an object joined to language,
+you can say stuff like a new Node (a,b). And a is going to be the data element and b is going to be a pointer
+to another linked list. And that way you can build
+things up incrementally. So Haskell we have this colon which
+does basically the same thing. So you can see here on line 1,
+the 2 is going to be the data element. And then colon and then filter is
+supposed to return another linked list. And so what this is going to do is create
+a new linked list node where the 2 starts at the beginning and then the rest
+of the list comes afterwards. So the way we're going to
+build up our list of primes. So we'll start with a 2 and then we'll filter out all the multiples
+of 2 from the rest of the list. And we can stack this up, we can
+have a 3 and then filter out the 3s. Then 5 and filter out the multiples of 5,
+so on and so forth. Of course we're going to want to write
+a recursive function to do this for us. Here's what our sieve
+function's going to look like. And this is going to also show you
+two other features of Haskell. So feature number one, you'll see sieve, the parameter list is actually the same
+syntax for building up a list, the x:xs. And this is called pattern matching. So what happens,
+if I call sieve and pass it a list, the first element of the list
+is going to get assigned to x. And the rest of the elements
+are going to be assigned to xs. This is a very nice notation. It’s very concise. And you’ll see this used very,
+very frequently in this language. Now the other thing you may notice is
+that sieve, there is no base case. I haven’t written something for
+the empty list. And so this looks like it’s actually
+going to build an infinitely large list if you tried to type this out. So I say primes = sieve [2..]. If you actually type out primes at
+this point, then it won't stop, it'll keep looping. But Haskell has another feature,
+it's called a lazy evaluation. So when you write down something, unless
+it's actually used in another computation, Haskell won't actually do
+anything with it at all. It won't perform the computation
+until it is actually necessary. So the way we can make use of that is
+we can write down our list of primes. And we don't have to know how many we
+want up front, but we can decide later. There's a function called take
+which will go through and take the first 20 elements of the list in
+this case and return them in a new list. So these are our primes. Now that we have that, we just need to figure out how to
+use that to get our largest factor. So here, to get all the factors,
+we're going to take an auxiliary function. So I want the factors of n. I'm going to make
+an auxiliary function aux. Then the first element of aux is going to
+be the number we're trying to factor. And if we get down to 1 then we're done. So we'll return an empty list. That's what that brackets
+with nothing in looks like. Otherwise, what we're going to do is we're
+going to assume that the second argument to aux is our list of primes. And we're just going to
+through them each one, we'll just check if p divides into n or
+not. So if it does, then we're going to return
+it, and then call aux recursively. Otherwise, the second case on line 5,
+those two underscores mean that we don't actually want to
+assign a variable name to it. We'll just keep checking
+to see what divides out. And finally, there's a function foldr,
+which we're going to take max and we're going to repeatedly call max
+on the elements of this list and fold them together. There's an example here, you can see foldr plus basically
+puts a plus in between each element. And that's how we're
+going to get our factors. So we're just going to call
+max on all of those elements. Problem 20 is actually very,
+very easy in this language. One of the things that Haskell has,
+it has two different kinds of integers. One is the machine integers. Which basically fit into 32 or 64 bits. But it also has something called a BigInt. So if you go ahead and
+take the factorial of 100, then it will actually print it out for
+you. So here you can see
+an example of how that works. And so once we have that, then it's actually very easy just
+to get the sum of all the digits. Because all you need to do is take
+the modulo 10 and then add those up. In languages that don't have BigInts
+this might actually have been a lot more difficult. Because you'd have to figure out our own
+way of keeping track of the sizes of everything. But because of this,
+it makes it very simple and straightforward just to go ahead and
+use these giant numbers. So now that's these two. Hope this was a good introduction to
+you to see what Haskell looks like. Again, we'll be seeing a lot more
+Haskell in the days to come.

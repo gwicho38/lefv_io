@@ -1,0 +1,19 @@
+[MUSIC] Hello, and welcome back to Theory and
+Practice of Data Cleaning. In previous lectures we looked
+at individual pieces of a larger data cleaning lifecycle. We started with syntax-based
+data transformation and cleaning using regular expressions and
+then using open refine. We then moved on to data integrity
+checking at the schema or semantic level where we can look
+not only at individual columns but at complex relations and data tables
+as a whole and their interconnections. In the following lectures,
+we take a step back and look at the data life cycle again. When researchers and
+data scientists analyzed their data, they often need to
+automate multiple steps. Automation can happen even for
+the data cleaning itself. But certainly for complex computational
+analysis, you want to use a workflow system, or script-based approach, say
+Python or R, to automate your analysis. So the following lectures will
+introduce basic notions of workflows, focusing in particular and
+scientific workflow automation. Another aspect that is related
+to automation is providence. That is the origin and processing history
+of data that comes out of the workflow. This will be the topic of future lectures. Okay, let's jump right into
+the first lecture on workflows. [MUSIC] [SOUND]

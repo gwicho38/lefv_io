@@ -1,0 +1,447 @@
+1
+00:00:00,000 --> 00:00:05,646
+[MUSIC]
+
+2
+00:00:08,468 --> 00:00:13,054
+Okay, so this function, Is, again,
+
+3
+00:00:13,054 --> 00:00:15,770
+one of those low level functions
+that sometimes come handy.
+
+4
+00:00:15,770 --> 00:00:18,610
+Well, let's look at the function first.
+
+5
+00:00:18,610 --> 00:00:23,290
+The function's called concat,
+concatenation.
+
+6
+00:00:23,290 --> 00:00:26,130
+So it stitches things together so
+it concatenates
+
+7
+00:00:26,130 --> 00:00:30,445
+all the values in the field using
+this specified separator character.
+
+8
+00:00:30,445 --> 00:00:34,058
+By default that's a comma.
+
+9
+00:00:34,058 --> 00:00:36,939
+And let's say we wanted to produce for
+
+10
+00:00:36,939 --> 00:00:42,623
+a subsequent processing step maybe just
+a list of names of the scientists.
+
+11
+00:00:42,623 --> 00:00:47,251
+Maybe first name, last name,
+
+12
+00:00:47,251 --> 00:00:50,660
+separated by commas.
+
+13
+00:00:50,660 --> 00:00:53,660
+So the output would be
+something like group concat,
+
+14
+00:00:55,930 --> 00:01:00,070
+full name, and then by comma.
+
+15
+00:01:00,070 --> 00:01:01,070
+So how do we do that?
+
+16
+00:01:04,938 --> 00:01:12,220
+Okay, so first of all let's look at
+which table do we need to query here.
+
+17
+00:01:12,220 --> 00:01:14,558
+Let's go back to the schema.
+
+18
+00:01:14,558 --> 00:01:17,540
+So we have the Person table.
+
+19
+00:01:17,540 --> 00:01:20,000
+So let's have a quick look,
+select * from Person.
+
+20
+00:01:20,000 --> 00:01:22,050
+Let's see what's in the Person table.
+
+21
+00:01:22,050 --> 00:01:26,060
+All right, so there's the Person id,
+which is probably the key.
+
+22
+00:01:26,060 --> 00:01:28,430
+And then there's a first name and
+last name.
+
+23
+00:01:28,430 --> 00:01:30,960
+Well, first name and family name, okay.
+
+24
+00:01:34,148 --> 00:01:35,349
+So what do we want to do here?
+
+25
+00:01:38,249 --> 00:01:41,450
+So first of all, let's look at the query,
+
+26
+00:01:43,410 --> 00:01:47,402
+Where we take the last name and
+
+27
+00:01:47,402 --> 00:01:53,156
+then concatenate it with the family name.
+
+28
+00:01:53,156 --> 00:01:55,144
+And the way we're going to do this in SQL,
+
+29
+00:01:55,144 --> 00:01:59,750
+the concatenation operator is a double
+vertical bar, don't ask me why.
+
+30
+00:01:59,750 --> 00:02:04,140
+Other languages would have plus plus,
+or just a plus, or, yeah.
+
+31
+00:02:04,140 --> 00:02:06,730
+So we have this double vertical bar.
+
+32
+00:02:06,730 --> 00:02:09,930
+And then maybe we put a white space there.
+
+33
+00:02:12,410 --> 00:02:17,480
+And we take the family name and
+we give this an alias,
+
+34
+00:02:17,480 --> 00:02:22,160
+we call this maybe full name from person.
+
+35
+00:02:27,200 --> 00:02:29,678
+Oops, what do we have here?
+
+36
+00:02:29,678 --> 00:02:36,430
+SELECT personal, o kay.
+
+37
+00:02:36,430 --> 00:02:37,910
+I need another concat, right?
+
+38
+00:02:37,910 --> 00:02:42,400
+I'm concatenating the last name and
+the first name and then the family name.
+
+39
+00:02:44,480 --> 00:02:49,390
+So here I am concatenating
+
+40
+00:02:51,980 --> 00:02:57,820
+what normally would be two separate
+values into a combined value.
+
+41
+00:02:57,820 --> 00:02:59,850
+You see there is actually a cut off here.
+
+42
+00:03:00,860 --> 00:03:03,586
+This has to do with one of
+the settings of SQLite.
+
+43
+00:03:03,586 --> 00:03:07,300
+We can change how wide
+the column width is.
+
+44
+00:03:07,300 --> 00:03:10,600
+So we could check this, but
+I'll skip this for now.
+
+45
+00:03:10,600 --> 00:03:12,710
+So if you look with the help function,
+
+46
+00:03:12,710 --> 00:03:17,532
+you will find one of the switches
+that tells you how far this is here.
+
+47
+00:03:23,019 --> 00:03:25,160
+And now what do we want to do?
+
+48
+00:03:26,690 --> 00:03:31,229
+So this is going to be our sub-query
+because here we want to order this
+
+49
+00:03:41,322 --> 00:03:43,010
+By the family name.
+
+50
+00:03:44,840 --> 00:03:48,580
+So this was one of our
+sort of assignments here.
+
+51
+00:03:48,580 --> 00:03:50,910
+Find a way to order the list by surname.
+
+52
+00:03:50,910 --> 00:03:54,050
+So this is really what we are right now
+doing, we're having this will turn out to
+
+53
+00:03:54,050 --> 00:03:59,150
+be a sub query,
+where we put first name last name.
+
+54
+00:03:59,150 --> 00:04:04,370
+But then we order it by the last name.
+
+55
+00:04:06,440 --> 00:04:11,430
+Okay, so I'm going to use this as a sub
+query and then I'm going to do SELECT.
+
+56
+00:04:12,630 --> 00:04:18,045
+Okay, so this is going to be
+a little more advanced here,
+
+57
+00:04:18,045 --> 00:04:24,661
+concat fullname, and we're going to
+use the separator quote FROM.
+
+58
+00:04:24,661 --> 00:04:30,024
+And now we're going to use the sub
+query that we had before so
+
+59
+00:04:30,024 --> 00:04:33,610
+I better put a parenthesis around it.
+
+60
+00:04:45,778 --> 00:04:48,310
+Okay, so what does that do?
+
+61
+00:04:50,630 --> 00:04:54,220
+Let's see whether it actually works,
+it doesn't.
+
+62
+00:04:57,400 --> 00:05:00,340
+What have I done, full name, I've written
+full name once with an underscore, and
+
+63
+00:05:00,340 --> 00:05:01,980
+once without an underscore.
+
+64
+00:05:01,980 --> 00:05:06,370
+Let's write it in both cases
+without an underscore.
+
+65
+00:05:06,370 --> 00:05:07,390
+And again, this is a little
+
+66
+00:05:09,350 --> 00:05:13,580
+tricky to see with all the things
+that are happening here, okay.
+
+67
+00:05:18,415 --> 00:05:22,670
+So we're concatenating here the full name,
+
+68
+00:05:25,131 --> 00:05:27,699
+With commas.
+
+69
+00:05:27,699 --> 00:05:33,690
+And we have generated this here
+from a sub query called fullname.
+
+70
+00:05:33,690 --> 00:05:37,120
+And you see by the way the names
+are indeed all there, they are not pruned.
+
+71
+00:05:37,120 --> 00:05:42,894
+So this pruning that you saw earlier
+has to do really with a setting,
+
+72
+00:05:42,894 --> 00:05:44,830
+a switch from SQLite.
+
+73
+00:05:44,830 --> 00:05:47,529
+A directive that sort of limits
+the output when you're in column mode.
+
+74
+00:05:47,529 --> 00:05:51,592
+There's a default width
+that you can adjust, okay?
+
+75
+00:05:51,592 --> 00:05:56,633
+So.
+
+76
+00:05:56,633 --> 00:06:00,391
+again, the group concat concatenates
+all the values in the field using
+
+77
+00:06:00,391 --> 00:06:03,220
+the specified separator character, yeah.
+
+78
+00:06:03,220 --> 00:06:07,098
+So this is a little bit
+like an aggregation.
+
+79
+00:06:07,098 --> 00:06:08,810
+How can I best explain this?
+
+80
+00:06:08,810 --> 00:06:14,602
+So, let's say you saw before
+the sum of the radiation values.
+
+81
+00:06:14,602 --> 00:06:17,430
+So group_concat,
+you can think of it as a plus or a sum.
+
+82
+00:06:17,430 --> 00:06:20,860
+You're adding up all the values,
+but instead of adding them up,
+
+83
+00:06:20,860 --> 00:06:22,870
+you're concatenating them.
+
+84
+00:06:22,870 --> 00:06:23,880
+And what are the different groups?
+
+85
+00:06:23,880 --> 00:06:25,830
+Well, these are the different groups.
+
+86
+00:06:25,830 --> 00:06:31,704
+Each row, yeah is basically put together.
+
+87
+00:06:31,704 --> 00:06:33,773
+Just like in addition, we use a concat.
+
+88
+00:06:33,773 --> 00:06:37,748
+So instead of adding Frank to William,
+to Anderson, to Frank,
+
+89
+00:06:37,748 --> 00:06:40,630
+to Valentina with plus,
+we do it with concat.
+
+90
+00:06:42,500 --> 00:06:48,190
+And we wanted to have it also
+ordered by the family name, yeah.
+
+91
+00:06:48,190 --> 00:06:52,290
+So Danforth comes first,
+then Dyer, then Lake,
+
+92
+00:06:52,290 --> 00:06:56,640
+then Pabodie and
+then Roerich with an r, okay?
+
+93
+00:06:56,640 --> 00:07:02,040
+So, I'll admit that it's sort of
+kind of deep down in the weeds now
+
+94
+00:07:02,040 --> 00:07:04,280
+of some built in functions.
+
+95
+00:07:04,280 --> 00:07:05,979
+But I'll leave it at that.
+
+96
+00:07:07,080 --> 00:07:12,920
+And this should give you some idea
+how you can work with SQL and
+
+97
+00:07:12,920 --> 00:07:14,440
+SQLite using this data set.
+
+98
+00:07:16,570 --> 00:07:20,720
+Okay, I think I'll leave it at this, and
+
+99
+00:07:20,720 --> 00:07:24,940
+then we'll have one final round next time.
+
+100
+00:07:24,940 --> 00:07:34,940
+[MUSIC]

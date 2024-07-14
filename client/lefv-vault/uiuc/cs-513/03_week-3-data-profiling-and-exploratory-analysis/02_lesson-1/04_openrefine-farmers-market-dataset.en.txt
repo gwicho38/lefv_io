@@ -1,0 +1,94 @@
+[MUSIC] Let's have a look at how we're working
+with OpenRefine with a farmer's market dataset. So first we're going to select
+the tab here called Create Project. And then hopefully we've by this time
+downloaded the dataset from the farmer's market website from the USDA. And it is now here on the desktop, you see
+here it's been saved as a file Export.csv. So we now can say Create Project,
+Choose File, and we go to the file Export.csv. And say Open and hit the Next button. At this point OpenRefine will try to
+import the data and giving us a preview. There are also some parsing
+options that we can select here. For example, do we think this
+a common separate values file, or is it a tab separated values file. Clearly, we see that the tab
+separated didn't quite work out. So, the default that OpenRefine
+gives us here is the one that seems to worked quite well. So it seems like all the columns
+have been recognized. And all of these other defaults
+seem to be working fine. Let's give this a better project name, call it Farmers-Markets, and
+then we hit Create Project. And that was fairly easy, we see now that the Farmers-Markets
+project has been created. It has 8,664 rows, and
+now we can begin exploring the dataset, profiling it, looking at the data,
+and maybe also cleaning the data. For starters, let's have a look
+at the Market Name column. So one of the main functions
+that you want to do is, if you want to look at the data in the
+column, you select the little triangle. Then look at different options here, in
+this case, we were looking at facets, and we're looking in particular
+at the text facet. You select that, OpenRefine will notice that,
+in this particular column market name, there are 8,095 different values
+out of the 8,664 rows overall. So some of these values
+must appear multiple times, to see which ones they are, we click
+on the count button, which will sort it in a way that the highest occurrences
+come first so in descending order. So we see for example El Mercado Familiar
+request 33 times as a name of a farmer's market, probably
+different markets in different places. Main Street Farmer's market seems
+to be a popular name as well, and this is all nice and good. Now let's use one of the really powerful
+functions here called clustering and this facet again focus our
+attention on the market name. And hitting Cluster will make
+OpenRefine cluster the different values into groups that seem to
+indicate that maybe a single value should be used where different values
+where different values actually appear. So if you look for
+example here at Irvington Farmers Market, you see there are four
+different spellings, although these four different spellings
+are not obviously all different. So there might be invisible
+white space characters and similar things going on here. So what we can do now we can say
+we select to merge these cells with different values
+across these various cells. And we can now put the spelling
+that we prefer to be used for all these different cells here. If you're really brave,
+we might want to say, okay, all of these clusters look pretty good. It seems that OpenRefine has really found all the right values that need to
+be group together and normalized. And we also should check
+on the right hand side, that we like to name that spelled there. For example here WARSAW FARMERS MARKET
+in all upper case, maybe that's not necessarily the one we want, maybe we
+want to use the regular spelling like so. Once we've reviewed all of them and
+think this is looking good, we can select all of them for
+a final merge operation. And then OpenRefine will normalize all of these values to be replacing them
+by the value on the right here. In this particular case there's no
+further clusters to be found so in other settings where you have more
+messy data what might happen is that you have to repeat the step a couple of times. So we now notice that there are, out of these 8,664 rows there are now
+only 7,846 different choices. So several more names
+have been normalized and grouped together just like we intended for
+example Irvington Farmers Market is now a group of five and
+all spelled the same way. So what are other things we can
+do here to explore the dataset? For example, we might wanma look,
+here we see an x and a y value. Those values look a little bit as
+if they were maybe longitude and latitude, the coordinates
+of the farmers market. So let's have a look at that, what we should do first though is
+these are right now still strings. And we need to convert to
+string into numeric values and then we can look at other facets. So first we're going to
+do an edit of the cell, we use a common transform
+in this case to number. So we convert this to numbers, and
+we see 8,635 cells have been converted. So there's still a couple of cells
+missing, but we'll worry about them later. Again, Edit cells, Common transforms, and we're going to transform this
+column now also to numeric value. And we also see 8,635 cells have been
+now converted to numeric values, so, this is very nice and now we can used
+a powerful facet called scatterplot. If we go to Facet, Scatterplot facet,
+we now see an overview of the x and y values of all the records,
+and we see here that this nicely confirms here the shape
+of the continental US. There seem to also be
+some other data points, which at first sight might look like
+they might be outliers or errors. But we can confirm that later to see
+whether this is indeed a problem or whether these data points are in
+effect maybe lying on an island here, possibly Hawaii, or maybe up here,
+this could be Alaska. Alright, so we've created that,
+let's look at another facet. And the very last one, let's look at whether there are some
+columns that look like they are dates. And we see here in the last
+column updateTime is a column that seems to have dates in it, so
+maybe what we can do here is we convert this also as a common transform and
+convert this to date, this column. And then we notice that about 500 cells
+have been missed, but many of them, 8,131 have in fact been
+converted to a date. And now that this has been done, we can now create another facet,
+a timeline facet. The timeline facet gives us an overview,
+as you see here on the left, of what times show up in this column, and we can also slide here these
+little sliders and get an idea. If you want to sort of focus in there
+seems to be a little peak here. So a lot of data maybe
+was changed here in 2010. Another thing we notice here that some
+rows are missing data for the products here that are sold in the farmer's market,
+wine, coffee, beans, fruits, and so on. So by playing here with
+the sliders we can see how our data looks like
+across the different time. Okay, so this is all for this initial demonstration of OpenRefine
+with the farmers market data. [MUSIC]

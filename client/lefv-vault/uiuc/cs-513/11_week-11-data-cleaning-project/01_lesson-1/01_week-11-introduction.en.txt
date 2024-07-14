@@ -1,0 +1,24 @@
+[MUSIC] Hello, and welcome back to Theory and
+Practice of Data Cleaning. In this last series of videos, we will
+look at the very specific data quality issue, that is the use of
+multiple vocabularies. At the beginning of this course, we saw that different spellings of names
+or places can lead to poor data quality. Our remedy was to transform, for example,
+using open refine, those different spellings into a set of canonical names,
+or a controlled vocabulary. So clearly, the use of a controlled, as opposed to
+a wild variety, can improve data quality. There are applications areas where the use
+of controlled vocabularies is widespread and well established. For example, the National Library of
+Medicine has developed many controlled vocabularies for the Biomedical Sciences. The so called
+Unified Medical Language System or UMLS. It provides a mapping structure
+among those vocabularies. And thus, allows one to translate
+among the various terminology systems. It may also be viewed as
+a comprehensive thesaurus and ontology of biomedical concepts and can
+be used for natural language processing. Similarly, biodiversity informatics
+researchers use controlled vocabularies, in particular,
+hierarchical structures called taxonomies to organize the different
+Kingdoms of Life. For example, plants,
+animals, fungi, and so on. In all these cases, the use of controlled
+vocabularies is beneficial and often essential in order to conduct meaningful
+data analysis and scientific studies. But what do you do when data
+coming from different sources or different times,
+maybe historical data from 100 years ago, comes annotated with different
+controlled vocabularies or taxonomies? [MUSIC]

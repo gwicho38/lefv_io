@@ -1,0 +1,1051 @@
+1
+00:00:01,940 --> 00:00:05,130
+Hello everyone, and welcome back.
+
+2
+00:00:05,130 --> 00:00:06,880
+In our last video,
+
+3
+00:00:06,880 --> 00:00:09,340
+we introduced the concept of semantics.
+
+4
+00:00:09,340 --> 00:00:14,565
+We introduced three different things that you typically will find in a semantic system.
+
+5
+00:00:14,565 --> 00:00:15,990
+We talked about judgments,
+
+6
+00:00:15,990 --> 00:00:19,085
+which are assertions about a syntactic object.
+
+7
+00:00:19,085 --> 00:00:21,605
+We talked about proof rules,
+
+8
+00:00:21,605 --> 00:00:25,865
+which are a way of expressing when a judgement is true or valid.
+
+9
+00:00:25,865 --> 00:00:28,210
+We also talked about proof trees,
+
+10
+00:00:28,210 --> 00:00:31,000
+which are a way of using the proof rules on
+
+11
+00:00:31,000 --> 00:00:34,230
+a specific syntactic object approval property about it.
+
+12
+00:00:34,230 --> 00:00:35,890
+So, in this video, we're going to talk about
+
+13
+00:00:35,890 --> 00:00:39,670
+a specific kind of semantics called Big Step Semantics.
+
+14
+00:00:39,670 --> 00:00:42,770
+Now, what big step semantics does is,
+
+15
+00:00:42,770 --> 00:00:45,320
+if you give it a program expression or statement,
+
+16
+00:00:45,320 --> 00:00:50,125
+it'll tell you the result of evaluating that in whatever system you're currently using.
+
+17
+00:00:50,125 --> 00:00:52,640
+So, it's a mathematical way of
+
+18
+00:00:52,640 --> 00:00:55,765
+expressing the eval function that you've already written in Haskell.
+
+19
+00:00:55,765 --> 00:00:57,020
+So, if you've written eval,
+
+20
+00:00:57,020 --> 00:00:59,675
+then you're already kind of know big step semantics.
+
+21
+00:00:59,675 --> 00:01:03,580
+All this is going to be a mathematical notation that corresponds to that.
+
+22
+00:01:03,580 --> 00:01:07,340
+The reason we're teaching you this now is that in the machine problems,
+
+23
+00:01:07,340 --> 00:01:10,900
+we're going to want you to write eval and our thought is,
+
+24
+00:01:10,900 --> 00:01:16,430
+if we can give you the mathematical notation that represents what we're asking you to do,
+
+25
+00:01:16,430 --> 00:01:17,840
+it I'll make it a lot easier for you.
+
+26
+00:01:17,840 --> 00:01:20,660
+So, hopefully, you find that to be the case.
+
+27
+00:01:20,660 --> 00:01:23,420
+So, your objectives, you're going to want to be able to describe what
+
+28
+00:01:23,420 --> 00:01:25,730
+the components of the big semantic rule look
+
+29
+00:01:25,730 --> 00:01:30,885
+like and be able to use that to document a simple programming language.
+
+30
+00:01:30,885 --> 00:01:33,470
+So, let's introduce the language now.
+
+31
+00:01:33,470 --> 00:01:35,900
+So, this is called the simple imperative programming language.
+
+32
+00:01:35,900 --> 00:01:37,890
+It's been around for a long, long time.
+
+33
+00:01:37,890 --> 00:01:42,255
+It's a toy example language for documenting things.
+
+34
+00:01:42,255 --> 00:01:46,800
+Well, by things, what I mean is mathematical constructs that we use to discuss languages.
+
+35
+00:01:46,800 --> 00:01:49,125
+It's not really used in real life.
+
+36
+00:01:49,125 --> 00:01:52,580
+So, we have five different statements in this language.
+
+37
+00:01:52,580 --> 00:01:54,730
+Now, a statement is different than an expression.
+
+38
+00:01:54,730 --> 00:01:57,660
+We haven't really talked about them yet in this class,
+
+39
+00:01:57,660 --> 00:02:01,735
+but a statement is something that has an effect on the world.
+
+40
+00:02:01,735 --> 00:02:06,280
+In our language, the only real effective consequence is that we have assignments.
+
+41
+00:02:06,280 --> 00:02:07,780
+So, we have this u := A.
+
+42
+00:02:07,780 --> 00:02:11,790
+So, that just means we've updated a variable to have a new value.
+
+43
+00:02:11,790 --> 00:02:14,900
+We have four other statements,
+
+44
+00:02:14,900 --> 00:02:18,475
+which are really just ways of combining statements together.
+
+45
+00:02:18,475 --> 00:02:20,385
+We have skip, which means do nothing,
+
+46
+00:02:20,385 --> 00:02:23,125
+and it turns out that's surprisingly useful.
+
+47
+00:02:23,125 --> 00:02:27,200
+We have semicolon, which is a statement separator.
+
+48
+00:02:27,200 --> 00:02:30,120
+It's a way of combining two statements into a single one.
+
+49
+00:02:30,120 --> 00:02:32,480
+Now, make a note, it's not a statement terminator,
+
+50
+00:02:32,480 --> 00:02:35,655
+like it is in many languages, but a separator.
+
+51
+00:02:35,655 --> 00:02:40,890
+We also have "if" and "while," which are conditions and repetitions.
+
+52
+00:02:40,890 --> 00:02:43,385
+Again, these are statements in this language.
+
+53
+00:02:43,385 --> 00:02:44,710
+You know that in Haskell,
+
+54
+00:02:44,710 --> 00:02:46,455
+"if" is an expression.
+
+55
+00:02:46,455 --> 00:02:48,895
+Now, expressions, we have E and B.
+
+56
+00:02:48,895 --> 00:02:50,705
+Those are both kinds of expressions,
+
+57
+00:02:50,705 --> 00:02:54,705
+but the B1 is for Booleans and the e_1 is for integers.
+
+58
+00:02:54,705 --> 00:02:57,685
+So, we'll use tilde to represent all the relational symbols.
+
+59
+00:02:57,685 --> 00:03:00,715
+We'll use circle plus to represent all the arithmetic.
+
+60
+00:03:00,715 --> 00:03:02,705
+So, let's look at judgments now.
+
+61
+00:03:02,705 --> 00:03:05,810
+We have three different kinds of judgments corresponding to
+
+62
+00:03:05,810 --> 00:03:09,390
+the three different kinds of syntactic objects we had.
+
+63
+00:03:09,390 --> 00:03:13,170
+So, statements, the way we're going to do with the judgment is,
+
+64
+00:03:13,170 --> 00:03:15,705
+on the left-hand side of the down arrow,
+
+65
+00:03:15,705 --> 00:03:17,965
+we have these angle brackets,
+
+66
+00:03:17,965 --> 00:03:20,060
+the less than and greater than looking things,
+
+67
+00:03:20,060 --> 00:03:23,425
+and inside, we have S,Sigma.
+
+68
+00:03:23,425 --> 00:03:25,400
+So, S represents a statement,
+
+69
+00:03:25,400 --> 00:03:27,330
+Sigma represents an environment,
+
+70
+00:03:27,330 --> 00:03:31,655
+it's just a mapping from variables to their corresponding values.
+
+71
+00:03:31,655 --> 00:03:33,575
+We're going to treat it kind of like a set.
+
+72
+00:03:33,575 --> 00:03:37,575
+I'll show you some more concrete examples of that in the next slide.
+
+73
+00:03:37,575 --> 00:03:39,080
+So, then you have the down arrow,
+
+74
+00:03:39,080 --> 00:03:43,090
+which means to evaluate that statement in that particular environment.
+
+75
+00:03:43,090 --> 00:03:46,310
+The result is going to be a new environment because that's what statements do.
+
+76
+00:03:46,310 --> 00:03:48,430
+They make changes to the world.
+
+77
+00:03:48,430 --> 00:03:51,380
+Correspondingly, we have expressions and Booleans.
+
+78
+00:03:51,380 --> 00:03:56,240
+We have down arrow e to evaluate an expression and get us back a value v,
+
+79
+00:03:56,240 --> 00:03:58,890
+which we're going to just assume as an integer for now.
+
+80
+00:03:58,890 --> 00:04:00,860
+We also have Booleans.
+
+81
+00:04:00,860 --> 00:04:03,385
+We evaluate that using down arrow b,
+
+82
+00:04:03,385 --> 00:04:05,090
+and get a Boolean value back.
+
+83
+00:04:05,090 --> 00:04:09,165
+So, now let's look at the rules that explain when these things are valid.
+
+84
+00:04:09,165 --> 00:04:12,325
+For expressions, we have three different rules.
+
+85
+00:04:12,325 --> 00:04:14,095
+We have one for constants.
+
+86
+00:04:14,095 --> 00:04:15,540
+If you have a constant i,
+
+87
+00:04:15,540 --> 00:04:16,790
+which is an integer,
+
+88
+00:04:16,790 --> 00:04:18,405
+and you evaluate that,
+
+89
+00:04:18,405 --> 00:04:21,545
+you'll be happy to know you get the same integer back.
+
+90
+00:04:21,545 --> 00:04:26,210
+For variables, if we evaluate that in a particular environment,
+
+91
+00:04:26,210 --> 00:04:30,550
+then what we want to do is see if there is an assignment in that environment.
+
+92
+00:04:30,550 --> 00:04:32,730
+So, the way we notate this,
+
+93
+00:04:32,730 --> 00:04:34,835
+we pretend Sigma is a set,
+
+94
+00:04:34,835 --> 00:04:39,585
+and the elements of the set are going to have this forum u := v,
+
+95
+00:04:39,585 --> 00:04:43,445
+which just says variable u is assigned to value v. So,
+
+96
+00:04:43,445 --> 00:04:45,800
+we just assume there's a bunch of those inside of Sigma.
+
+97
+00:04:45,800 --> 00:04:49,220
+If this particularly u := v is a member of that,
+
+98
+00:04:49,220 --> 00:04:53,260
+then we go ahead and let that be the value.
+
+99
+00:04:53,260 --> 00:04:54,980
+It's an error, if you have
+
+100
+00:04:54,980 --> 00:04:59,940
+two different instances of u := inside of Sigma for the same variable,
+
+101
+00:04:59,940 --> 00:05:01,655
+you're only supposed to have one of those.
+
+102
+00:05:01,655 --> 00:05:04,300
+In a way, it behaves kind of like a HashMap.
+
+103
+00:05:04,300 --> 00:05:06,440
+So, finally, we have operations,
+
+104
+00:05:06,440 --> 00:05:09,745
+where your circle plus to represent plus times, et cetera.
+
+105
+00:05:09,745 --> 00:05:11,940
+So, if we want to do something,
+
+106
+00:05:11,940 --> 00:05:14,090
+some operation to e_1 and e_2,
+
+107
+00:05:14,090 --> 00:05:18,365
+the first thing we have to do is look at e_1 and evaluate that to get v_1,
+
+108
+00:05:18,365 --> 00:05:21,900
+then we have to take e_2 and evaluate that to get v_2.
+
+109
+00:05:21,900 --> 00:05:23,550
+So, those are our premises.
+
+110
+00:05:23,550 --> 00:05:25,100
+Then with the v_1 and v_2,
+
+111
+00:05:25,100 --> 00:05:28,820
+we combine them with that operation we specified to get our final result.
+
+112
+00:05:28,820 --> 00:05:32,440
+Now, for Booleans, it's pretty much the same thing,
+
+113
+00:05:32,440 --> 00:05:35,950
+except we're using down arrow b instead of down arrow e,
+
+114
+00:05:35,950 --> 00:05:40,010
+because it's going to be convenient later on to specify that we're expecting
+
+115
+00:05:40,010 --> 00:05:44,930
+a Boolean value back versus specifying integer value back,
+
+116
+00:05:44,930 --> 00:05:46,914
+and so that's why we make this distinction.
+
+117
+00:05:46,914 --> 00:05:52,160
+So, the Boolean constant and the Boolean variable rule are pretty much identical.
+
+118
+00:05:52,160 --> 00:05:54,820
+What is a little different is a relational operations.
+
+119
+00:05:54,820 --> 00:05:57,730
+So, you see the conclusion of the relational operation.
+
+120
+00:05:57,730 --> 00:06:00,105
+We have e_1 compared to e_2.
+
+121
+00:06:00,105 --> 00:06:02,720
+We use down arrow b, and then
+
+122
+00:06:02,720 --> 00:06:05,815
+the result is going to be the result of comparing v_1 and v_2.
+
+123
+00:06:05,815 --> 00:06:07,349
+But when you look at the premises,
+
+124
+00:06:07,349 --> 00:06:11,670
+we're still using down arrow e because we're assuming that these things are integers.
+
+125
+00:06:11,670 --> 00:06:14,175
+Now, we don't have "and" and "or."
+
+126
+00:06:14,175 --> 00:06:16,420
+There's logical connectives in this language.
+
+127
+00:06:16,420 --> 00:06:18,225
+If you wanted to add those two,
+
+128
+00:06:18,225 --> 00:06:20,000
+then you need to add another rule for that.
+
+129
+00:06:20,000 --> 00:06:23,940
+It's not that hard, but we prove the point with what we have in this language,
+
+130
+00:06:23,940 --> 00:06:25,680
+so we don't bother adding them.
+
+131
+00:06:25,680 --> 00:06:29,170
+Now, the statement rules are more complex.
+
+132
+00:06:29,170 --> 00:06:30,605
+The first one is skip,
+
+133
+00:06:30,605 --> 00:06:32,070
+which is fairly straightforward.
+
+134
+00:06:32,070 --> 00:06:33,580
+It just takes the environment,
+
+135
+00:06:33,580 --> 00:06:35,115
+and it doesn't do anything.
+
+136
+00:06:35,115 --> 00:06:38,780
+Skip is used in several different circumstances.
+
+137
+00:06:38,780 --> 00:06:40,590
+In the simple imperative programming language,
+
+138
+00:06:40,590 --> 00:06:46,480
+the most common actually is to have a "if" statement that
+
+139
+00:06:46,480 --> 00:06:49,110
+doesn't have an "else" branch because we noticed that the rule for
+
+140
+00:06:49,110 --> 00:06:52,800
+"if," some language we can say if something,
+
+141
+00:06:52,800 --> 00:06:55,070
+then do something, and then that's the end of it.
+
+142
+00:06:55,070 --> 00:06:58,690
+We don't have that. You must specify both of them in an "else" branch.
+
+143
+00:06:58,690 --> 00:07:00,710
+If you'd rather not have an "else" branch,
+
+144
+00:07:00,710 --> 00:07:02,255
+skip is how you get away with it.
+
+145
+00:07:02,255 --> 00:07:07,279
+The other thing that skip is used for in language theory
+
+146
+00:07:07,279 --> 00:07:11,060
+is that sometimes you want to say that a statement
+
+147
+00:07:11,060 --> 00:07:14,895
+evaluates to become the same thing as a skip statement.
+
+148
+00:07:14,895 --> 00:07:17,415
+We're not going to do too much of that here.
+
+149
+00:07:17,415 --> 00:07:22,890
+That might show up another semantic rules when we get further along in the course though.
+
+150
+00:07:22,890 --> 00:07:25,165
+Now, for our assignment,
+
+151
+00:07:25,165 --> 00:07:27,335
+we have the statement x := e,
+
+152
+00:07:27,335 --> 00:07:28,610
+so e is an expression.
+
+153
+00:07:28,610 --> 00:07:34,020
+So, we have to evaluate that to get v. That's what you see in the premise here.
+
+154
+00:07:34,020 --> 00:07:38,790
+Then we have this notation Sigma and then these brackets x := v. So,
+
+155
+00:07:38,790 --> 00:07:43,700
+what that means to do is have that x := something is a member of Sigma,
+
+156
+00:07:43,700 --> 00:07:46,145
+we're going to replace it with this thing.
+
+157
+00:07:46,145 --> 00:07:48,560
+If x := something is not a member of Sigma,
+
+158
+00:07:48,560 --> 00:07:50,365
+we're simply going to add this to the set.
+
+159
+00:07:50,365 --> 00:07:54,830
+So, it's kind of like a variable reassignment notation.
+
+160
+00:07:54,830 --> 00:07:57,740
+So, next one we want to talk about is the sequencing.
+
+161
+00:07:57,740 --> 00:07:59,550
+So, you've seen these two rules now.
+
+162
+00:07:59,550 --> 00:08:04,115
+So, what I want you to do is think about what would the sequence rule look like.
+
+163
+00:08:04,115 --> 00:08:05,700
+So, go ahead and pause,
+
+164
+00:08:05,700 --> 00:08:06,820
+and when you're ready to see it,
+
+165
+00:08:06,820 --> 00:08:08,850
+just hit on pause.
+
+166
+00:08:08,970 --> 00:08:11,910
+All right, so, here's sequencing.
+
+167
+00:08:11,910 --> 00:08:16,255
+We have an S1 and an S2 and we start off with sum environment Sigma.
+
+168
+00:08:16,255 --> 00:08:19,960
+So, the first thing we have to do is evaluate S1.
+
+169
+00:08:19,960 --> 00:08:22,890
+That's going to change our environment from Sigma to Sigma prime.
+
+170
+00:08:22,890 --> 00:08:24,540
+It's going to be something.
+
+171
+00:08:24,540 --> 00:08:29,380
+Then, next, we're going to evaluate S2 inside of Sigma prime.
+
+172
+00:08:29,380 --> 00:08:31,910
+That's going to get us yet another environment Sigma prime prime,
+
+173
+00:08:31,910 --> 00:08:34,805
+and that is going to be the result of our entire statement.
+
+174
+00:08:34,805 --> 00:08:36,770
+So, the next are "if" statements.
+
+175
+00:08:36,770 --> 00:08:40,740
+So, again, I wanted to see if you can guess what they will look like.
+
+176
+00:08:40,740 --> 00:08:44,040
+So, here "if" statements, there are two of them.
+
+177
+00:08:44,040 --> 00:08:45,980
+So, the first thing, you have if B,
+
+178
+00:08:45,980 --> 00:08:47,360
+then S1 else S2.
+
+179
+00:08:47,360 --> 00:08:48,500
+So, B is our condition.
+
+180
+00:08:48,500 --> 00:08:51,245
+So, the first thing we have to do is evaluate that condition.
+
+181
+00:08:51,245 --> 00:08:54,380
+So, the b down arrow, B true.
+
+182
+00:08:54,380 --> 00:08:55,400
+So, if B is true,
+
+183
+00:08:55,400 --> 00:08:57,830
+then we want to evaluate S1 to get Sigma prime.
+
+184
+00:08:57,830 --> 00:08:59,030
+That's going to be the final result.
+
+185
+00:08:59,030 --> 00:09:00,575
+So, that's the first "if" rule.
+
+186
+00:09:00,575 --> 00:09:02,520
+The second "if" rule is the same,
+
+187
+00:09:02,520 --> 00:09:05,520
+except that our B turns out to be false.
+
+188
+00:09:05,520 --> 00:09:08,220
+So, we evaluate S2 instead.
+
+189
+00:09:08,220 --> 00:09:10,220
+So, the final one is "while."
+
+190
+00:09:10,220 --> 00:09:11,710
+Again, there are two rules.
+
+191
+00:09:11,710 --> 00:09:14,635
+Because we have a guard, it could be true or it could be false.
+
+192
+00:09:14,635 --> 00:09:16,650
+So, see if you can guess what they look like.
+
+193
+00:09:16,650 --> 00:09:19,340
+The second one is kind of recursive.
+
+194
+00:09:19,340 --> 00:09:21,915
+It's a here "while" statements.
+
+195
+00:09:21,915 --> 00:09:23,890
+The first one, we have a guard.
+
+196
+00:09:23,890 --> 00:09:25,730
+If the guard turns out to be false,
+
+197
+00:09:25,730 --> 00:09:29,000
+then the whole "while" statement doesn't do anything to an environment.
+
+198
+00:09:29,000 --> 00:09:31,430
+So, we return the original environment back.
+
+199
+00:09:31,430 --> 00:09:35,145
+The second one, if the guard turns out to be true,
+
+200
+00:09:35,145 --> 00:09:38,670
+then we're going to evaluate the body of the "while" statement,
+
+201
+00:09:38,670 --> 00:09:40,260
+and that's going to do something,
+
+202
+00:09:40,260 --> 00:09:42,375
+as Sigma turn into a Sigma prime.
+
+203
+00:09:42,375 --> 00:09:45,615
+Then, what we want to do after that is rerun the "while" loop.
+
+204
+00:09:45,615 --> 00:09:46,790
+So, we're going to run it again,
+
+205
+00:09:46,790 --> 00:09:48,685
+this time, in Sigma prime.
+
+206
+00:09:48,685 --> 00:09:52,470
+That's going to go off and do whatever it does until it terminates in which case,
+
+207
+00:09:52,470 --> 00:09:54,570
+we're going to get Sigma prime prime back,
+
+208
+00:09:54,570 --> 00:09:57,010
+and that's going to be the result of the whole thing.
+
+209
+00:09:57,010 --> 00:09:58,420
+So, now we've done that,
+
+210
+00:09:58,420 --> 00:10:01,425
+let's take a couple of examples of proof trees.
+
+211
+00:10:01,425 --> 00:10:05,200
+So, the first one, we want just to evaluate an expression.
+
+212
+00:10:05,200 --> 00:10:09,320
+So, we have 2 x y + 9 x x inside of
+
+213
+00:10:09,320 --> 00:10:14,980
+Sigma and let's just use the standard rules for precedences here to break this up.
+
+214
+00:10:14,980 --> 00:10:19,260
+So, that means the kind of expression this is is going to be a plus expression.
+
+215
+00:10:19,260 --> 00:10:21,020
+We didn't give you precedence rules and there are
+
+216
+00:10:21,020 --> 00:10:22,880
+several different ways you could have broken this up,
+
+217
+00:10:22,880 --> 00:10:24,655
+and it's going to give you different results.
+
+218
+00:10:24,655 --> 00:10:27,845
+So, the first thing we're going to do is we're going to take the 2 x y,
+
+219
+00:10:27,845 --> 00:10:30,780
+and the 9 x x, and evaluate both of those.
+
+220
+00:10:30,780 --> 00:10:33,780
+Those give us 8 and 27 respectively.
+
+221
+00:10:33,780 --> 00:10:37,170
+Then, in order to evaluate those,
+
+222
+00:10:37,170 --> 00:10:40,780
+since those are also more complicated expressions,
+
+223
+00:10:40,780 --> 00:10:44,750
+are not axioms, so we need to break those apart too.
+
+224
+00:10:44,750 --> 00:10:47,440
+So, this is what the full proof tree will look like.
+
+225
+00:10:47,440 --> 00:10:50,435
+So, 2 and 9, both use the constant rule,
+
+226
+00:10:50,435 --> 00:10:55,160
+y and x both use the variable rule and the combinations use the arithmetic rule.
+
+227
+00:10:55,160 --> 00:10:56,470
+Here's another one.
+
+228
+00:10:56,470 --> 00:10:59,345
+This is going to use all three versions of down arrow.
+
+229
+00:10:59,345 --> 00:11:02,890
+So, say if x is greater than y, then m is equal to x,
+
+230
+00:11:02,890 --> 00:11:05,555
+else m is equal to two times x,
+
+231
+00:11:05,555 --> 00:11:07,060
+which is-, I don't know,
+
+232
+00:11:07,060 --> 00:11:08,480
+it doesn't really do anything interesting,
+
+233
+00:11:08,480 --> 00:11:10,010
+but it makes a good proof tree.
+
+234
+00:11:10,010 --> 00:11:12,815
+So, this is the "if" statement.
+
+235
+00:11:12,815 --> 00:11:17,010
+So, we're going to have to evaluate x greater than y and Sigma.
+
+236
+00:11:17,010 --> 00:11:19,825
+We just happen to know that turns out to be false,
+
+237
+00:11:19,825 --> 00:11:21,875
+we'll read out the proof in a minute.
+
+238
+00:11:21,875 --> 00:11:26,985
+Then, we're going to evaluate the then part of the branch or the else part of the branch.
+
+239
+00:11:26,985 --> 00:11:29,920
+So, m is going to be equal to two times x.
+
+240
+00:11:29,920 --> 00:11:32,450
+Again, expanding out those.
+
+241
+00:11:32,450 --> 00:11:34,890
+X and y, both these are variable rule,
+
+242
+00:11:34,890 --> 00:11:37,580
+and the two uses constant.
+
+243
+00:11:37,580 --> 00:11:39,830
+Again, we have x using the variable rule.
+
+244
+00:11:39,830 --> 00:11:42,680
+One kind of painful thing about proof trees is you see there are
+
+245
+00:11:42,680 --> 00:11:46,665
+two instantiations of the variable rule for x here.
+
+246
+00:11:46,665 --> 00:11:48,380
+You can't get away from it.
+
+247
+00:11:48,380 --> 00:11:49,835
+You got to write them both down.
+
+248
+00:11:49,835 --> 00:11:51,735
+That's just the way math is.
+
+249
+00:11:51,735 --> 00:11:52,970
+When you have a formal system,
+
+250
+00:11:52,970 --> 00:11:54,270
+you have to follow the rules,
+
+251
+00:11:54,270 --> 00:11:56,450
+which is to say you have to follow the forums.
+
+252
+00:11:56,450 --> 00:12:00,175
+Otherwise, you can't be sure that you have a valid expression.
+
+253
+00:12:00,175 --> 00:12:02,655
+So, let's connect this to interpreters,
+
+254
+00:12:02,655 --> 00:12:05,330
+this down arrow that we've been talking about,
+
+255
+00:12:05,330 --> 00:12:07,365
+it's really just eval.
+
+256
+00:12:07,365 --> 00:12:11,590
+You notice when you wrote eval for plus,
+
+257
+00:12:11,590 --> 00:12:16,970
+you had a e_1 and e_2 and you evaluated those first to get your values,
+
+258
+00:12:16,970 --> 00:12:19,850
+and then you added them together to get the final result.
+
+259
+00:12:19,850 --> 00:12:24,335
+The Sigma is just the environment parameter that you also pass into eval.
+
+260
+00:12:24,335 --> 00:12:28,175
+In a sense, you've seen this already just not using this notation.
+
+261
+00:12:28,175 --> 00:12:33,140
+So, hopefully, this will help out when you are doing a machine problem.
+
+262
+00:12:33,920 --> 00:12:36,020
+In our next lectures,
+
+263
+00:12:36,020 --> 00:12:39,870
+we'll talk about another concept called Lambda calculus.

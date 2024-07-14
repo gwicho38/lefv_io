@@ -1,0 +1,419 @@
+1
+00:00:00,000 --> 00:00:03,360
+Hello everyone. Welcome to CS 421.
+
+2
+00:00:03,360 --> 00:00:06,030
+You've now seen the definition of the State Monad,
+
+3
+00:00:06,030 --> 00:00:09,615
+and in this video we'll give you a short example of how to use it.
+
+4
+00:00:09,615 --> 00:00:11,520
+When you're done with this video,
+
+5
+00:00:11,520 --> 00:00:15,660
+you'll be able to define get and put to allow direct manipulation of the stateful part of
+
+6
+00:00:15,660 --> 00:00:21,990
+the Monad and you'll be able to use a State Monad to write a stateful computation.
+
+7
+00:00:21,990 --> 00:00:25,895
+So, as a reminder here's the definition of the State Monad.
+
+8
+00:00:25,895 --> 00:00:27,570
+We've left off the functor and
+
+9
+00:00:27,570 --> 00:00:30,935
+applicative definitions since we're not going to use them here anyway.
+
+10
+00:00:30,935 --> 00:00:33,575
+Now, to gain proficiency with this again,
+
+11
+00:00:33,575 --> 00:00:37,145
+it'll be helpful if you can reproduce this from memory before proceeding.
+
+12
+00:00:37,145 --> 00:00:40,160
+We'll use the State Monad in a future lecture as well.
+
+13
+00:00:40,160 --> 00:00:44,160
+Now, if you need to, pause the video here and resume when you're ready.
+
+14
+00:00:46,390 --> 00:00:48,560
+Now to get started,
+
+15
+00:00:48,560 --> 00:00:52,565
+let's look at what's involved in manipulating the state type directly.
+
+16
+00:00:52,565 --> 00:00:54,935
+Suppose we wanted to write a function called
+
+17
+00:00:54,935 --> 00:00:59,285
+incState that increments the state variable part of the result.
+
+18
+00:00:59,285 --> 00:01:03,440
+Now remember, our state type has a state constructor that contains
+
+19
+00:01:03,440 --> 00:01:05,840
+a function and the input to that function is
+
+20
+00:01:05,840 --> 00:01:08,825
+the incoming state variable and the output is a tuple.
+
+21
+00:01:08,825 --> 00:01:13,825
+The first part is a value of some kind and the second is the final state.
+
+22
+00:01:13,825 --> 00:01:18,600
+Now, if we have a state s that contains a function from s0 to x,
+
+23
+00:01:18,600 --> 00:01:26,125
+s1, we'd like ink status to return a state containing a function from s0 to x and s1+1.
+
+24
+00:01:26,125 --> 00:01:29,660
+So try pausing the video and see if we can write this,
+
+25
+00:01:29,660 --> 00:01:32,569
+and resume when you're ready to see the results.
+
+26
+00:01:32,569 --> 00:01:35,120
+Here's the solution.
+
+27
+00:01:35,120 --> 00:01:36,935
+We take in our state variable s0,
+
+28
+00:01:36,935 --> 00:01:40,405
+and pass it to f to get out x and s1,
+
+29
+00:01:40,405 --> 00:01:43,770
+and we simply return the tuple of x and s1.
+
+30
+00:01:43,770 --> 00:01:46,450
+Did you initially try to use run state?
+
+31
+00:01:46,450 --> 00:01:49,670
+We only need that to extract the function part out of a state,
+
+32
+00:01:49,670 --> 00:01:52,715
+in this case we use pattern matching to do the same thing.
+
+33
+00:01:52,715 --> 00:01:56,105
+Here's a second version that uses run state for reference.
+
+34
+00:01:56,105 --> 00:01:59,180
+There's a sample run here to show how it work in practice.
+
+35
+00:01:59,180 --> 00:02:03,710
+We create an initial state e1 that returns its state and a value five,
+
+36
+00:02:03,710 --> 00:02:08,630
+and after running incState on it we return the incremented state and a value five.
+
+37
+00:02:08,630 --> 00:02:14,570
+We taken the state variable s and then pass it to f to get out the tuple of x and s0.
+
+38
+00:02:14,570 --> 00:02:18,620
+Then we simply return the tuple of x and s0+1.
+
+39
+00:02:18,620 --> 00:02:23,065
+Now here are two very common functions used to manipulate states.
+
+40
+00:02:23,065 --> 00:02:26,510
+The get function says that whatever input the state function
+
+41
+00:02:26,510 --> 00:02:30,830
+gets it is going to be copied into the value portion of the tuple.
+
+42
+00:02:30,830 --> 00:02:32,795
+The put function is the opposite.
+
+43
+00:02:32,795 --> 00:02:37,555
+It takes an input x and uses it to replace the incoming state variable s.
+
+44
+00:02:37,555 --> 00:02:40,130
+Here's a sample run showing what happens if we take
+
+45
+00:02:40,130 --> 00:02:43,495
+an initial state and bind it to either get or put.
+
+46
+00:02:43,495 --> 00:02:45,675
+See that the result of get is,
+
+47
+00:02:45,675 --> 00:02:49,100
+it copies the state we pass into the result portion of
+
+48
+00:02:49,100 --> 00:02:51,590
+the tuple and put takes a result portion of
+
+49
+00:02:51,590 --> 00:02:54,260
+the tuple and copies it into the state portion.
+
+50
+00:02:54,260 --> 00:02:57,780
+So, let's trace these out in a little more detail.
+
+51
+00:02:58,240 --> 00:03:05,040
+To start off here's a state with a value five and we bind it to get.
+
+52
+00:03:05,080 --> 00:03:08,840
+Since bind requires a function that returns a state,
+
+53
+00:03:08,840 --> 00:03:10,675
+we add a lambda V to the front,
+
+54
+00:03:10,675 --> 00:03:15,035
+this V will end up capturing the five from the previous state.
+
+55
+00:03:15,035 --> 00:03:17,645
+By expanding out the definition of bind,
+
+56
+00:03:17,645 --> 00:03:19,990
+we would have the second part.
+
+57
+00:03:19,990 --> 00:03:22,520
+We're going to call run state on the first argument to
+
+58
+00:03:22,520 --> 00:03:24,770
+extract out the function and pass in
+
+59
+00:03:24,770 --> 00:03:27,590
+the s1 state variable and return the tuple five and
+
+60
+00:03:27,590 --> 00:03:32,165
+s. This turns into the tuple of five and s1.
+
+61
+00:03:32,165 --> 00:03:35,465
+Now we turn our attention to the next line,
+
+62
+00:03:35,465 --> 00:03:41,165
+s2 is the same as s1 and x has the value five so we substitute those in.
+
+63
+00:03:41,165 --> 00:03:45,290
+The lambda v will consume the five in return get which
+
+64
+00:03:45,290 --> 00:03:49,535
+expands out to this function here after we play runState to it.
+
+65
+00:03:49,535 --> 00:03:54,860
+Finally, the lambda s consumes the s1 leaving us with the final result.
+
+66
+00:03:54,860 --> 00:03:58,420
+You might want to pause and work through the sequence yourself before continuing.
+
+67
+00:03:58,420 --> 00:04:01,300
+Resume when you're ready to see put.
+
+68
+00:04:02,340 --> 00:04:06,040
+To trace put we start the same way as with get,
+
+69
+00:04:06,040 --> 00:04:07,870
+put already takes an argument though,
+
+70
+00:04:07,870 --> 00:04:10,590
+so we don't need a lambda v like we did with get,
+
+71
+00:04:10,590 --> 00:04:15,550
+and we expand out bind as before and applying the function in the first let clause,
+
+72
+00:04:15,550 --> 00:04:17,440
+we get the tuple five and s1,
+
+73
+00:04:17,440 --> 00:04:21,470
+and we substitute those in for x and s2.
+
+74
+00:04:21,720 --> 00:04:25,300
+Expanding out runState put five we get
+
+75
+00:04:25,300 --> 00:04:27,950
+this lambda which consumes a state and discards it,
+
+76
+00:04:27,950 --> 00:04:30,985
+putting the five and the state position of the tuple.
+
+77
+00:04:30,985 --> 00:04:36,845
+Finally, applying the lambda s to the s1 gives us our end result.
+
+78
+00:04:36,845 --> 00:04:39,370
+Again, it's probably best that you pause here to work
+
+79
+00:04:39,370 --> 00:04:42,470
+this out for yourself and resume when you're ready.
+
+80
+00:04:44,560 --> 00:04:47,840
+One of the nice features about Haskell is
+
+81
+00:04:47,840 --> 00:04:51,260
+a built-in notation to hide all the binding operations,
+
+82
+00:04:51,260 --> 00:04:55,040
+that Hadoop keyword indicates that everything after it is monadic.
+
+83
+00:04:55,040 --> 00:04:57,560
+So, each line acts as if the computation that
+
+84
+00:04:57,560 --> 00:05:00,335
+came before it is bound to the line afterwards.
+
+85
+00:05:00,335 --> 00:05:03,020
+So, here the a is bound to a function that takes
+
+86
+00:05:03,020 --> 00:05:06,650
+an x and xb is bound to a function that takes a y.
+
+87
+00:05:06,650 --> 00:05:10,190
+Finally, the computation returns x times y.
+
+88
+00:05:10,190 --> 00:05:13,630
+Notice how this looks like regular variable assignment.
+
+89
+00:05:13,630 --> 00:05:15,310
+If we try to run this program,
+
+90
+00:05:15,310 --> 00:05:18,830
+we see that it works out of the box with any Monad we apply it to.
+
+91
+00:05:18,830 --> 00:05:22,500
+In this example you see lists and maybe.
+
+92
+00:05:22,540 --> 00:05:26,620
+Here's an example of what this looks like for the State Monad.
+
+93
+00:05:26,620 --> 00:05:30,740
+Each line is supposed to be the second argument to a bind operation.
+
+94
+00:05:30,740 --> 00:05:35,345
+We did not need to augment put with a lambda so we can write it on a line by itself.
+
+95
+00:05:35,345 --> 00:05:36,730
+Get needs a lambda,
+
+96
+00:05:36,730 --> 00:05:39,860
+so you see it here with the z left arrow get.
+
+97
+00:05:39,860 --> 00:05:44,025
+The only other special syntax here is the let y equal 10 part.
+
+98
+00:05:44,025 --> 00:05:46,085
+It just creates a variable y and makes it
+
+99
+00:05:46,085 --> 00:05:49,025
+available to the rest of the computation as you would expect.
+
+100
+00:05:49,025 --> 00:05:52,325
+Below you'll see a sample run of this code.
+
+101
+00:05:52,325 --> 00:05:54,800
+Now that's the State Monad.
+
+102
+00:05:54,800 --> 00:05:56,690
+We could put more interesting things into
+
+103
+00:05:56,690 --> 00:05:59,180
+the state component if we want such as a HashMap,
+
+104
+00:05:59,180 --> 00:06:01,550
+and you're going to see a variation of the State Monad in
+
+105
+00:06:01,550 --> 00:06:05,130
+a future lecture when we talk about parsing.

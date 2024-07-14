@@ -1,0 +1,7 @@
+Video 1.4 errata:
+
+The Sieve function should be
+
+sieve (x:xs) = x : (sieve (filter (notDivides x) xs))
+
+The factorial slide also has name mistakes.

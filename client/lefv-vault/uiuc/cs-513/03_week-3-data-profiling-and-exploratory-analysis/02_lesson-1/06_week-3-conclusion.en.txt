@@ -1,0 +1,29 @@
+[MUSIC] Welcome back, now let's wrap up
+what we've learned from this week. This week, we encountered a powerful
+open source data cleaning tool called OpenRefine. I demonstrated OpenRefine by exploring its
+use with two publicly available data sets, that is the National Farmer's Market
+Database from the US Department of Agriculture and a crowd sourced collection of historical restaurant menus provided
+by the New York Public Library. We walk through some basic functions and
+transformations of OpenRefine and I also showed some advanced features relating to
+clustering and normalization of names. As you have seen, OpenRefine is also
+fairly easy to install and once installed, can be used from a web browser. By working with the materials
+from this week and practicing your OpenRefine skills,
+as part of the assignment, you should now be ready to create an OpenRefine
+project, import and profile data, and apply common transformations and other
+mass edits to clean individual columns. In particular you should be able to use
+clustering based methods to normalize data and bring difference and
+tactic variance into economic performance. You should also be able to document
+the changes made to the data using OpenRefine's operation history. This is a form of data providence
+that we shall encounter again in more detail towards
+the end of this course. OpenRefine is an open source power tool
+that started out as Google refine. This is fairly well known in the library
+and information science community, and can be applied for many data cleaning
+tasks of moderately size data collection. The ideas and techniques presented
+to you can also be applied for using in other systems. Since data cleaning is of
+great practical importance, you will probably see more tools like
+OpenRefine emerging in the market. In fact, there are already startup
+companies out there developing commercial products with enhanced and more scalable features similar to
+those we encountered in OpenRefine. Next week, we will move on from data
+cleaning operations on individual columns. And we look at logical constraints
+between multiple columns and data tables. We will work with
+the relational data model. [MUSIC]

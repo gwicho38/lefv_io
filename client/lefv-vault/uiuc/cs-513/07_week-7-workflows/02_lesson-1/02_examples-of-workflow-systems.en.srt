@@ -1,0 +1,806 @@
+1
+00:00:00,000 --> 00:00:06,935
+[MUSIC]
+
+2
+00:00:08,609 --> 00:00:11,800
+This is sort of a more detailed view,
+what Workflow System should be doing.
+
+3
+00:00:11,800 --> 00:00:16,770
+Let me show you some examples, so you
+get an idea of what workflows look like.
+
+4
+00:00:16,770 --> 00:00:19,604
+So here's a workflow as a napkin drawing,
+if you like.
+
+5
+00:00:19,604 --> 00:00:21,872
+As a diagram, as a PowerPoint slide.
+
+6
+00:00:21,872 --> 00:00:26,771
+This was developed a number of years
+ago at UC Davis with one of my
+
+7
+00:00:26,771 --> 00:00:32,540
+students who was working on workflow
+technology and a biologist.
+
+8
+00:00:32,540 --> 00:00:36,775
+So we don't have to go into
+the science details here, but
+
+9
+00:00:36,775 --> 00:00:39,607
+we see the typical workflow diagram.
+
+10
+00:00:39,607 --> 00:00:41,187
+There are a bunch of steps,
+
+11
+00:00:41,187 --> 00:00:45,715
+these steps are kind of fairly
+large sized independent functions.
+
+12
+00:00:45,715 --> 00:00:49,776
+Let's just pick something out there,
+something called the chimera check.
+
+13
+00:00:49,776 --> 00:00:52,224
+So first of all,
+what is this workflow called?
+
+14
+00:00:52,224 --> 00:00:55,220
+It's called Waters, we love our acronyms.
+
+15
+00:00:55,220 --> 00:00:59,842
+Workflow for Alignment Taxonomy,
+Ecology of Ribosomal Sequences.
+
+16
+00:00:59,842 --> 00:01:06,091
+So this was a PhD student and
+Lab of Jonathan Eisen and UC Davis.
+
+17
+00:01:06,091 --> 00:01:10,340
+So Amber Hartman is the person
+who developed this workflow.
+
+18
+00:01:10,340 --> 00:01:15,460
+And she had these independent tools,
+one called Mallard, one called OTUHunter.
+
+19
+00:01:15,460 --> 00:01:19,300
+They had various bits and pieces that
+they needed to chain together for
+
+20
+00:01:19,300 --> 00:01:24,750
+the full analysis to publish the paper, to
+do this study and then publish the paper.
+
+21
+00:01:26,390 --> 00:01:28,649
+And so
+this is the concept diagram that, but
+
+22
+00:01:28,649 --> 00:01:32,380
+now how do you actually
+create a workflow from this?
+
+23
+00:01:32,380 --> 00:01:36,390
+So Amber was working with one
+of my students together and
+
+24
+00:01:36,390 --> 00:01:39,759
+over the course of pretty much a year,
+I think it's almost a year.
+
+25
+00:01:41,080 --> 00:01:44,300
+They created an executable
+form of the diagram.
+
+26
+00:01:44,300 --> 00:01:49,522
+And it turns out that that executable
+form quite directly resembles the napkin
+
+27
+00:01:49,522 --> 00:01:55,394
+drawing, the conceptual diagram, and it is
+implemented in the system called Kepler.
+
+28
+00:01:55,394 --> 00:02:00,931
+Kepler is a scientific word for
+system that also developed
+
+29
+00:02:00,931 --> 00:02:06,350
+quite a while ago by now 10,
+15 years ago ball park.
+
+30
+00:02:06,350 --> 00:02:11,500
+Based on yet another system,
+on top of another system called Ptolemy.
+
+31
+00:02:11,500 --> 00:02:16,256
+Back in the day, actually I was very
+much there when we started this system.
+
+32
+00:02:16,256 --> 00:02:19,807
+And I had originally suggested that after
+the Ptolemy system on which we built,
+
+33
+00:02:19,807 --> 00:02:22,470
+we should have the Copernicus system.
+
+34
+00:02:22,470 --> 00:02:26,670
+But Copernicus was a tool that this
+group in Berkeley had already used for
+
+35
+00:02:26,670 --> 00:02:29,281
+something else, for something else,
+for compiler for Ptolemy.
+
+36
+00:02:29,281 --> 00:02:33,554
+And so I just took the next astronomer in
+line that came to my mind, was Kepler.
+
+37
+00:02:33,554 --> 00:02:37,047
+I think the choice of name was fairly
+lucky, because it's an easy name to
+
+38
+00:02:37,047 --> 00:02:41,720
+remember and we got quite well-known for
+this product, so like you see here.
+
+39
+00:02:41,720 --> 00:02:44,580
+So it's a Kepler tool which is really
+based on this underlying Ptolemy tool,
+
+40
+00:02:44,580 --> 00:02:47,470
+you have these boxes they at actors.
+
+41
+00:02:47,470 --> 00:02:50,610
+So these are computational steps software
+components, you can think of them as
+
+42
+00:02:50,610 --> 00:02:56,710
+a component oriented design of a data
+science pipeline or analysis pipeline.
+
+43
+00:02:56,710 --> 00:03:01,490
+And you grab here from the library
+of component that you have.
+
+44
+00:03:01,490 --> 00:03:04,748
+You drag and
+drop the components on the canvas and
+
+45
+00:03:04,748 --> 00:03:07,621
+then you connect them up and you're done.
+
+46
+00:03:07,621 --> 00:03:12,428
+So that sounds very compelling and
+it works also if your components for
+
+47
+00:03:12,428 --> 00:03:16,358
+example really work well together and
+design together.
+
+48
+00:03:16,358 --> 00:03:20,370
+But not any two software components
+as could easily measure,
+
+49
+00:03:20,370 --> 00:03:22,464
+you could just stick together.
+
+50
+00:03:22,464 --> 00:03:26,590
+It has to be some common data performance
+as they exchange information and so on.
+
+51
+00:03:26,590 --> 00:03:29,320
+And then the hard job also
+
+52
+00:03:29,320 --> 00:03:34,040
+with this kind of system is you better
+have these components around to work with.
+
+53
+00:03:34,040 --> 00:03:35,800
+Creating new components is not so
+much fun.
+
+54
+00:03:37,770 --> 00:03:41,650
+So the system is implementing Java,
+so you end up writing Java actors.
+
+55
+00:03:41,650 --> 00:03:44,190
+And scientist may or
+may not be Java hackers,
+
+56
+00:03:44,190 --> 00:03:47,270
+typically they know more about R and
+Python than they know about Java.
+
+57
+00:03:49,670 --> 00:03:52,970
+But there are such tools out there,
+so Kepler's still
+
+58
+00:03:52,970 --> 00:03:57,180
+out there like it's open source and
+there are other systems like it as well.
+
+59
+00:03:58,590 --> 00:04:01,903
+Okay, so this is something that
+again came out of this and
+
+60
+00:04:01,903 --> 00:04:04,264
+it was then published also in a journal.
+
+61
+00:04:04,264 --> 00:04:08,977
+And so basically here you see some
+of the results, the final plots and
+
+62
+00:04:08,977 --> 00:04:13,260
+charts that were created for
+a particular study.
+
+63
+00:04:13,260 --> 00:04:17,650
+The workflow itself acts as a kind
+of recipe of what was done.
+
+64
+00:04:17,650 --> 00:04:24,790
+So it's a valuable information or
+documentation right there.
+
+65
+00:04:24,790 --> 00:04:30,270
+It's also executable, although being
+a very complex, large software package,
+
+66
+00:04:30,270 --> 00:04:35,450
+it has its own sort of challenges
+when it comes to reproducibility.
+
+67
+00:04:35,450 --> 00:04:38,856
+So if your versions of Java,
+the underlying libraries change,
+
+68
+00:04:38,856 --> 00:04:42,149
+there's all kinds of version
+hell that you might go through.
+
+69
+00:04:42,149 --> 00:04:45,240
+So if you pick this up
+after a couple of years and
+
+70
+00:04:45,240 --> 00:04:48,250
+want to rerun it, technology has evolved.
+
+71
+00:04:48,250 --> 00:04:50,861
+And on your system where
+you want to run it,
+
+72
+00:04:50,861 --> 00:04:55,573
+maybe have different versions of
+the [INAUDIBLE] and underlying software.
+
+73
+00:04:55,573 --> 00:04:57,971
+So that's a whole different issue
+that we're not dealing with.
+
+74
+00:04:57,971 --> 00:05:00,286
+Virtual machine technologies
+are sometimes used,
+
+75
+00:05:00,286 --> 00:05:03,190
+container technology such as
+docker are sometimes used.
+
+76
+00:05:03,190 --> 00:05:07,030
+But none of this really fully
+solve your problems there.
+
+77
+00:05:07,030 --> 00:05:08,465
+Okay, so in summary,
+
+78
+00:05:08,465 --> 00:05:12,778
+there's this workforce systems
+that can go from napkin drawings.
+
+79
+00:05:12,778 --> 00:05:16,713
+That allows you to build
+a conceptual workflow that you have,
+
+80
+00:05:16,713 --> 00:05:22,300
+turn it into something executable,
+but it's by no means a trivial matter.
+
+81
+00:05:22,300 --> 00:05:27,890
+But it is something that has been done,
+so we've done quite a few of those.
+
+82
+00:05:27,890 --> 00:05:31,520
+Here is another workflow again,
+first is a napkin drawing,
+
+83
+00:05:31,520 --> 00:05:34,070
+also done at UC Davis at the time.
+
+84
+00:05:34,070 --> 00:05:35,790
+This was I think,
+if you remember this right,
+
+85
+00:05:35,790 --> 00:05:39,880
+this was a Matlab script I think and
+then we turned into a workflow.
+
+86
+00:05:39,880 --> 00:05:42,870
+So another one of my students there,
+
+87
+00:05:42,870 --> 00:05:48,464
+turned it into a workflow again in Kepler,
+using a Map Reduce library
+
+88
+00:05:48,464 --> 00:05:53,496
+that was developed by another
+group in Kepler from San Diego.
+
+89
+00:05:53,496 --> 00:05:56,560
+That group has produced
+a Map Reduce library and
+
+90
+00:05:56,560 --> 00:06:00,340
+we have then used that
+library to subscale lab.
+
+91
+00:06:00,340 --> 00:06:05,520
+What used to be a Matlab script put it
+into Kepler and use Map and Reduce.
+
+92
+00:06:05,520 --> 00:06:09,284
+And so there are lots of these examples.
+
+93
+00:06:09,284 --> 00:06:13,810
+Here is an example that stitches together
+existing components that are written in R.
+
+94
+00:06:13,810 --> 00:06:17,350
+So assume we have little R scripts
+that you want to plug together.
+
+95
+00:06:17,350 --> 00:06:22,940
+This is an example from a colleague
+from Santa Barbara, Matt Jones.
+
+96
+00:06:22,940 --> 00:06:27,333
+Who has put this together for a project
+that he was working on at the time with
+
+97
+00:06:27,333 --> 00:06:29,858
+the Kruger National Park in South Africa.
+
+98
+00:06:29,858 --> 00:06:33,978
+And they're basically cobbling
+together different R scripts into
+
+99
+00:06:33,978 --> 00:06:35,211
+a larger workflow.
+
+100
+00:06:35,211 --> 00:06:39,040
+And then you see this
+databases that are queried,
+
+101
+00:06:39,040 --> 00:06:43,520
+there's some data processing
+is done in these R scripts.
+
+102
+00:06:43,520 --> 00:06:47,240
+Then there's some output at the end and
+then what you get is for
+
+103
+00:06:47,240 --> 00:06:48,840
+example such reports.
+
+104
+00:06:48,840 --> 00:06:54,630
+And this was I forgot now this had
+something to do with I guess hydrology or
+
+105
+00:06:54,630 --> 00:06:57,320
+monitoring of the environment
+I think if I remember, right?
+
+106
+00:06:58,370 --> 00:07:02,170
+So we did quite a bit of work
+with these workflows for
+
+107
+00:07:02,170 --> 00:07:06,380
+computational science and
+maybe let me just pause on this one.
+
+108
+00:07:06,380 --> 00:07:12,200
+This is one that shows
+a more recent workflow that
+
+109
+00:07:12,200 --> 00:07:14,220
+data curation and data cleaning.
+
+110
+00:07:15,250 --> 00:07:19,410
+So we've used this workflow
+technology in this context.
+
+111
+00:07:19,410 --> 00:07:22,630
+So for example, imagine that you have
+a dataset very much like the one we might
+
+112
+00:07:22,630 --> 00:07:27,060
+already seen that has specimen data,
+by division data.
+
+113
+00:07:27,060 --> 00:07:29,286
+Let's say you work at a museum,
+
+114
+00:07:29,286 --> 00:07:34,333
+you work in what do we have here
+Chicago the museum, let's say.
+
+115
+00:07:34,333 --> 00:07:38,527
+And you have a database of all the
+specimen that they have in their drawers
+
+116
+00:07:38,527 --> 00:07:41,022
+and the snakes and
+the draw and all of that.
+
+117
+00:07:41,022 --> 00:07:49,040
+And you want to check whether the
+information is of recently good quality.
+
+118
+00:07:49,040 --> 00:07:51,120
+So you might want to see whether the,
+for example,
+
+119
+00:07:51,120 --> 00:07:54,320
+the species names whether they
+follow some controlled vocabulary.
+
+120
+00:07:54,320 --> 00:07:59,065
+So we have here a step called GNI.
+
+121
+00:07:59,065 --> 00:08:02,470
+So it's called a scientific
+name validator.
+
+122
+00:08:02,470 --> 00:08:05,600
+So you records go into this workflow and
+
+123
+00:08:05,600 --> 00:08:09,770
+at a certain step, you compare it
+with a controlled vocabulary, and
+
+124
+00:08:09,770 --> 00:08:12,030
+you see whether your names match
+the controlled vocabulary.
+
+125
+00:08:12,030 --> 00:08:17,880
+If they don't you flag them, maybe you
+find the nearest match and suggest a name.
+
+126
+00:08:17,880 --> 00:08:22,860
+But typically, you want a human to look
+at that and whether it's a human or
+
+127
+00:08:22,860 --> 00:08:25,890
+even if you're afraid from
+automatically from change the name.
+
+128
+00:08:25,890 --> 00:08:28,460
+You better keep a record
+of what you've done and
+
+129
+00:08:28,460 --> 00:08:31,760
+that will be an example of problems, you
+want to make sure you have the old value,
+
+130
+00:08:31,760 --> 00:08:33,970
+the new value and say I've changed.
+
+131
+00:08:33,970 --> 00:08:39,890
+This value to that value based
+on this reference that I used.
+
+132
+00:08:39,890 --> 00:08:47,330
+For example, this Global Name Index or
+IPNI, I think also plant name.
+
+133
+00:08:47,330 --> 00:08:50,555
+So there's different services out there,
+
+134
+00:08:50,555 --> 00:08:54,130
+Geolocate is another thing if
+you have a lead long coordinate.
+
+135
+00:08:54,130 --> 00:08:57,000
+And you've a place name, you want to see
+whether these lead long coordinates in
+
+136
+00:08:57,000 --> 00:08:59,600
+the place name match up or not.
+
+137
+00:08:59,600 --> 00:09:01,780
+If not you flag it, so
+you will know something's wrong.
+
+138
+00:09:01,780 --> 00:09:05,910
+It says this is the lead long and
+the place name is this well
+
+139
+00:09:05,910 --> 00:09:09,920
+that's just impossible in this
+service is where he can look this up.
+
+140
+00:09:11,190 --> 00:09:15,846
+Sometimes log and long is flipped or
+maybe the sign is wrong or
+
+141
+00:09:15,846 --> 00:09:19,237
+something or it's other sources of error.
+
+142
+00:09:19,237 --> 00:09:23,376
+So we put these different data cleaning
+steps together in a workflow here and
+
+143
+00:09:23,376 --> 00:09:26,230
+this is from a project called Kurator.
+
+144
+00:09:26,230 --> 00:09:31,050
+This was an early technology
+demonstration that we put together and
+
+145
+00:09:31,050 --> 00:09:38,090
+we used at the time also some little quick
+hacks to use some Google Cloud services.
+
+146
+00:09:38,090 --> 00:09:42,120
+What we did in particular is that the
+workflow, created an online spreadsheet.
+
+147
+00:09:43,310 --> 00:09:48,060
+And in that online spreadsheet,
+we summarized what was flagged.
+
+148
+00:09:49,190 --> 00:09:53,820
+And then this could even automatically
+send an email to somebody who
+
+149
+00:09:53,820 --> 00:09:59,720
+was registered as an expert for
+this particular say species or family.
+
+150
+00:09:59,720 --> 00:10:04,940
+So somebody who is a domain expert
+can then look at the records that for
+
+151
+00:10:04,940 --> 00:10:07,108
+which he or she is an expert.
+
+152
+00:10:07,108 --> 00:10:13,350
+And then confirm or
+reject the changes made by the system.
+
+153
+00:10:14,480 --> 00:10:16,720
+So it was a very nice demonstration here,
+and
+
+154
+00:10:16,720 --> 00:10:20,720
+then in the end,
+pops out your new dataset.
+
+155
+00:10:20,720 --> 00:10:22,770
+I mean this is a very small snapshot here,
+but
+
+156
+00:10:22,770 --> 00:10:24,780
+you see there's a new dataset coming out.
+
+157
+00:10:24,780 --> 00:10:28,210
+Also your latitude longitude, for
+example, the data's put on a map.
+
+158
+00:10:29,230 --> 00:10:32,530
+And you will see that certain items
+have kind of moved to the right place.
+
+159
+00:10:32,530 --> 00:10:35,720
+For example, there were a log long
+confusion, in this particular case.
+
+160
+00:10:35,720 --> 00:10:40,585
+And then finally the report that is
+generated from this data cleaning,
+
+161
+00:10:40,585 --> 00:10:44,411
+exercise and workflow,
+it serves a providence graph.
+
+162
+00:10:44,411 --> 00:10:49,830
+So there's a graph that basically shows
+what changes happens along the way.
+
+163
+00:10:49,830 --> 00:10:52,443
+And the providence graph itself is
+a knowledge product that you can ask
+
+164
+00:10:52,443 --> 00:10:53,155
+questions about.
+
+165
+00:10:53,155 --> 00:10:58,090
+You can say, well did this
+particular actor make any changes?
+
+166
+00:10:58,090 --> 00:11:05,950
+Or did this particular kind of dataset or
+location get flagged?
+
+167
+00:11:05,950 --> 00:11:08,738
+So you can ask questions about that.
+
+168
+00:11:08,738 --> 00:11:18,738
+[MUSIC]

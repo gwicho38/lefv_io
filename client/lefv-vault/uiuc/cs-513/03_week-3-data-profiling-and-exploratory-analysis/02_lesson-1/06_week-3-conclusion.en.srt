@@ -1,0 +1,171 @@
+1
+00:00:00,000 --> 00:00:08,748
+[MUSIC]
+
+2
+00:00:08,748 --> 00:00:12,690
+Welcome back, now let's wrap up
+what we've learned from this week.
+
+3
+00:00:12,690 --> 00:00:16,000
+This week, we encountered a powerful
+open source data cleaning tool
+
+4
+00:00:16,000 --> 00:00:17,760
+called OpenRefine.
+
+5
+00:00:17,760 --> 00:00:22,570
+I demonstrated OpenRefine by exploring its
+use with two publicly available data sets,
+
+6
+00:00:22,570 --> 00:00:25,700
+that is the National Farmer's Market
+Database from the US Department of
+
+7
+00:00:25,700 --> 00:00:29,060
+Agriculture and a crowd sourced collection
+
+8
+00:00:29,060 --> 00:00:32,190
+of historical restaurant menus provided
+by the New York Public Library.
+
+9
+00:00:33,320 --> 00:00:37,430
+We walk through some basic functions and
+transformations of OpenRefine and I also
+
+10
+00:00:37,430 --> 00:00:41,020
+showed some advanced features relating to
+clustering and normalization of names.
+
+11
+00:00:42,080 --> 00:00:45,940
+As you have seen, OpenRefine is also
+fairly easy to install and once installed,
+
+12
+00:00:45,940 --> 00:00:47,580
+can be used from a web browser.
+
+13
+00:00:47,580 --> 00:00:49,650
+By working with the materials
+from this week and
+
+14
+00:00:49,650 --> 00:00:52,890
+practicing your OpenRefine skills,
+as part of the assignment, you should
+
+15
+00:00:52,890 --> 00:00:57,250
+now be ready to create an OpenRefine
+project, import and profile data, and
+
+16
+00:00:57,250 --> 00:01:00,789
+apply common transformations and other
+mass edits to clean individual columns.
+
+17
+00:01:01,910 --> 00:01:05,710
+In particular you should be able to use
+clustering based methods to normalize data
+
+18
+00:01:05,710 --> 00:01:08,420
+and bring difference and
+tactic variance into economic performance.
+
+19
+00:01:08,420 --> 00:01:12,658
+You should also be able to document
+the changes made to the data using
+
+20
+00:01:12,658 --> 00:01:14,141
+OpenRefine's operation history.
+
+21
+00:01:15,150 --> 00:01:18,260
+This is a form of data providence
+that we shall encounter again
+
+22
+00:01:18,260 --> 00:01:20,389
+in more detail towards
+the end of this course.
+
+23
+00:01:21,690 --> 00:01:25,060
+OpenRefine is an open source power tool
+that started out as Google refine.
+
+24
+00:01:26,080 --> 00:01:29,480
+This is fairly well known in the library
+and information science community, and
+
+25
+00:01:29,480 --> 00:01:33,790
+can be applied for many data cleaning
+tasks of moderately size data collection.
+
+26
+00:01:35,290 --> 00:01:37,860
+The ideas and techniques presented
+to you can also be applied for
+
+27
+00:01:37,860 --> 00:01:39,460
+using in other systems.
+
+28
+00:01:39,460 --> 00:01:41,720
+Since data cleaning is of
+great practical importance,
+
+29
+00:01:41,720 --> 00:01:45,260
+you will probably see more tools like
+OpenRefine emerging in the market.
+
+30
+00:01:46,290 --> 00:01:49,400
+In fact, there are already startup
+companies out there developing commercial
+
+31
+00:01:49,400 --> 00:01:50,980
+products with enhanced and
+
+32
+00:01:50,980 --> 00:01:54,690
+more scalable features similar to
+those we encountered in OpenRefine.
+
+33
+00:01:54,690 --> 00:01:58,420
+Next week, we will move on from data
+cleaning operations on individual columns.
+
+34
+00:01:58,420 --> 00:02:02,541
+And we look at logical constraints
+between multiple columns and data tables.
+
+35
+00:02:02,541 --> 00:02:04,854
+We will work with
+the relational data model.
+
+36
+00:02:04,854 --> 00:02:14,854
+[MUSIC]

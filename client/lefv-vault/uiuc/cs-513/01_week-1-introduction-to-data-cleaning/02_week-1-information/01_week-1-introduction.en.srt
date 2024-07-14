@@ -1,0 +1,103 @@
+1
+00:00:00,480 --> 00:00:07,332
+[MUSIC]
+
+2
+00:00:07,332 --> 00:00:12,230
+Hello, and welcome to week 1 of Theory and
+Practice of Data Cleaning.
+
+3
+00:00:12,230 --> 00:00:14,360
+This week,
+I will give you a general overview and
+
+4
+00:00:14,360 --> 00:00:16,630
+introduction to the topics
+covered in this course.
+
+5
+00:00:16,630 --> 00:00:21,002
+Specifically, this week we will talk about
+what is data cleaning, or data wrangling,
+
+6
+00:00:21,002 --> 00:00:22,434
+as it's sometimes called.
+
+7
+00:00:22,434 --> 00:00:25,809
+Why is it important, and where does
+it fit in the larger data science and
+
+8
+00:00:25,809 --> 00:00:26,842
+analytics picture?
+
+9
+00:00:26,842 --> 00:00:30,120
+We will also try to clarify
+what data quality means
+
+10
+00:00:30,120 --> 00:00:32,820
+by linking it to the notion of fitness for
+use, and
+
+11
+00:00:32,820 --> 00:00:36,690
+by exploring a few data quality
+dimensions, and point you to associated
+
+12
+00:00:36,690 --> 00:00:40,060
+optional readings if you'd like to learn
+more about some of these dimensions.
+
+13
+00:00:40,060 --> 00:00:43,700
+Finally, I will mention the tools we
+are going to be using in this course.
+
+14
+00:00:43,700 --> 00:00:47,460
+After all, the title of this course is
+Theory and Practice of Data Cleaning.
+
+15
+00:00:47,460 --> 00:00:50,400
+After this first week, I hope that you
+understand the role of data cleaning in
+
+16
+00:00:50,400 --> 00:00:54,800
+the larger data management and analysis
+life cycle, and that you are able to spot
+
+17
+00:00:54,800 --> 00:00:59,110
+certain data quality issues and associate
+them with a quality dimension and,
+
+18
+00:00:59,110 --> 00:01:03,050
+possibly, a tool or approach that could
+help improve the quality of data.
+
+19
+00:01:03,050 --> 00:01:06,890
+In the second week, we will also
+have our first hands-on assignment.
+
+20
+00:01:06,890 --> 00:01:10,341
+But first things first,
+
+21
+00:01:10,341 --> 00:01:16,266
+let's jump right into the first lecture.
+
+22
+00:01:16,266 --> 00:01:19,887
+[MUSIC]

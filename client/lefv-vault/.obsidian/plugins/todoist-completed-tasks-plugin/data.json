@@ -1,0 +1,10 @@
+{
+  "settingsVersion": 5,
+  "keywordSegmentStart": "@@ TODOIST_START @@",
+  "keywordSegmentEnd": "@@ TODOIST_END @@",
+  "authToken": "8a6af41d1983ed12b504de26c2691e37d78d6a1e",
+  "taskPrefix": "- [x]",
+  "taskPostfix": "✅ {task_finish_date}",
+  "renderSubtasks": true,
+  "renderProjectsHeaders": true
+}

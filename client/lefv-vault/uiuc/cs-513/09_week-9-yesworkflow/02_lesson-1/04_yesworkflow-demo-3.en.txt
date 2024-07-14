@@ -1,0 +1,107 @@
+[MUSIC] Now let's look at one more example, and that is that ligoscript it was
+not the gravitational lens. It had nothing to do with gravitational
+lenses, which are fascinating things as well, but this was gravitational
+wave detection in the LIGO's experiment. Okay, so let's go to shell we want to
+go one direct tree up to examples. So what examples are there, and then we want to go now down on
+level again into LIGO, okay? So now we're on this LIGO folder, let's
+have a quick look at the script first and you see the script is called
+GW 150914 tutorialuri.python. Now we could make,
+let's just look at this. The first observation of gravitational
+waves is made on 14 September 2015 and was announced by the LIGO and
+Virgo collaborations on February 11, 2016. So they were sitting on this for a while
+to make sure they got it all right and writing the paper, and
+doing all the things they have to do. So they announce it in February 11th
+inside us probably knew this once you're earlier. Making this a little
+documentary about this and the film maker of that documents where
+you said the NCSA for launch today. Okay, so
+this is the data release with it and there's a Python script that comes
+with this, that you can run. To show how you would get
+the signal from the data. And if you want to understand that, you should use that study that
+the sources run the program. What we have done is we've taken that
+script and we've also annotated it. So you see here, the inputs and outputs. Okay, that's case sensitive here,
+and I don't want to mess this up. So here for example I'm looking at the URI templates, you see it begin in and
+out of parameters. So we've annotated the script, so we get a
+visual version of the underlined workflow. So let's run this again just like before. So we are in, let's first run
+the clean script, again clean probably removes folders that we don't care
+about and then we can run the make. That's going to take a little moment
+to execute the various scripts and then we can browse the results. Let's just have a look at that make strip,
+how that looks like. And it looks very much the same
+as the one we've seen before, only now the script is a little different,
+I mean it's not that C3, C4. MATLAB script it is a python script and
+then the particular queries that we are running are also
+slightly different. But they're really, essentially
+the only thing that is different, the queries are fundamentally the same
+questions that we are asking, only these are specialized
+to now a particular node. So when we write these queries
+we have to initially say, this node upstream of that node and so on. So if you were to do a dif,
+actually that's an interesting exercise, why don't I do this? That's might be instructional. So this is the demo script that
+builds the products of the demo in one case for the C3, C4 case and
+the other case for the LIGO, case as to a little dif and
+then you can see the differences and you see there a couple of
+differences here and there. There's a lot that's also the same, yeah. It will require a little bit
+more time to get into this, but you see sort of highlighted here for
+example if you render the work flow graph even the type is the same yeah,
+workflow is spelled as a rough craw at a common transposition. And you see that it's essentially some of the parameters have
+changed other than it's rather similar. So there's actually not a lot of
+differences between those two scripts. This is only meant to assure you
+that the demo is fairly generic, you can apply it really,
+it's not sort of one example is very different from the other,
+it's very much the same. And so now let's look at the results and
+let's do maybe a similar brief thing as before we're going to
+mark all the GB files. Now we have 23. So the LIGO demo has even more artifacts
+being generated before I think it was 14. So let's have just a quick
+look at what those are. Okay lots of files are being generated. Okay, lots of different questions and
+as usual, the question being asked is somehow suboptimally maybe but
+it's encoded in the file name. So if we're interested in a data output
+program that's called whitened bandpass wav file, and
+we want to know well what goes into that. This what we seen in the front,
+here in the center would have the answer. This is upstream of
+whitened bandpass wav file. First of all, notice that this is a
+prospective prominence graph or a workflow graph, because it doesn't have this
+slightly darker orange sort of instances. So it says that at the schema level if
+you like, well at the workflow level, the whitened bandpass wave
+file depends on three things. The sampling rate and detector,
+and then this parameter called fs that we could now look up in
+the tutorial what it stands for. I think those are the two, h1 and l1 correspond to the two detectors,
+two instruments. And again these are the steps, so this gives you a good idea how this
+particular data product was created. That is your prospective provenance for
+this particular data product. So this, the order in which these products
+are shown here Is probably somewhat random upstream of spectrogram whitened,
+that looks very similar. Personally I would not allow to ask
+the question what's different between this graph and the other one that we just saw? So a corresponding question
+could be written and programmed, we haven't done that, but
+that wouldn't be very difficult to do. You can say I have this one,
+I have that one, what's the difference? Might be a little project right there,
+and what's upstream of the spectrogram? This looks much smaller, yeah? So this is a product that doesn't
+depend on all of the other things. Upstream of the shifted wav file,
+again that has more stuff. Upstream of the filtered white noise,
+that has less things again. And again, creating a difference between
+these might also be interesting. So let's look at some data products
+tat are really much more differen. Well these baby graphs we
+don't even take for serious, upstream of coefficients, okay. I think this demo just basically look for
+all the products, what's upsteam of them. But here's an example that's interesting, because that has now what
+we called hybrid problems. So there are three output files generated,
+and these seem to depend on these input files. So now we have to instantiate once again into the sub-schema level
+prospective problems graph, retrospective problems information
+about the files being read and written. So these input files are read and
+these output files were written. So this is similar to what
+we saw before in C3,C4. And here is the complete recon graph. You see, so these are all
+the outputs being produced and all the files being produced. So shifted wav files, we have three. Stray data, data we have one. Wave file, we have, again, three. And here there are various inputs and
+intermediate products, okay? Okay, so I think I'm going to leave it
+at that for the downstream queries. Again, they look like
+graphs again like before. But now we see that they
+are somewhat different structure, because if you want to know,
+well if my data is spoiled and the data that I have is strain L1,
+whitened bandpass, maybe what can be influenced
+by it going downstream. There are three files,
+three outputs, three elements. It could be more than three files
+because again this is the schema. And here is the complete workflow
+graph with your UI templates. This is interesting maybe, because this is the whole enchilada
+if I can use that term here. It's a technical term,
+the whole enchilada. It's the whole prospective prominence
+graph generated from the model. So this is a nice artifact
+to have to understand, what is really going on in that script,
+and although this is still complex. It makes very clear what is
+the data flow between the steps. It's a good way to communicate
+with people, what's happening, and at the same time ask questions
+about dependencies if you have those. [MUSIC] [SOUND]

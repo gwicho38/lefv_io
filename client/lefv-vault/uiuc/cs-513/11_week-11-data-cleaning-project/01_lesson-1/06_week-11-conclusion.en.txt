@@ -1,0 +1,8 @@
+[MUSIC] In this last set of lectures,
+we have ventured into research land and looked at new ways to align and
+merge control vocabularies or taxonomies using a logic based approach. You've seen how the Euler X research
+prototype can be used to align and merge different taxonomies. In these final weeks of the course,
+you will also work on your end to end data cleaning project and combine various tools
+and techniques you learned about here. Specifically, open refine,
+escale lite, and yes work flow. Good luck with your final project and
+until next time. [MUSIC]

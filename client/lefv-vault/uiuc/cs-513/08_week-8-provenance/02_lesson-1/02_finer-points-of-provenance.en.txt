@@ -1,0 +1,135 @@
+Let's go back to some finer
+points of the W3C Prov model. If you zoom in to the standard you will
+then find that what we call entity, or in our case, data itself can
+be made up of different things. This could be a collection, so that could be nested data, often data
+is structured into nested collections. There's something called a bundle and
+something called a plan. This is a part of
+the standard that I somewhat think of it as slightly confusing. A plan is really more a work flow thing. But it is, in this case,
+associated with an entity. There's some method to this scheme,
+but to the beginner, this might look a little bit confusing. And there's also different
+relationships between entities. So we've seen before, there is
+the wasDerivedFrom relationship, but there's also now variations of
+what's influenced by Was quote from, was a revision of, or had primary source. So there's a little vocabulary of
+relationships when you say this data was derived from this other data it
+could mean different things. So the standard has further
+refinements of that. And then again agents who are agents. This could be a software agent as
+I mentioned before, a process. Or it could be a person
+maybe even an organization. And as standards go,
+they have to also describe or prescribe what formats are used for
+exchange of data in the standard, so you see some things like there's a date,
+time. So this XML schema Standard for
+that as well. Now let me zoom out. It is easy to get lost in these standards
+with all their technical details. So I just want to put
+things again back into context before I continue
+here with the material. So I want to talk about
+provenance as it shows up. In the most general setting,
+namely in science. If you think about it, there's all these different notions of provenance
+that really scientists care about. Cosmologists, for example, they ask very far-reaching questions,
+literally far-reaching questions. They study the origin of the universe or
+the cosmos. Biologists study the origin of life. Phylogeny's here ,you see
+a little thumbnail there. If you're into genealogy, you want to
+know where your family came from and what are the relationships,
+again, you look back in history. There's also something
+called an academic pedigree, which is sort of your academic ancestors. So if you have, for example,
+a PhD in the mathematical sciences or computer science, there's a nice
+online database where you can look up whether you through your advisor
+are connected to some famous people. Maybe it makes you feel better about
+your own academic history that way. Etymology of course is the study
+of origin, where words come from. So earlier chain of custody
+in the case of artifacts. And so
+all of these different uses of provenance, they really use provenance to
+understand The present, right? We use the past, we use the history
+to understand the present better. And so this is also our connection to why
+we study provenance in the context of data quality and science and
+scientific reproducibility. The connection is if you
+have a data artifact or rather a knowledge artifact in this case,
+like this plot on the right hand side. You can say this clearly shows that temperatures were have
+been rising recently, yeah? So there's on the y axis,
+you see a temperature scale. It's in Centigrades, Celsius. And on the x axis you see years. And well, what do all these things mean? How did I arrive at this curve? Is this really something significant? How much can I trust this? This is why,
+in particular in climate science but really in all sciences,
+this topic of reproducibility is central. It's not science unless somebody
+else can reproduce what I have. And in data science in particular Of
+course, the point is if we output or put forward analysis results, we need to
+document how we arrived at those results. We need to show the input data,
+intermediate data. We need to show the quote,
+we need to document all methods. And this is where provenance
+comes into the picture. So for scientist to be transparent and
+reproducible about what they're doing, we need to know these questions
+that I have here on the slide. What input data went into the study? What methods were used? What were the particular
+parameter settings? What were the calibrations used? So we want to know whether we can
+trust the data and the methods. And again,
+since Provenance is the lineage of data we want to track the origin where the data
+came from and the processing history. What tools were used to analyze the data? And then there's also
+other uses of provenance. The primary use of
+provenance is really for transparency and its broader context for
+reproducibility. But then also you can discover,
+for example, data and methods used on that provenance. I mean, at some point, provenance becomes
+data itself, and you can index it, you can search based on provenance,
+and so on. So let me show you some more
+examples Of that before we move on. So again this is climate change,
+a hot topic these days. And there was an online
+database developed, GCIS, Global Change Information System. And it has plots like the one here. And metadata that's indicated. So let me zoom into this a little bit. Here's an example from the Texas Summer
+2011, a record heat and drought. And the data visualized in the upper right is described
+through metadata that's on the left. For example, we have a bounding box. We see this dataset is about
+this region of the US. So there's this bounding box,
+the blue box that you see there. And then there's these relationships
+that we just talked about, provenance that say well,
+how was this dataset created? So this dataset was derived from
+another dataset Using an activity, using a process, or using a script. So if you were to zoom in here,
+you'd get these problems records as part of this online database or
+information system. So you can look at this Provenance
+information just on the screen as HTML. But there's also a sort of
+a machine-readable format. So if you click on one
+of these buttons below. You can get this same provenance
+information in JSON, in XML, Turtle, Triple syntax, all kinds of various
+syntaxes that would allow you to write now queries or
+other analysis on the provenance itself. So promised data becomes data itself, a promised information becomes data
+itself that you can analyze in query. So this kind of state-of-the-art
+here in provenance, when you do science, this report,
+the Climate Change Impacts in the US, was a very large effort to document
+how change in climate affects the US. And what was done, this information
+system that's online here, is really to support
+the findings of that report. And again, to support the findings
+themselves is provenance information, to increase the trust it that. But creating provenance
+information is still tedious and a large effort Which is why some projects,
+for example DataOne mentioned here, creates products and tools that support
+the creation of provenance in an easy way. As you conduct your scientific study,
+wouldn't it be nice if the provenance information already was produced
+as a side effect of your work. So it's not an afterthought
+that later you have to kind of explain yourself after what you've done. But it would be nice that as you do your
+science and in this case as you do your data science, or computational science,
+if at that time province is captured. And then you can use it for
+your own purposes as well. If you have Issues about data quality, you
+can look at the Provenance information and find out what has happened and
+maybe redo some of your experiments. All right, I don't want to say too
+much about DataONE other than it's a federally funded large project,
+so NSF funded. There's a website,
+you can go there, DataONE.org, and in particular, there's a search
+interface called search DataONE.org. And just very briefly, what it is, it's
+really a federation of data repositories. It consists of so-called
+coordinating nodes. You can think of them almost as the
+brokers between other data repositories. The data repositories that
+exist are called member nodes. So it's really a network of
+existing data repositories. And then that's often associated
+in investigative tool kit. So these are, in addition to the website, there are tools that allow you to work
+with the data from those member nodes. Now I want to just finally make
+that connection to provenance. So when you have identified the data
+that you want to work with, some of the data, and hopefully
+increasingly more of the data comes with provenance information attached. And on the website, you would see for
+any dataset that you found using a search functionality, you might find this little,
+the thing that looks like a pitch fork. Yeah, it is really an icon
+meant to indicate that this data that has provenance with it. So this is saying,
+here I have a data set but I can also tell you how
+I got this data set. How was it computed? How was it derived? So this is a little bit highlighted there,
+how that works and if you then unpack all of that you
+might get the full on picture. You might see that maybe the plots
+that you see in the lower right have been created using scripts and
+other data set and that this difference of snapshots that are
+stacked up there indicate how the output plots were created from input data sets
+and scripts and how they connect together. And the thing we see in the middle is
+a particular tool called Yes Book Flow that has created this diagram. This is as tool to present scientific
+analysis that was conducted using a script saying Map Lab or
+in this case as in R or in Python. If you have such a workflow
+that's implemented as a script, you do want to also document. What other main steps? What is the the data flow in the script. What other main artifacts that
+the script produces and consumes? It's important to document that and
+this is a simple way to do so. [MUSIC] [SOUND]

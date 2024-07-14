@@ -1,0 +1,563 @@
+1
+00:00:00,000 --> 00:00:01,810
+Hello everyone. Welcome back.
+
+2
+00:00:01,810 --> 00:00:06,280
+This video, we're going to talk about a special kind of recursion called Tail Recursion.
+
+3
+00:00:06,280 --> 00:00:07,620
+So, you want to be able to identify
+
+4
+00:00:07,620 --> 00:00:10,480
+the expressions that are in what's called tail position,
+
+5
+00:00:10,480 --> 00:00:14,040
+and explain this thing called the tail call optimization because
+
+6
+00:00:14,040 --> 00:00:17,685
+it makes certain kinds of recursive calls very efficient.
+
+7
+00:00:17,685 --> 00:00:21,180
+You'll also want to be able to convert something that's written in what we call
+
+8
+00:00:21,180 --> 00:00:24,930
+direct style recursion into an equivalent tail recursive function.
+
+9
+00:00:24,930 --> 00:00:26,235
+So, to start off,
+
+10
+00:00:26,235 --> 00:00:29,010
+you have to understand what's called tail position.
+
+11
+00:00:29,010 --> 00:00:33,540
+So, a tail position is a sub-expression where if somehow it gets evaluated,
+
+12
+00:00:33,540 --> 00:00:38,369
+then that sub-expressions value gets taken as the value of the entire expression.
+
+13
+00:00:38,369 --> 00:00:41,450
+So, if you look at this e or this if expression here,
+
+14
+00:00:41,450 --> 00:00:43,220
+that if x greater than three,
+
+15
+00:00:43,220 --> 00:00:45,305
+then x plus two else x minus four,
+
+16
+00:00:45,305 --> 00:00:48,420
+notice I've underlined the x plus two and the x minus four.
+
+17
+00:00:48,420 --> 00:00:52,280
+So, why I did that is that if we evaluate x plus two,
+
+18
+00:00:52,280 --> 00:00:55,800
+then the whole if expression has a value of x plus two,
+
+19
+00:00:55,800 --> 00:00:58,035
+similarly with x minus four.
+
+20
+00:00:58,035 --> 00:01:01,280
+Now, the next expression f applied to x times three,
+
+21
+00:01:01,280 --> 00:01:03,395
+there's no real proper tail position here.
+
+22
+00:01:03,395 --> 00:01:06,560
+So, if we actually do the x times three,
+
+23
+00:01:06,560 --> 00:01:08,420
+it's not going to use that as a value of the whole thing,
+
+24
+00:01:08,420 --> 00:01:10,520
+it's going to pass that into f instead.
+
+25
+00:01:10,520 --> 00:01:14,710
+Now, if the thing that's being in the tail position,
+
+26
+00:01:14,710 --> 00:01:18,640
+if that thing is actually a function called and this is called a tail call,
+
+27
+00:01:18,640 --> 00:01:20,480
+and in the third example here,
+
+28
+00:01:20,480 --> 00:01:24,480
+we see one of the h applied to x is in tail position,
+
+29
+00:01:24,480 --> 00:01:27,200
+but the rest are not part of the then branch,
+
+30
+00:01:27,200 --> 00:01:31,885
+so the g of x is not in tail position because its result gets added to x,
+
+31
+00:01:31,885 --> 00:01:34,970
+and the first h of x is not in tail position because we are going to use
+
+32
+00:01:34,970 --> 00:01:38,365
+that to decide whether to take the then branch or the else branch.
+
+33
+00:01:38,365 --> 00:01:42,945
+So, all right, why don't you see if you can figure out which ones are the tail calls?
+
+34
+00:01:42,945 --> 00:01:44,340
+Take a look at this for a second,
+
+35
+00:01:44,340 --> 00:01:45,815
+hit pause if you need to.
+
+36
+00:01:45,815 --> 00:01:48,390
+I'll tell you there's only one tail call in here,
+
+37
+00:01:48,390 --> 00:01:50,590
+see if you can find it.
+
+38
+00:01:50,660 --> 00:01:52,730
+All right, so yes,
+
+39
+00:01:52,730 --> 00:01:54,190
+it's on line six,
+
+40
+00:01:54,190 --> 00:01:56,810
+that called the aux is in tail position,
+
+41
+00:01:56,810 --> 00:01:58,805
+and the other one's on line two,
+
+42
+00:01:58,805 --> 00:02:01,330
+we have a call to factorial or fact one,
+
+43
+00:02:01,330 --> 00:02:05,030
+and that's return value is going to be used to multiply against n,
+
+44
+00:02:05,030 --> 00:02:07,095
+so that's not in tail position.
+
+45
+00:02:07,095 --> 00:02:08,750
+Similarly, for a line 10,
+
+46
+00:02:08,750 --> 00:02:10,250
+we have 2 calls to Fibonacci,
+
+47
+00:02:10,250 --> 00:02:13,310
+but those are added to each other afterwards,
+
+48
+00:02:13,310 --> 00:02:15,055
+so those aren't tail calls either.
+
+49
+00:02:15,055 --> 00:02:19,780
+Now, if we have functions calling each other and the function calls or in tail position,
+
+50
+00:02:19,780 --> 00:02:21,225
+we get an interesting behavior,
+
+51
+00:02:21,225 --> 00:02:23,485
+so watch what happens to these stack frames.
+
+52
+00:02:23,485 --> 00:02:25,235
+So, I'm going to call foo on one,
+
+53
+00:02:25,235 --> 00:02:27,175
+it kind of so lovely stack frame,
+
+54
+00:02:27,175 --> 00:02:29,955
+foo calls bar, bar calls baz,
+
+55
+00:02:29,955 --> 00:02:32,790
+baz computes its return value which is 30.
+
+56
+00:02:32,790 --> 00:02:34,120
+Watch what happens now,
+
+57
+00:02:34,120 --> 00:02:38,675
+it returns that to bar but since this was a tail call,
+
+58
+00:02:38,675 --> 00:02:41,000
+that return value is not modified at all,
+
+59
+00:02:41,000 --> 00:02:43,420
+in fact, it also gets passed to foo.
+
+60
+00:02:43,420 --> 00:02:46,160
+So, we have this return value that started off
+
+61
+00:02:46,160 --> 00:02:49,115
+in baz and it's passed all the way back down the chain.
+
+62
+00:02:49,115 --> 00:02:52,220
+So, it turns out, we can take advantage of this behavior since we
+
+63
+00:02:52,220 --> 00:02:56,630
+know at the very end what the final result is going to be.
+
+64
+00:02:56,630 --> 00:03:00,665
+So, one thing we could do is cut out the middleman say have called foo,
+
+65
+00:03:00,665 --> 00:03:02,930
+foo calls bar, bar calls baz,
+
+66
+00:03:02,930 --> 00:03:05,870
+and when baz creates its return value instead of
+
+67
+00:03:05,870 --> 00:03:09,560
+passing it back to bar and then bar passing it back to foo,
+
+68
+00:03:09,560 --> 00:03:11,890
+we can pass it directly to foo and in fact,
+
+69
+00:03:11,890 --> 00:03:14,360
+we can even do better than that since we know
+
+70
+00:03:14,360 --> 00:03:18,100
+that bar is not going to be used after it makes its function call,
+
+71
+00:03:18,100 --> 00:03:21,215
+we can actually recycle the stackframe altogether.
+
+72
+00:03:21,215 --> 00:03:24,010
+So here we have foo, foo calls bar,
+
+73
+00:03:24,010 --> 00:03:26,980
+bar calls baz, then the return value is created.
+
+74
+00:03:26,980 --> 00:03:29,130
+So, this is called tail call elimination,
+
+75
+00:03:29,130 --> 00:03:31,490
+and when you have a bunch of functions that are
+
+76
+00:03:31,490 --> 00:03:34,580
+doing this internally and the machine code,
+
+77
+00:03:34,580 --> 00:03:36,760
+this is been optimized into a loop,
+
+78
+00:03:36,760 --> 00:03:39,790
+so, there are no function calls being made at all at this point.
+
+79
+00:03:39,790 --> 00:03:42,590
+So, let's compare direct style recursion or
+
+80
+00:03:42,590 --> 00:03:45,840
+what you might think of as normal recursion to tail call.
+
+81
+00:03:45,840 --> 00:03:47,930
+So, we have this function here sum.
+
+82
+00:03:47,930 --> 00:03:50,535
+So in recursion, when you make a recursive call,
+
+83
+00:03:50,535 --> 00:03:52,835
+there's a first piece and the rest of the input
+
+84
+00:03:52,835 --> 00:03:55,400
+that's kind of how an inductive proof works right.
+
+85
+00:03:55,400 --> 00:03:58,070
+So, sum here on line two you see there's
+
+86
+00:03:58,070 --> 00:04:01,965
+an x that's the first piece and there's xs which is the rest of it.
+
+87
+00:04:01,965 --> 00:04:04,715
+So, I'm going to take x and add it to the sum of xs.
+
+88
+00:04:04,715 --> 00:04:09,230
+So, we call the recursion on the rest of the input and when it comes back,
+
+89
+00:04:09,230 --> 00:04:11,780
+we combine the results to get the final answer.
+
+90
+00:04:11,780 --> 00:04:13,820
+In an accumulator recursion,
+
+91
+00:04:13,820 --> 00:04:16,715
+you have to do all the computation upfront,
+
+92
+00:04:16,715 --> 00:04:20,150
+and anything you're going to do you have to do before you make the recursive call
+
+93
+00:04:20,150 --> 00:04:23,740
+because otherwise that recursive call won't be in tail position anymore,
+
+94
+00:04:23,740 --> 00:04:27,010
+it's only in tail position if you don't touch its result.
+
+95
+00:04:27,010 --> 00:04:31,775
+So typically, you will use an auxiliary function and usually,
+
+96
+00:04:31,775 --> 00:04:33,380
+that auxiliary function will have
+
+97
+00:04:33,380 --> 00:04:37,175
+an accumulator parameter in there to keep the accumulated result.
+
+98
+00:04:37,175 --> 00:04:39,305
+So, look what's happening with this sum,
+
+99
+00:04:39,305 --> 00:04:41,455
+if we call aux on the empty list,
+
+100
+00:04:41,455 --> 00:04:44,060
+that means we've finished everything and then a is
+
+101
+00:04:44,060 --> 00:04:47,120
+our accumulator which has the result of the summation,
+
+102
+00:04:47,120 --> 00:04:50,635
+so we return a, otherwise online three, if we have a list.
+
+103
+00:04:50,635 --> 00:04:55,270
+We call ox on the rest of the list and add x to the accumulator,
+
+104
+00:04:55,270 --> 00:05:00,110
+so this keeps a running sum of everything that we're doing as we go. All right.
+
+105
+00:05:00,110 --> 00:05:01,650
+So, here's three functions,
+
+106
+00:05:01,650 --> 00:05:04,960
+why don't you try converting them to tail recursion see how you get?
+
+107
+00:05:04,960 --> 00:05:08,285
+Remember you're probably going to want to build an auxiliary functions for them,
+
+108
+00:05:08,285 --> 00:05:10,869
+and the other hint is that fun three,
+
+109
+00:05:10,869 --> 00:05:13,539
+you're going to need two accumulators to the sufficiently.
+
+110
+00:05:13,539 --> 00:05:16,520
+So, go ahead hit pause and when you're ready to check your work,
+
+111
+00:05:16,520 --> 00:05:21,590
+hit on pause and see what happens. All right.
+
+112
+00:05:21,590 --> 00:05:22,985
+So, here's a fun one,
+
+113
+00:05:22,985 --> 00:05:24,090
+when we hit the empty list,
+
+114
+00:05:24,090 --> 00:05:27,960
+we're just going to return the accumulator and the auxiliary function on line two.
+
+115
+00:05:27,960 --> 00:05:30,860
+In line three, we check for evenness and oddness
+
+116
+00:05:30,860 --> 00:05:34,685
+and we add one or subtract one from the accumulator as we go.
+
+117
+00:05:34,685 --> 00:05:36,510
+Similarly for fun two,
+
+118
+00:05:36,510 --> 00:05:39,625
+we're going to divide n by two and add one to a,
+
+119
+00:05:39,625 --> 00:05:42,780
+so this is sort of a primitive logarithm function.
+
+120
+00:05:42,780 --> 00:05:44,985
+Finally for the last one, the Fibonacci,
+
+121
+00:05:44,985 --> 00:05:48,200
+we're going to have two accumulators that keep track of
+
+122
+00:05:48,200 --> 00:05:53,184
+the first two base cases that are available for Fibonacci sequence.
+
+123
+00:05:53,184 --> 00:05:56,160
+So, this is actually a very efficient way of computing Fibonacci,
+
+124
+00:05:56,160 --> 00:05:58,885
+you should definitely try typing this in and play with it.
+
+125
+00:05:58,885 --> 00:06:01,170
+You'll take the Fibonacci of 100 or something,
+
+126
+00:06:01,170 --> 00:06:04,370
+it's really huge number and it's almost instantaneous,
+
+127
+00:06:04,370 --> 00:06:06,280
+so kind of fun. All right.
+
+128
+00:06:06,280 --> 00:06:08,215
+So, that's tail recursion,
+
+129
+00:06:08,215 --> 00:06:12,970
+it's a very nice optimization that you should definitely be very familiar with it.
+
+130
+00:06:12,970 --> 00:06:15,860
+We're certainly going to ask you to write functions
+
+131
+00:06:15,860 --> 00:06:19,070
+both indirect style and Intel recursion in the future,
+
+132
+00:06:19,070 --> 00:06:21,855
+there's some really interesting articles you may want to read.
+
+133
+00:06:21,855 --> 00:06:24,914
+Recursive patterns are still being researched.
+
+134
+00:06:24,914 --> 00:06:28,030
+So, here's a paper, it's not that recent anymore but it's called,
+
+135
+00:06:28,030 --> 00:06:31,910
+"There and Back Again," where they have a recursion pattern where
+
+136
+00:06:31,910 --> 00:06:36,110
+it actually combines tail recursion and direct style recursion,
+
+137
+00:06:36,110 --> 00:06:38,300
+and you can do some really interesting things with that.
+
+138
+00:06:38,300 --> 00:06:40,430
+The other paper is a very old one.
+
+139
+00:06:40,430 --> 00:06:45,020
+It used to be thought that function calls were very expensive and so
+
+140
+00:06:45,020 --> 00:06:50,330
+people tried to avoid that as much as possible and it turns out that's not the case,
+
+141
+00:06:50,330 --> 00:06:54,210
+and so this researcher wrote this nice paper about that.

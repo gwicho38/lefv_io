@@ -1,0 +1,158 @@
+1
+00:00:00,000 --> 00:00:08,052
+[MUSIC]
+
+2
+00:00:08,052 --> 00:00:11,560
+Hello and welcome back to theory and
+practice of data cleaning.
+
+3
+00:00:11,560 --> 00:00:15,120
+In previous videos, we have introduced
+workflows as a means to automate data
+
+4
+00:00:15,120 --> 00:00:16,760
+cleaning and analysis pipelines.
+
+5
+00:00:16,760 --> 00:00:20,160
+We have also taken a first
+look at workflows as a form of
+
+6
+00:00:20,160 --> 00:00:21,690
+prospective provenance.
+
+7
+00:00:21,690 --> 00:00:23,210
+That describes the data flow or
+
+8
+00:00:23,210 --> 00:00:27,720
+recipe by which input data moves through
+a workflow while being transformed.
+
+9
+00:00:27,720 --> 00:00:30,910
+And giving rise to intermediate and
+final data outputs.
+
+10
+00:00:30,910 --> 00:00:33,766
+In these week's videos,
+we will take a closer look at provenance.
+
+11
+00:00:33,766 --> 00:00:37,060
+Provenance describes the origin and
+history of artifacts.
+
+12
+00:00:37,060 --> 00:00:40,210
+Provenance also plays a prominent
+role in the national sciences.
+
+13
+00:00:40,210 --> 00:00:42,830
+Where researchers are trying
+to understand the world and
+
+14
+00:00:42,830 --> 00:00:45,530
+the present by looking at the past.
+
+15
+00:00:45,530 --> 00:00:49,330
+For example, biologists study
+the natural history of life on earth and
+
+16
+00:00:49,330 --> 00:00:53,230
+specifically the phylogeny or
+tree of life of organisms.
+
+17
+00:00:53,230 --> 00:00:54,850
+In astronomy or astrophysics,
+
+18
+00:00:54,850 --> 00:00:58,300
+provenance questions are studied
+in an area called cosmology.
+
+19
+00:00:58,300 --> 00:01:02,630
+Closer from home, we may study the
+geneology that is our family history or
+
+20
+00:01:02,630 --> 00:01:07,200
+someone's academic pedigree,
+that is the tree of academic ancestors.
+
+21
+00:01:07,200 --> 00:01:11,680
+In languages we study etymology, that is
+the origin of words and their meanings.
+
+22
+00:01:11,680 --> 00:01:14,710
+In the computational and data sciences,
+we are interested, of course,
+
+23
+00:01:14,710 --> 00:01:17,190
+in the computational provenance of data.
+
+24
+00:01:17,190 --> 00:01:21,420
+For example, to guarantee transparency and
+reproducibility of our methods.
+
+25
+00:01:21,420 --> 00:01:25,208
+And to allow others to inspect
+the quality of the processes that lead
+
+26
+00:01:25,208 --> 00:01:26,346
+to the result data.
+
+27
+00:01:26,346 --> 00:01:29,395
+As opposed to looking
+only at the end product,
+
+28
+00:01:29,395 --> 00:01:31,748
+that is only a data quality itself.
+
+29
+00:01:31,748 --> 00:01:35,018
+In upcoming videos we will
+also look at example tools and
+
+30
+00:01:35,018 --> 00:01:38,120
+projects in which provenance
+is prominently used.
+
+31
+00:01:38,120 --> 00:01:42,174
+For this we will learn about the workflow
+tool and the DataONE project,
+
+32
+00:01:42,174 --> 00:01:43,029
+respectively.
+
+33
+00:01:43,029 --> 00:01:48,351
+Okay, let's get started with
+our lectures on provenance.
+
+34
+00:01:48,351 --> 00:01:58,351
+[MUSIC]

@@ -1,0 +1,49 @@
+[MUSIC] Okay, so this function, Is, again, one of those low level functions
+that sometimes come handy. Well, let's look at the function first. The function's called concat,
+concatenation. So it stitches things together so
+it concatenates all the values in the field using
+this specified separator character. By default that's a comma. And let's say we wanted to produce for a subsequent processing step maybe just
+a list of names of the scientists. Maybe first name, last name, separated by commas. So the output would be
+something like group concat, full name, and then by comma. So how do we do that? Okay, so first of all let's look at
+which table do we need to query here. Let's go back to the schema. So we have the Person table. So let's have a quick look,
+select * from Person. Let's see what's in the Person table. All right, so there's the Person id,
+which is probably the key. And then there's a first name and
+last name. Well, first name and family name, okay. So what do we want to do here? So first of all, let's look at the query, Where we take the last name and then concatenate it with the family name. And the way we're going to do this in SQL, the concatenation operator is a double
+vertical bar, don't ask me why. Other languages would have plus plus,
+or just a plus, or, yeah. So we have this double vertical bar. And then maybe we put a white space there. And we take the family name and
+we give this an alias, we call this maybe full name from person. Oops, what do we have here? SELECT personal, o kay. I need another concat, right? I'm concatenating the last name and
+the first name and then the family name. So here I am concatenating what normally would be two separate
+values into a combined value. You see there is actually a cut off here. This has to do with one of
+the settings of SQLite. We can change how wide
+the column width is. So we could check this, but
+I'll skip this for now. So if you look with the help function, you will find one of the switches
+that tells you how far this is here. And now what do we want to do? So this is going to be our sub-query
+because here we want to order this By the family name. So this was one of our
+sort of assignments here. Find a way to order the list by surname. So this is really what we are right now
+doing, we're having this will turn out to be a sub query,
+where we put first name last name. But then we order it by the last name. Okay, so I'm going to use this as a sub
+query and then I'm going to do SELECT. Okay, so this is going to be
+a little more advanced here, concat fullname, and we're going to
+use the separator quote FROM. And now we're going to use the sub
+query that we had before so I better put a parenthesis around it. Okay, so what does that do? Let's see whether it actually works,
+it doesn't. What have I done, full name, I've written
+full name once with an underscore, and once without an underscore. Let's write it in both cases
+without an underscore. And again, this is a little tricky to see with all the things
+that are happening here, okay. So we're concatenating here the full name, With commas. And we have generated this here
+from a sub query called fullname. And you see by the way the names
+are indeed all there, they are not pruned. So this pruning that you saw earlier
+has to do really with a setting, a switch from SQLite. A directive that sort of limits
+the output when you're in column mode. There's a default width
+that you can adjust, okay? So. again, the group concat concatenates
+all the values in the field using the specified separator character, yeah. So this is a little bit
+like an aggregation. How can I best explain this? So, let's say you saw before
+the sum of the radiation values. So group_concat,
+you can think of it as a plus or a sum. You're adding up all the values,
+but instead of adding them up, you're concatenating them. And what are the different groups? Well, these are the different groups. Each row, yeah is basically put together. Just like in addition, we use a concat. So instead of adding Frank to William,
+to Anderson, to Frank, to Valentina with plus,
+we do it with concat. And we wanted to have it also
+ordered by the family name, yeah. So Danforth comes first,
+then Dyer, then Lake, then Pabodie and
+then Roerich with an r, okay? So, I'll admit that it's sort of
+kind of deep down in the weeds now of some built in functions. But I'll leave it at that. And this should give you some idea
+how you can work with SQL and SQLite using this data set. Okay, I think I'll leave it at this, and then we'll have one final round next time. [MUSIC]

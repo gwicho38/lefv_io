@@ -1,0 +1,98 @@
+Hello everyone, welcome to CS 421. This week we're going to take a break
+from what we've been doing before, we're going to introduce some theory. So in this one we're going to
+talk about semantics. Semantics comes from a Greek
+word which means meaning, and this is the mathematical study
+of the meaning of computer programming languages and
+their constructs. So in order to do this, we're going to
+introduce three different things. One is called a judgment, which is
+something that asserts a property about a piece of computer code or programming
+language, construct or syntactic object. We have proof rules that define
+when judgments are valid, and these are recursive inductive objects. And we have proof trees which will look
+like proof rules stacked together to prove properties about something more complex. Now this treatment of semantics is
+borrowed heavily from Robert Harper's book, which I cited the last slide. And I highly encourage you to take
+a look at that book as a different way of approaching programming
+languages which you may find helpful. So judgment is simply an assertion about
+some syntactic object we're interested in. So for example,
+we might want to talk about whether or not numbers are even or odd. Here, three is odd could be a judgement. I am asserting that
+three is an odd number. Here's another judgement. This is something called big steps
+semantics, and here what we're saying is that two plus three, and
+then we have this down arrow, five. And what this is asserting is that
+two plus three is equal to five. We have this thing,
+which comes from typing semantics. We'll talk more about what the funny
+T on its side symbol is later. But this is just saying that
+if you have the expression, 2.4 greater than 3.5,
+then this is a boolean type of expression. When we have judgements, we want to be
+able to say when a judgement is valid or when it's not valid. I mean you can just write down
+any judgement that you want but how do you know it's true or not? How do you know it's accurate? I could have written down, for
+example, that three is even and that would be false. So we have these definitions,
+these are called rules, which tell us when a judgment is true or
+when a judgment is not true. So the way it works, you have this thing
+that looks kind of like a fraction, it's not a fraction. But you have this horizontal bar, and on
+top of it you have a bunch of judgements. Now these judgements are called
+assumptions or premises, and on the bottom you have a final judgement
+which is called the conclusion. And the idea is if all of the J's on top,
+J1 through Jn, are true then J on
+the bottom is also true. And often on the side you will also see
+a label which gives a name to this rule, and this way we can refer
+to it easily later. It's possible for a rule to have
+no assumptions whatsoever, and this is called an axiom. And in that case, what will happen is
+you'll just have a rule with a line and nothing on top. You'll just have the conclusion and
+perhaps its label. Another thing that you can see is
+something called a side condition. Here is an example of an axiom here,
+except it has a side condition. So you have this thing,
+x mod 2 equals 0, on this side. Now sometimes you'll see people put
+that as one of the premises, and there's nothing really wrong with doing
+that, it's kind of a style issue. But the reason we put it on the side and
+not on top, the idea is that the things on top
+of a rule should be judgements. And in this case,
+what we're thinking of as a judgement, or maybe I should say what I was
+thinking of as a judgement, is just the assertion that something
+is even or something is odd. So if it has that form, then it belongs
+either on top or on bottom of this rule. But if it's something different, if it's a
+condition that's not really a judgment but it's something else that needs to be true,
+then I call that a side condition. And so a lot of people will write
+that on the side of the rule instead. So you'll see both of them. And if you go looking at
+papers about semantics, this one I think is slightly more common. And here's an example of the even and
+odds again. This time I've given rules for
+what happens when you add even and odd numbers together. I'm sure you're familiar with this
+from your studies of arithmetic, but you know if you have
+two even numbers and you add them together you get another
+even number, so we have this rule here. If x is even and
+y is even then x + y is even. Similarly for the other combinations
+of even and odd number editions. Now before we go to next slide I want you
+to pause and see if you can write down the rules for what happens when
+you multiply even and odd numbers. So go ahead and do that now. All right, so here is the solutions. Pretty much any combination of even and
+odd multiplications gives you an even number, unless of course both
+the numbers happen to be odd already, so that's what these rules are saying. But when you use a rule what
+will happen sometimes is that the bottom thing is complicated
+enough that the two assumptions, or however many assumptions on top,
+also need to be proved. And so you use more rules, so
+it ends up having a recursive structure. And so this builds something
+that's called a proof tree. Now two ways that proof trees get used. One of them is that you have something
+that you already know what the property is but you just want to prove it. So here have 4 + 7 is odd, and so
+I already know that is a fact but maybe I want to convince you, and so
+I'll go ahead and build this tree. I'll show you that four is even,
+and I'm using the mod zero rule. And I justify that because
+four mod two is zero. I have seven is odd using
+the mod one rule and I justify that because
+seven mod two is one. And then I've also written down that
+I've used the even plus odd rule to show that 4 + 7 is odd. When this happens, you'll see the proof
+given as a finalized construct. Now how do you go about writing
+a proof tree in real life? Typically what will happen is you'll start
+by writing down your conclusion, and then you'll draw a line on top and
+decide what rule it is you want to use. And then what will happen is you'll take
+the parts of the thing you're trying to prove and you'll move them up and use
+the appropriate rules to talk about them. So here I have to move up the four and
+say that four is even, then move up the seven,
+say that seven is odd. It may be also that you don't
+actually know what the property is. Maybe you're not sure if 4 + 7 is odd or
+even. And so what will happen is you'll
+leave some information out, you'll go ahead and
+follow what rules seem appropriate. And as you do that you're
+going to discover information, you're going to fill that back in. We'll talk about how that works in future
+videos, but I'll tell you that the type inferencer that Haskell uses
+works in a very similar way. So here again is that book I was
+telling you about by Robert Harper, Practical Foundations for
+Programming Languages. He has a different take on languages
+than what we're using in our course, so there's of course a lot of overlap. I would definitely encourage you to take a
+look at this book, it's very interesting.

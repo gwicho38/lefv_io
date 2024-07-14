@@ -1,0 +1,37 @@
+[MUSIC] And now we jump into something new to wrap
+up the topic of SQL, and that's recursion. So I want to show you
+some examples of that and also motivate a little bit why
+we do not recursion in SQL. So let's get started with that. Recursion in SQL. Well, first of all, it's important to
+notice that in first-order logic or predicate logic, as we've called it, and
+in the relational algebra as you would learn it, for example,
+in more detail in the database course, and originally in SQL you
+do not have recursion. You cannot traditionally express
+these recursive queries. And that's a problem. And the academic community,
+the research community, has been advancing one of the reasons for
+putting datalog forward was as sort of a simple query language that's very
+close to logic that you can also study theoretically, but also practically,
+that would give you recursive queries. But if you don't have that in SQL,
+you have a problem. For example, here on the right, you see
+a part that's assembled from other parts. So it's often necessary
+in practice that you have a bill of materials that tells you what
+are all the parts that are in there. And if you want to compute that,
+you will typically need a recursive query. Otherwise you can't in general sort of
+walk through this hierarchy of parts. So over here, this is hard to see, but this is essentially the output of
+an analysis of what the parts are. So parts have sub-parts which
+have further sub-parts and so on. And sometimes you need three of them or
+five or two. And in the end you want to have
+sort of this bill and say,okay, these are the parts that I need
+to make the whole assembly. So you can look a little bit closer. For example,
+Wikipedia has a decent article, from which I took this figure here,
+explains what a bill of material is. And this is very practically relevant. I'll just show you one example,
+which is also taken here from Wikipedia. It's a product structure modeling. So I don't know whether you can see
+this here, but here for example, we see that a car is made, of course,
+of an engine and a body, and the engine is made of other parts and
+so on. And this is, of course,
+the normal assembly view. But in practice you need to have also
+quite a bit of other views, right? You might have a service view. You might have a design view,
+purchasing view, sales view. The objects that you sell here
+are organized in different ways, and you need flexible ways to
+work with these hierarchies. And again,
+SQL is not traditionally good at that. If you don't have recursion, you have
+a problem because you cannot walk these trees and you cannot assemble things. [MUSIC]

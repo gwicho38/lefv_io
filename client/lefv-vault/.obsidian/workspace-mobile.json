@@ -1,0 +1,239 @@
+{
+  "main": {
+    "id": "4ca06e29b37e0e72",
+    "type": "split",
+    "children": [
+      {
+        "id": "969df2243bc39394",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8d786171e7393cf2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d412f07792e1914e",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "c3c22eab3bc96c25",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "460bb984e7db3829",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "8186a13fc5107b9b",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          }
+        }
+      },
+      {
+        "id": "49baef0d467e27bb",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {}
+        }
+      },
+      {
+        "id": "bbc5343194113538",
+        "type": "leaf",
+        "state": {
+          "type": "all-properties",
+          "state": {
+            "sortOrder": "frequency"
+          }
+        }
+      },
+      {
+        "id": "88ba87fd339007cb",
+        "type": "leaf",
+        "state": {
+          "type": "recent-files",
+          "state": {}
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "4e758bf2239248dc",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "5cea98c3d3a0c4e9",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "README.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "c40b877701e1dada",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "README.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "5ce606b12ed59d60",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "README.md"
+          }
+        }
+      },
+      {
+        "id": "6a8cc2e9be310dc0",
+        "type": "leaf",
+        "state": {
+          "type": "BC-matrix",
+          "state": {}
+        }
+      },
+      {
+        "id": "0f2498f6823695fd",
+        "type": "leaf",
+        "state": {
+          "type": "BC-tree",
+          "state": {}
+        }
+      },
+      {
+        "id": "0fa3b3346ce38163",
+        "type": "leaf",
+        "state": {
+          "type": "todo",
+          "state": {}
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false,
+      "markdown-importer:Open format converter": false,
+      "publish:Publish changes...": false,
+      "zk-prefixer:Create new unique note": false,
+      "workspaces:Manage workspace layouts": false,
+      "breadcrumbs:Breadcrumbs Visualisation": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
+      "omnisearch:Omnisearch": false,
+      "obsidian-extract-pdf-highlights:PDF Highlights": false,
+      "obsidian-agile-task-notes:Update TFS Tasks": false,
+      "dbfolder:Create a new database table": false,
+      "homepage:Open homepage": false
+    }
+  },
+  "active": "8d786171e7393cf2",
+  "lastOpenFiles": [
+    "snip/lpy/js/vs_code/lcode/node_modules/util-deprecate/History.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/readable-stream/node_modules/util-deprecate/History.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/mkdirp-classic/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/@typescript-eslint/eslint-plugin/docs/rules/camelcase.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/read-installed/node_modules/util-extend/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/doc/cli/npm-root.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/doc/cli/npm-stop.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/typescript/lib/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/doc/cli/npm-whoami.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/@babel/runtime/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/react-swipeable-views-utils/node_modules/react-event-listener/node_modules/@babel/runtime/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/doc/cli/npm-ping.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/@emotion/is-prop-valid/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/@date-io/date-fns/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/encodeurl/HISTORY.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/@date-io/moment/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/pacote/node_modules/npm-pick-manifest/LICENSE.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/ssri/LICENSE.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/cacache/LICENSE.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/@date-io/luxon/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/@date-io/dayjs/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/is-in-browser/readme.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/cross-spawn/CHANGELOG.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/@webassemblyjs/wast-printer/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/@emotion/hash/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/validate-npm-package-license/node_modules/spdx-correct/README.md",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/read/node_modules/mute-stream/coverage/lcov-report/sort-arrow-sprite.png",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/unique-filename/coverage/sort-arrow-sprite.png",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/pacote/node_modules/make-fetch-happen/node_modules/socks-proxy-agent/node_modules/agent-base/node_modules/es6-promisify/node_modules/es6-promise/lib/es6-promise/promise",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/pacote/node_modules/make-fetch-happen/node_modules/https-proxy-agent/node_modules/agent-base/node_modules/es6-promisify/node_modules/es6-promise/lib/es6-promise/promise",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/pacote/node_modules/make-fetch-happen/node_modules/http-proxy-agent/node_modules/agent-base/node_modules/es6-promisify/node_modules/es6-promise/lib/es6-promise/promise",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/pacote/node_modules/make-fetch-happen/node_modules/socks-proxy-agent/node_modules/agent-base/node_modules/es6-promisify/node_modules/es6-promise/lib/es6-promise",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/pacote/node_modules/make-fetch-happen/node_modules/https-proxy-agent/node_modules/agent-base/node_modules/es6-promisify/node_modules/es6-promise/lib/es6-promise",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/pacote/node_modules/make-fetch-happen/node_modules/http-proxy-agent/node_modules/agent-base/node_modules/es6-promisify/node_modules/es6-promise/lib/es6-promise",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/got/node_modules/create-error-class/node_modules/capture-stack-trace",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/registry-auth-token/node_modules/rc/node_modules/strip-json-comments",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/pacote/node_modules/make-fetch-happen/node_modules/socks-proxy-agent/node_modules/agent-base/node_modules/es6-promisify/node_modules/es6-promise/dist",
+    "snip/lpy/js/vs_code/lcode/node_modules/npx/node_modules/npm/node_modules/pacote/node_modules/make-fetch-happen/node_modules/https-proxy-agent/node_modules/agent-base/node_modules/es6-promisify/node_modules/es6-promise/dist",
+    "lib/Pasted image 20231115151507.png",
+    "lib/Pasted image 20231114163018.png",
+    "lib/Pasted image 20231114150648.png",
+    "lib/Pasted image 20231113113030.png",
+    "lib/Pasted image 20231113112957.png",
+    "lib/Pasted image 20231113112924.png",
+    "lib/Pasted image 20231113112752.png",
+    "lib/Pasted_image_20220510123430.png",
+    "lefv/notes/Untitled.canvas"
+  ]
+}

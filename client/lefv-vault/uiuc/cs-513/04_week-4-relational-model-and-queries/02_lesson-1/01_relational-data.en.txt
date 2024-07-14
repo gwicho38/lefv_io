@@ -1,0 +1,218 @@
+[MUSIC] Welcome back to Theory and
+Practice of Data Cleaning. In this video I want to introduce
+the relational model and to show how we can work
+with relational data. So first,
+let's put us in the context however. So, we started out with
+regular expressions. We were looking at synthetic issues. How can we use regular expressions
+to define patterns for matching and extracting data? In this way using regular expression
+we were able to check the conformance of certain data strings in our raw data. For example, whether our data was
+conforming to the ISO date format, which is four digits for the year,
+a dash, then two digits for the month, another dash, and
+then two digits for the day. If the data does not conform to
+this structure, to this pattern, then we would bring it into a canonical
+form, for example, using a script. Another tool that we've learned so
+far is OpenRefine, which uses regular expressions, but is In general a much more
+powerful tool we can use to profile and clean data, one column at a time. So one particularly powerful
+feature of OpenRefine was the use of
+similarity-based clustering. But in the end we were working
+with OpenRefine to clean up data in a single column and bringing
+the data then into a canonical form. But what about a more complex issue that
+span multiple columns in our data tables? What about logical errors? How shall we deal with this kind of
+data quality issues at the schema and that the semantic level. So here's an example of you seen
+before where we have two tables, a Person table and Address table and some of the data quality issues should
+have been address with OpenRefine. But even if you have cleaned
+your data using OpenRefine, some other kinds of issues about dirty
+data can still make it into your tables. So how shall we deal with those? For example, you might have integrity
+constraints that span multiple tables, maybe a foreign key that goes from
+the person table to the address table or maybe you have duplicates. Or maybe you have some illogical
+contradictions in your data. So never mind the pattern issues,
+the syntactic issues, that OpenRefine addresses. What about the semantic and
+structural issues? Issues at the schema level, when we
+load data into a database we can than use the database technology
+to deal with those issues. So here's an overview of our work flow,
+simplified overview. So we started out with raw
+data that is often dirty and then we use a tool like OpenRefine to
+do some sort of pattern based cleaning, again using regular expressions,
+using clustering and so on. The next step, we can then load this data
+once it has gone through this initial data cleaning, we can load it
+into a database system. And once the data is in a database system,
+we then can exploit the powerful database technology to run queries and
+to check integrity constraints. So this will be the focus of this video. How shall we go about doing this? First, we have to understand what
+are relational databases and what is the underlying data model,
+the relational model? We will then look at query languages, in particular we will look at the logic
+base approach first called Datalog. And we will learn about the facts and rules and queries and
+integrity constraints in another video. Another advantage of looking at Datalog is
+that there's a very rich body of research both in theory and in practice. So Datalog while not as widely use as SQL, has still found niche applications
+including an industry. And then finally we will move on to look
+at the really dominant database query line which in the real world which is SQL,
+the structured query language. On the right, you will see again the
+overall workflow that we follow here from raw data through pattern based
+data cleaning with OpenRefine into database system which then
+will allow us to use queries and integrity constraint mechanisms to
+check the logical quality of the data. So, here we need a little refresher, or if you like, a crash course,
+on the relational model. So data is often organized into relations. We might know this from spreadsheets. But when we think of the relational
+model in the context of databases, we have a very particular model in mind. The database model called Relational
+Databases was pioneered by Edgar Codd in the 1970s. So it's been out there for quite a while,
+but it's been an industry standard and sort of a leading technology ever since. So how is data organized
+in the Relational Database? Well, first we have data in relations or
+tables as we call them and then the tables are organized
+into rows and columns. Typically we really think of
+them as organized into rows, or tuples sometimes, and then the columns
+are sometimes also called attributes in the Relational Database world. And we can then distinguish the first
+row if you like which is very special, which is the header or
+schema level information from the body or the actual instances which
+contain the actual data. Some more terminology in this context, so we're really focusing today in this
+video on the Relational Model, and then a Relational Schema is really
+the kind of header information, the set of attributes, so the tables or
+relations, their names and their attributes, and then the Relational
+Database instance to make it clear. We can say the word instance, so the
+Relational Database instance consists of the data itself, the particular rows that
+are spread across all these columns. And last not least, RDBMS stands for
+Relational Database Management System. Those are of course the systems
+on which we run the actual queries that we're interested in. So if you more worked in
+the Relational Model, the Relational Model is really close
+closely related to predicate logic. Sometimes also called first
+order predicate logic. So although it was in some sense invented
+as a technology in the 70s, the underlying foundations of the Relational Model
+are even older than that and they are in some sense the foundations
+of our logical thinking if you like. A very particular model to
+which the Relational Model is closely related is used for
+conceptual modeling and that's called the Entity-Relationship
+model or Model. So here in the slide you see at the center
+left a thumbnail of such as an Model. The key idea here is that we
+structure the world into entities and relationships that model
+our application domain. This is a very simple yet
+very powerful model. Look at the first idea of the things
+that you want to store in the database. And there are many tools that
+allow you to go from an Models or from a conceptualization
+of your application domain automatically to a relational
+database schema. So you can create tables from your
+Relational Model automatically with many tools. The Relation Model is also very flexible,
+it allows us to represent for example XML data,
+graph data, or object data. And in fact there are extensions
+to relational databases that support these particular variants of data
+models in a very efficient way such as object relational databases. But the main reason why we study
+the Relational Model here is because it allows us to use queries against
+the relational data that we have and therefore check the quality and
+integrity of our data. So, the relational model, for the purposes
+of this class is really interesting, because we can query that data and run checks on the data and
+ask questions about the data. So what are the query languages
+that are typically associated with the relational model? Well, as I already indicated, the Relational Model is closely related
+to first order predicate calculus, sometimes called FOL, or just FO,
+or RC for the relational calculus. Then, this relational calculus or
+first order logic, is not extremely convenient for really writing practical
+queries against the relational database. So there is a much more intuitive rule
+base language called Datalog, and it is this language Datalog that we will
+be using to run our first queries and integrity constraints against a database. From a database course which
+this is of course not, but from a database course you would know and
+learn additional query mechanisms, in particular the Relational Algebra,
+here also abbreviated as RA. And the Relational Algebra is the first
+step of a database system to go from a query, from a high level
+query into an execution plan that the database system can optimize. And the query language most commonly
+used for querying relational data is, of course, SQL,
+the Structured Query Language. And although it is outside of the scope of
+this course to give a deep introduction into SQL, we will do a brief review
+since we will need SQL to answer some of the questions about data quality and
+integrity that we have in this course. So, the main focus, again, for studying
+the Relational Model is it allows us to store all kinds of data
+in convenient form, and then we have a powerful query language or,
+in fact, a family of query languages that we can employ to ask
+questions about the data and, in particular, to check the logical
+integrity of the data, and spot errors this way using integrity
+constraints expressed as queries. On this slide I give
+a high level overview and connection of the different formalisms for
+querying relational databases. Much could be said about this but
+I will just give a high level overview. So we will look again at SQL,
+the structured query language. Which is basically structured as if you would write a query in
+stylized form of English. So there is a form to express queries
+in this something like select certain attributes or columns from certain relations
+where certain conditions are met. So this is the SQL query language. And there is another
+more theoretical language that is used in the implementation
+of relational databases, and that you also study in a database course,
+it's called the relational algebra. And it has mathematical
+operations that work on tables or relations as we call them. And then produce new output relations or
+tables as a result. So, you will see these Greek letters. Sigma for selection, pi for projection. Then you see a butterfly,
+which is join operation, and a delta for renaming or a row, in fact, for renaming
+a union operator and a set difference. So these relational algebra operators
+are something that you would study in a relational database course. Closer for
+us to home is the relational calculus. Although we will not say
+too much about it, but it is the formalism used to query
+relational structures in logic so we see some symbols there, there's the
+universal quantifier for all xF basically when making a statement in logic and say
+that for every x the following is true. Then f is again an expression in logic
+what can be an exteseteial qualifier we can it is the case that
+a certain thing is true and then we have other logical operators for
+and and or not. Again it would go too far to go into
+these in greater detail here but it is important to know that the formal
+under pinnings of the language we do study data log are in fact
+based in logic, mathematicians. And logicians would be happy to use
+the relational calculus or first order predicate logic to express queries and
+questions about relational structures. As practitioners however, we're not so happy with this formalism which is why
+we use a language such as Datalog. To make all of this
+a little bit more concrete, I have here on this slide
+a very simple example. So imagine you have a relational
+schema that has two tables. One table called the employee table, and it has three columns called employee,
+salary, and department number. So the idea of the employee table is that
+it stores information about employees, their salary, and
+the department in which they work. And then there's a second
+table called the DeptNo. Which has, again,
+an identifier for the department, and then also a manager for
+that department. And you could imagine that the manager for
+the department is himself or herself an employee. So there's two tables and there's some connections between
+Between these two tables. And there might be similar
+relationships even within a table. And of course, we cannot use a tool like
+OpenRefine that will not help us here. So we really need to jump
+into this database world, then use query languages to
+explore these relationships. So let's say we want to ask a question, in
+this case not yet an integrity constraint, just a simple question about the data, and
+we want to create maybe a relationship between employees and
+the managers that they work for. How would we do this? So we would look at the employee table,
+we would look at the department table and then we would bring together this
+kind of information from both tables. This is called a join operation. So this is the butterfly symbol
+in the relational algebra. In SQL, we would say for example,
+the following which is almost natural. Language so we would say select an
+employee and a manager so denoted here emp and manager, from the two tables that
+we have which is the employee table and the department table but subject to
+certain condition and the condition is we want to say that the department
+mentioned in the employee name table. That would be the third column shall
+be equal to the department number and the department table which
+is the first column there. So, we have to have some sort of agreement
+on the third column of the employee table, and the first column, the department table
+as these rows align and have the same value there then we want to report who's
+the employee and who is the manager. That way we have joined the information
+from those two tables and have some sence uncovered or
+revealed a new piece of information. I don't want to go into the details
+of the relational algebra here but you see there are some sort
+of mathematical notation that tells us how these two tables
+are combined to create a joint table and then we project on some
+results column of interest. Even less pleasant maybe to the untrained
+eye is the relational calculus or predicate logic formula. So I will not mention too much about
+it but rather focus on the last item here on this line which is
+the Datalog rule because in some sense, this Datalog rule says exactly
+the same as all the other rules, only that it is much more intuitive and
+easy to understand. So Datalog rule has two parts, the left
+hand side and the right hand side. On the left hand side in some
+sense you see the conclusion or answer to a particular question. In this case the answer is a relation
+called boss, so it is the boss or manager table if you like which pairs together
+an employee and the employee's manager. And on the right hand side of
+the rule we have the query condition, the body of the rule. That tells us how shall we find this
+pair of an employee and a manager. The body of the rule is intuitively
+quite easy to understand. It is, in some sense,
+a logical pattern that describes, almost by way of an example, how these
+two tables are to be combined, so we see that we picked from the employee
+table, a triple of values, three variables, Emp,
+salary and department number. And then the comma is really the logical
+end, and we see it, well also in addition, we want to have from the department
+table a pair of values, department number and the manager. And here, it is important to understand
+that the department number If we pick the department table, and the department number that we picked
+from the employee table, call inside. When those are the same, then we want to
+report that fact and then in some sense we apply the rules that are from the right
+to the left and we report that we found the pair between an employee and
+the employees boss or manager. So let's summarize what we've seen so far. We started out with the syntactic
+data cleaning operations that we started in previous videos. And we have now begun to venture in the
+central part of this cause the schema and semantics in particular we started
+out with a relational model. At least we understand that the relational
+allows us to store all kinds of data in a flexible manner and in particular
+it will allow us to query and ask questions about the data and check for
+integrity violations and then report them. And this will be the subject of the next
+video where we'll talk about Datalog and then subsequently about SQL. [MUSIC]

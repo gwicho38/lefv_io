@@ -1,0 +1,230 @@
+[MUSIC] So let's go to SQLite, to the sub
+folder SQLite, and we open a shell, again you might do this
+differently in your system, you might want to use a terminal window,
+depending on what systems you have. So let's have an example, let's do
+a simple recursive query from the SQL. So what we have,
+let's start actually here with this view. Let's say we have a simple table
+called org for organization and in the table, we have the name of
+a person, so you see there's Alice, Bob, Cindy, Dave, Emma,
+Fred, Gail, and Joe. And we have the height of a person,
+maybe in centimeters. Those must be centimeters,
+can't be inches, would be too large. And let's say every person has
+a boss which is a foreign key constraint that goes
+back to the table itself. So those of you who know databases
+will find this very familiar. Those of you who don't,
+let me just quickly explain this. So this references here says that boss is a foreign key that points back into
+this table to the primary key. And if you have for
+example a value of null, this indicates that Alice
+doesn't have a boss. So apparently it looks like Alice
+is the boss of a couple of people. So Bob, Cindy, for example work both for Alice, and Dave and Emma work for Bob. And Fred and Gail work for Cindy. And then there's also Joe who works for Jane which is interestingly
+enough not in this table. So that would be actually integrity
+violation that we could check for and that we could detect. Now let's say we want to do first,
+we want to find out who works for Alice directly or indirectly. And this is something you need to
+understand that in the relational algebra or in data log, without recursion or
+in first order logic, we couldn't actually say this because we have to kind of
+join a table over and over with itself. So we have to go for example,
+if we want to know who works for Alice, we could kind of chase it back for
+Alice, for example, Bob and Cindy works. But we're not done. So I mean, the simplest query we could
+run is we just select basically the first column where this third column has Alice,
+but then we could only one level and then with the answers, we'd have to
+go in there again and keep doing this. And this sort of recursive process,
+we'd traditionally can not do in SQL, but with this we can do it. So let's give this a try. Actually, what I'm going to
+do maybe right away, what I'm going to show you
+right away is the following. I'm going to show you this
+with recursive definition. So with the recursive definition,
+says okay, I'm going to define a new relation
+called works_for_Alice(n) and n is the name, Yeah? And then I say AS, and
+then I put the query. Okay, so what is this query. Well first of all, to kind of to bootstrap
+this, this is one way to do this. I say Alice works for Alice. Okay? And then we do a union. Then we say okay, select from org and
+works_for_alice, and see this is where the recursion is, okay? Maybe let me put this in a new line. So we're selecting the name from org,
+which is our input table and then also for works_for_Alice,
+so here's the recursion. We're defining, works_for_alice and
+we're using works_for_alice, okay? And what is the joint condition? Here we say well, the organisation,
+the boss is in the third column, so boss should be the same
+as works_for_alice(n). So this basically, it's actually not
+horribly clear to understand in SQL. If we write this in data log,
+it's actually would be more clear so we can do a little exercises,
+write this also in dialogue and in a moment just to see how that works. And then, So we've now define to recursive view and
+for that recursive view for example for starters, let's just select everything,
+let's see what's in there, okay? I'm going to do this. I'm going to create a shell, I don't know why it's just like this,
+so I run SQLite 3. And I want to open this file here,
+family SQL, okay? So I'm going to say read, you might
+recall this from your sql tutorial, read family.sql and then we see aha, Alice, Bob, Cindy, Dave,
+Emma, Fred and Gail up there. Let us just do this real quick for
+data log. So we find this file. I'm just going to write it family DLV. I'm just going to create that. I'm going to hack this now into datalog,
+okay? So how would we call these facts? Let me find a keyboard macro. Just so you see something else
+that's a very powerful practical tool in data cleaning. If this is my dirty data table,
+it's very dirty, it's written in SQL and
+I want it to be in datalog. So maybe what I want to
+do is the following. I'm going to do the following. I'm going to start recording a macro,
+and how does that work? For example, I exercise ones, I show ones. What I want to do, for
+example I want to replace all of that and I want to call it org and
+I will go to the end. Then I delete the semicolon and
+I put the period. Then I go to the beginning and
+I go to the next line and I'm done. Now, I've defined a keyboard macro and I can execute it a number of times,
+for example five times. So, these are all keyboard shortcuts,
+okay? So I just execute it five times and
+I need it two more times. Can be painful to learn this tool,
+all the keystrokes. But once you have it,
+it can be actually a power tool as well. So, it's null value,
+I'm not sure how to deal with it. Let's use a lower case now. In datalog, in the datalog version,
+we're using, there's not really a proper support for
+null values, they haven't quite done it. So that's all we want, okay? So we've got our database table,
+now in datalog. And now we want to run a query,
+who works for Alice? So let's write a rule works for Alice. And then look, of course,
+we use a variable N if. What's the base case? So here, you see we have
+basically a base case in SQL and then we have the recursive view. So and datalog is actually kind of simple,
+so initially maybe you want to say that Alice works for Alice,
+that's kind of the base case. You can't make it any simpler than that,
+can you? And now, the recursive case will say okay,
+well somebody with a name N works for Alice if, Let's see, So somehow we need to get org, N, X, okay, so we have to do that. And works_for_alice(X). Okay, let's think about that. So if X works for Alice, yeah. Maybe we should give a schema, it's always a good practice to put
+metadata wherever you work with data. So org is Employee,
+that's what Height Height, I'm going to write this,
+in centimeter, and then Boss, okay? That's all schema. So maybe we should say,
+let's call this variable B for Boss, let's call this variable E for
+employee and then this is the employee E. And so if B works for Alice and B is the
+boss of E, then E also works for Alice. Fair enough, kind of simple, right? Once, like everything in life,
+once you have it, life is good and simple. I'm going to write this even in one
+line just to show you how neat and elegant life can be. Can even make this a little bit more self
+explanatory and then we should be happy. So this is why I like also teaching data log because the the ideal
+is much more evident from these. You still, in real life,
+need to know SQL, because in some sense, it's much more powerful. It has all these aggregations and
+group bys and nesting and all of that, which are kind of
+painful to do in this language. But to get the idea, what we're doing, we're recursively
+defining a relationship here. Works for Alice, in terms of
+the organization or [org chart relation, this is hard to beat. Can't make it much simpler than that. So here's,
+it's called a recursive view, and then we have here, the base case, We could also make a variant of the base
+case, maybe I'll show that in a moment. And then let me just right it in this way,
+and then I have here the recursion, right? And of course, there's also a join
+between, do you want that join explicit? Everybody knows this by now, right? So if I wanted to make the join explicit,
+I would say here, Boss1, Boss2, and then I would say somewhere in
+this rule Boss1 equals Boss2. That's kind of the escalate way to do
+it but then it feels like painful, and a little bit too verbal, so I'll just
+put the Boss here, put the Boss there. And in this way a rule,
+a data log rule resemble actually something that sometimes
+called a query by example. Because if you think about it there
+are some tools like Microsoft Access for example I think has sort
+of a query by example mode. What's going on visually there is
+very similar to what you do with the data log you really define a pattern. You say here Emp and here Emp must
+be the same and here Boss and here Boss must be the same that
+actually kind of very neat. So let's run this, again it like
+to split this window that way. I don't like it that way, let's see. Whatever, okay side by side. Let's quit SQLite and lets see,
+are we in the right directory? Yeah, we have a family.dlv file there and,
+Right, we split it this way,
+we kind of like it better that way. And now we call this dlv tool and say family.dlv and maybe we just want
+to filter on the recursive view. So we say -filter=works.for _alice. Yep, we have a syntax error somewhere,
+where is it, the quotes, okay. This particular data system does
+like quotes, it wants double quotes. Okay, of course oops. So, what do we need to do here is we query
+replace a single code with the double quotes, done. And now, we can do it again and
+we see Alice, Bob, Cindy, Dave, Emma, Fred and
+Gail all work for Alice. Also know that Joel and
+Jane do not work for Alice, okay? So I think that's quite neat and
+nice how we do this data log. All right, how would we find
+out whether everybody works for Alice if we have an integrity
+constraint memory? One more example while we're on it. A brief integrity constraint. Let's say you want to see,
+maybe you have a company, and so everybody has to work for Alice. How would you do that? As a denial constraint. [SOUND] Find those Emp that don't work for
+Alice. So that's not difficult to do. So in integrity concern violations,
+this is just a convention. So we say go away there. integrity concern violation and e, maybe the employee that doesn't work for
+Alice. Now we have a problem,
+how do we right that? In a way we want to say not. Works_for_alice(Emp), is
+there a problem with this? It looks pretty good. What's the problem with this? Let's run it, let's have a look. So I want to look at the integrity
+concern violations, right? I see all_alice. It says the rule is not safe. Why is the rule not safe? So safety, as a reminder it says every
+variable, whether it's in the head or in the body,
+must also occur positively in the body. So we need a predicate
+that gives us a bindings x I can iterate that if we have
+to program this out in code. And did not have a database approach,
+we would have to write and generate and iterate that runs over the employees,
+a loop. So we want to say emp (E) let's say,
+do it like this. So rename this to E but where do
+we get the employee relation from. We don't have that right now. Well we can do this by defining, in practice we would probably
+have such as a relation but here we're just going to define
+it emp(E) :- org(E Either this, Or, That. If the employee shows up in the first or
+third column, this is a union view, yeah, the sequence will be the union. So I think now we are in business. So we have defined what employees exist? And this is basically Union of Emp and Boss columns, right. That's what this is. All right so now, we should be business. Now, this variable e has a finite value. We know where to grab it from and now we can look whether
+integral concern violation is. That everybody works for Alice. So let's go to the Shell. So we're going to run this again. So a certain mister Null, mister or miss
+Null And Joe and Jane don't work for Alex. You see that null is not treated
+especially considered in the normal value here by data look, okay. So in particular we've found Joe and
+Jane so we can look what's going on. Do we have to move them
+to another department? Do we have to fire them? Or maybe we have to abandon the constraint
+that says everybody wants to work for Alice, okay. All right, so I think that this shows you
+a nice set of simple example of recursion. Also one thing you see, you see the data
+log since we have recursive views and very naturally. So we can also write in term
+constraints that involve recursion. Not a big deal at all,
+it's just like a regular view. It just so happens that it was
+defined recursively, okay. So much for
+data log let's switch back to SQL light. So here is our family in SQL. Let's look at this other query. Let's say we want to instead of
+outputting who's working for Alice, let's do something more fancy. Let's do some aggregation to
+some data analysis, okay. So what we want to do here is we want to
+select the average height from org. Where the org name is in
+the relation works for Alice which we just defined recursively. So we've recursively defined
+who is working for Alice. So we got lots of joins right,
+we go all the way down to hierarchy and now we're doing aggregation
+on top of that. So we aggregate the height
+from the org for those people who are in the recursive
+view called works for Alice, okay. So a lot of stuff going on there, And so let's start our sqlite again. And let's say we're going to
+read family.sql and it turns out because the select
+statement is uncommented, we'll get the answer right
+away just like before. 174 here is your average. People work for Alice let's just
+see whether how do we test that. Let's make some Joe and Jane don't work,so Joe work for
+Jane and Joe is two meters. Let's see whether a change effects this,
+okay. I'm not sure it might actually complain. Yeah, because we loaded it again. We didn't drop the table. So I think the simplest thing is let me
+just quit this and just start it again. I mean we can fix this by
+dropping the table, but I don't want to go there right now. And the average is still 175. That doesn't prove anything but it's a hint that maybe indeed our
+average didn't include John and Jane. In contrast let's Gail life,
+Gail works for Cindy and Cindy works for Alice,
+so let's make Gail two meters. Let's make her three meters,
+she's really large, tall I mean, okay. So let's try that. And now the average height of
+the people working for Alice is 192. So that's three meter person gave a boost,
+that's a giant right there. Okay, very good. That's two maybe one more query and this is the one here below. So this one else leave up here. The second query here is a. So what does this do? Just sort of plot
+the hierarchy if you like. So what this is doing it defines
+a recursive view called under_alice where we have a name and a level. So like how many levels down
+is the employee below Alice? So maybe you initialize this,
+you see the same pattern like here. You start with Alice as a base and
+then you have a union. So again here you start with Alice and
+then you have a union, actually union all. We can look at the,
+what difference it makes. And then what do we do? So we select the name and then we
+increase the level here in the output. And what I've done here we join the org
+table which is our base table on what we should define recursive view. And we join it with the recursive view,
+we join it. What was in the data log rule just
+the same variable occurring twice, we have to be very explicit here. Yeah, so it's the boss and
+the org table has the same value. Has the same person as the under_alice
+recursive view that we're defining the name. And then we want to order this,
+By the second. We order this by the second column. And then the level, so
+we do some little trick, we do a little string processing trick. We take a number of dots which
+is determined by the level. Okay, that's a little fanciness there. Let's see how that will work. So let's quit this and
+restart and read it in again. So we still see our old
+average that's from before. And now we see that Alice has Bob and Cindy working for them and
+Dave and Ema has Bob. Bob has Dave and Ema working for him and
+Cindy has Fred and Gail working for him. A kind of nice nifty little example there
+that you see you can do such things in SQL. It's a little bit out there on the not
+as typical SQL but you can do this. So to outpost an example as well. One more example before the break. So what's the other example
+you want to look at? So let's look at what
+briefly what this is. We don't need to go all into it. But we see there's
+a little maths going on. Let's just see whether we get the big
+structural going on towards on this class or
+crazy that class for that matter. Let's see. So we start with somehow that we
+start with some initialization values of -2 and -1. And then there's some selection, and it seems like we have some sort of
+termination condition or some condition. Boy, this is just too much for me, okay? Let's just run it let's see what it is,
+okay? I haven't tried this in a while. So let's see. Read mandelbrot which is the guy who
+cannot amendend this, not the SQL but the maths behind it. Okay. So pretty fancy to make this your puzzle of the week to figure out why
+is this working and what is this doing? So not so clear, okay. But let's do something and
+that's really the final one here. Sudoku, okay,
+anybody play Sudoku here occasionally? Okay, well maybe you can explain this
+skill query then in the break to me. Okay, so
+it's another WITH RECURSIVE query here and the input here is a linear
+encoding of a Sudoku puzzle. So if you were breaking this down into,
+so for matrix form basically the dots correspond to the values that you don't
+get no to the digits from zero to nine. And the numbers that are there that's
+your puzzle, those numbers are there. Let's see whether we get the hang of that, I guess somewhere down here in
+this highly complex query that has recursion and
+subqueries not exists in here. And somewhere here, you do some fancy arithmetics where
+you access with a substring function. You access basically your board on which
+you try to solve the constraint and, When the constraint is satisfied, or
+not satisfied you return a result. And then not exist basically forces
+it to try out other combinations. So yeah, alright let's have a look. Would be nice to have a better
+visualization for this so you could actually see that
+it does the job at hand. So you quit this one and
+start this one and then we read. The Sudoku, okay. Okay you see that was a little bit
+of a delay actually I apply for this program just putting
+other things in there. It can take quite a while then actually
+it's not super efficient as it constraints over but it's nice to see
+that and I think you can do this. [MUSIC]

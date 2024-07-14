@@ -1,0 +1,130 @@
+13:31:46 So in this video, I will be creating the item set for this expression grammar here. So this comes from chapter 4 of the compilers principles techniques in tools textbook also known as the dragon book so if you're wanting to look up anything more about this later that's where you can find it.
+13:32:04 But at least what we have here, so we have this expression grammar and it has 6 production rules that I went ahead and labeled one through 6 and then we see that we have 3 non-terminals ET and F so I went ahead and created the follow up set for those.
+13:32:21 So as all great videos go, just a little bit of a disclaimer at the beginning. So I typically like writing these out by hands, but that wasn't working very well for recording.
+13:32:33 So we're going to do this on the Google Doc and everything's gonna be okay, but just bear with me if there's any Google Doc and everything's gonna be okay, we do this on the Google Doc and everything's gonna be okay, but just bear with me if there's any Google
+13:32:45 Doc struggle with. But anyway, let's go ahead and get started. So I'll go ahead and get started with our First, state I 0 and then so.
+13:32:57 We'll grab our first production here and then I'm going to use the period or dot here to represent our cursor or marker on where we're at.
+13:33:08 So We have E plus T here. And then we're up against this E here, which means that we're going to fall into it.
+13:33:19 So we need to copy over all E production. Goes to T and then for up against this T here so we're going to fall into that so we'll copy over our.
+13:33:30 Tea Productions T goes to T times F and then T goes to F and then we're up against this F here so you guessed it we need to Copy over those as well.
+13:33:47 So F goes to. F goes to ID here. So that looks good. We have all of our productions here.
+13:34:01 So now we're going to go ahead and get started with our next state. So. To figure that out we're going to go to the next production that we need to address what to do.
+13:34:15 So this is the E goes to E plus T at the top. So. We're going to go over an email and since that's a non terminal, we know that we're going to go to something.
+13:34:26 So. We'll need a new state for that. So the next state will be one. So we'll go to I one here and then so this is going to look like E goes to Eve, move the marker over and now it's up against the plus and then T.
+13:34:42 And then that's it for that. We come back over. There's no other ease that we're going to cross so we're good.
+13:34:51 Now we can move on to the next production that we need to figure out what to do with. It goes.
+13:34:59 To tea and then so since we're going to go over this non-terminal T we know that we need to go to somewhere.
+13:35:07 So, go ahead. 2 and then. We're also going to. Cross over this T here.
+13:35:18 So we'll go ahead and mark that now. So T goes to. 2 and then just go ahead and come down and.
+13:35:26 Write that out. Goes to.
+13:35:34 Yeah, goes to do things in the right order and then T goes to T. Times, and then we could do a quick scan real quick.
+13:35:47 No other teas to go through, not touching any non-terminals that we need to fall into and copy over the productions.
+13:35:55 So looks like we're good. So that go ahead and go to our Next production that we need to figure out what to do.
+13:36:06 So, We're going to. Cross over this F now. So. We'll need to go to a new state since we don't have that yet.
+13:36:16 So this will be I 3. So I 3 and then we move. I think at the bane are markers at the end here.
+13:36:29 At the nothing else to do so now we can come back up. And now we're at a.
+13:36:38 Terminal here. So we have the beginning paren and then so we know that we're going to have to shift and then we're going to need a new state since we don't have one yet.
+13:36:53 That we know that we can shift to. So. Let's go ahead and get that started. So with I or here.
+13:37:02 We're going to have at goes to Now our marker is next to the E here. So since we're up against the E, got to copy over those productions now.
+13:37:16 So he goes to E plus TE. Goes to T. And then since we're up against the T here, I also have to copy over those productions.
+13:37:31 So T it goes to T times.
+13:37:33 F and then T goes to Yes, and then we're up against the F now. So. F goes to And then ask.
+13:37:46 Goes to ID here.
+13:37:52 We'll figure out spacing as we go. But all right, so this looks like everything that we need here.
+13:38:01 So now we can come back up to our I 0 to our next production that we need to know what to do next.
+13:38:07 So. Here we have F goes to ID, so we're going to. Zoom the ID here and then.
+13:38:15 So we'll have to shift over and then we'll need a new state for that. We don't have a state yet that can represent this.
+13:38:24 So let's go ahead and make that I 5. So. 5, 5 now. We have S goes to ID here.
+13:38:35 That nothing left to do. So we got our 0 state out of the way now we can move on to the next production that needs addressing in our I want here.
+13:38:48 He, goes to E plus T. So let's go ahead and move that. Marker across, so we have a plus here so we know that we're going to need.
+13:38:59 To shift. So we're going to need a new state for that. So. See we have I 6 now since we just did 5.
+13:39:13 So let's go ahead and come down to. I 6. And then since we shipped it across the plus.
+13:39:21 There we're going to go ahead and have E plus and now we're up against the T.
+13:39:30 So since we're up against the T. Have to copy those productions over. So. Tax S.
+13:39:37 T goes to F up against CS here. So have to copy those over. So. Gran E.
+13:39:48 Prin and then F. Goes to ID here. So. That should be it for I 6.
+13:39:55 So let's go ahead and come on up here. To our next production in our I 2 state and we're at the end here.
+13:40:05 So now we get it. So Let's go ahead and so we're at an E production which means that we're going to need that follow set of E.
+13:40:16 So go ahead and copy over. Plus and paren and then dollar signed for the end there and then Let's go ahead and check which rule this is.
+13:40:32 So this looks like. Our second production rule, so we get to produce on that too there. So.
+13:40:40 That's all taken care of for us. So now we can move on. To this production or I 2 and then so We are going to go over the star here.
+13:40:55 So that means that sense. We're going to need a new rule. We'll go ahead and.
+13:41:04 Shift to the state I 7 now that we'll go ahead and create so I 7.
+13:41:14 And then coming back up. Here, so we're going to go over so T goes to T times and then we're at the F here.
+13:41:26 So since we're touching S. At those 2. Current a paren and then F goes to ID here.
+13:41:38 So that's all that we'll need to do for this one. So we can come on back up.
+13:41:45 And then our next production that we need to address is this T goes to F and then we're at the end here so we know that we need to produce.
+13:41:53 And then we have a tea production here that we're reducing on. So we'll go ahead and get that follow set in there.
+13:42:06 So plus star current and then. Dollar sign and then We'll go ahead and reduce on. Since we're dealing with this rule for here, we produce on that 4.
+13:42:21 All right. So. Now we're good to get to our next production in our state for so F.
+13:42:29 Goes to the paren and then here so we have this. And then We're probably going to.
+13:42:44 Or we are going to end up having to go to a new state now. So we'll go ahead and call that 8.
+13:42:52 And then we'll have I 8 here. And then we have. That goes to. Karen be over here and then we also see that we're going over this E here as well.
+13:43:08 So we'll come back on up and then I'll go ahead and. Put that T 8 there.
+13:43:15 And then we'll also need to address that one. So E goes to. A marker here and then plus.
+13:43:26 T and then. We'll go ahead and make sure we're not up against anything. And then there are no other Eaves that were going across.
+13:43:38 So that looks good. So now we'll go ahead and look at. The next production that we need to take care of.
+13:43:46 So we have T. And then we also see that we have our. T here that we're crossing as well and then this one feels a bit familiar so Let's go ahead and.
+13:44:03 Since we might not have to create a new state. Let's go ahead and make sure that we have a state that we can cover here.
+13:44:12 When we have both of these. This looks like we're going to end up going to our I 2 here.
+13:44:21 So. Will actually go to I 2 since we have both of those cases covered. So that's the key part here.
+13:44:27 Is that we need exactly those productions inside of the state if we're going to reuse a state so no more no less is representing that exact state so Always make sure that you're double checking that it's complete there.
+13:44:45 But yes, so with. T here we get to go to our state too. So that's taking care of there.
+13:44:54 So now we have T goes to F and now we're crossing the F over and then that one feels familiar as well.
+13:45:04 So let's go ahead. And. Take a look. So.
+13:45:10 This looks a lot like I 3 here and there are no other apps or anything that we need to worry about.
+13:45:18 So we'll go to 3 here. We already have the state with over production in there that this corresponds to 3 here.
+13:45:28 We already have the state with over production in there that this corresponds to so we don't have to create a new And now with our F goes to.
+13:45:32 Paren so This one as well. So. We know that we're shifting on this parentheses and then this one feels a bit familiar.
+13:45:49 So we're shifting here and then We end up touching the E, so this will collapses. So we're actually going to shift to.
+13:45:58 The state that we're at right now. So we shift our state 4. And then. We have ID here, so.
+13:46:09 You know that we need to shift on that. And then that one feels familiar as well. So if you look below, we already have that state.
+13:46:19 So we shift to 5. So, those are taking care of their. Quite a bit. For use as well now that we're seeing.
+13:46:29 But now let's go ahead and move on to I 5. So we're at the end of this production here.
+13:46:35 So let's go ahead and scroll on up. So this is an F production. So you can go ahead and copy over the follow set.
+13:46:46 From that. And then. Well, we know that we want to produce on this rule. So let's go ahead and check which rule that we were reducing on and then that F goes to ID that is production rule 6 there.
+13:47:05 So. He said 6, so that's taking care of there. And now let's go to the next production.
+13:47:12 State ISIS. We have E goes to E plus within our marker office. Against, so going to cross over the T now and then we also have another T over here.
+13:47:27 So go ahead and. Get that ready for us as well. So with this. This looks like it could be new and spoilers it is.
+13:47:39 So let's go ahead and. Go to 9 here that will go ahead and create our state I 9.
+13:47:47 So coming down to I 9. We have E goes to E plus. T and then. T goes to The marker Dan.
+13:48:07 So as there.
+13:48:10 Looks like that's all we need to do now up against anything, no other T, so we'll go ahead and move on to the next one.
+13:48:17 So take us to F here. So we know that. We need to go to something if we're doing with that non terminal F.
+13:48:25 And then is this feeling familiar because it sure looks like it. So let's go ahead and scroll on.
+13:48:34 Up and then it looks like we're going to go to the say I 3. So we have that and then.
+13:48:46 We'll go on to our next production. So. Will be we have the parentheses there so we'll be shifting on it and again feeling a little bit familiar so We'll go ahead and check out our state for because spoilers, that's the one that's looking a bit familiar.
+13:49:07 So we shipped it over. Copy everything down and so we'll shift on 4 here and then similarly.
+13:49:17 Crossing over the ID looks pretty familiar. So. We'll go ahead and check any states that they should be that looks like our state 5 there.
+13:49:28 So we'll shift to 5 with that ID there. All right, so we have those starting to see a couple more repetitions here, which typically might mean as a good thing, getting closer to being done.
+13:49:44 But all right, so let's go to I 7 now. So. Here our marker is up against the app.
+13:49:53 So we know that we have F, so we're going to have to shift on that and then this.
+13:50:01 I don't think we've encountered before, so. Will need a new state for that.
+13:50:09 So let's go ahead and make. 10 and then we'll go ahead and come on down here and then I 10.
+13:50:18 We'll go ahead and have T. Goes to T times F with our marker at the end there.
+13:50:27 And then Nothing else to do, no other apps that we're having to go to the state.
+13:50:33 So good to go there. And then with. Our next production F goes to Princeton. We're going to shift on that beginning perimeter.
+13:50:48 That one feels a bit familiar. So we're checking out here. Looks like our I 4 against a shift to that.
+13:50:57 I 4 state and then again. As goes to ID. There and then shifting on the ID. Spoilers going to 5 there.
+13:51:10 Okay, so we got those. So then now we're at I 8. And then so we're going to need to.
+13:51:20 Shift on this end parentheses there and then This is something that we haven't done before.
+13:51:26 So. We'll have to go ahead and create that. Newest state I 11 so I'll go ahead and create that so I 11 and then we have goes to with that marker at the end there.
+13:51:49 So nothing else left. To do so we'll go ahead and come back up to our next production that we need to figure out how to move on and then.
+13:51:59 So we have our EO goes to E plus T with that marker next to the plus so we're going to shift on that.
+13:52:09 Plus there and then This one feels a bit familiar. So let's see what that looks like. Spoilers looking at that I 6 where we ship and we're next to the T and then we have the rest of those productions.
+13:52:24 Copied over so we're good to just shift to that state I 6 while we already have there no need to create a new one.
+13:52:33 And I 9 here. So our next production is there and then we're at the end here. So we're at the end of an E production.
+13:52:48 So we can go ahead and copy over. That follow of either as then we know that we need to produce.
+13:52:57 So let's find out which rule that we need to reduce on so he goes to E plus.
+13:53:04 That looks like rule one to me. So let's go ahead and produce on that, production rule one.
+13:53:10 And then. Nothing else left to do. So our next production that we need to do stuff with that t goes to t times f with the marker next to that star of air.
+13:53:24 So this one feels a bit familiar. We know that we need to shift as in. We scan around, eventually we'll land on that I 7 there and that looks like the state that we're going to end up with since we're next to the F so we Copy all those down.
+13:53:44 So let's go ahead and shift to that I 7 state. And then nothing left to do. So we'll come down to our I 10 now and then at the end here of this production it's a Tea production so We can go ahead and copy over our.
+13:54:05 Follow set over there and then. We can go ahead and reduce on. Which rule now that looks like rule 3.
+13:54:17 So let's go ahead and produce on our 3 there. Now finally we're at our I 11 and we're at the end here so we're at the end of an F production.
+13:54:32 So we'll go ahead and want to copy over the follow from F. So copy that over. And then we know that we want to reduce since we're at the end here.
+13:54:46 So let's figure out with who this is that we're reducing off of that looks like. Rule 5, so let's produce on production rule 5.
+13:54:57 And we're done. So.
+13:55:02 Hopefully that made sense on how we, got from where we started. To our 12 different states.
+13:55:10 Here and how we figure it out. What actions and what goes, to take here. So let me know if you have any questions or anything.
+13:55:22 But other than that, I'm happy for 21.

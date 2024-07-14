@@ -1,0 +1,303 @@
+1
+00:00:00,000 --> 00:00:01,800
+Hello everyone, welcome back.
+
+2
+00:00:01,800 --> 00:00:05,725
+Now, the idea of subtyping is implicit in many languages.
+
+3
+00:00:05,725 --> 00:00:07,960
+For example, many languages allow you to
+
+4
+00:00:07,960 --> 00:00:10,940
+supply an integer to something that expects a float.
+
+5
+00:00:10,940 --> 00:00:15,040
+Now, it turns out that objects subclasses behave almost like subtypes,
+
+6
+00:00:15,040 --> 00:00:17,470
+but there is a subtle difference.
+
+7
+00:00:17,470 --> 00:00:19,480
+When you're done with this video,
+
+8
+00:00:19,480 --> 00:00:22,060
+you'll know the difference between a subclass or subtype,
+
+9
+00:00:22,060 --> 00:00:24,670
+and be able to give examples of types to have what's called a
+
+10
+00:00:24,670 --> 00:00:28,060
+covariant and contravariant relationship with each other.
+
+11
+00:00:28,060 --> 00:00:30,820
+Now, to start let's test this question,
+
+12
+00:00:30,820 --> 00:00:34,350
+how can we tell if one type is a subtype of another?
+
+13
+00:00:34,350 --> 00:00:37,975
+Are integers subtypes of floats or is it the other way around?
+
+14
+00:00:37,975 --> 00:00:40,195
+What about characters and strings?
+
+15
+00:00:40,195 --> 00:00:44,185
+If a type A can be considered kind of type B,
+
+16
+00:00:44,185 --> 00:00:46,145
+then a is A subtype of B.
+
+17
+00:00:46,145 --> 00:00:48,620
+Another way to say this is if you can supply
+
+18
+00:00:48,620 --> 00:00:51,605
+an A where a B was expected and not lose data,
+
+19
+00:00:51,605 --> 00:00:53,420
+then A is a subtype of B.
+
+20
+00:00:53,420 --> 00:00:55,085
+So, by this recognizing,
+
+21
+00:00:55,085 --> 00:00:57,155
+an integer is a subtype of float.
+
+22
+00:00:57,155 --> 00:01:00,935
+I can cast an integer into a floating-point number without losing anything.
+
+23
+00:01:00,935 --> 00:01:03,650
+But if I take a float and turn it into an integer,
+
+24
+00:01:03,650 --> 00:01:05,660
+I have to say what to do with the decimal part,
+
+25
+00:01:05,660 --> 00:01:08,065
+we're going to lose some of the data.
+
+26
+00:01:08,065 --> 00:01:10,110
+When types take parameters,
+
+27
+00:01:10,110 --> 00:01:12,305
+the situation becomes more complex.
+
+28
+00:01:12,305 --> 00:01:14,390
+There are two main possibilities.
+
+29
+00:01:14,390 --> 00:01:19,295
+If the relationship of the container follows the relationship of the containee,
+
+30
+00:01:19,295 --> 00:01:22,310
+then the relationship is said to be covariant.
+
+31
+00:01:22,310 --> 00:01:24,780
+Lists are a good example of this.
+
+32
+00:01:24,780 --> 00:01:27,920
+A list of ints is a subtype of list of floats,
+
+33
+00:01:27,920 --> 00:01:30,290
+since ints are subtypes of floats.
+
+34
+00:01:30,290 --> 00:01:35,050
+Therefore, we see that list subtypes are covariant in their argument.
+
+35
+00:01:35,050 --> 00:01:38,540
+Functions however, are a lot more complicated.
+
+36
+00:01:38,540 --> 00:01:41,360
+Suppose we're expecting a function that outputs
+
+37
+00:01:41,360 --> 00:01:45,035
+a float but I give you a function that outputs an int,
+
+38
+00:01:45,035 --> 00:01:48,200
+this is fine, the context in which the function is
+
+39
+00:01:48,200 --> 00:01:51,800
+being used can treat any received int as if they were floats.
+
+40
+00:01:51,800 --> 00:01:56,510
+Therefore we say function subtyping is covariant with respect to its output.
+
+41
+00:01:56,510 --> 00:01:58,415
+The input is a different story.
+
+42
+00:01:58,415 --> 00:02:00,890
+Suppose I have a function that expects an int for
+
+43
+00:02:00,890 --> 00:02:04,490
+an input but the context passes in a float instead,
+
+44
+00:02:04,490 --> 00:02:06,775
+that float is going to get truncated.
+
+45
+00:02:06,775 --> 00:02:09,200
+On the other hand, if we have a function that expects
+
+46
+00:02:09,200 --> 00:02:12,230
+a float input but it's given an int input,
+
+47
+00:02:12,230 --> 00:02:14,045
+everything should be fine.
+
+48
+00:02:14,045 --> 00:02:17,795
+So, function subtyping behaves oppositely to its input.
+
+49
+00:02:17,795 --> 00:02:20,510
+This input style is called contravariant.
+
+50
+00:02:20,510 --> 00:02:25,550
+Contravariant tends to consume things whereas covariance tend to produce or store them.
+
+51
+00:02:25,550 --> 00:02:30,035
+Here's a diagram of the different function type relationships for ints and floats.
+
+52
+00:02:30,035 --> 00:02:36,080
+Notice that interior int and float era float are not comparable at all by this scheme.
+
+53
+00:02:36,080 --> 00:02:38,350
+If you end up exploring Haskell's packages,
+
+54
+00:02:38,350 --> 00:02:41,360
+you'll find a few other examples of contravariant types.
+
+55
+00:02:41,360 --> 00:02:44,420
+One of these is a gated dot pro functor package,
+
+56
+00:02:44,420 --> 00:02:48,110
+which is like functor but allows you to find two kinds of mapping,
+
+57
+00:02:48,110 --> 00:02:50,825
+one that is covariant and contravariant.
+
+58
+00:02:50,825 --> 00:02:53,350
+We are going to use some of these course though.
+
+59
+00:02:53,350 --> 00:02:58,820
+Now, with objects, we can set up an admittedly rare situation like this one.
+
+60
+00:02:58,820 --> 00:03:03,725
+Class A has a method foo that is type A to A and bar calls it.
+
+61
+00:03:03,725 --> 00:03:07,025
+Suppose we make a subclass B and overwrite foo to
+
+62
+00:03:07,025 --> 00:03:10,895
+B of type B to B but we do not overwrite bar.
+
+63
+00:03:10,895 --> 00:03:15,505
+If we Call class B's bar it will invoke Class B's foo,
+
+64
+00:03:15,505 --> 00:03:17,910
+but it was written to expect an A to A,
+
+65
+00:03:17,910 --> 00:03:21,080
+and a B to B is not a subtype of an A to A.
+
+66
+00:03:21,080 --> 00:03:24,110
+So, a subclass is act like subtypes.
+
+67
+00:03:24,110 --> 00:03:28,910
+There's also this subtle difference with the covariant and contravariant relationships.
+
+68
+00:03:28,910 --> 00:03:34,460
+No objects had been wildly successful especially since C++ came about in the early 90's.
+
+69
+00:03:34,460 --> 00:03:36,950
+Most functional programming languages avoid them,
+
+70
+00:03:36,950 --> 00:03:39,800
+since many of the problems that object solved can also be
+
+71
+00:03:39,800 --> 00:03:43,175
+solved using functions, especially higher-order functions.
+
+72
+00:03:43,175 --> 00:03:47,255
+Most programmers will tend to prefer one style to the other.
+
+73
+00:03:47,255 --> 00:03:49,910
+Now, many languages support both Models,
+
+74
+00:03:49,910 --> 00:03:54,245
+OCaml for instance as objects and that's where the O in OCaml comes from.
+
+75
+00:03:54,245 --> 00:03:58,490
+Inheritance can also be tricky especially if you allow multiple inheritance,
+
+76
+00:03:58,490 --> 00:04:02,340
+which you really shouldn't if you're designing your own language.

@@ -1,0 +1,20 @@
+[MUSIC] Welcome back. Now, let's briefly summarize some key
+notions we learned about this week. We learned that the data quality is
+usually defined as fitness for use. The intended use, specifically,
+what questions you may want to answer with your data, determines
+whether your data is clean enough, or of high enough quality,
+for the intended purpose. We learned about a few key
+data quality dimensions, and in the optional readings posted for this week, you can drill deeper into many
+other aspects of data quality dimensions. You also saw that we can structure
+the overall themes of this course into syntax and pattern based cleaning,
+then, schema and semantics for which we will use
+a language called Datalog. And synthesis, where we zoom out again and look at the larger workflow of
+which data cleaning is a part. Related to the latter is the notion of
+prominence or data lineage and processing history, something that will turn our
+attention to at the end of this course. In week two, we will learn about an important formulas
+and tool called regular expressions. Regular expressions allow us to
+check whether the syntactic patterns we find in data match
+certain standard formats, or whether they require
+additional processing. We will practice matching with regular
+expressions in our first hands-on assignment next week. Regular expressions are also part of
+the powerful OpenRefine tool that we will work with in week three. [MUSIC] [SOUND]

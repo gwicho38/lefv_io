@@ -1,0 +1,145 @@
+[MUSIC] I'm going to talk about YesWorkflow. We're going to move toward YesWorkflow
+which is a system and tool for provinence for script based workflows. So when we have scripts instead
+of a proper work flow system how can we provide some of the benefits
+of scientific workflow systems to those people who have scripts,
+and there are many of those. So I'm going to talk about that. But first, why are we interested in that? Well, if you think about what workflow
+tools most scientists are using, there are a number that
+use workflow systems. But it's often in sort
+of specialized domains. And if you look at how many people
+are using Python and R and MATLAB and similar scripting languages, for
+workflow-like activities for automation of say, computational science, and
+data science, and analysis pipelines. You'll see that the customer base for the script based approach is very large
+much larger than for workflow systems. Also what provenance tools exist? Well again the workflow systems themselves
+often have very nice provenance support. The workflow itself is a kind of
+provenance if you want to think about it this way. Then the workflow system allow
+you to record data lineage, but what about people who write
+their workflow as scripts? There is not so much out there. I'll give you an example,
+from one of our own projects. This is a research project funded again
+by the National Science Foundation called SKOPE. It stands for Synthesized Knowledge
+of Past Environments. And he would be an example from
+a publication, in this case in nature communications by two scientists and
+collaborators Bocinsky and Kohler. And they have a paper on the 2000
+year reconstruction of rain fed maze agricultural nitch in
+the United States Southwest. So this is about the southwestern
+states in the U.S.. And they create this wonderful
+climate models that kind of explain retro-actively or try to retrodict
+the climate from 1,000 to 2,000 years ago. What do they use to do that? So they create these nice models and
+they create these nice graphs. But what are the tools that they use? They use tools that are very
+well suited for the job, something that works very well,
+and that's R. And R is of course available for
+free and it's an open source system and a lot of scientists use it to
+publish their own studies as open source. So here you have an R script that
+kind of goes together with the paper. Goes together with the dataset, but how
+can your really document the big picture? What is the method? Of course you should read the paper. The paper explains what
+the method is very well. But are there some additional artifacts
+that you could consider look at? To really assess is this a method I
+want to use maybe for my studies. And if you want to have a first idea about
+what are the characteristic features of this method. Again, you can look at the paper and
+then you can look at the code. What we're aiming here however is
+something in between a conceptual level data flow diagram that
+is the equivalent of what you would see if you had used the workflow
+system instead of using R. So this is the goal. So again here, we're looking at a use
+case paleoclimate reconstruction. Here is another paper by
+the same co-authors here. This one published in Science Advances. Again, it uses open source code. So these scientists do the right
+thing here they publish their methods openly using code
+in open source repository. But how do I understand what
+exactly the method entails? What are the data artifacts that go in and
+out? Is there something I can do other than
+looking at the code to get a high level conceptual view. And there's also things that really
+aren't really embedded in the code. Certain dependencies are not easily, or maybe not at all
+extractable from the code. And so we want to end up with a diagram
+like we see here on the right. Where you have data going into a workflow
+and then there's computational steps and phases and data products popping out, and you want to know how
+that all works together. And so the tool that we've been developing
+in my group is called YesWorkflow. You can think of it as sort of
+a recognition of the fact that yes, scripts are workflows too. Or at least scripts can be workflows too. Not every script is a workflow. But often times a script can be
+a workflow in that it automates certain repetitive tasks or it describes
+really a computational pipeline. If you compare a script to some
+of the characteristic features of a workflow system, you see it gets its
+job done of automation quite well. When it comes to scaling, that's maybe
+a little more difficult if you use a certain library together with your code,
+you can then maybe paralyze your code. So there's some support for that but
+still requires a lot of additional effort. But abstraction is really I think the main
+thing where scripts somewhat fall short. They're fine for the author who wrote
+them, but they're kind of hard to extract the sort of more high level conceptual
+view of what the script is doing. Again, what are the inputs? What are the outputs? What are the intermediate steps? What are the intermediate products? So this where we really
+want to make a contribution. And then in terms of Provenance support, again scripts can actually
+record their own Provenance. Maybe user writes a log file that
+documents what the script is doing. Maybe you have a generic library that
+writes, that records, intercepts, maybe read and write operations and
+kind of traces what's going on. So there is such support also. So it's a little bit better than, I think, their support for abstraction and workflow models but
+it is still somewhat limited. So this is where the motivation
+comes from for the YesWorkflow tool. We would like to go from scripts
+somehow to workflow diagram that tells us something about
+the processing history and the data lineage of data that pops out at
+the end of such script based workflow. So let me jump right in and show you
+some examples here how that is done. And there's an associated
+reading as usual. So here is a snippet of code. In this case, this is Python code. And in order to use that YesWorkflow
+approach, what the user has to do, or the author, it should be really
+the author of the script who knows best what the script is doing. There should be some declarations
+embedded in the script. And they are not meant to document
+exactly what the code is doing. Because what the code is doing there's
+already coding comments in there. It's really more about describing
+the things that are not in the code or at least not obvious from the code or
+not even at all in the code. And what is that? If you think of a problem standard, we
+heard that there are these Activities or how we would like to call
+them according to the OPM model the previous standard processes. What other processes. We think of them as steps. I like to use sort of
+a somewhat more generic term What are the computational
+steps of my methods? And we're going to look at this
+in more detail, but basically you just declare a step by saying here's
+the beginning, here's the end of the step. Typically, you would embed
+this in the code because you get the additional
+benefit that you can then connect your conceptual model with
+the code right there in one place. But you might as well create that model. Outside of your script. You might do it on a piece of paper or in a separate file that is somehow
+separate from the script itself. Or maybe you don't have
+the script quite yet. And so you can create these workflow
+models in the simple annotation language inside of the code. As embedded comments or
+outside of the code if you prefer. And the basic mechanism by which
+you define this is you say, here is a code block or here is a step,
+really that here's the beginning and end. So you just declare the step, and then
+you just basically say what goes in and out of the step. So in the end it's rather simple. You just say This is a step and
+this goes in and this goes out. And by wiring this together
+the workflow diagram is obtained. So here's an example of the right and we're going to look at some of this
+more closely of such a work flow. The green boxes indicate steps, again the providence models you
+would think of this as a process. Maybe even an activity, but for
+our purposes, it's a computational step. It's a method somehow, and a data transformation step,
+maybe a data cleaning step. And then the more yellowish nodes
+are the data that flows between the steps. And you can easily imagine that
+it's not terrible difficult to create these diagrams You basically
+have to say what are those boxes and how do they connect to one another? And the simple way again to do this is
+to declare the green boxes as saying here's such a green box, here's a step. And then you say what goes in and
+out of the step. And then we use an external
+tool called graph base. That gives us a nice layout, so we don't
+have to worry about the visualization. We outsource that to another tool. And what does this give you if you have,
+like in this case, spent maybe half an hour
+on marking up your script? Once you get the hang of it,
+it shouldn't take all that long. Well, I should say there's
+also modeling freedom. May be something that's
+sometimes underestimated. Maybe you don't need a complex
+workflow diagram like that. Maybe you do one big green box that says,
+this is what my method does. It's one box, I call it my method,
+maybe poly OCR or clean this, or whatever is your application. And then you just declare the inputs and
+outputs, and you're done. Yeah, that's maybe a starting point. Well you say, you know what? I think i really need to reveal
+what's going on inside of the box. And then, this is an example of the
+diagram that you see here in the right. Here, we've opened up the box, and we can see that it consist of multiple
+steps that are connected in a certain way. Once you've spent the effort of Doing
+this additional what feels like maybe a metadata chore, but you do
+get some value out of it immediately. First of all, you can create
+different views on top of that. So you model this once, and
+then you can tell the tool, and say, I would like to see just the steps. Just give me the steps. Is it even more abstract
+view of the diagram, just let's not get lost in the data. Or you can say no wait a minute,
+I'm really interested in data let's not show the steps,
+let's just connect the data. So this is in some sense similar
+to the west derived relationship that we had in the promise standard. Only that this is, at this point,
+still a workflow model. This is not retrospective providence. We have not recorded any
+actual execution yet. This is something that we've sort
+of declared or made known upfront. This is how our method works. And then of course,
+we can have the combined view, which I think of as the default view for
+YesWorkflow models. You've marked up your
+script if you have one or you've just created this
+model using annotations. So you're having these boxes
+that stand for steps and you have data that flows
+between the steps. So again you get all of these
+three different models for free once you've modeled
+the one on bottom basically. So that the one on the top,
+that the first two become free. [MUSIC] [SOUND]

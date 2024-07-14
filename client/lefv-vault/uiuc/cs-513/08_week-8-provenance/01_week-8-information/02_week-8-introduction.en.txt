@@ -1,0 +1,24 @@
+[MUSIC] Hello and welcome back to theory and
+practice of data cleaning. In previous videos, we have introduced
+workflows as a means to automate data cleaning and analysis pipelines. We have also taken a first
+look at workflows as a form of prospective provenance. That describes the data flow or recipe by which input data moves through
+a workflow while being transformed. And giving rise to intermediate and
+final data outputs. In these week's videos,
+we will take a closer look at provenance. Provenance describes the origin and
+history of artifacts. Provenance also plays a prominent
+role in the national sciences. Where researchers are trying
+to understand the world and the present by looking at the past. For example, biologists study
+the natural history of life on earth and specifically the phylogeny or
+tree of life of organisms. In astronomy or astrophysics, provenance questions are studied
+in an area called cosmology. Closer from home, we may study the
+geneology that is our family history or someone's academic pedigree,
+that is the tree of academic ancestors. In languages we study etymology, that is
+the origin of words and their meanings. In the computational and data sciences,
+we are interested, of course, in the computational provenance of data. For example, to guarantee transparency and
+reproducibility of our methods. And to allow others to inspect
+the quality of the processes that lead to the result data. As opposed to looking
+only at the end product, that is only a data quality itself. In upcoming videos we will
+also look at example tools and projects in which provenance
+is prominently used. For this we will learn about the workflow
+tool and the DataONE project, respectively. Okay, let's get started with
+our lectures on provenance. [MUSIC]

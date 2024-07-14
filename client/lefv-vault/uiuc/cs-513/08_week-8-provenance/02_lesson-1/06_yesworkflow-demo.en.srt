@@ -1,0 +1,899 @@
+1
+00:00:00,000 --> 00:00:08,752
+[MUSIC]
+
+2
+00:00:08,752 --> 00:00:13,803
+We think of a script as an overall box, so
+there's an interface to the outside and
+
+3
+00:00:13,803 --> 00:00:19,260
+then on the inside, typically, we tell
+more about the workflow on the inside.
+
+4
+00:00:19,260 --> 00:00:22,172
+This case on the inside
+there's not a lot going on, so
+
+5
+00:00:22,172 --> 00:00:25,626
+It's really just this code
+called print_greeting.
+
+6
+00:00:25,626 --> 00:00:29,695
+Just greet the program user, maybe we
+want to see, we say program users,
+
+7
+00:00:29,695 --> 00:00:32,130
+you see it dynamically updates this.
+
+8
+00:00:32,130 --> 00:00:36,763
+It's actually fairly dynamic for
+the fact that behind it is a somewhat old
+
+9
+00:00:36,763 --> 00:00:40,587
+fashioned clunky,command line
+base tool called Graphis.
+
+10
+00:00:40,587 --> 00:00:44,817
+But, you know, the web set up is in such
+a way that it uses micro service and
+
+11
+00:00:44,817 --> 00:00:47,520
+it's fairly efficient in that.
+
+12
+00:00:47,520 --> 00:00:52,286
+So greet the program user I can say,
+maybe with an exclamation mark,
+
+13
+00:00:52,286 --> 00:00:54,351
+it's interactive this way.
+
+14
+00:00:54,351 --> 00:00:57,929
+If I had additional outputs,
+I could create also more outputs.
+
+15
+00:01:00,183 --> 00:01:06,310
+Maybe happiness is another
+side effect of this output.
+
+16
+00:01:07,590 --> 00:01:14,263
+And these annotations are done with this
+ampersand sign, in, out, begin and end.
+
+17
+00:01:14,263 --> 00:01:15,909
+But they have to be inside of a comment.
+
+18
+00:01:15,909 --> 00:01:18,790
+So yes only looks inside of comments.
+
+19
+00:01:18,790 --> 00:01:22,790
+So since this is not inside of
+a comment yet, ignores this.
+
+20
+00:01:22,790 --> 00:01:24,570
+Once I put the hash sign there,
+
+21
+00:01:25,700 --> 00:01:30,860
+it becomes recognized as a comment and
+that's now why you see this output.
+
+22
+00:01:32,540 --> 00:01:39,065
+And I could say similar things like here,
+
+23
+00:01:39,065 --> 00:01:45,420
+I guess it's yeah stream standard out.
+
+24
+00:01:45,420 --> 00:01:49,050
+Could be modeled, why does it?
+
+25
+00:01:49,050 --> 00:01:51,800
+Okay so we have the first question.
+
+26
+00:01:51,800 --> 00:01:55,830
+Why does this output, why is that not
+shown in the same way as this one.
+
+27
+00:01:56,970 --> 00:01:58,682
+Anybody see why that might be the case.
+
+28
+00:02:04,482 --> 00:02:07,020
+Actually, I don't see it.
+
+29
+00:02:12,114 --> 00:02:13,880
+What is different, between those two?
+
+30
+00:02:13,880 --> 00:02:15,250
+Find the one difference.
+
+31
+00:02:16,500 --> 00:02:18,450
+Okay, I see the difference.
+
+32
+00:02:18,450 --> 00:02:24,520
+So we're declaring that
+the print_greeting step has two outputs,
+
+33
+00:02:24,520 --> 00:02:25,740
+happiness and greetings.
+
+34
+00:02:26,760 --> 00:02:30,810
+But the happiness is not declared
+as an output of the overall steps.
+
+35
+00:02:30,810 --> 00:02:32,370
+This is like intermediate data.
+
+36
+00:02:33,490 --> 00:02:36,470
+But let's say we want to advertise this,
+this is a global output.
+
+37
+00:02:36,470 --> 00:02:39,580
+Then we need to do a similar thing here,
+
+38
+00:02:39,580 --> 00:02:43,730
+we need to declare
+another output globally.
+
+39
+00:02:43,730 --> 00:02:46,320
+And let's say maybe happiness is
+something that we're going to export.
+
+40
+00:02:47,510 --> 00:02:52,310
+And again I'm writing it first without
+the comment syntax so the system
+
+41
+00:02:52,310 --> 00:02:57,320
+doesn't try to proactively render it
+while I'm still creating the annotation.
+
+42
+00:02:57,320 --> 00:03:01,570
+So once I've created the annotation I can
+put the pound sign in front which makes it
+
+43
+00:03:01,570 --> 00:03:07,910
+a comment which make this workflow
+react to it, so that it is, okay.
+
+44
+00:03:07,910 --> 00:03:12,387
+So now print greetings has to
+outputs the greeting itself and
+
+45
+00:03:12,387 --> 00:03:15,740
+also happiness is somehow
+created that way.
+
+46
+00:03:15,740 --> 00:03:19,851
+So let's loop before we move on or
+before we finish up here,
+
+47
+00:03:19,851 --> 00:03:23,950
+let me just show slightly
+more advance examples.
+
+48
+00:03:23,950 --> 00:03:26,950
+So here is the greetings example.
+
+49
+00:03:26,950 --> 00:03:30,280
+Now you see this is more
+realistic workflow.
+
+50
+00:03:30,280 --> 00:03:35,080
+So it has three input, greeting is
+provided, there's an emphasis and
+
+51
+00:03:35,080 --> 00:03:37,800
+then there's an emphasis count.
+
+52
+00:03:37,800 --> 00:03:39,100
+You see also a difference.
+
+53
+00:03:40,670 --> 00:03:43,190
+We can distinguish between data and
+parameters.
+
+54
+00:03:43,190 --> 00:03:46,610
+This is something a script
+could not tell you, why?
+
+55
+00:03:46,610 --> 00:03:49,020
+Because it's the eye of the beholder.
+
+56
+00:03:49,020 --> 00:03:51,880
+What is the difference normally
+between data and a parameter?
+
+57
+00:03:51,880 --> 00:03:55,560
+We think of it in a model, we say,
+well parameters are meant to change
+
+58
+00:03:55,560 --> 00:04:01,210
+the behavior may be of the system and the
+data is the thing that's being consumed.
+
+59
+00:04:01,210 --> 00:04:03,800
+So there's some sort of a qualitative or
+conceptual difference,
+
+60
+00:04:03,800 --> 00:04:06,740
+it's hard to pin down, and
+that you wouldn't see in the code.
+
+61
+00:04:06,740 --> 00:04:10,860
+It's really in the way you think about it,
+so we think of the emphasis count as
+
+62
+00:04:10,860 --> 00:04:13,950
+a parameter that changes
+the behavior of the script.
+
+63
+00:04:13,950 --> 00:04:19,030
+Maybe if the emphasis count is ten,
+you say print hello world ten times.
+
+64
+00:04:19,030 --> 00:04:21,500
+And if the count is three,
+you put the three times.
+
+65
+00:04:21,500 --> 00:04:24,530
+That changes the behavior but
+the provided greeting and
+
+66
+00:04:24,530 --> 00:04:30,480
+the provided emphasis are really
+data that are sort of consumed and
+
+67
+00:04:30,480 --> 00:04:32,980
+in this case we use to
+produce the desired output.
+
+68
+00:04:34,750 --> 00:04:39,360
+So in this case again you have
+the very similar set up as before.
+
+69
+00:04:39,360 --> 00:04:44,580
+You declare the overall workflow and
+declare the global inputs and outputs.
+
+70
+00:04:44,580 --> 00:04:50,572
+You see here are two inputs,
+the provided_greeting,
+
+71
+00:04:50,572 --> 00:04:56,448
+the provided_emphasis,
+and the emphasis_count.
+
+72
+00:04:56,448 --> 00:04:58,090
+And so you can interactively change that.
+
+73
+00:04:58,090 --> 00:05:01,485
+And there's a single output overall,
+which is the displayed_greeting.
+
+74
+00:05:01,485 --> 00:05:05,166
+And then inside you will
+have the emphasis_greeting,
+
+75
+00:05:05,166 --> 00:05:11,590
+which is this code block, and then the
+print_greeting, which is this code block.
+
+76
+00:05:11,590 --> 00:05:17,680
+And you see in this case, there's a simple
+loop that repeats a number of times,
+
+77
+00:05:17,680 --> 00:05:20,380
+your greeting, which is the greeting
+plus the emphasis, yeah.
+
+78
+00:05:22,036 --> 00:05:24,770
+And so it goes.
+
+79
+00:05:24,770 --> 00:05:29,953
+Now, so you've created this model, again
+it becomes an artifact that you can use,
+
+80
+00:05:29,953 --> 00:05:33,172
+and you can do certain things now for
+free with this.
+
+81
+00:05:33,172 --> 00:05:37,495
+So you can display it maybe top down or
+left to right,
+
+82
+00:05:37,495 --> 00:05:42,702
+yeah because this is in the system
+modeled as a data structure,
+
+83
+00:05:42,702 --> 00:05:49,880
+you can tell it, tell the underlined graph
+is tool to render it in different ways.
+
+84
+00:05:49,880 --> 00:05:58,520
+Or you can emphasize maybe just the steps,
+so you switch off the data.
+
+85
+00:05:58,520 --> 00:06:02,672
+This is sometimes a bit confusing, which
+button is on and which button is off.
+
+86
+00:06:02,672 --> 00:06:06,210
+So I clicked on data,
+to switch off the data.
+
+87
+00:06:06,210 --> 00:06:07,809
+Therefore, I now see the steps.
+
+88
+00:06:07,809 --> 00:06:12,090
+The steps are really only two steps.
+
+89
+00:06:12,090 --> 00:06:15,700
+Or if I switch off the steps,
+in this case, I must show the data.
+
+90
+00:06:16,710 --> 00:06:18,390
+And this, this is just the data.
+
+91
+00:06:18,390 --> 00:06:21,670
+Where I can have them
+both connected together.
+
+92
+00:06:21,670 --> 00:06:25,666
+There is also another little setting
+where you can switch off and
+
+93
+00:06:25,666 --> 00:06:28,310
+on the port to the outside.
+
+94
+00:06:28,310 --> 00:06:31,823
+Yeah, If you are not interested in the
+interface to the outside you switch off
+
+95
+00:06:31,823 --> 00:06:33,659
+the ports, or you switch the ports on and
+
+96
+00:06:33,659 --> 00:06:36,540
+then you see that this workflow
+has three inputs, one output.
+
+97
+00:06:38,800 --> 00:06:41,350
+Can switch off the title and some, okay.
+
+98
+00:06:41,350 --> 00:06:46,600
+So again, this is meant as a first
+introduction to, yes, workflow and
+
+99
+00:06:46,600 --> 00:06:52,710
+here's the particular workflow or
+script that we've looked at before.
+
+100
+00:06:52,710 --> 00:06:54,170
+It has this energy levels and
+
+101
+00:06:54,170 --> 00:06:58,180
+all of that good stuff so
+you see there's a quite bit of code.
+
+102
+00:06:58,180 --> 00:07:01,270
+And in the realistic example the number of
+
+103
+00:07:01,270 --> 00:07:04,030
+annotations to the code
+is actually not that bad.
+
+104
+00:07:04,030 --> 00:07:07,300
+In the toy example you see a lot of
+annotation, very little code, in
+
+105
+00:07:07,300 --> 00:07:13,100
+the realistic example you would have lots
+of code, and not too many annotations.
+
+106
+00:07:13,100 --> 00:07:17,710
+And then you get this rather
+detailed picture here.
+
+107
+00:07:17,710 --> 00:07:22,840
+So, let's switch off the data for
+a moment, and focus on the steps,
+
+108
+00:07:22,840 --> 00:07:25,940
+so you can see you get an overview
+of what the script is doing already,
+
+109
+00:07:25,940 --> 00:07:27,470
+by just looking at the steps.
+
+110
+00:07:27,470 --> 00:07:30,430
+Let's actually switch off
+the ports as well, and
+
+111
+00:07:30,430 --> 00:07:34,080
+we have a nicer cleaner picture here.
+
+112
+00:07:34,080 --> 00:07:36,421
+So, there's a step,
+called, initialize_run.
+
+113
+00:07:36,421 --> 00:07:40,718
+At this point seems to be disconnected,
+that's going to be an interesting puzzle,
+
+114
+00:07:40,718 --> 00:07:42,320
+how that factors in.
+
+115
+00:07:42,320 --> 00:07:45,587
+And then there's a connected component,
+we load screening results,
+
+116
+00:07:45,587 --> 00:07:46,791
+we calculate a strategy.
+
+117
+00:07:46,791 --> 00:07:50,973
+And then we have two outcomes,
+or two branches,
+
+118
+00:07:50,973 --> 00:07:54,240
+one is logging the rejected samples.
+
+119
+00:07:54,240 --> 00:07:55,524
+So these are the samples.
+
+120
+00:07:55,524 --> 00:07:59,960
+That we put in our machine but we said
+well this is not a good enough quality.
+
+121
+00:07:59,960 --> 00:08:03,228
+I'm not going to use that to
+make an image of that and
+
+122
+00:08:03,228 --> 00:08:07,155
+then the other ones are going
+in the collect data set step.
+
+123
+00:08:07,155 --> 00:08:12,640
+And then we transform the images and
+then we also log some other result.
+
+124
+00:08:14,610 --> 00:08:17,459
+So if I switch on this thing again,
+
+125
+00:08:17,459 --> 00:08:22,290
+lets zoom in a little bit to
+see whether we can, 150%.
+
+126
+00:08:22,290 --> 00:08:25,956
+So this is a more detailed
+view of the script,
+
+127
+00:08:25,956 --> 00:08:29,820
+lets test something in between,
+okay so yeah.
+
+128
+00:08:32,100 --> 00:08:38,930
+So you see how the different steps
+are connected through these data items.
+
+129
+00:08:38,930 --> 00:08:40,840
+You see a lot of white boxes here.
+
+130
+00:08:40,840 --> 00:08:43,490
+The white boxes are parameters.
+
+131
+00:08:44,670 --> 00:08:49,880
+Yeah, so we don't think of them as data,
+we think of them as parameters.
+
+132
+00:08:50,970 --> 00:08:52,060
+And there's log files, and
+
+133
+00:08:52,060 --> 00:08:56,410
+here's something that I mentioned earlier
+that might have gone lost before.
+
+134
+00:08:56,410 --> 00:09:01,550
+So I'm going to zoom into
+this quite a bit more.
+
+135
+00:09:01,550 --> 00:09:07,450
+You recall that we talked
+earlier about UriTemplates.
+
+136
+00:09:07,450 --> 00:09:09,180
+So what is a UriTemplate?
+
+137
+00:09:09,180 --> 00:09:14,062
+So conceptually what I want to say, here's
+maybe a step called transform_images and
+
+138
+00:09:14,062 --> 00:09:19,180
+what transform_images does, it takes raw
+images and produces corrected images.
+
+139
+00:09:19,180 --> 00:09:22,260
+Easy enough to understand
+once we look at this.
+
+140
+00:09:22,260 --> 00:09:24,410
+But where are the raw images?
+
+141
+00:09:24,410 --> 00:09:28,820
+Well the raw images are sitting on a file,
+it could be reachable via URL, but
+
+142
+00:09:28,820 --> 00:09:30,350
+in this case we are a file.
+
+143
+00:09:30,350 --> 00:09:33,810
+What is the structure or
+where is the location of this file?
+
+144
+00:09:33,810 --> 00:09:36,830
+Well there's a run folder.
+
+145
+00:09:36,830 --> 00:09:42,350
+Which has a raw images sub-folder,
+and now here the fun starts.
+
+146
+00:09:42,350 --> 00:09:46,205
+There is another sub-folder but
+you see those curly braces,
+
+147
+00:09:46,205 --> 00:09:48,390
+you see how it says cassette -id.
+
+148
+00:09:48,390 --> 00:09:50,679
+This is a template variable,
+
+149
+00:09:50,679 --> 00:09:55,529
+this tells us that under the raw
+sub-folder in the run folder,
+
+150
+00:09:55,529 --> 00:10:01,681
+there are these cassette id sub-folders,
+maybe two, maybe one, maybe ten.
+
+151
+00:10:01,681 --> 00:10:05,127
+It also tells us that whatever that folder
+name is, we're going to use that as
+
+152
+00:10:05,127 --> 00:10:08,040
+a cassette_id, so we can have
+harvest that and figure it out.
+
+153
+00:10:09,300 --> 00:10:12,958
+Now within the cassette, every cassette
+consists of a bunch of samples so
+
+154
+00:10:12,958 --> 00:10:14,323
+what are the sample_ids?
+
+155
+00:10:14,323 --> 00:10:20,430
+Well we go into the cassette folder and
+look at the samples in there.
+
+156
+00:10:20,430 --> 00:10:23,030
+And so
+this is the sample id that we can extract.
+
+157
+00:10:23,030 --> 00:10:27,956
+And then for each sample we might have
+taken images at different energy levels
+
+158
+00:10:27,956 --> 00:10:33,658
+and this is indicated here so the folder
+is actually called e10000 or e11000.
+
+159
+00:10:33,658 --> 00:10:38,361
+And so we cam extract just like for
+the regular expression we could
+
+160
+00:10:38,361 --> 00:10:42,980
+extract the number after the e and
+have that metadata.
+
+161
+00:10:42,980 --> 00:10:46,070
+So this is part of the model
+that the user has to create.
+
+162
+00:10:46,070 --> 00:10:49,310
+So whoever wrote this script, right,
+somebody writes the script, so
+
+163
+00:10:49,310 --> 00:10:52,850
+somebody is creating a folder structure.
+
+164
+00:10:54,160 --> 00:10:57,200
+And that same person
+would probably be a very
+
+165
+00:10:57,200 --> 00:11:00,000
+ideal candidate to write
+these annotations.
+
+166
+00:11:00,000 --> 00:11:06,750
+So basically declaring, this is what
+I've done so it's an explicit step but
+
+167
+00:11:06,750 --> 00:11:12,180
+by doing so now the system can extract
+that information and now work with it.
+
+168
+00:11:13,600 --> 00:11:17,140
+So if you look at the raw image and
+then you look at the corrected image, so
+
+169
+00:11:17,140 --> 00:11:20,540
+here's your sort of secret sauce.
+
+170
+00:11:20,540 --> 00:11:25,300
+You have described the structure of
+the raw images folder here, run raw.
+
+171
+00:11:25,300 --> 00:11:26,840
+And then for the transform,
+
+172
+00:11:26,840 --> 00:11:29,840
+for the corrected images
+you have a run data folder.
+
+173
+00:11:31,130 --> 00:11:33,390
+Could call it run corrected right?
+
+174
+00:11:33,390 --> 00:11:36,814
+Raw and data could also be called raw and
+corrected.
+
+175
+00:11:36,814 --> 00:11:40,715
+And you see the correspondence here
+in the structure and of course,
+
+176
+00:11:40,715 --> 00:11:43,600
+you can then use that to
+write queries against it.
+
+177
+00:11:45,930 --> 00:11:48,798
+So somebody has to this, yes.
+
+178
+00:11:48,798 --> 00:11:53,240
+All right,
+I think I want to leave it at that,
+
+179
+00:11:53,240 --> 00:11:57,720
+that gives you a first idea and
+this tool, you're going to be able,
+
+180
+00:11:57,720 --> 00:12:02,070
+in fact you need to use for
+your group project.
+
+181
+00:12:02,070 --> 00:12:07,760
+So when you model your data cleaning
+workflow, you may not have a script
+
+182
+00:12:07,760 --> 00:12:11,730
+you might just have your overall
+workflow but you start with open refine.
+
+183
+00:12:11,730 --> 00:12:14,866
+And maybe you have a load script
+you load it into SQL lite and
+
+184
+00:12:14,866 --> 00:12:16,859
+then maybe you create some reports.
+
+185
+00:12:16,859 --> 00:12:22,420
+And maybe you visualise the reports and
+then you can write sort of a workflow
+
+186
+00:12:22,420 --> 00:12:29,930
+model that you can devise a workflow model
+that That documents what you've done.
+
+187
+00:12:29,930 --> 00:12:31,970
+And then you can, again,
+ask questions about that.
+
+188
+00:12:33,230 --> 00:12:37,100
+All right, so
+we'll leave it at this for now.
+
+189
+00:12:37,100 --> 00:12:44,575
+And then next week we continue with
+
+190
+00:12:46,380 --> 00:12:53,342
+prominence and also continuous
+
+191
+00:12:53,342 --> 00:12:58,249
+of this demonstration
+
+192
+00:12:58,249 --> 00:12:59,816
+[MUSIC]

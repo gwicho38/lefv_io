@@ -1,0 +1,462 @@
+1
+00:00:00,025 --> 00:00:02,590
+Hello everyone, welcome to CS 421.
+
+2
+00:00:02,590 --> 00:00:05,580
+This video we're going to talk
+about some basic recursion.
+
+3
+00:00:05,580 --> 00:00:09,320
+I think you're already pretty familiar
+with this from other classes you've taken
+
+4
+00:00:09,320 --> 00:00:11,510
+and other experienced programming.
+
+5
+00:00:11,510 --> 00:00:15,410
+But I did want to go over what's
+happening in the stack frame and
+
+6
+00:00:15,410 --> 00:00:19,340
+show you some things that are going on
+because the next video after this one will
+
+7
+00:00:19,340 --> 00:00:21,780
+show a very powerful optimization.
+
+8
+00:00:21,780 --> 00:00:24,720
+So your objectives are to
+diagram the stack frames that
+
+9
+00:00:24,720 --> 00:00:26,590
+result from function calls.
+
+10
+00:00:26,590 --> 00:00:30,770
+And we're going to use Haskell to write
+recursive functions both on integers and
+
+11
+00:00:30,770 --> 00:00:31,980
+on link lists.
+
+12
+00:00:31,980 --> 00:00:34,720
+This way it'll help you become
+more familiar with the syntax.
+
+13
+00:00:34,720 --> 00:00:38,848
+So, here's a function definition, so
+we define this function into foo and
+
+14
+00:00:38,848 --> 00:00:40,018
+has one parameter a.
+
+15
+00:00:40,018 --> 00:00:43,434
+And inside the body of the function,
+here's some new syntax,
+
+16
+00:00:43,434 --> 00:00:45,050
+it's called the let syntax.
+
+17
+00:00:45,050 --> 00:00:50,890
+It's kind of where, but the definitions
+of the locals come before the stuff.
+
+18
+00:00:50,890 --> 00:00:54,870
+So here, aa = a * a, in aa + a.
+
+19
+00:00:54,870 --> 00:00:59,850
+So when we call it, we're going to have
+some memory allocated for the a and for
+
+20
+00:00:59,850 --> 00:01:00,770
+the aa as well.
+
+21
+00:01:00,770 --> 00:01:02,620
+So we have a parameter and a local.
+
+22
+00:01:02,620 --> 00:01:07,050
+So we call foo on 1,
+that's going to return, 1 + 1 is 2.
+
+23
+00:01:07,050 --> 00:01:10,653
+And then we're going to make a second
+call, which is going to return 2 + 4.
+
+24
+00:01:10,653 --> 00:01:12,358
+And then we're going to
+make this third call.
+
+25
+00:01:12,358 --> 00:01:16,810
+So every time we make a function call,
+some space is allocated in the computer
+
+26
+00:01:16,810 --> 00:01:21,320
+to keep track of all the variables that
+are necessary to compute the function.
+
+27
+00:01:21,320 --> 00:01:24,090
+If one function calls another function,
+
+28
+00:01:24,090 --> 00:01:27,060
+then both of these memory locations
+are active at the same time.
+
+29
+00:01:27,060 --> 00:01:28,960
+They're called activation records.
+
+30
+00:01:28,960 --> 00:01:34,146
+So here I'm calling foo on 1, so
+x is the parameter, has a 1 in it.
+
+31
+00:01:34,146 --> 00:01:37,948
+Now we're going to call bar with 2 and
+then bar is going to call bars.
+
+32
+00:01:37,948 --> 00:01:41,143
+And bars is going to compute
+its return result, 30 and
+
+33
+00:01:41,143 --> 00:01:44,556
+that's going to pass it back
+to the bar activation record.
+
+34
+00:01:44,556 --> 00:01:47,790
+Similarly, we're going to
+compute 30 + 2 to get 32 and
+
+35
+00:01:47,790 --> 00:01:52,500
+return that back to foo's activation
+record, final result will be 33.
+
+36
+00:01:52,500 --> 00:01:55,730
+So this also works if
+a function is recursive.
+
+37
+00:01:55,730 --> 00:01:57,569
+So I'm not going to step
+through all of it, but
+
+38
+00:01:57,569 --> 00:01:59,388
+here's the famous factorial function.
+
+39
+00:01:59,388 --> 00:02:01,120
+And if we call factorial on 4,
+
+40
+00:02:01,120 --> 00:02:04,230
+you see it has to create all these
+different activation records.
+
+41
+00:02:04,230 --> 00:02:07,710
+So the fact itself will be
+called four different times
+
+42
+00:02:07,710 --> 00:02:11,480
+before returning its result
+each to the previous caller.
+
+43
+00:02:11,480 --> 00:02:15,130
+So this is a fairly standard
+recursion on integers.
+
+44
+00:02:15,130 --> 00:02:20,592
+Notice the syntax again, fact on 0 returns
+1, fact applied to 1 returns 1 and
+
+45
+00:02:20,592 --> 00:02:25,250
+fact applied to anything else
+returns that times the fact to n- 1.
+
+46
+00:02:25,250 --> 00:02:28,731
+Now you've seen link list a little
+bit in the previous videos,
+
+47
+00:02:28,731 --> 00:02:31,234
+now let's talk about
+them a little bit more.
+
+48
+00:02:31,234 --> 00:02:35,250
+So there is several different syntaxes
+we can use, one is for the empty list.
+
+49
+00:02:35,250 --> 00:02:37,880
+You just put open and
+close square brackets and
+
+50
+00:02:37,880 --> 00:02:42,650
+then you see the colon notation is
+used if you want to create a new list.
+
+51
+00:02:42,650 --> 00:02:46,340
+So here 1 : 2 : 3 : 4, blah, blah, blah.
+
+52
+00:02:46,340 --> 00:02:48,570
+That gives you this link
+list pattern in memory.
+
+53
+00:02:48,570 --> 00:02:53,147
+And there's also the shorthand annotation
+if you want to write it out all at once
+
+54
+00:02:53,147 --> 00:02:54,799
+just with 1, 2, 3, 4.
+
+55
+00:02:54,799 --> 00:02:59,458
+Now one thing to remember is colon in
+Haskell does not modify an existing list,
+
+56
+00:02:59,458 --> 00:03:01,490
+it creates a brand new one.
+
+57
+00:03:01,490 --> 00:03:06,396
+So when I say 1: 2, 3, 4 list already
+exists and then it make the 1: and
+
+58
+00:03:06,396 --> 00:03:08,930
+it points to the 2, 3, 4 list.
+
+59
+00:03:08,930 --> 00:03:13,100
+Now, here's example of a function
+that's written for lists.
+
+60
+00:03:13,100 --> 00:03:15,240
+So we have it, it's called my length.
+
+61
+00:03:15,240 --> 00:03:19,012
+Length is already built in so
+we can't reuse that name or I'll complain.
+
+62
+00:03:19,012 --> 00:03:24,106
+But notice the type signature, it takes
+a list of a and returns an integer.
+
+63
+00:03:24,106 --> 00:03:27,654
+So basically it's saying that we don't
+care what the list contains, because we're
+
+64
+00:03:27,654 --> 00:03:31,260
+not actually going to look at anything,
+we're just going to count the elements.
+
+65
+00:03:31,260 --> 00:03:34,995
+So the length of the empty list is 0,
+that's what you see on line 2.
+
+66
+00:03:34,995 --> 00:03:39,680
+And on line 3, the length of a list with
+some data in it is 1 plus the length of
+
+67
+00:03:39,680 --> 00:03:41,200
+the rest of the list.
+
+68
+00:03:41,200 --> 00:03:45,560
+So if we had s from
+the previous slide over here.
+
+69
+00:03:45,560 --> 00:03:48,580
+Well anyway, let's suppose we has
+s has some three elements in it,
+
+70
+00:03:48,580 --> 00:03:50,730
+we can call length on that and
+it'll return 3.
+
+71
+00:03:50,730 --> 00:03:54,100
+So and again, notice the pattern
+of how the recursion works.
+
+72
+00:03:54,100 --> 00:03:57,570
+The base case has to stop the computation,
+so that's the empty list.
+
+73
+00:03:57,570 --> 00:04:01,040
+And the recursive case we're calling
+the recursion on something smaller than
+
+74
+00:04:01,040 --> 00:04:02,240
+the original list.
+
+75
+00:04:02,240 --> 00:04:06,511
+So xs has one fewer elements than x:xs.
+
+76
+00:04:06,511 --> 00:04:08,300
+All right, I want you to do this activity.
+
+77
+00:04:08,300 --> 00:04:10,390
+Here's three functions I
+want you to try writing.
+
+78
+00:04:10,390 --> 00:04:14,409
+So go ahead an hit Pause, and
+then see if you can write these things and
+
+79
+00:04:14,409 --> 00:04:15,389
+play with them.
+
+80
+00:04:15,389 --> 00:04:18,738
+And then when you're done and you want
+to check your work, just hit UnPause and
+
+81
+00:04:18,738 --> 00:04:20,070
+I'll show you the solutions.
+
+82
+00:04:21,360 --> 00:04:26,600
+All right, so here's the Fibonacci
+function, fib of 1 is 1, fib of 2 is 1 and
+
+83
+00:04:26,600 --> 00:04:30,780
+then fib of n is fib of n- 1 + n- 2.
+
+84
+00:04:30,780 --> 00:04:33,180
+It's a fairly famous
+occurrence relationship, and
+
+85
+00:04:33,180 --> 00:04:35,350
+it's actually very inefficient.
+
+86
+00:04:35,350 --> 00:04:38,310
+There are more efficient
+ways of computing this.
+
+87
+00:04:38,310 --> 00:04:40,200
+We can talk about that some other time.
+
+88
+00:04:40,200 --> 00:04:44,545
+And also we have sumList,
+which is like a built in sum function.
+
+89
+00:04:44,545 --> 00:04:48,361
+But instead of counting the elements of
+the list like the previous function we
+
+90
+00:04:48,361 --> 00:04:51,240
+wrote, this actually adds up the elements.
+
+91
+00:04:51,240 --> 00:04:54,930
+So for incList, notice that
+we're creating a brand new list,
+
+92
+00:04:54,930 --> 00:04:56,590
+we're not modifying the original data.
+
+93
+00:04:56,590 --> 00:05:00,670
+And this is one of the features of
+Haskell, as all data is immutable.
+
+94
+00:05:00,670 --> 00:05:06,070
+We don't modify anything directly,
+instead we create a copy and return that.
+
+95
+00:05:06,070 --> 00:05:08,180
+That's one of the hallmarks
+of functional programming.
+
+96
+00:05:08,180 --> 00:05:10,518
+So that's it for basic recursion.
+
+97
+00:05:10,518 --> 00:05:12,171
+Here's a little historical note.
+
+98
+00:05:12,171 --> 00:05:17,658
+The first programming language to
+actually use recursion was LISP in 1958.
+
+99
+00:05:17,658 --> 00:05:21,382
+And you can read more about
+that in this article here.

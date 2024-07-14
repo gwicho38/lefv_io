@@ -1,0 +1,523 @@
+1
+00:00:07,540 --> 00:00:11,355
+Sometimes, when you make an alignment like this one here,
+
+2
+00:00:11,355 --> 00:00:14,060
+it's not obvious at all but it is the case that it is
+
+3
+00:00:14,060 --> 00:00:16,905
+logically inconsistent. You cannot have that.
+
+4
+00:00:16,905 --> 00:00:20,449
+It's like saying X is greater than Y or that Y is also greater than X.
+
+5
+00:00:20,449 --> 00:00:22,890
+Well, that just does not work.
+
+6
+00:00:22,890 --> 00:00:26,324
+You can't have that. We can't say that two sets overlap and they're also disjointed.
+
+7
+00:00:26,324 --> 00:00:27,620
+It just doesn't work.
+
+8
+00:00:27,620 --> 00:00:29,714
+But if you put this in an input alignment,
+
+9
+00:00:29,714 --> 00:00:31,429
+it's not obvious that it's inconsistent.
+
+10
+00:00:31,429 --> 00:00:35,229
+So what you need to do that is to debug or repair your alignment.
+
+11
+00:00:35,229 --> 00:00:36,759
+And what we create there,
+
+12
+00:00:36,759 --> 00:00:38,630
+so we've developed an approach or adopted
+
+13
+00:00:38,630 --> 00:00:41,799
+an approach that's called model-based diagnosis. Here's an example.
+
+14
+00:00:41,799 --> 00:00:43,530
+There's four input articulation,
+
+15
+00:00:43,530 --> 00:00:47,890
+so the expert has made four connections that he or she thinks reflect reality,
+
+16
+00:00:47,890 --> 00:00:49,460
+and those sort of four connection,
+
+17
+00:00:49,460 --> 00:00:52,024
+there's two less than or three less than and one equals.
+
+18
+00:00:52,024 --> 00:00:53,339
+And together with the taxonomies,
+
+19
+00:00:53,339 --> 00:00:55,789
+you can show that that leads to a logical contradiction.
+
+20
+00:00:55,789 --> 00:00:58,924
+These four articulations, these four input articulations,
+
+21
+00:00:58,924 --> 00:01:02,734
+A1 through A4, taken together are logically inconsistent.
+
+22
+00:01:02,734 --> 00:01:03,920
+So what the system can do,
+
+23
+00:01:03,920 --> 00:01:05,650
+the tool can do is, OK,
+
+24
+00:01:05,650 --> 00:01:07,480
+let's find, let's look at all the subsets,
+
+25
+00:01:07,480 --> 00:01:08,825
+maybe some of them at least work.
+
+26
+00:01:08,825 --> 00:01:11,504
+And what this is saying is that A1, A2,
+
+27
+00:01:11,504 --> 00:01:14,299
+A4 and A1, A3, A4 and A2, A3,
+
+28
+00:01:14,299 --> 00:01:15,765
+A4 – those combinations actually do work.
+
+29
+00:01:15,765 --> 00:01:17,420
+But putting A1, A2,
+
+30
+00:01:17,420 --> 00:01:18,799
+and A3 together already,
+
+31
+00:01:18,799 --> 00:01:21,430
+only three out of the four already create trouble.
+
+32
+00:01:21,430 --> 00:01:25,849
+And, I highlighted these particular – the green and the red one,
+
+33
+00:01:25,849 --> 00:01:28,430
+as the green ones are called the
+
+34
+00:01:28,430 --> 00:01:32,950
+maximum consistent subsets of the ones that you want to have,
+
+35
+00:01:32,950 --> 00:01:34,904
+and the red are the minimal inconsistent.
+
+36
+00:01:34,904 --> 00:01:37,670
+So you can either try to start
+
+37
+00:01:37,670 --> 00:01:41,674
+from the green end and then just add something to it. That still works.
+
+38
+00:01:41,674 --> 00:01:44,075
+You know that's something that you're trying to add to it,
+
+39
+00:01:44,075 --> 00:01:46,275
+it can't be an A3 for this combination;
+
+40
+00:01:46,275 --> 00:01:48,484
+it cannot be an A2 for this combination;
+
+41
+00:01:48,484 --> 00:01:49,829
+and it cannot be an A1.
+
+42
+00:01:49,829 --> 00:01:51,250
+It must be another A1,
+
+43
+00:01:51,250 --> 00:01:52,760
+so to say, that you have to plug in.
+
+44
+00:01:52,760 --> 00:01:54,170
+Or you can look at these three and say,
+
+45
+00:01:54,170 --> 00:01:55,700
+"Well, why are these inconsistent anyway?"
+
+46
+00:01:55,700 --> 00:01:58,219
+So there's something, maybe my A1,
+
+47
+00:01:58,219 --> 00:01:59,470
+A2, and A3 don't quite work together.
+
+48
+00:01:59,470 --> 00:02:01,909
+If you then pick something that is consistent,
+
+49
+00:02:01,909 --> 00:02:07,099
+then you might drop off the other end of the pool or the other end of the cliff.
+
+50
+00:02:07,099 --> 00:02:09,680
+You say now that I've repaired it,
+
+51
+00:02:09,680 --> 00:02:12,030
+maybe you look at this world: A2, A3, A4.
+
+52
+00:02:12,030 --> 00:02:13,099
+There's still something missing,
+
+53
+00:02:13,099 --> 00:02:14,780
+that A1 still hasn't been quite prepared to.
+
+54
+00:02:14,780 --> 00:02:16,550
+So now you might have an ambiguous situation.
+
+55
+00:02:16,550 --> 00:02:19,449
+Given the input, if you drop one of the constraints,
+
+56
+00:02:19,449 --> 00:02:21,590
+let's say A1 – I don't know which one of these is A1,
+
+57
+00:02:21,590 --> 00:02:24,500
+but one of these four links is A1.
+
+58
+00:02:24,500 --> 00:02:25,625
+If you drop that,
+
+59
+00:02:25,625 --> 00:02:27,430
+now you get different solutions.
+
+60
+00:02:27,430 --> 00:02:32,240
+You say, well maybe B is below E or E is below B. OK,
+
+61
+00:02:32,240 --> 00:02:33,835
+well, that's a difference.
+
+62
+00:02:33,835 --> 00:02:37,550
+F is below C or C is below F. Or maybe this is how they look: B,
+
+63
+00:02:37,550 --> 00:02:41,425
+C, and A in one taxonomy are related to the other taxo-.
+
+64
+00:02:41,425 --> 00:02:43,310
+So, the yellow team, the yellow taxonomy,
+
+65
+00:02:43,310 --> 00:02:47,086
+is kind of a hat on top of the green taxonomy,
+
+66
+00:02:47,086 --> 00:02:49,960
+or they're more into leaf like this. We don't know this.
+
+67
+00:02:49,960 --> 00:02:53,419
+So, in general, what the tool is doing – we start here at the top –
+
+68
+00:02:53,419 --> 00:02:56,930
+this is kind of the workflow of the taxonomy alignment problem.
+
+69
+00:02:56,930 --> 00:03:00,199
+We start with two taxonomies in the set of articulations, the A's.
+
+70
+00:03:00,199 --> 00:03:01,814
+This is modeled in logic.
+
+71
+00:03:01,814 --> 00:03:05,250
+Then we start up, and now here's a little bit of an AI system if you like.
+
+72
+00:03:05,250 --> 00:03:06,854
+That's a logic-based system.
+
+73
+00:03:06,854 --> 00:03:09,555
+We have different reasoners here at our disposal.
+
+74
+00:03:09,555 --> 00:03:10,669
+And once we do this,
+
+75
+00:03:10,669 --> 00:03:12,305
+we get either a unique solution,
+
+76
+00:03:12,305 --> 00:03:14,419
+in which case we can stop and declare victory;
+
+77
+00:03:14,419 --> 00:03:16,444
+or, we get an inconsistent solution,
+
+78
+00:03:16,444 --> 00:03:20,455
+in which case we have to do this diagnosis and look at the maximal consistent subsets,
+
+79
+00:03:20,455 --> 00:03:24,125
+try to extend those or we repair the minimal inconsistent ones,
+
+80
+00:03:24,125 --> 00:03:25,699
+and then we go back and try again.
+
+81
+00:03:25,699 --> 00:03:26,905
+So that's the inconsistent case.
+
+82
+00:03:26,905 --> 00:03:28,159
+Or if it's ambiguous,
+
+83
+00:03:28,159 --> 00:03:30,275
+then we get lots of possible worlds.
+
+84
+00:03:30,275 --> 00:03:32,030
+We can say, "Well, it's ambiguous. We're done."
+
+85
+00:03:32,030 --> 00:03:35,000
+Or you try to pick one of the possible worlds and argue for it,
+
+86
+00:03:35,000 --> 00:03:39,350
+and then say, "Well, this is the possible world that I think that reflects reality."
+
+87
+00:03:39,350 --> 00:03:40,400
+And then you can extract
+
+88
+00:03:40,400 --> 00:03:43,979
+a smallest subset of input articulations that gives you that world.
+
+89
+00:03:43,979 --> 00:03:46,215
+It feels like a little bit cheating because you say.
+
+90
+00:03:46,215 --> 00:03:48,064
+"OK, your input was ambiguous."
+
+91
+00:03:48,064 --> 00:03:49,599
+Here's like a bouquet.
+
+92
+00:03:49,599 --> 00:03:51,425
+Here's a set of options,
+
+93
+00:03:51,425 --> 00:03:53,354
+and then you pick one set. This is how it should be.
+
+94
+00:03:53,354 --> 00:03:55,340
+But the tool will then allow you to say,
+
+95
+00:03:55,340 --> 00:03:56,939
+"OK, if this is what you want.
+
+96
+00:03:56,939 --> 00:03:59,534
+Here are the inputs that you should have assumed to get that."
+
+97
+00:03:59,534 --> 00:04:03,009
+And then you can argue about the validity of those input alignments.
+
+98
+00:04:03,009 --> 00:04:05,685
+So here's some more realistic examples.
+
+99
+00:04:05,685 --> 00:04:09,674
+So for example, this is a particular Weevil classification,
+
+100
+00:04:09,674 --> 00:04:11,580
+actually two Weevil classifications.
+
+101
+00:04:11,580 --> 00:04:13,656
+I think this guy's called Paralescus,
+
+102
+00:04:13,656 --> 00:04:15,889
+but hey, I'm not the insect guy here.
+
+103
+00:04:15,889 --> 00:04:20,569
+So there were two different taxonomies given: the yellow one and the green one.
+
+104
+00:04:20,569 --> 00:04:22,579
+One was maybe, let's say, from 2005.
+
+105
+00:04:22,579 --> 00:04:24,154
+The other one was from '95.
+
+106
+00:04:24,154 --> 00:04:26,980
+And the expert kind of does a reassessment in the year,
+
+107
+00:04:26,980 --> 00:04:28,894
+maybe 2015, says, "OK,
+
+108
+00:04:28,894 --> 00:04:30,439
+let me look at what these guys have done.
+
+109
+00:04:30,439 --> 00:04:32,254
+What these guys have done, I'm going to connect these up."
+
+110
+00:04:32,254 --> 00:04:34,723
+Or maybe, one is the preexisting taxonomy
+
+111
+00:04:34,723 --> 00:04:37,579
+and one is the new one that the scientist is proposing.
+
+112
+00:04:37,579 --> 00:04:39,680
+And in order to propose this new taxonomy,
+
+113
+00:04:39,680 --> 00:04:42,530
+it would be very helpful if you would link it to the old one,
+
+114
+00:04:42,530 --> 00:04:44,540
+so it's clear what it is that you're actually claiming.
+
+115
+00:04:44,540 --> 00:04:46,639
+So in this particular case, it's from a real example,
+
+116
+00:04:46,639 --> 00:04:47,915
+so it's published in the literature.
+
+117
+00:04:47,915 --> 00:04:49,670
+You would get this result.
+
+118
+00:04:49,670 --> 00:04:52,430
+So there's a lot of names that the both taxonomies
+
+119
+00:04:52,430 --> 00:04:55,550
+agree and the both vocabularies have really congruent terms.
+
+120
+00:04:55,550 --> 00:04:58,549
+But then, there's also lots of overlap situations.
+
+121
+00:04:58,549 --> 00:05:00,560
+These dash lines correspond to an overlap.
+
+122
+00:05:00,560 --> 00:05:02,870
+So for example, concept number 20 here –
+
+123
+00:05:02,870 --> 00:05:05,410
+this is just to keep the examples of easily to reference.
+
+124
+00:05:05,410 --> 00:05:11,504
+This 20 here in taxonomy one is contained sort of a subset of what taxonomy two calls 44.
+
+125
+00:05:11,504 --> 00:05:13,634
+So 20 is a subset of 44.
+
+126
+00:05:13,634 --> 00:05:18,725
+But it's not as pretty as that because there's another concept here,
+
+127
+00:05:18,725 --> 00:05:21,584
+47, that's sort of smaller than 44,
+
+128
+00:05:21,584 --> 00:05:24,459
+and that one overlaps with 120.
+
+129
+00:05:24,459 --> 00:05:27,629
+So the relationships between the different nodes or
+
+130
+00:05:27,629 --> 00:05:30,704
+different sets or different classes can be rather complex,
+
+131
+00:05:30,704 --> 00:05:33,750
+but at least, now you know how it looks.

@@ -1,0 +1,136 @@
+[MUSIC] This is sort of a more detailed view,
+what Workflow System should be doing. Let me show you some examples, so you
+get an idea of what workflows look like. So here's a workflow as a napkin drawing,
+if you like. As a diagram, as a PowerPoint slide. This was developed a number of years
+ago at UC Davis with one of my students who was working on workflow
+technology and a biologist. So we don't have to go into
+the science details here, but we see the typical workflow diagram. There are a bunch of steps, these steps are kind of fairly
+large sized independent functions. Let's just pick something out there,
+something called the chimera check. So first of all,
+what is this workflow called? It's called Waters, we love our acronyms. Workflow for Alignment Taxonomy,
+Ecology of Ribosomal Sequences. So this was a PhD student and
+Lab of Jonathan Eisen and UC Davis. So Amber Hartman is the person
+who developed this workflow. And she had these independent tools,
+one called Mallard, one called OTUHunter. They had various bits and pieces that
+they needed to chain together for the full analysis to publish the paper, to
+do this study and then publish the paper. And so
+this is the concept diagram that, but now how do you actually
+create a workflow from this? So Amber was working with one
+of my students together and over the course of pretty much a year,
+I think it's almost a year. They created an executable
+form of the diagram. And it turns out that that executable
+form quite directly resembles the napkin drawing, the conceptual diagram, and it is
+implemented in the system called Kepler. Kepler is a scientific word for
+system that also developed quite a while ago by now 10,
+15 years ago ball park. Based on yet another system,
+on top of another system called Ptolemy. Back in the day, actually I was very
+much there when we started this system. And I had originally suggested that after
+the Ptolemy system on which we built, we should have the Copernicus system. But Copernicus was a tool that this
+group in Berkeley had already used for something else, for something else,
+for compiler for Ptolemy. And so I just took the next astronomer in
+line that came to my mind, was Kepler. I think the choice of name was fairly
+lucky, because it's an easy name to remember and we got quite well-known for
+this product, so like you see here. So it's a Kepler tool which is really
+based on this underlying Ptolemy tool, you have these boxes they at actors. So these are computational steps software
+components, you can think of them as a component oriented design of a data
+science pipeline or analysis pipeline. And you grab here from the library
+of component that you have. You drag and
+drop the components on the canvas and then you connect them up and you're done. So that sounds very compelling and
+it works also if your components for example really work well together and
+design together. But not any two software components
+as could easily measure, you could just stick together. It has to be some common data performance
+as they exchange information and so on. And then the hard job also with this kind of system is you better
+have these components around to work with. Creating new components is not so
+much fun. So the system is implementing Java,
+so you end up writing Java actors. And scientist may or
+may not be Java hackers, typically they know more about R and
+Python than they know about Java. But there are such tools out there,
+so Kepler's still out there like it's open source and
+there are other systems like it as well. Okay, so this is something that
+again came out of this and it was then published also in a journal. And so basically here you see some
+of the results, the final plots and charts that were created for
+a particular study. The workflow itself acts as a kind
+of recipe of what was done. So it's a valuable information or
+documentation right there. It's also executable, although being
+a very complex, large software package, it has its own sort of challenges
+when it comes to reproducibility. So if your versions of Java,
+the underlying libraries change, there's all kinds of version
+hell that you might go through. So if you pick this up
+after a couple of years and want to rerun it, technology has evolved. And on your system where
+you want to run it, maybe have different versions of
+the [INAUDIBLE] and underlying software. So that's a whole different issue
+that we're not dealing with. Virtual machine technologies
+are sometimes used, container technology such as
+docker are sometimes used. But none of this really fully
+solve your problems there. Okay, so in summary, there's this workforce systems
+that can go from napkin drawings. That allows you to build
+a conceptual workflow that you have, turn it into something executable,
+but it's by no means a trivial matter. But it is something that has been done,
+so we've done quite a few of those. Here is another workflow again,
+first is a napkin drawing, also done at UC Davis at the time. This was I think,
+if you remember this right, this was a Matlab script I think and
+then we turned into a workflow. So another one of my students there, turned it into a workflow again in Kepler,
+using a Map Reduce library that was developed by another
+group in Kepler from San Diego. That group has produced
+a Map Reduce library and we have then used that
+library to subscale lab. What used to be a Matlab script put it
+into Kepler and use Map and Reduce. And so there are lots of these examples. Here is an example that stitches together
+existing components that are written in R. So assume we have little R scripts
+that you want to plug together. This is an example from a colleague
+from Santa Barbara, Matt Jones. Who has put this together for a project
+that he was working on at the time with the Kruger National Park in South Africa. And they're basically cobbling
+together different R scripts into a larger workflow. And then you see this
+databases that are queried, there's some data processing
+is done in these R scripts. Then there's some output at the end and
+then what you get is for example such reports. And this was I forgot now this had
+something to do with I guess hydrology or monitoring of the environment
+I think if I remember, right? So we did quite a bit of work
+with these workflows for computational science and
+maybe let me just pause on this one. This is one that shows
+a more recent workflow that data curation and data cleaning. So we've used this workflow
+technology in this context. So for example, imagine that you have
+a dataset very much like the one we might already seen that has specimen data,
+by division data. Let's say you work at a museum, you work in what do we have here
+Chicago the museum, let's say. And you have a database of all the
+specimen that they have in their drawers and the snakes and
+the draw and all of that. And you want to check whether the
+information is of recently good quality. So you might want to see whether the,
+for example, the species names whether they
+follow some controlled vocabulary. So we have here a step called GNI. So it's called a scientific
+name validator. So you records go into this workflow and at a certain step, you compare it
+with a controlled vocabulary, and you see whether your names match
+the controlled vocabulary. If they don't you flag them, maybe you
+find the nearest match and suggest a name. But typically, you want a human to look
+at that and whether it's a human or even if you're afraid from
+automatically from change the name. You better keep a record
+of what you've done and that will be an example of problems, you
+want to make sure you have the old value, the new value and say I've changed. This value to that value based
+on this reference that I used. For example, this Global Name Index or
+IPNI, I think also plant name. So there's different services out there, Geolocate is another thing if
+you have a lead long coordinate. And you've a place name, you want to see
+whether these lead long coordinates in the place name match up or not. If not you flag it, so
+you will know something's wrong. It says this is the lead long and
+the place name is this well that's just impossible in this
+service is where he can look this up. Sometimes log and long is flipped or
+maybe the sign is wrong or something or it's other sources of error. So we put these different data cleaning
+steps together in a workflow here and this is from a project called Kurator. This was an early technology
+demonstration that we put together and we used at the time also some little quick
+hacks to use some Google Cloud services. What we did in particular is that the
+workflow, created an online spreadsheet. And in that online spreadsheet,
+we summarized what was flagged. And then this could even automatically
+send an email to somebody who was registered as an expert for
+this particular say species or family. So somebody who is a domain expert
+can then look at the records that for which he or she is an expert. And then confirm or
+reject the changes made by the system. So it was a very nice demonstration here,
+and then in the end,
+pops out your new dataset. I mean this is a very small snapshot here,
+but you see there's a new dataset coming out. Also your latitude longitude, for
+example, the data's put on a map. And you will see that certain items
+have kind of moved to the right place. For example, there were a log long
+confusion, in this particular case. And then finally the report that is
+generated from this data cleaning, exercise and workflow,
+it serves a providence graph. So there's a graph that basically shows
+what changes happens along the way. And the providence graph itself is
+a knowledge product that you can ask questions about. You can say, well did this
+particular actor make any changes? Or did this particular kind of dataset or
+location get flagged? So you can ask questions about that. [MUSIC]
