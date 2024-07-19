@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'lefv.io',
   tagline: 'we are what we do',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/lefv.logo.jpeg',
 
   // Set the production url of your site here
   url: 'https://lefv.io',
@@ -38,7 +38,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/gwicho38/lefv-io/docs/',
+            'https://github.com/gwicho38/lefv_io/client/docs/',
         },
         blog: {
           showReadingTime: true,
@@ -56,23 +56,32 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/lefv_social_card.png',
     navbar: {
       title: 'lefv.io',
       logo: {
         alt: 'lefv.io',
-        src: 'img/logo.svg',
+        src: 'img/lefv.logo.jpeg',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
+            to: '/blog', 
+            label: 'Blog', 
+            position: 'left'
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+            to: '/about',
+            label: 'About',
+            position: 'right'
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'projectSideBar',
+          position: 'left',
+          label: 'Projects',
+        },
+        {
+          href: 'https://github.com/gwicho38/lefv_io',
           label: 'GitHub',
           position: 'right',
         },
@@ -85,8 +94,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Projects',
+              to: '/projects/intro',
             },
           ],
         },
@@ -94,16 +103,20 @@ const config: Config = {
           title: 'Community',
           items: [
             {
+                label: 'Stack Exchange',
+                href: 'https://stackexchange.com/users/17999810/gwicho38'
+            },
+            {
               label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              href: 'https://stackoverflow.com/users/13081992/gwicho38?tab=profile',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'LinkedIn',
+              href: 'https://www.linkedin.com/in/luis-fernandez-de-la-vara/',
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Twitter/X',
+              href: 'https://x.com/gwicho38',
             },
           ],
         },
@@ -116,7 +129,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/gwicho38/lefv_io',
             },
           ],
         },
