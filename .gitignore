@@ -126,3 +126,4 @@ buid/
 
 # ignore obsidian directories
 submodules/lefv-vault/colette/**/*
+submodules/lefv-vault/uiuc/**/*
