@@ -129,3 +129,4 @@ submodules/lefv-vault/colette/**/*
 submodules/lefv-vault/uiuc/**/*
 submodules/lefv-vault/.obsidian/**/*
 submodules/lefv-vault/.github/**/*
+submodules/lefv-vault/submodules/lefv-vault/lefv/**/*
