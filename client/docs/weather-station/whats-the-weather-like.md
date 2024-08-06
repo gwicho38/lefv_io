@@ -1,3 +1,7 @@
+---
+tag: #wip
+---
+
 # What's the Weather Like?
 
-WIP
+Tracking progress of me tracking the weather.

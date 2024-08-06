@@ -14,5 +14,9 @@
   "sidebar.projectSideBar.category.Tutorial - Extras": {
     "message": "Tutorial - Extras",
     "description": "The label for category Tutorial - Extras in sidebar projectSideBar"
+  },
+  "sidebar.projectSideBar.category.weather-station": {
+    "message": "weather-station",
+    "description": "The label for category weather-station in sidebar projectSideBar"
   }
 }

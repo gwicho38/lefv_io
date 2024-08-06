@@ -35,17 +35,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/gwicho38/lefv_io/client/docs/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/gwicho38/blog/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -68,11 +60,6 @@ const config: Config = {
             to: '/blog', 
             label: 'Blog', 
             position: 'left'
-        },
-        {
-            to: '/about',
-            label: 'About',
-            position: 'right'
         },
         {
           type: 'docSidebar',

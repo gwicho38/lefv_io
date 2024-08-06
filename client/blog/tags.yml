@@ -9,8 +9,9 @@ hello:
 docusaurus:
   label: Docusaurus
   permalink: /docusaurus
-  description: Docusaurus tag description
+  description: Tags 
 hola:
   label: Hola
   permalink: /hola
   description: Hola tag description
+
