@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklefv_io=self.webpackChunklefv_io||[]).push([[925],{8174:e=>{e.exports=JSON.parse('{"tag":{"label":"entry","permalink":"/blog/tags/entry","allTagsPath":"/blog/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/blog/tags/entry","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
