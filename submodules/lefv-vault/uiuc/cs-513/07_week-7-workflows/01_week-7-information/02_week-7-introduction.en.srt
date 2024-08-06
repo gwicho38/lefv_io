@@ -1,0 +1,113 @@
+1
+00:00:00,021 --> 00:00:08,561
+[MUSIC]
+
+2
+00:00:08,561 --> 00:00:11,730
+Hello, and welcome back to Theory and
+Practice of Data Cleaning.
+
+3
+00:00:11,730 --> 00:00:14,580
+In previous lectures we looked
+at individual pieces of a larger
+
+4
+00:00:14,580 --> 00:00:16,470
+data cleaning lifecycle.
+
+5
+00:00:16,470 --> 00:00:19,000
+We started with syntax-based
+data transformation and
+
+6
+00:00:19,000 --> 00:00:22,530
+cleaning using regular expressions and
+then using open refine.
+
+7
+00:00:22,530 --> 00:00:25,450
+We then moved on to data integrity
+checking at the schema or
+
+8
+00:00:25,450 --> 00:00:29,120
+semantic level where we can look
+not only at individual columns but
+
+9
+00:00:29,120 --> 00:00:34,440
+at complex relations and data tables
+as a whole and their interconnections.
+
+10
+00:00:34,440 --> 00:00:36,430
+In the following lectures,
+we take a step back and
+
+11
+00:00:36,430 --> 00:00:39,280
+look at the data life cycle again.
+
+12
+00:00:39,280 --> 00:00:41,640
+When researchers and
+data scientists analyzed their data,
+
+13
+00:00:41,640 --> 00:00:44,580
+they often need to
+automate multiple steps.
+
+14
+00:00:44,580 --> 00:00:47,640
+Automation can happen even for
+the data cleaning itself.
+
+15
+00:00:47,640 --> 00:00:51,290
+But certainly for complex computational
+analysis, you want to use a workflow
+
+16
+00:00:51,290 --> 00:00:56,890
+system, or script-based approach, say
+Python or R, to automate your analysis.
+
+17
+00:00:56,890 --> 00:01:00,070
+So the following lectures will
+introduce basic notions of workflows,
+
+18
+00:01:00,070 --> 00:01:03,740
+focusing in particular and
+scientific workflow automation.
+
+19
+00:01:03,740 --> 00:01:07,160
+Another aspect that is related
+to automation is providence.
+
+20
+00:01:07,160 --> 00:01:11,430
+That is the origin and processing history
+of data that comes out of the workflow.
+
+21
+00:01:11,430 --> 00:01:14,370
+This will be the topic of future lectures.
+
+22
+00:01:14,370 --> 00:01:17,873
+Okay, let's jump right into
+the first lecture on workflows.
+
+23
+00:01:17,873 --> 00:01:27,941
+[MUSIC]
+
+24
+00:01:27,941 --> 00:01:31,253
+[SOUND]

@@ -1,0 +1,127 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h1 level="1" variant="h1semibold">
+  About Test Cases and Grading
+ </h1>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    You have to write three regexes (Parts a, b, and c), each worth 12.5 points, so this problem is worth 37.5 points total (37 on Coursera).
+   </p>
+  </li>
+ </ul>
+ <h1 level="1" variant="h1semibold">
+  Regex to Match Non-Standard Dates
+ </h1>
+ <p>
+  In the US, dates are often written in the form
+  <strong>
+   MM/DD/YYYY
+  </strong>
+  , e.g.,
+  <strong>
+   02/14/2017
+  </strong>
+  .  Another common variant is: February 14, 2017. In some European  countries it is common to write this date as 14.2.2017 or 14.02.2017.  Develop regular expressions that match the following non-ISO conformant  (but widespread) ways to write dates:
+ </p>
+ <p>
+  <strong>
+   Note that you do not have to verify that the date actually exists, e.g. February 30, 2017 is OK for this exercise.
+  </strong>
+ </p>
+ <p>
+  Develop regular expressions that match the following formats:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    (a)
+    <strong>
+     02/14/2017
+    </strong>
+    (and dates like it, i.e. of the  form Month/Day/Year). Note that leading zeros may be omitted (e.g.,  2/14/2017 should be matched as well).
+   </p>
+  </li>
+  <li>
+   <p>
+    (b)
+    <strong>
+     14.02.2017
+    </strong>
+    (and similar, i.e., of the form Day.Month.Year). Again, there may or may not be leading zeros (e.g., 14.2.2017 is allowed).
+   </p>
+  </li>
+  <li>
+   <p>
+    (c)
+    <strong>
+     February 14, 2017
+    </strong>
+    (and similar). Here the regex should allow only correct spellings of the months January through December, but
+    <strong>
+     independent of case
+    </strong>
+    :  (e.g., FEBRUARY in uppercase or february are OK, but FEBRUAR (missing “  Y”) is not OK). Hint: find a way to make regex matching
+    <strong>
+     case insensitive
+    </strong>
+    .
+   </p>
+  </li>
+ </ul>
+ <p>
+  Treat all months
+  <strong>
+   as if they have 31 days
+  </strong>
+  . You do not  have to differentiate 28, 29, 30, 31 days of different months!  Similarly, you do not need to consider leap years in any of the  questions.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

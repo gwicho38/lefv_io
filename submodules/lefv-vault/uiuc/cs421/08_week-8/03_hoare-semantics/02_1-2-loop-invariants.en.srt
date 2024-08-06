@@ -1,0 +1,443 @@
+1
+00:00:00,000 --> 00:00:02,235
+Hello, everyone, and welcome back.
+
+2
+00:00:02,235 --> 00:00:05,130
+In the last video, we introduced Hoare logic.
+
+3
+00:00:05,130 --> 00:00:09,570
+Now, loops have some interesting considerations that we'll want to look at.
+
+4
+00:00:09,570 --> 00:00:11,280
+When you're done with this video,
+
+5
+00:00:11,280 --> 00:00:13,350
+you'll be able to explain the three conditions
+
+6
+00:00:13,350 --> 00:00:16,035
+necessary for a loop to yield the correct answer,
+
+7
+00:00:16,035 --> 00:00:19,410
+and the two conditions necessary for a loop to terminate.
+
+8
+00:00:19,410 --> 00:00:21,240
+Perhaps, most importantly though,
+
+9
+00:00:21,240 --> 00:00:23,385
+we're going to talk about loop invariants.
+
+10
+00:00:23,385 --> 00:00:27,450
+Being able to pick a good loop invariant will help greatly in your future programming.
+
+11
+00:00:27,450 --> 00:00:30,690
+Now, remember from our discussion about IF statements,
+
+12
+00:00:30,690 --> 00:00:34,470
+how it's better to have a single precondition and a single postcondition
+
+13
+00:00:34,470 --> 00:00:37,260
+that describe both paths through the IF statement.
+
+14
+00:00:37,260 --> 00:00:41,300
+In a WHILE loop with the same kind of thing happens except that it repeats.
+
+15
+00:00:41,300 --> 00:00:45,215
+So, the precondition and postcondition are much more closely related.
+
+16
+00:00:45,215 --> 00:00:48,515
+Here's what a proof outline looks like for a loop.
+
+17
+00:00:48,515 --> 00:00:53,510
+Q is our precondition in S_i is our initialization code.
+
+18
+00:00:53,510 --> 00:00:57,415
+P is a special condition called the loop invariant.
+
+19
+00:00:57,415 --> 00:00:59,860
+T is called the termination function,
+
+20
+00:00:59,860 --> 00:01:04,190
+and it's like a counter for how many more times we'll have to go through the loop,
+
+21
+00:01:04,190 --> 00:01:05,990
+but it's more subtle than that.
+
+22
+00:01:05,990 --> 00:01:07,535
+B is the bound,
+
+23
+00:01:07,535 --> 00:01:10,310
+and r is our final postcondition.
+
+24
+00:01:10,310 --> 00:01:13,090
+We can extract out five equations from this,
+
+25
+00:01:13,090 --> 00:01:15,740
+and these describe what a loop needs to do.
+
+26
+00:01:15,740 --> 00:01:19,480
+The first three equations deal with partial correctness.
+
+27
+00:01:19,480 --> 00:01:24,745
+Equation 1 says the initialization code must establish the loop invariant.
+
+28
+00:01:24,745 --> 00:01:28,760
+Equation 2 says that, if the bound is true and the loop invariant is true
+
+29
+00:01:28,760 --> 00:01:30,330
+when the loop body runs,
+
+30
+00:01:30,330 --> 00:01:33,715
+then the loop body preserves the loop invariant.
+
+31
+00:01:33,715 --> 00:01:38,280
+Equation 3 says that if the loop invariant is true but the bound is false,
+
+32
+00:01:38,280 --> 00:01:40,530
+then the postcondition is achieved.
+
+33
+00:01:40,530 --> 00:01:43,575
+The next two deal with termination.
+
+34
+00:01:43,575 --> 00:01:46,990
+Equation 4 says that if the loop invariant is true,
+
+35
+00:01:46,990 --> 00:01:50,165
+then our termination function t is greater than zero.
+
+36
+00:01:50,165 --> 00:01:52,295
+In other words, it has a lower bound.
+
+37
+00:01:52,295 --> 00:01:55,570
+Thinking of this as a base case for induction.
+
+38
+00:01:55,570 --> 00:01:59,310
+Equation 5 says that if a loop invariant in a bound are true,
+
+39
+00:01:59,310 --> 00:02:03,620
+then running the body of the loop decreases the termination function.
+
+40
+00:02:03,620 --> 00:02:05,990
+We stipulate that t must be an integer.
+
+41
+00:02:05,990 --> 00:02:09,324
+This means that the loop must eventually terminate.
+
+42
+00:02:09,324 --> 00:02:11,250
+Here's an example.
+
+43
+00:02:11,250 --> 00:02:15,125
+We want a loop that sums up all the elements of an array A.
+
+44
+00:02:15,125 --> 00:02:18,890
+The loop invariant is that S must be the sum of all the elements in A
+
+45
+00:02:18,890 --> 00:02:21,190
+up to index i minus 1.
+
+46
+00:02:21,190 --> 00:02:23,540
+You can see that the initialization code
+
+47
+00:02:23,540 --> 00:02:27,245
+establishes this trivially by setting S and i both to zero.
+
+48
+00:02:27,245 --> 00:02:29,900
+The second equation says that if we get to run our loop,
+
+49
+00:02:29,900 --> 00:02:32,060
+the loop invariant will be preserved.
+
+50
+00:02:32,060 --> 00:02:33,930
+We add A of i did S
+
+51
+00:02:33,930 --> 00:02:35,340
+and then increment i,
+
+52
+00:02:35,340 --> 00:02:37,400
+and that will preserve the invariant.
+
+53
+00:02:37,400 --> 00:02:41,540
+Finally, the third equation says that once the bound becomes false,
+
+54
+00:02:41,540 --> 00:02:43,820
+we will have our desired postcondition,
+
+55
+00:02:43,820 --> 00:02:47,035
+that S will be equal to the sum of all of these elements.
+
+56
+00:02:47,035 --> 00:02:51,470
+For another example, consider the greatest common divisor of a and b,
+
+57
+00:02:51,470 --> 00:02:56,000
+here, the loop invariant is simply that the GCD of the current values of a and b
+
+58
+00:02:56,000 --> 00:02:59,215
+are the same as the GCD of the initial values of a and b.
+
+59
+00:02:59,215 --> 00:03:02,075
+The modular arithmetic preserves this property.
+
+60
+00:03:02,075 --> 00:03:05,165
+Once a equals 0, we have that b is a GCD,
+
+61
+00:03:05,165 --> 00:03:07,640
+which is what the third equation says.
+
+62
+00:03:07,640 --> 00:03:10,435
+How to pick a good loop invariant?
+
+63
+00:03:10,435 --> 00:03:12,145
+To pick a loop invariant,
+
+64
+00:03:12,145 --> 00:03:15,485
+you need to find a weaker version of the postcondition,
+
+65
+00:03:15,485 --> 00:03:19,130
+and then use the bound to strengthen the loop invariant progressively
+
+66
+00:03:19,130 --> 00:03:23,170
+until the invariant becomes or implies the postcondition.
+
+67
+00:03:23,170 --> 00:03:26,040
+There are three ways this can be done.
+
+68
+00:03:26,040 --> 00:03:31,655
+A first is to replace a constant with a range such as when we're looping over an array.
+
+69
+00:03:31,655 --> 00:03:35,035
+We'll replace the size of the array with the loop index.
+
+70
+00:03:35,035 --> 00:03:40,130
+The second is to add a disjunct declare that something else might also be true,
+
+71
+00:03:40,130 --> 00:03:42,710
+and the loops job is to make that thing untrue.
+
+72
+00:03:42,710 --> 00:03:48,379
+The third is to remove a conjunct and have the loop restore that conjunct.
+
+73
+00:03:48,379 --> 00:03:50,675
+Let's see some examples.
+
+74
+00:03:50,675 --> 00:03:56,135
+Here's a loop invariant that says that S is the product of all the elements of an array.
+
+75
+00:03:56,135 --> 00:03:57,890
+We can create an index n,
+
+76
+00:03:57,890 --> 00:04:02,440
+and say that we have a product of all the elements up to n minus 1.
+
+77
+00:04:02,440 --> 00:04:04,350
+Once n is equal to the size of the array,
+
+78
+00:04:04,350 --> 00:04:06,090
+we'll have our postcondition.
+
+79
+00:04:06,090 --> 00:04:08,220
+Example 2 is the GCD.
+
+80
+00:04:08,220 --> 00:04:11,530
+We want a to be 0 and b to be the GCD.
+
+81
+00:04:11,530 --> 00:04:14,880
+We can add a disjunct here that if a is not 0,
+
+82
+00:04:14,880 --> 00:04:18,755
+then the current value of a and b have the same GCD as the originals.
+
+83
+00:04:18,755 --> 00:04:23,585
+For example 3, we want to say that f of x and Delta are both bounded by Epsilon.
+
+84
+00:04:23,585 --> 00:04:26,540
+Maybe a loop invariant would be to remove the Delta part.
+
+85
+00:04:26,540 --> 00:04:29,810
+Now, we want to consider the termination properties.
+
+86
+00:04:29,810 --> 00:04:34,960
+It is similar to recursion where each recursive call is on a smaller value.
+
+87
+00:04:34,960 --> 00:04:37,925
+The idea of smaller can be several different things.
+
+88
+00:04:37,925 --> 00:04:40,075
+Integers typically get closer to zero,
+
+89
+00:04:40,075 --> 00:04:41,785
+lists get closer to the end,
+
+90
+00:04:41,785 --> 00:04:46,070
+and Hydras that use lexicographical ordering on the number of heads.
+
+91
+00:04:46,070 --> 00:04:50,765
+Not all sequences terminate just because the input gets closer to the base case.
+
+92
+00:04:50,765 --> 00:04:55,230
+Consider the sequence when we divide a float by 2 each time.
+
+93
+00:04:55,230 --> 00:04:59,875
+We know that this does not converge even though it gets closer to zero every time.
+
+94
+00:04:59,875 --> 00:05:03,740
+For this reason, we insist that determination function have to be an integer,
+
+95
+00:05:03,740 --> 00:05:06,335
+and that gets rid of most of those problems.
+
+96
+00:05:06,335 --> 00:05:09,170
+The total correctness formulas just say that
+
+97
+00:05:09,170 --> 00:05:12,335
+our termination function t is some value greater than zero,
+
+98
+00:05:12,335 --> 00:05:13,850
+it has a lower bound,
+
+99
+00:05:13,850 --> 00:05:16,790
+and the second formula says that the value decreases.
+
+100
+00:05:16,790 --> 00:05:19,460
+We also insist that i be an integer as we said
+
+101
+00:05:19,460 --> 00:05:23,740
+to guarantee that decreasing eventually leads to a base case.
+
+102
+00:05:23,740 --> 00:05:28,720
+For example 1, we can take our initial t to be the size of a minus i.
+
+103
+00:05:28,720 --> 00:05:32,090
+In this case, it's easy to pick an exact value for t.
+
+104
+00:05:32,090 --> 00:05:36,185
+i gets incremented each time bringing it closer to the size of a.
+
+105
+00:05:36,185 --> 00:05:39,560
+For example 2, we don't have an easy formula,
+
+106
+00:05:39,560 --> 00:05:45,990
+but we can see clearly that taking the mod a of b is going to shrink a each time.
+
+107
+00:05:45,990 --> 00:05:48,610
+So, we can just use t equal a,
+
+108
+00:05:48,610 --> 00:05:52,135
+assuming that we start off with a being the larger of the two.
+
+109
+00:05:52,135 --> 00:05:54,605
+Well, that's it for the five equations.
+
+110
+00:05:54,605 --> 00:05:56,030
+This is a lot to cover.
+
+111
+00:05:56,030 --> 00:06:00,870
+So, be sure to look on the website for other materials.

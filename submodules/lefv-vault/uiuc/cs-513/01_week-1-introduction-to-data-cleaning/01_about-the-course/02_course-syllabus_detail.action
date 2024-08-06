@@ -1,0 +1,8 @@
+<html><head><title>Shibboleth Authentication Request</title></head><body onload="EZproxyCheckBack()"><form name="EZproxyForm" method="POST" action="https://shibboleth.illinois.edu/idp/profile/SAML2/POST/SSO"><input type="hidden" name="RelayState" value="ezp.2aHR0cHM6Ly91aXVjLmVibGliLmNvbS9wYXRyb24vQXV0aGVudGljYXRpb24uYXNweD9lYmNpZD1jMzYxNjJlZmYxYjI0MzU3OWEwNTYyZDkyYTZlYmU3MyZlY2hvPTEmdXNlcmlkPSU1RXU-">
+<input type="hidden" name="SAMLRequest" value="PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzYW1scDpBdXRoblJlcXVlc3QgeG1sbnM6c2FtbHA9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDpwcm90b2NvbCIgRGVzdGluYXRpb249Imh0dHBzOi8vc2hpYmJvbGV0aC5pbGxpbm9pcy5lZHUvaWRwL3Byb2ZpbGUvU0FNTDIvUE9TVC9TU08iIElEPSJfMTcxNjA4NzMxMzQ4NTQ5IiBJc3N1ZUluc3RhbnQ9IjIwMjQtMDUtMTlUMDI6NTU6MTNaIiBWZXJzaW9uPSIyLjAiPjxzYW1sOklzc3VlciB4bWxuczpzYW1sPSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoyLjA6YXNzZXJ0aW9uIj5odHRwczovL3Byb3h5Mi5saWJyYXJ5LmlsbGlub2lzLmVkdS9zaGliYm9sZXRoPC9zYW1sOklzc3Vlcj48c2FtbHA6TmFtZUlEUG9saWN5IEFsbG93Q3JlYXRlPSIxIi8+PC9zYW1scDpBdXRoblJlcXVlc3Q+Cg==">
+If your browser does not continue automatically, click <input type="submit" value="here">
+</form><form name="EZproxyTrack"><input type="hidden" name="back" value="1"><script language="JavaScript">
+<!--
+function EZproxyCheckBack() {  var goForward = (document.EZproxyTrack.back.value==1);  document.EZproxyTrack.back.value=2;  document.EZproxyTrack.back.defaultValue=2;  if (goForward) { document.EZproxyForm.submit(); }}
+-->
+</script></body></html>

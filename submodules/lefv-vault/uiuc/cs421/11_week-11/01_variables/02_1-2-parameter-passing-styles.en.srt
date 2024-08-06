@@ -1,0 +1,694 @@
+1
+00:00:00,000 --> 00:00:01,269
+Hello and welcome back.
+
+2
+00:00:01,269 --> 00:00:04,089
+In the last lesson,
+we talked about variables and
+
+3
+00:00:04,089 --> 00:00:06,855
+the different properties
+that they could have.
+
+4
+00:00:06,855 --> 00:00:09,876
+In this part, we're going to talk
+about the different ways we can pass
+
+5
+00:00:09,876 --> 00:00:12,424
+the variable into, or
+sometimes even out of a function.
+
+6
+00:00:12,424 --> 00:00:14,246
+And when you're done with this video,
+
+7
+00:00:14,246 --> 00:00:17,678
+you'll be able to explain these five
+kinds of parameter passing styles.
+
+8
+00:00:17,678 --> 00:00:20,868
+Since you can read, I'm just going to
+pause and let you read it, and
+
+9
+00:00:20,868 --> 00:00:21,798
+not read it to you.
+
+10
+00:00:21,798 --> 00:00:26,259
+Now there are two major classes
+of parameter passing styles,
+
+11
+00:00:26,259 --> 00:00:29,018
+the eager styles and the lazy styles.
+
+12
+00:00:29,018 --> 00:00:32,319
+For the eager styles,
+we'll use this running example.
+
+13
+00:00:32,319 --> 00:00:37,474
+Suppose to look sort of like but let's
+pretend we have variable reassignment.
+
+14
+00:00:37,474 --> 00:00:41,415
+Now the terms parameter in argument
+are often used interchangeably, but for
+
+15
+00:00:41,415 --> 00:00:44,516
+this video, I'm going to make
+a distinction between them.
+
+16
+00:00:44,516 --> 00:00:49,208
+So our parameter will be the variable
+listed in the function declaration,
+
+17
+00:00:49,208 --> 00:00:51,002
+like the x, y, and z above.
+
+18
+00:00:51,002 --> 00:00:55,073
+And the argument's going to be a value
+passed into the function by the function
+
+19
+00:00:55,073 --> 00:00:57,502
+call, like a, b, and
+a plus b on the bottom.
+
+20
+00:00:57,502 --> 00:00:58,562
+Our first style is called a value.
+
+21
+00:00:58,562 --> 00:01:03,334
+It's one of the most common choices
+because it's really efficient.
+
+22
+00:01:03,334 --> 00:01:07,123
+The argument to a function is evaluated
+before a function call happens and
+
+23
+00:01:07,123 --> 00:01:10,682
+the resulting value gets placed
+into the parameter of the function.
+
+24
+00:01:10,682 --> 00:01:14,842
+Values in the computer typically one
+word such as an integer or float or
+
+25
+00:01:14,842 --> 00:01:16,826
+a pointer to a larger structure.
+
+26
+00:01:16,826 --> 00:01:20,435
+And the computations that generate
+these values are usually larger.
+
+27
+00:01:20,435 --> 00:01:22,667
+So since we intend to
+use the value anyway,
+
+28
+00:01:22,667 --> 00:01:25,147
+it just makes sense to
+do the evaluation first.
+
+29
+00:01:25,147 --> 00:01:27,761
+Now there are two problems with this.
+
+30
+00:01:27,761 --> 00:01:31,292
+One problem, and
+this might not be obvious at first,
+
+31
+00:01:31,292 --> 00:01:35,385
+is that we may in fact not always
+want to evaluate an argument.
+
+32
+00:01:35,385 --> 00:01:38,290
+Now here's an example of
+a projection function, pi1,
+
+33
+00:01:38,290 --> 00:01:41,930
+that takes two arguments and
+returns the first, ignoring the second.
+
+34
+00:01:41,930 --> 00:01:46,373
+Mathematically, the function call
+here where pi1 is called on 5 and
+
+35
+00:01:46,373 --> 00:01:50,287
+foo should just return 5, but
+in the Call By Value language,
+
+36
+00:01:50,287 --> 00:01:54,602
+this will crash since the second
+argument causes an infinite loop.
+
+37
+00:01:54,602 --> 00:01:59,393
+Now this case is rare enough that most
+programming language designers don't care,
+
+38
+00:01:59,393 --> 00:02:03,373
+will instead say that the program
+shouldn't be writing code that does
+
+39
+00:02:03,373 --> 00:02:07,163
+things like that in the first place,
+and they kind of have a point.
+
+40
+00:02:07,163 --> 00:02:10,031
+Here's a running example
+using Call By Value.
+
+41
+00:02:10,031 --> 00:02:12,953
+The a gets copied to y and
+b gets copied to y.
+
+42
+00:02:12,953 --> 00:02:17,716
+And a+b gets evaluated to 30 and
+it's the 30 that gets copied to z.
+
+43
+00:02:17,716 --> 00:02:23,135
+Inside the function,
+x gets 30 times 30 time 20 and y gets 5.
+
+44
+00:02:23,135 --> 00:02:28,876
+When the function 2 returns, a still has
+the value 10 and b still has the value 20.
+
+45
+00:02:28,876 --> 00:02:31,758
+Now sometimes we don't want
+that kind of behavior.
+
+46
+00:02:31,758 --> 00:02:35,202
+Sometimes we want the function to
+have the ability to assign into
+
+47
+00:02:35,202 --> 00:02:36,809
+the variable we pass into it.
+
+48
+00:02:36,809 --> 00:02:41,043
+Or perhaps the value is so large we want
+to pass an appointer to the object rather
+
+49
+00:02:41,043 --> 00:02:42,854
+than a copy of the object itself.
+
+50
+00:02:42,854 --> 00:02:44,895
+This is classic call by reference.
+
+51
+00:02:44,895 --> 00:02:48,293
+Now the advantage is speed,
+especially for a large object.
+
+52
+00:02:48,293 --> 00:02:50,451
+And also the ability to
+cause side effects or
+
+53
+00:02:50,451 --> 00:02:53,085
+modifications in the variables
+that were passed in.
+
+54
+00:02:53,085 --> 00:02:56,764
+If indeed you consider
+that to be an advantage.
+
+55
+00:02:56,764 --> 00:02:58,980
+You kind of know how we feel
+about that in this course.
+
+56
+00:02:58,980 --> 00:03:03,414
+Now going to our running example, you can
+see how this differs from call by value.
+
+57
+00:03:03,414 --> 00:03:05,794
+A and
+x share the same memory location now and
+
+58
+00:03:05,794 --> 00:03:10,249
+this is the scene like what we talked
+about in the variable binding video.
+
+59
+00:03:10,249 --> 00:03:13,562
+Similarly, for b and y,
+a+b is not a variable, so
+
+60
+00:03:13,562 --> 00:03:16,502
+it's getting evaluated like call by value.
+
+61
+00:03:16,502 --> 00:03:21,943
+When x is assigned to 30 times 30
+times 20, both x and a get that value.
+
+62
+00:03:21,943 --> 00:03:25,542
+When y is assigned 5,
+then b also gets that value.
+
+63
+00:03:25,542 --> 00:03:28,760
+Now the C language allows for
+call by reference, but
+
+64
+00:03:28,760 --> 00:03:31,335
+you have to pass in a pointer explicitly.
+
+65
+00:03:31,335 --> 00:03:35,078
+It's clear from the syntax that you're
+offering the function a chance to modify
+
+66
+00:03:35,078 --> 00:03:36,961
+your variable if that's what it wants.
+
+67
+00:03:36,961 --> 00:03:40,260
+C++ allows you to blur
+this syntactically and
+
+68
+00:03:40,260 --> 00:03:43,486
+I'm not sure that this
+is always a good thing.
+
+69
+00:03:43,486 --> 00:03:46,954
+So for example, look at this code,
+inc(i) will return 11 and
+
+70
+00:03:46,954 --> 00:03:48,794
+the i retains its original value.
+
+71
+00:03:48,794 --> 00:03:51,437
+The inc function is using
+call by value now, but
+
+72
+00:03:51,437 --> 00:03:53,761
+let's change that to call by reference.
+
+73
+00:03:53,761 --> 00:03:56,916
+Now the incrementation happens in main,
+as well.
+
+74
+00:03:56,916 --> 00:04:00,770
+You might think that this cout will
+now output to 11's and depending on
+
+75
+00:04:00,770 --> 00:04:05,001
+the compiler you could be right, but
+the left arrow operators are functions and
+
+76
+00:04:05,001 --> 00:04:08,754
+some compilers will evaluate the second
+i before returning the inc i.
+
+77
+00:04:08,754 --> 00:04:10,650
+So output might still be 11 and
+
+78
+00:04:10,650 --> 00:04:14,945
+10 even though i roles have the value
+10 when the expression is done.
+
+79
+00:04:14,945 --> 00:04:18,633
+The last eager style is very strange
+is called call by result and
+
+80
+00:04:18,633 --> 00:04:21,216
+sometimes known as call by value-result.
+
+81
+00:04:21,216 --> 00:04:25,651
+The idea behind this is that the function
+can modify one of its parameters and after
+
+82
+00:04:25,651 --> 00:04:30,354
+the function returns, that value is copied
+back into the argument that was passed in.
+
+83
+00:04:30,354 --> 00:04:33,383
+Sometimes called the poor
+man call by result.
+
+84
+00:04:33,383 --> 00:04:36,228
+Because it does similar things.
+
+85
+00:04:36,228 --> 00:04:40,233
+It's sometimes called as
+a poorer mans call by reference,
+
+86
+00:04:40,233 --> 00:04:42,405
+because of the similar things.
+
+87
+00:04:42,405 --> 00:04:46,465
+In a running example,
+we have a copied to x and b copied to y,
+
+88
+00:04:46,465 --> 00:04:48,343
+just like in call by value.
+
+89
+00:04:48,343 --> 00:04:50,767
+X is assigned a 30 times 30 times 20 and
+
+90
+00:04:50,767 --> 00:04:53,200
+y is assigned a 5 just
+like in call by value.
+
+91
+00:04:53,200 --> 00:04:56,656
+Foo returns a+b, which is 10 plus 20.
+
+92
+00:04:56,656 --> 00:04:58,153
+But after the return, a and
+
+93
+00:04:58,153 --> 00:05:01,620
+b will get updated with the values
+that were stored into x and y.
+
+94
+00:05:01,620 --> 00:05:05,891
+So it's kind of like a delayed
+reaction called by reference.
+
+95
+00:05:05,891 --> 00:05:07,481
+A normally used case for
+
+96
+00:05:07,481 --> 00:05:11,307
+is to have functions that
+initialize variables for you.
+
+97
+00:05:11,307 --> 00:05:14,328
+So if you've ever done Windows
+programming in the late 90s,
+
+98
+00:05:14,328 --> 00:05:17,585
+you'll see an initialization
+functions that do this kind of thing.
+
+99
+00:05:17,585 --> 00:05:20,956
+As for programming languages,
+this feature's kind of rare.
+
+100
+00:05:20,956 --> 00:05:25,775
+Prolog kind of acts like this due to
+using unification to populate variables.
+
+101
+00:05:25,775 --> 00:05:30,451
+But C# has this explicitly through
+what they call out parameters.
+
+102
+00:05:30,451 --> 00:05:34,003
+So now let's talk about the lazy styles.
+
+103
+00:05:34,003 --> 00:05:38,321
+Lazy styles do not evaluate the arguments
+unless it's necessary to do so
+
+104
+00:05:38,321 --> 00:05:40,534
+to return the value of the function.
+
+105
+00:05:40,534 --> 00:05:42,742
+First of these is called call by name.
+
+106
+00:05:42,742 --> 00:05:47,158
+In this style, arguments are substituted
+for the parameters into the function body
+
+107
+00:05:47,158 --> 00:05:49,782
+as if someone did a search and
+replace operation.
+
+108
+00:05:49,782 --> 00:05:52,904
+This means that if a computation
+happens not to use
+
+109
+00:05:52,904 --> 00:05:56,932
+a parameter the corresponding
+argument never gets evaluated.
+
+110
+00:05:56,932 --> 00:06:00,822
+So in the pi1 example we had before,
+the call to foo now works as we hoped.
+
+111
+00:06:00,822 --> 00:06:03,547
+Returns five without
+risking an infinite loop.
+
+112
+00:06:03,547 --> 00:06:05,746
+It's not all good news though.
+
+113
+00:06:05,746 --> 00:06:07,219
+Consider this example.
+
+114
+00:06:07,219 --> 00:06:09,888
+Here, foo has three parameters,
+x, y and z.
+
+115
+00:06:09,888 --> 00:06:14,232
+This is x and y twice each but
+it does not touch the z at all.
+
+116
+00:06:14,232 --> 00:06:18,112
+So I mean it calls foo with 10 plus 10 for
+x and
+
+117
+00:06:18,112 --> 00:06:22,092
+20 plus 20 for y and
+a looping occurs in foo z.
+
+118
+00:06:22,092 --> 00:06:26,061
+Since c doesn't occur in the body of foo,
+it never gets evaluated, but
+
+119
+00:06:26,061 --> 00:06:28,723
+both copies of x get
+replaced by 10 plus 10.
+
+120
+00:06:28,723 --> 00:06:34,632
+So that computation happens twice,
+similarly with the 20 plus 20 replacing y.
+
+121
+00:06:34,632 --> 00:06:36,792
+The call by name is not used very often,
+
+122
+00:06:36,792 --> 00:06:41,112
+you will see it in the c pre-processing
+language when you use number to find for
+
+123
+00:06:41,112 --> 00:06:45,186
+things, and the scripting language
+TCL has some limited support for it.
+
+124
+00:06:45,186 --> 00:06:49,383
+The final style we'll talk
+about today is call by need.
+
+125
+00:06:49,383 --> 00:06:51,913
+This is the style that Haskell uses.
+
+126
+00:06:51,913 --> 00:06:53,305
+It's like call by name, but
+
+127
+00:06:53,305 --> 00:06:56,265
+we will first wrap a data structure
+around it called a thunk.
+
+128
+00:06:56,265 --> 00:06:57,988
+Now a thunk has three states.
+
+129
+00:06:57,988 --> 00:07:02,018
+Unevaluated, evaluated,
+and pending evaluation.
+
+130
+00:07:02,018 --> 00:07:04,425
+When we pass a thunk to a function,
+
+131
+00:07:04,425 --> 00:07:08,575
+all copies of a parameter refer
+to the same thunk in memory.
+
+132
+00:07:08,575 --> 00:07:13,393
+The first time a thunk is evaluated,
+the code gets replaced by the result.
+
+133
+00:07:13,393 --> 00:07:17,099
+The second and
+following times the thunk gets evaluated,
+
+134
+00:07:17,099 --> 00:07:18,919
+and it just returns a value.
+
+135
+00:07:18,919 --> 00:07:21,218
+So think of it as web caching for
+variables.
+
+136
+00:07:21,218 --> 00:07:27,121
+So here's what happens with foo and
+main, x and y get thunks.
+
+137
+00:07:27,121 --> 00:07:30,673
+The first x computes 10 plus 10,
+and the second x just returns 20.
+
+138
+00:07:30,673 --> 00:07:32,888
+The first y computes 20 plus 20.
+
+139
+00:07:32,888 --> 00:07:34,818
+The second y just returns 40.
+
+140
+00:07:34,818 --> 00:07:37,883
+And the z is never used,
+so it's never evaluated.
+
+141
+00:07:37,883 --> 00:07:42,419
+The call by need is optimal in that
+a parameter will only be evaluated at most
+
+142
+00:07:42,419 --> 00:07:45,230
+one time, and
+only if it's actually needed.
+
+143
+00:07:45,230 --> 00:07:49,888
+There's usually some overhead in
+setting up the thunk if you're
+
+144
+00:07:49,888 --> 00:07:52,512
+doing this in an eager language, but
+
+145
+00:07:52,512 --> 00:07:57,267
+languages like Haskell are designed
+to make this very efficient.
+
+146
+00:07:57,267 --> 00:07:57,837
+And so that's it for
+the different parameter
+
+147
+00:07:57,837 --> 00:07:58,337
+passing styles and for variables.

@@ -1,0 +1,17 @@
+[MUSIC] Hello, and welcome to week 1 of Theory and
+Practice of Data Cleaning. This week,
+I will give you a general overview and introduction to the topics
+covered in this course. Specifically, this week we will talk about
+what is data cleaning, or data wrangling, as it's sometimes called. Why is it important, and where does
+it fit in the larger data science and analytics picture? We will also try to clarify
+what data quality means by linking it to the notion of fitness for
+use, and by exploring a few data quality
+dimensions, and point you to associated optional readings if you'd like to learn
+more about some of these dimensions. Finally, I will mention the tools we
+are going to be using in this course. After all, the title of this course is
+Theory and Practice of Data Cleaning. After this first week, I hope that you
+understand the role of data cleaning in the larger data management and analysis
+life cycle, and that you are able to spot certain data quality issues and associate
+them with a quality dimension and, possibly, a tool or approach that could
+help improve the quality of data. In the second week, we will also
+have our first hands-on assignment. But first things first, let's jump right into the first lecture. [MUSIC]

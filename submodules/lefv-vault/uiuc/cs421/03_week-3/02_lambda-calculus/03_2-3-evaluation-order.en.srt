@@ -1,0 +1,631 @@
+1
+00:00:02,210 --> 00:00:05,235
+Hello everyone, and welcome back.
+
+2
+00:00:05,235 --> 00:00:08,570
+In this video, we're going to talk about evaluation orders.
+
+3
+00:00:08,570 --> 00:00:11,620
+So, your objectives, they're these four terms you want to know,
+
+4
+00:00:11,620 --> 00:00:15,610
+there's evaluation orders called normal order and applicative order,
+
+5
+00:00:15,610 --> 00:00:19,090
+then there's two different forums to know,
+
+6
+00:00:19,090 --> 00:00:21,715
+called normal form and weak head normal form.
+
+7
+00:00:21,715 --> 00:00:23,810
+The reason why we want to learn these terms,
+
+8
+00:00:23,810 --> 00:00:25,700
+is they answer these two questions.
+
+9
+00:00:25,700 --> 00:00:27,370
+If there's more than one Beta reduction,
+
+10
+00:00:27,370 --> 00:00:29,050
+does it matter which one you do first,
+
+11
+00:00:29,050 --> 00:00:32,355
+or is there an always right next one to do?
+
+12
+00:00:32,355 --> 00:00:34,700
+Also, if you have some Beta reductions,
+
+13
+00:00:34,700 --> 00:00:37,745
+is it ever permissible to leave one unreduced?
+
+14
+00:00:37,745 --> 00:00:41,225
+Sometimes, actually the answer is yes to that question.
+
+15
+00:00:41,225 --> 00:00:43,540
+So, let's start with evaluation order.
+
+16
+00:00:43,540 --> 00:00:46,190
+The first one we want to talk about is called applicative order,
+
+17
+00:00:46,190 --> 00:00:48,415
+and in many programming languages,
+
+18
+00:00:48,415 --> 00:00:50,000
+the way a function call works,
+
+19
+00:00:50,000 --> 00:00:52,340
+is that you take all the arguments to the function,
+
+20
+00:00:52,340 --> 00:00:54,080
+and then you evaluate them first,
+
+21
+00:00:54,080 --> 00:00:57,515
+and then the values or results or what you pass into the function call,
+
+22
+00:00:57,515 --> 00:00:59,100
+is called call by value,
+
+23
+00:00:59,100 --> 00:01:02,200
+we're going to have a future video where we talk more about this.
+
+24
+00:01:02,200 --> 00:01:04,630
+So, the way applicative order works,
+
+25
+00:01:04,630 --> 00:01:07,665
+is you start with the leftmost outermost application,
+
+26
+00:01:07,665 --> 00:01:10,650
+that's this application here,
+
+27
+00:01:10,650 --> 00:01:13,460
+because it's the outermost one.
+
+28
+00:01:13,460 --> 00:01:15,935
+You could look inside and see that fx
+
+29
+00:01:15,935 --> 00:01:18,294
+if that were something that could be a Beta reduction,
+
+30
+00:01:18,294 --> 00:01:22,185
+then we would not want to do that because that's not an outermost one.
+
+31
+00:01:22,185 --> 00:01:24,485
+So, we want to do this outermost thing,
+
+32
+00:01:24,485 --> 00:01:27,290
+and then you look at any arguments and you
+
+33
+00:01:27,290 --> 00:01:30,210
+evaluate them first before you do the Beta reduction.
+
+34
+00:01:30,210 --> 00:01:31,670
+So, in this example,
+
+35
+00:01:31,670 --> 00:01:36,380
+the leftmost outermost application this is Lambda X term applied to the Lambda Z term.
+
+36
+00:01:36,380 --> 00:01:39,780
+Lambda Z is already evaluated as much as it can go,
+
+37
+00:01:39,780 --> 00:01:41,155
+so we just pass it in,
+
+38
+00:01:41,155 --> 00:01:42,705
+and we get this result.
+
+39
+00:01:42,705 --> 00:01:47,845
+Next, we want the lambda F to consume the Lambda Q applied to Lambda R term.
+
+40
+00:01:47,845 --> 00:01:49,700
+Now, that one can be evaluated.
+
+41
+00:01:49,700 --> 00:01:51,310
+So, we're going to evaluate that first,
+
+42
+00:01:51,310 --> 00:01:55,645
+and Lambda Q is going to consume the Lambda R term, we're going get this.
+
+43
+00:01:55,645 --> 00:01:58,910
+Finally now, we can pass that into the Lambda F,
+
+44
+00:01:58,910 --> 00:02:01,285
+so we get this thing, so,
+
+45
+00:02:01,285 --> 00:02:03,660
+the body was F applied to Lambda z.z,
+
+46
+00:02:03,660 --> 00:02:06,990
+so now we have Lambda r.r applied to Lambda z.z,
+
+47
+00:02:06,990 --> 00:02:09,150
+the lambda R is going to consume the lambda Z term,
+
+48
+00:02:09,150 --> 00:02:11,075
+and we're going to get this final result.
+
+49
+00:02:11,075 --> 00:02:12,805
+Next is normal order,
+
+50
+00:02:12,805 --> 00:02:16,120
+which is kind of like what the C pre-processor uses,
+
+51
+00:02:16,120 --> 00:02:17,790
+if you're familiar with that.
+
+52
+00:02:17,790 --> 00:02:20,360
+It's called call by name,
+
+53
+00:02:20,360 --> 00:02:22,980
+and the idea, is that when you do the substitution,
+
+54
+00:02:22,980 --> 00:02:24,450
+it's like a cut and paste.
+
+55
+00:02:24,450 --> 00:02:27,410
+You don't evaluate the term before you substitute it in.
+
+56
+00:02:27,410 --> 00:02:30,410
+This is going to have some effects which we'll talk about later.
+
+57
+00:02:30,410 --> 00:02:33,400
+So, again we're going to start with the leftmost outermost application,
+
+58
+00:02:33,400 --> 00:02:35,350
+but we're going do the Beta reduction right away,
+
+59
+00:02:35,350 --> 00:02:38,660
+instead of trying to reduce the argument first.
+
+60
+00:02:38,660 --> 00:02:44,430
+So here, the first step is the same as the last time, but the second step,
+
+61
+00:02:44,430 --> 00:02:48,370
+we have this Lambda Q applied to Lambda R term,
+
+62
+00:02:48,370 --> 00:02:52,220
+and we're going to feed that into the Lambda F right away.
+
+63
+00:02:52,220 --> 00:02:54,300
+So, it gives us this term now.
+
+64
+00:02:54,300 --> 00:02:58,080
+So, now the Lambda Q Lambda R is the thing we want to reduce,
+
+65
+00:02:58,080 --> 00:03:01,050
+so we get this as our result,
+
+66
+00:03:01,050 --> 00:03:04,745
+and finally we do the Lambda R. So we get this.
+
+67
+00:03:04,745 --> 00:03:07,485
+So, you'll notice, that we got the same result.
+
+68
+00:03:07,485 --> 00:03:09,735
+You may be wondering if that's always true.
+
+69
+00:03:09,735 --> 00:03:11,085
+So, we'll talk about that.
+
+70
+00:03:11,085 --> 00:03:12,645
+So, there's interesting effects,
+
+71
+00:03:12,645 --> 00:03:15,540
+when you choose these two application orders.
+
+72
+00:03:15,540 --> 00:03:19,600
+Applicative order usually has fewer reductions,
+
+73
+00:03:19,600 --> 00:03:21,410
+we think of usually being in quotes,
+
+74
+00:03:21,410 --> 00:03:23,150
+because it's not like we run
+
+75
+00:03:23,150 --> 00:03:26,225
+statistics to figure out what Lambda calculus terms there are,
+
+76
+00:03:26,225 --> 00:03:28,470
+but the intuition is that,
+
+77
+00:03:28,470 --> 00:03:33,550
+if you have more than one occurrence of the variable inside the function body, well,
+
+78
+00:03:33,550 --> 00:03:36,890
+applicative order means you get the value and then pass that in,
+
+79
+00:03:36,890 --> 00:03:38,565
+if you did normal order,
+
+80
+00:03:38,565 --> 00:03:41,240
+then you have the computation passing,
+
+81
+00:03:41,240 --> 00:03:42,290
+every time you see the variable,
+
+82
+00:03:42,290 --> 00:03:44,215
+you're going to have to redo the computation.
+
+83
+00:03:44,215 --> 00:03:47,645
+So here, this Lambda A applied to Lambda B,
+
+84
+00:03:47,645 --> 00:03:50,410
+we'd want to do that first before passing it in because
+
+85
+00:03:50,410 --> 00:03:53,580
+the variable X occurs four times inside that body.
+
+86
+00:03:53,580 --> 00:03:54,830
+We don't want to do that four times,
+
+87
+00:03:54,830 --> 00:03:56,280
+we'd rather just do it one time.
+
+88
+00:03:56,280 --> 00:03:59,760
+However, sometimes normal order wins.
+
+89
+00:03:59,760 --> 00:04:04,220
+So, here, x does not occur in the body at all, believe it or not,
+
+90
+00:04:04,220 --> 00:04:06,915
+sometimes that's a useful thing to have happen,
+
+91
+00:04:06,915 --> 00:04:08,805
+and so we don't want to do this computation.
+
+92
+00:04:08,805 --> 00:04:12,320
+So, normal order won't even do the Lambda A applied to Lambda B,
+
+93
+00:04:12,320 --> 00:04:13,410
+it'll just leave it alone,
+
+94
+00:04:13,410 --> 00:04:15,070
+and throw it away.
+
+95
+00:04:15,070 --> 00:04:17,235
+Now, and I answer the question,
+
+96
+00:04:17,235 --> 00:04:18,660
+do they yield the same result?
+
+97
+00:04:18,660 --> 00:04:22,370
+Yes, but with one caveat.
+
+98
+00:04:22,370 --> 00:04:24,155
+The term must terminate.
+
+99
+00:04:24,155 --> 00:04:27,820
+Sometimes there are Lambda calculate sequences that don't terminate,
+
+100
+00:04:27,820 --> 00:04:29,650
+you'll see one in your activities,
+
+101
+00:04:29,650 --> 00:04:32,335
+but if it doesn't terminate, of course,
+
+102
+00:04:32,335 --> 00:04:34,580
+we can't say that it gives you
+
+103
+00:04:34,580 --> 00:04:38,320
+the same answer because sometimes one will terminate and the other one will not.
+
+104
+00:04:38,320 --> 00:04:40,000
+So, now let's talk about,
+
+105
+00:04:40,000 --> 00:04:41,745
+when is it okay to stop.
+
+106
+00:04:41,745 --> 00:04:44,490
+To do that, I want you to look at this haskell code.
+
+107
+00:04:44,490 --> 00:04:49,885
+You see this anonymous function Lambda z.z,
+
+108
+00:04:49,885 --> 00:04:51,965
+when do you expect it to occur?
+
+109
+00:04:51,965 --> 00:04:56,165
+Typically, you'd expect that to happen after foo has been called.
+
+110
+00:04:56,165 --> 00:04:58,690
+We think that foo should get its variables first,
+
+111
+00:04:58,690 --> 00:04:59,885
+and then we're going do that.
+
+112
+00:04:59,885 --> 00:05:01,340
+Now, if you're looking at this, you might say,
+
+113
+00:05:01,340 --> 00:05:03,520
+"well you know, we can optimize this out.
+
+114
+00:05:03,520 --> 00:05:05,465
+We could do this right away. Couldn't we?"
+
+115
+00:05:05,465 --> 00:05:08,195
+In this case, it's a simple example, we could,
+
+116
+00:05:08,195 --> 00:05:11,555
+but, it doesn't always work out that way.
+
+117
+00:05:11,555 --> 00:05:14,000
+If your answer is, "I'm going to do this right away,
+
+118
+00:05:14,000 --> 00:05:16,580
+even though I don't know what the value of Y is,"
+
+119
+00:05:16,580 --> 00:05:19,935
+then what you've got is something called normal order,
+
+120
+00:05:19,935 --> 00:05:24,515
+or normal form, but if you're going to wait until the function gets called first,
+
+121
+00:05:24,515 --> 00:05:27,920
+then what you have is something called weak head normal form.
+
+122
+00:05:27,920 --> 00:05:29,925
+In weak head normal form,
+
+123
+00:05:29,925 --> 00:05:32,850
+the root of the term is a Lambda,
+
+124
+00:05:32,850 --> 00:05:35,425
+and everything else is the body of the function.
+
+125
+00:05:35,425 --> 00:05:39,135
+There may be Beta reductions that are doable inside there,
+
+126
+00:05:39,135 --> 00:05:42,760
+but if you're reducing the weak head normal form, you stop.
+
+127
+00:05:42,760 --> 00:05:45,535
+This is what most real programming languages do.
+
+128
+00:05:45,535 --> 00:05:47,870
+You don't want to evaluate inside the body
+
+129
+00:05:47,870 --> 00:05:50,260
+of a function until you know what all the variables are.
+
+130
+00:05:50,260 --> 00:05:54,770
+In normal form, you go ahead and descend into the body and you keep going.
+
+131
+00:05:54,770 --> 00:05:57,674
+This gives you smaller expressions usually,
+
+132
+00:05:57,674 --> 00:06:00,410
+and they're called normalized.
+
+133
+00:06:00,410 --> 00:06:02,970
+Well, there's a couple of problems with doing normal form.
+
+134
+00:06:02,970 --> 00:06:06,800
+One is, sometimes you end up having things that don't terminate,
+
+135
+00:06:06,800 --> 00:06:09,550
+that would've terminated if you had waited,
+
+136
+00:06:09,550 --> 00:06:11,920
+if you've done weak head normal form instead.
+
+137
+00:06:11,920 --> 00:06:14,895
+The other, is that it's possible to get Alpha capture.
+
+138
+00:06:14,895 --> 00:06:18,165
+So, here we have this example, Lambda Y,
+
+139
+00:06:18,165 --> 00:06:22,060
+and inside there's this Lambda xy.x applied to Y,
+
+140
+00:06:22,060 --> 00:06:25,500
+that's going to cause that Y to get captured.
+
+141
+00:06:25,500 --> 00:06:28,575
+That doesn't happen if you just do weak head normal form.
+
+142
+00:06:28,575 --> 00:06:30,940
+So, what are we going to do in class?
+
+143
+00:06:30,940 --> 00:06:33,345
+We're usually going to use normal form,
+
+144
+00:06:33,345 --> 00:06:38,315
+just because it reveals the structure of what's going on in the computations.
+
+145
+00:06:38,315 --> 00:06:41,050
+We're not using this in a practical manner,
+
+146
+00:06:41,050 --> 00:06:45,335
+we're using it more of understanding what's happening with our functions.
+
+147
+00:06:45,335 --> 00:06:48,525
+And as far as the order of evaluation,
+
+148
+00:06:48,525 --> 00:06:51,130
+we'd like you to know both applicative and normal order.
+
+149
+00:06:51,130 --> 00:06:53,105
+We'll tell you which one we want you to use.
+
+150
+00:06:53,105 --> 00:06:54,670
+Sometimes it makes a difference,
+
+151
+00:06:54,670 --> 00:06:56,990
+but thankfully, many times it doesn't.
+
+152
+00:06:56,990 --> 00:06:59,950
+So, you could be good on that.
+
+153
+00:06:59,950 --> 00:07:02,810
+So, in our next couple of videos after this,
+
+154
+00:07:02,810 --> 00:07:06,975
+I'm going to show you some very strange things you can do with Lambda calculus,
+
+155
+00:07:06,975 --> 00:07:09,580
+because I told you before that it's string complete,
+
+156
+00:07:09,580 --> 00:07:12,205
+so I'm going to show you how to build,
+
+157
+00:07:12,205 --> 00:07:15,740
+how to represent numbers and linked lists,
+
+158
+00:07:15,740 --> 00:07:20,410
+and even recursion in just pure Lambda calculus.

@@ -1,0 +1,527 @@
+1
+00:00:00,000 --> 00:00:04,845
+I told you I was going to show you how to write Binary Search Tree Add using this.
+
+2
+00:00:04,845 --> 00:00:07,760
+So, here is the code that you could use.
+
+3
+00:00:07,760 --> 00:00:11,820
+Say in this data type tree that has a type parameter A,
+
+4
+00:00:11,820 --> 00:00:13,680
+second have a node with an A in it,
+
+5
+00:00:13,680 --> 00:00:16,065
+and then two subtrees of type A.
+
+6
+00:00:16,065 --> 00:00:18,480
+Then, we can also have an empty.
+
+7
+00:00:18,480 --> 00:00:22,200
+If you are doing this at home and I suggest you do,
+
+8
+00:00:22,200 --> 00:00:26,440
+remember to put in a deriving show clause just so that you can print it out.
+
+9
+00:00:26,440 --> 00:00:31,170
+So I'm going to write this function called Add BST and I'll put in the type signature.
+
+10
+00:00:31,170 --> 00:00:33,930
+So, I wanted to work on integers and tree of integers,
+
+11
+00:00:33,930 --> 00:00:36,870
+so the first parameter is going to be integer and can have a tree that
+
+12
+00:00:36,870 --> 00:00:40,100
+contains integers and then it's going to output a tree of integers.
+
+13
+00:00:40,100 --> 00:00:42,665
+So, the first case is on line four,
+
+14
+00:00:42,665 --> 00:00:46,250
+if I add something to an empty tree then I'm going to return
+
+15
+00:00:46,250 --> 00:00:51,240
+a node that has something in it and then two empty subtrees.
+
+16
+00:00:51,320 --> 00:00:55,000
+Next, if I want to add something,
+
+17
+00:00:55,000 --> 00:01:00,920
+some integer I to a tree with a node with a X in it in the left and right subtree.
+
+18
+00:01:00,920 --> 00:01:07,610
+Well, I have to check now if I is less than X then what I want to do is create
+
+19
+00:01:07,610 --> 00:01:10,850
+a new node with the X in it and then add
+
+20
+00:01:10,850 --> 00:01:14,830
+I to the left subtree and then keep the right tree as is.
+
+21
+00:01:14,830 --> 00:01:19,310
+Now, this is important to notice that as I said before,
+
+22
+00:01:19,310 --> 00:01:23,365
+whenever you write down a constructor, you're allocating memory.
+
+23
+00:01:23,365 --> 00:01:27,140
+So, note that we are not modifying the original tree,
+
+24
+00:01:27,140 --> 00:01:29,670
+we are actually creating a new tree.
+
+25
+00:01:29,670 --> 00:01:32,170
+So, if I is not less than equal X,
+
+26
+00:01:32,170 --> 00:01:36,150
+we want to go down to the right side and that's what lines seven says.
+
+27
+00:01:36,150 --> 00:01:37,670
+So, create a new node,
+
+28
+00:01:37,670 --> 00:01:39,095
+we leave the left tree alone,
+
+29
+00:01:39,095 --> 00:01:42,425
+so we're just going to store a pointer to the original left tree,
+
+30
+00:01:42,425 --> 00:01:44,565
+and then we're going to add BST to the right,
+
+31
+00:01:44,565 --> 00:01:46,675
+that's going to create a new subtree there.
+
+32
+00:01:46,675 --> 00:01:49,575
+So, let's look at what this looks like in memory.
+
+33
+00:01:49,575 --> 00:01:52,340
+So, let's suppose I have a tree T that has five, three,
+
+34
+00:01:52,340 --> 00:01:56,840
+and a seven in it, and I say let U equal add T6.
+
+35
+00:01:56,840 --> 00:01:59,660
+What's that going to do, it's going to start with the five,
+
+36
+00:01:59,660 --> 00:02:00,955
+it's going to go to the seven,
+
+37
+00:02:00,955 --> 00:02:04,350
+and it's going to build a six on to the left of a seven, right?
+
+38
+00:02:04,350 --> 00:02:08,180
+But it's not descending the original tree and modifying,
+
+39
+00:02:08,180 --> 00:02:11,265
+it's descending the tree and building a new one.
+
+40
+00:02:11,265 --> 00:02:14,455
+So, U is actually going to look like this.
+
+41
+00:02:14,455 --> 00:02:16,900
+So, when we go down to the left one,
+
+42
+00:02:16,900 --> 00:02:18,320
+remember we created a node,
+
+43
+00:02:18,320 --> 00:02:22,895
+we return the right subtree which is going to point to the three,
+
+44
+00:02:22,895 --> 00:02:25,610
+and then the left side is going to be a new node,
+
+45
+00:02:25,610 --> 00:02:29,780
+creating the seven which is going to have a node creating the six.
+
+46
+00:02:29,780 --> 00:02:32,825
+I left off the empties just to save space.
+
+47
+00:02:32,825 --> 00:02:37,620
+So, the big rule of thumb for functional data structures,
+
+48
+00:02:37,620 --> 00:02:39,080
+remember everything is persistent,
+
+49
+00:02:39,080 --> 00:02:43,864
+everything is immutable, is that if you want to make a change to something.
+
+50
+00:02:43,864 --> 00:02:47,644
+Everything between the root and the point of change is rebuilt.
+
+51
+00:02:47,644 --> 00:02:50,740
+Everything that's not on that path is recycled.
+
+52
+00:02:50,740 --> 00:02:54,665
+So, look at this line here let V equal add U1.
+
+53
+00:02:54,665 --> 00:02:58,565
+So, I'm going to add one to the U tree now and
+
+54
+00:02:58,565 --> 00:03:02,330
+try to visualize what the memory diagram will look like.
+
+55
+00:03:02,330 --> 00:03:05,030
+So, hit pause try to visualize what will
+
+56
+00:03:05,030 --> 00:03:09,565
+happen then when you're ready hit unpause and I'll show you the result.
+
+57
+00:03:09,565 --> 00:03:13,110
+All right ready, here we go.
+
+58
+00:03:13,110 --> 00:03:17,510
+So, the five and the three had to be rebuilt and then the one is
+
+59
+00:03:17,510 --> 00:03:20,690
+new construction but the seven subtree
+
+60
+00:03:20,690 --> 00:03:24,380
+could be recycled and so you see that it's pointing into there.
+
+61
+00:03:24,380 --> 00:03:29,210
+So, what you end up having happened with a lot of these data structures,
+
+62
+00:03:29,210 --> 00:03:33,650
+is that there's an awful lot of interlinking going on and this is perfectly safe
+
+63
+00:03:33,650 --> 00:03:38,660
+because you can count on the fact that none of this is going to get changed.
+
+64
+00:03:38,660 --> 00:03:42,350
+So, it's perfectly safe to link it to a previous item.
+
+65
+00:03:42,350 --> 00:03:45,440
+Now, one thing that you can do with something like
+
+66
+00:03:45,440 --> 00:03:49,055
+this is if you've ever used a program that has multilevel undo.
+
+67
+00:03:49,055 --> 00:03:52,080
+It's very very trivial to implement that with this kind of structure.
+
+68
+00:03:52,080 --> 00:03:57,080
+You just go to U or go to T to get back what was previously there.
+
+69
+00:03:57,080 --> 00:03:59,635
+If you're using what we call destructive update,
+
+70
+00:03:59,635 --> 00:04:02,810
+which you would in a language like Java or C++,
+
+71
+00:04:02,810 --> 00:04:04,970
+you have to store the information of how to undo
+
+72
+00:04:04,970 --> 00:04:08,010
+the change which can be significantly more complex.
+
+73
+00:04:08,010 --> 00:04:14,060
+So, while this may look like it's chewing memory or could be slow,
+
+74
+00:04:14,060 --> 00:04:17,065
+in some cases actually faster than doing it the other way.
+
+75
+00:04:17,065 --> 00:04:19,655
+Remember too, that the compiler is really smart
+
+76
+00:04:19,655 --> 00:04:22,705
+and it's going to optimize a lot of stuff for us anyway,
+
+77
+00:04:22,705 --> 00:04:26,840
+so that they can detect that we are going to reuse memory
+
+78
+00:04:26,840 --> 00:04:30,910
+or rebuild memory that's never going to be used again sometimes it will update in place.
+
+79
+00:04:30,910 --> 00:04:34,785
+So, I want to show you a couple of very important types.
+
+80
+00:04:34,785 --> 00:04:36,210
+One of them is called Maybe.
+
+81
+00:04:36,210 --> 00:04:37,700
+You're going to use this a lot.
+
+82
+00:04:37,700 --> 00:04:39,980
+So, the idea is suppose you have
+
+83
+00:04:39,980 --> 00:04:44,270
+a hash table and you look something up in the hash table,
+
+84
+00:04:44,270 --> 00:04:47,910
+you asked for the key and then the key is not in there,
+
+85
+00:04:47,910 --> 00:04:49,680
+so there's no corresponding value,
+
+86
+00:04:49,680 --> 00:04:50,970
+what are you going do about it?
+
+87
+00:04:50,970 --> 00:04:53,120
+There's a few things that languages do,
+
+88
+00:04:53,120 --> 00:04:57,080
+some return null or nil which can be a problem
+
+89
+00:04:57,080 --> 00:05:01,280
+because it may be that the value you want inserted is actually nil.
+
+90
+00:05:01,280 --> 00:05:04,300
+So, there's one language Common Lisp has a lookup function,
+
+91
+00:05:04,300 --> 00:05:05,960
+it returns actually a pair.
+
+92
+00:05:05,960 --> 00:05:09,140
+It's complicated but the first thing is
+
+93
+00:05:09,140 --> 00:05:14,890
+the value that it got back and if it is nil then there's a second thing that tells you,
+
+94
+00:05:14,890 --> 00:05:18,890
+if the nil was really a value or if it was really not in there.
+
+95
+00:05:18,890 --> 00:05:22,610
+Some languages will force you to actually do a check
+
+96
+00:05:22,610 --> 00:05:27,080
+first to see if the values in there before you're allowed to look things up,
+
+97
+00:05:27,080 --> 00:05:29,590
+some languages just throw an exception.
+
+98
+00:05:29,590 --> 00:05:31,565
+Now, all these are kind of painful.
+
+99
+00:05:31,565 --> 00:05:33,480
+Here's Haskell solution to the problem.
+
+100
+00:05:33,480 --> 00:05:35,120
+We have this type called Maybe,
+
+101
+00:05:35,120 --> 00:05:37,770
+which means that you might have it or you might not.
+
+102
+00:05:37,770 --> 00:05:38,820
+So, there's two constructors,
+
+103
+00:05:38,820 --> 00:05:41,090
+you have Just, you also have Nothing.
+
+104
+00:05:41,090 --> 00:05:44,260
+So, here we have this get item, linear associative list.
+
+105
+00:05:44,260 --> 00:05:45,380
+If we get item,
+
+106
+00:05:45,380 --> 00:05:48,450
+a key and the list is empty that means the values out in there,
+
+107
+00:05:48,450 --> 00:05:49,910
+so we return nothing.
+
+108
+00:05:49,910 --> 00:05:51,575
+But if we get item,
+
+109
+00:05:51,575 --> 00:05:55,840
+the key and the value and the key K is equal to K,
+
+110
+00:05:55,840 --> 00:05:59,185
+then we return just be otherwise we do a recursion.
+
+111
+00:05:59,185 --> 00:06:01,610
+So, here's a couple of examples.
+
+112
+00:06:01,610 --> 00:06:05,640
+Get item three returns just turtle doves but get item five,
+
+113
+00:06:05,640 --> 00:06:07,450
+sorry no diamond rings,
+
+114
+00:06:07,450 --> 00:06:10,390
+no golden rings so you get nothing.
+
+115
+00:06:10,390 --> 00:06:12,965
+Another one is called Either.
+
+116
+00:06:12,965 --> 00:06:17,420
+Now, this one has two type parameters because Either can be
+
+117
+00:06:17,420 --> 00:06:23,320
+either A or B and they're usually called left and right.
+
+118
+00:06:23,320 --> 00:06:29,630
+The common use for this is that the left constructor is used to
+
+119
+00:06:29,630 --> 00:06:32,260
+store an error message and they right
+
+120
+00:06:32,260 --> 00:06:36,740
+constructor is used to store a result that succeeded.
+
+121
+00:06:36,740 --> 00:06:41,640
+So, here it's the same sort of thing except instead of returning nothing,
+
+122
+00:06:41,640 --> 00:06:43,980
+we say left and then key not found,
+
+123
+00:06:43,980 --> 00:06:45,610
+so we're returning an error message.
+
+124
+00:06:45,610 --> 00:06:49,870
+Then mnemonic of course is that the right contains the right thing,
+
+125
+00:06:49,870 --> 00:06:54,385
+so both of these, the Maybe type and the Either type are very important.
+
+126
+00:06:54,385 --> 00:06:58,670
+You'll see them a lot so I urge you to play with these examples so
+
+127
+00:06:58,670 --> 00:07:03,470
+that you don't actually have to type in the data because these are built-in.
+
+128
+00:07:03,470 --> 00:07:06,880
+Play with this so that you get a good sense for how they work.
+
+129
+00:07:06,880 --> 00:07:09,470
+So, here's something for you to try.
+
+130
+00:07:09,470 --> 00:07:11,345
+Here's the tree type again.
+
+131
+00:07:11,345 --> 00:07:14,890
+Try writing add, find, lookup and delete.
+
+132
+00:07:14,890 --> 00:07:20,040
+You will learn a lot about functional data structures by doing this.

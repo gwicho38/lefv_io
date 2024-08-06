@@ -1,0 +1,605 @@
+1
+00:00:00,004 --> 00:00:08,472
+[MUSIC]
+
+2
+00:00:08,472 --> 00:00:12,965
+Okay, so what we want to do here
+is to look at SQL(ite) by example.
+
+3
+00:00:12,965 --> 00:00:17,327
+We're going to run through a couple of
+examples at a certain level of detail,
+
+4
+00:00:17,327 --> 00:00:20,650
+I'll try to go a little slow to
+show you how SQL works by way
+
+5
+00:00:20,650 --> 00:00:24,617
+of a mini-tutorial that is quite nice,
+from Software Carpentry.
+
+6
+00:00:24,617 --> 00:00:29,988
+So we're going to go to this website,
+it's called sql-novice-survey.
+
+7
+00:00:29,988 --> 00:00:33,093
+We're going to go to this website and
+in particular, so
+
+8
+00:00:33,093 --> 00:00:36,405
+the website itself is on GitHub,
+that's quite nice, so
+
+9
+00:00:36,405 --> 00:00:40,340
+software carpentry has made all
+its material available on GitHub.
+
+10
+00:00:40,340 --> 00:00:45,396
+So you can clone it from there, download
+it from there but you can also look at
+
+11
+00:00:45,396 --> 00:00:50,452
+the website through the browser and
+there's a particular link given here,
+
+12
+00:00:50,452 --> 00:00:55,118
+and when you click on that link,
+what you see is that little tutorial.
+
+13
+00:00:55,118 --> 00:00:58,865
+So that's what we're going to do but
+before we go there,
+
+14
+00:00:58,865 --> 00:01:01,967
+I just want to say a few
+words about SQL itself.
+
+15
+00:01:01,967 --> 00:01:07,297
+So the Structured Query Language SQL, is a
+very large language has been standardized
+
+16
+00:01:07,297 --> 00:01:12,267
+since quite a while, and it's really
+the world runs on relational databases.
+
+17
+00:01:12,267 --> 00:01:16,526
+The language itself is based on
+the relational algebra, and as we've also
+
+18
+00:01:16,526 --> 00:01:20,719
+seen, the relational calculus sometimes
+called Predicate Calculus but
+
+19
+00:01:20,719 --> 00:01:24,652
+there's a particular version that's
+very closely related to SQL.
+
+20
+00:01:24,652 --> 00:01:27,223
+The language itself has many parts and
+
+21
+00:01:27,223 --> 00:01:31,730
+we're going to look at only one part
+in more detail which is queries.
+
+22
+00:01:31,730 --> 00:01:35,182
+But also it's good to know that there
+are other parts for example the data
+
+23
+00:01:35,182 --> 00:01:38,481
+definition language contains
+statements on how you create tables.
+
+24
+00:01:38,481 --> 00:01:42,884
+So for example there is a create table
+statement that would allow you to
+
+25
+00:01:42,884 --> 00:01:47,661
+define the name of a table, the name
+of a relation, the name of the columns,
+
+26
+00:01:47,661 --> 00:01:52,912
+the data types of the columns, primary
+keys, foreign keys, other constraints.
+
+27
+00:01:52,912 --> 00:01:56,501
+There's a data manipulation language
+that would allow you to define updates.
+
+28
+00:01:56,501 --> 00:02:00,908
+So when you for example say you want to
+give every employee in the database
+
+29
+00:02:00,908 --> 00:02:05,609
+a raise, or you want to delete every
+customer who has not ordered something in
+
+30
+00:02:05,609 --> 00:02:08,129
+a long time, maybe not such a good idea.
+
+31
+00:02:08,129 --> 00:02:11,669
+Or maybe you want to, if a customer is
+deleted then maybe you want to delete
+
+32
+00:02:11,669 --> 00:02:14,206
+the pending orders,
+that's maybe a better idea.
+
+33
+00:02:14,206 --> 00:02:18,478
+So that would be statements you can
+find in the data manipulation language.
+
+34
+00:02:18,478 --> 00:02:23,282
+And data control language says
+how to give access to certain
+
+35
+00:02:23,282 --> 00:02:26,079
+tables to certain users and so on.
+
+36
+00:02:26,079 --> 00:02:28,174
+Some of these features you
+don't find in SQL(ite).
+
+37
+00:02:28,174 --> 00:02:32,866
+SQL(ite) is very different from
+traditional database systems
+
+38
+00:02:32,866 --> 00:02:37,555
+that have meant for server based
+data management where many users
+
+39
+00:02:37,555 --> 00:02:42,432
+simultaneously can access SQL(ite)
+of your personal database.
+
+40
+00:02:42,432 --> 00:02:47,230
+But it's very powerful for
+individual users and for
+
+41
+00:02:47,230 --> 00:02:50,501
+our purposes using data queries and
+
+42
+00:02:50,501 --> 00:02:56,074
+negative constraint checking,
+it's a good first choice.
+
+43
+00:02:56,074 --> 00:02:59,636
+So we are going to look in
+particular at queries in SQL and
+
+44
+00:02:59,636 --> 00:03:03,767
+SQL is sometimes also called
+a declarative language of 4GL.
+
+45
+00:03:03,767 --> 00:03:07,902
+That means it focuses not how
+a certain operation is executed,
+
+46
+00:03:07,902 --> 00:03:11,188
+but what is the operation
+that you want to execute.
+
+47
+00:03:11,188 --> 00:03:15,522
+If you had to implement some
+of these operations yourself,
+
+48
+00:03:15,522 --> 00:03:20,475
+say in Python or C or in another
+programming language, Java, say.
+
+49
+00:03:20,475 --> 00:03:24,113
+You would spend all the effort
+on writing data structures,
+
+50
+00:03:24,113 --> 00:03:27,169
+writing loops, writing indexes,
+all of that and
+
+51
+00:03:27,169 --> 00:03:31,551
+easily lose track of what you want to
+do is ask questions about your data.
+
+52
+00:03:31,551 --> 00:03:35,913
+So we call SQL a declarative language
+because it allows you at a higher level to
+
+53
+00:03:35,913 --> 00:03:40,355
+ask questions about your data, and that's
+what we going to see in the examples.
+
+54
+00:03:40,355 --> 00:03:44,321
+Just very briefly what are the basic
+building blocks of the language.
+
+55
+00:03:44,321 --> 00:03:47,695
+So a typical SQL query looks like this.
+
+56
+00:03:47,695 --> 00:03:52,537
+There is a statement of the form select,
+from, where.
+
+57
+00:03:52,537 --> 00:03:54,109
+And what are the different parts?
+
+58
+00:03:54,109 --> 00:03:57,484
+In the select part of the select clause,
+
+59
+00:03:57,484 --> 00:04:02,160
+we'll list the attributes
+that we want to have output.
+
+60
+00:04:02,160 --> 00:04:06,251
+So we run a query against the bunch
+of tables, one or more tables and
+
+61
+00:04:06,251 --> 00:04:08,087
+we specify some conditions.
+
+62
+00:04:08,087 --> 00:04:12,646
+So, from these relations or other tables,
+
+63
+00:04:12,646 --> 00:04:15,860
+that's where we select from.
+
+64
+00:04:15,860 --> 00:04:20,456
+The select clause itself corresponds
+more to a projection of operations and
+
+65
+00:04:20,456 --> 00:04:22,050
+the relational algebra.
+
+66
+00:04:22,050 --> 00:04:26,658
+If you recall those of you who have
+background in databases will know there is
+
+67
+00:04:26,658 --> 00:04:30,986
+a projectional operation of pi where
+we project onto certain columns.
+
+68
+00:04:30,986 --> 00:04:35,527
+And these are the columns
+on which we project.
+
+69
+00:04:35,527 --> 00:04:38,700
+And the where clause is where
+we can specify a condition.
+
+70
+00:04:38,700 --> 00:04:39,744
+We can say well,
+
+71
+00:04:39,744 --> 00:04:44,367
+we're only interested in certain rows
+that match maybe a certain value or
+
+72
+00:04:44,367 --> 00:04:49,230
+that are greater than another value,
+this is also where we can define joins.
+
+73
+00:04:49,230 --> 00:04:53,606
+We want to say that this column
+in this table should align,
+
+74
+00:04:53,606 --> 00:04:57,079
+be equal to another
+column in another table.
+
+75
+00:04:57,079 --> 00:04:59,899
+So this select from where is
+really a basic building block.
+
+76
+00:04:59,899 --> 00:05:04,245
+And once you get the hang of it, it's
+quite intuitive to write simple queries.
+
+77
+00:05:04,245 --> 00:05:07,040
+And so today, we're going to
+look at some simple queries,
+
+78
+00:05:07,040 --> 00:05:09,146
+and at some more advanced queries as well.
+
+79
+00:05:09,146 --> 00:05:10,925
+So again, the As are the attributes.
+
+80
+00:05:10,925 --> 00:05:14,517
+The rs here are the relations or
+table names.
+
+81
+00:05:14,517 --> 00:05:19,151
+And the P is a predicate, it can be
+complicated, it can have and or not,
+
+82
+00:05:19,151 --> 00:05:21,717
+we can even have a nested query inside.
+
+83
+00:05:21,717 --> 00:05:23,138
+But overall, just so for
+
+84
+00:05:23,138 --> 00:05:26,528
+those of you who are fans of
+the relational algebra or math.
+
+85
+00:05:26,528 --> 00:05:29,722
+To get a first idea of how
+a relation query is executed,
+
+86
+00:05:29,722 --> 00:05:32,019
+let's have a look at this expression.
+
+87
+00:05:32,019 --> 00:05:35,298
+You see here r1 x r2 x dot, dot, dot,
+
+88
+00:05:35,298 --> 00:05:40,088
+all the way to rk,
+say if you have k tables or k relations.
+
+89
+00:05:40,088 --> 00:05:45,275
+What that means is you multiply out
+these tables, what does that mean?
+
+90
+00:05:45,275 --> 00:05:48,264
+You build a Cartesian product,
+or cross product, you look at
+
+91
+00:05:48,264 --> 00:05:51,955
+all possible combinations of all
+the tables that you have questions about.
+
+92
+00:05:54,323 --> 00:05:57,553
+So the database system will not actually
+implement it typically that way,
+
+93
+00:05:57,553 --> 00:05:58,995
+because that's very wasteful.
+
+94
+00:05:58,995 --> 00:06:02,520
+Imagine you have let's say,
+just two tables, each has a thousand rows.
+
+95
+00:06:02,520 --> 00:06:05,658
+Well a thousand times, a thousand,
+that's a million rows right there.
+
+96
+00:06:05,658 --> 00:06:08,661
+Or if you have three tables
+with a thousand rows each,
+
+97
+00:06:08,661 --> 00:06:10,945
+you would have a billion combinations.
+
+98
+00:06:10,945 --> 00:06:15,859
+So one of the benefits of a database
+systems to be clever about running this
+
+99
+00:06:15,859 --> 00:06:19,348
+query not by generating
+a billion possibilities but
+
+100
+00:06:19,348 --> 00:06:23,887
+having a query plan that reduces
+quite a lot what you need to look at.
+
+101
+00:06:23,887 --> 00:06:24,851
+How can you reduce that?
+
+102
+00:06:24,851 --> 00:06:27,958
+Well, for starters, there's this sigma,
+
+103
+00:06:27,958 --> 00:06:32,637
+this little symbol here, sigma,
+which is a selection condition.
+
+104
+00:06:32,637 --> 00:06:36,192
+This selection condition
+is actually this P here, so
+
+105
+00:06:36,192 --> 00:06:39,597
+you have conditions that
+you apply to the columns.
+
+106
+00:06:39,597 --> 00:06:44,064
+So you might say,
+okay I want the name to be, or
+
+107
+00:06:44,064 --> 00:06:49,449
+let's say a year,
+maybe if a year column you want to say,
+
+108
+00:06:49,449 --> 00:06:54,734
+the year should be after 2000 or
+before 2010.
+
+109
+00:06:54,734 --> 00:06:59,373
+Yeah, so, here you can specify these
+conditions and then instead of looking at
+
+110
+00:06:59,373 --> 00:07:04,449
+these whole cross product, the system will
+kind of evaluate those conditions early.
+
+111
+00:07:04,449 --> 00:07:08,970
+Database people say it, the selection
+is pushed down into the query plan,
+
+112
+00:07:08,970 --> 00:07:13,664
+into the operator tree and so you get
+a much more efficient query evaluation.
+
+113
+00:07:13,664 --> 00:07:18,337
+So this explains the from and the where,
+which is basically the cross product, and
+
+114
+00:07:18,337 --> 00:07:20,226
+then the sigma, the selection.
+
+115
+00:07:20,226 --> 00:07:23,400
+And then finally, what is called
+unfortunately select in SQL,
+
+116
+00:07:23,400 --> 00:07:24,811
+is really this projection,
+
+117
+00:07:24,811 --> 00:07:29,127
+where you say, well now we're really only
+interested in a certain number of columns.
+
+118
+00:07:29,127 --> 00:07:34,147
+So maybe out of those 20 columns that my
+three tables having when I combine them,
+
+119
+00:07:34,147 --> 00:07:36,422
+I'm only interested in two of them.
+
+120
+00:07:36,422 --> 00:07:40,576
+But then I can say, well, just to let
+me that column and the other column,
+
+121
+00:07:40,576 --> 00:07:41,247
+all right?
+
+122
+00:07:41,247 --> 00:07:45,944
+So this is basically just as an idea to
+give you a first idea how a statement
+
+123
+00:07:45,944 --> 00:07:49,332
+that is fairly readable in
+SQL can be translated into
+
+124
+00:07:49,332 --> 00:07:53,569
+an internal representation in
+algebraic representation than,
+
+125
+00:07:53,569 --> 00:07:57,972
+that the database can further optimize and
+evaluate efficiently.
+
+126
+00:07:57,972 --> 00:08:08,341
+[MUSIC]
+
+127
+00:08:08,341 --> 00:08:11,965
+[SOUND]

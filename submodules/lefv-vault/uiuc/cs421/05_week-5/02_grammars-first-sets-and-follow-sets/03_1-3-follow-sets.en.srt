@@ -1,0 +1,347 @@
+1
+00:00:00,000 --> 00:00:02,040
+Hello and welcome back.
+
+2
+00:00:02,040 --> 00:00:05,280
+In the last video, we talked about FIRST sets which tell us
+
+3
+00:00:05,280 --> 00:00:09,255
+the first thing that we could be looking at when trying to parse a non-terminal symbol.
+
+4
+00:00:09,255 --> 00:00:11,355
+Now we're going to ask a different question.
+
+5
+00:00:11,355 --> 00:00:13,665
+How do I know if I'm done with the symbol?
+
+6
+00:00:13,665 --> 00:00:18,765
+We can tell we are done by having a list of symbols that follow a non-terminal.
+
+7
+00:00:18,765 --> 00:00:20,415
+So when you're done with this video,
+
+8
+00:00:20,415 --> 00:00:24,540
+you'll be able to compute the FOLLOW set for all the non-terminal symbols in a grammar.
+
+9
+00:00:24,540 --> 00:00:28,530
+Now, the first thing to understand about FOLLOW sets is that this is
+
+10
+00:00:28,530 --> 00:00:32,565
+a list of symbols that occur after you've completed parsing the non-terminal.
+
+11
+00:00:32,565 --> 00:00:36,075
+The symbol is not part of the parse tree for that non-terminal.
+
+12
+00:00:36,075 --> 00:00:40,580
+Since the symbols have a parser which is often implemented as a state machine,
+
+13
+00:00:40,580 --> 00:00:42,440
+it's going to know that it's done.
+
+14
+00:00:42,440 --> 00:00:45,320
+A formula that is simpler than for first sets but in
+
+15
+00:00:45,320 --> 00:00:48,790
+my opinion it's a bit more subtle at the same time.
+
+16
+00:00:48,790 --> 00:00:54,000
+Now, at the start, you put the dollar sign symbol in the FOLLOW set of your start symbol.
+
+17
+00:00:54,000 --> 00:00:57,005
+The dollar sign here stands for the end of input.
+
+18
+00:00:57,005 --> 00:00:59,510
+It simply says that after the start symbol is done,
+
+19
+00:00:59,510 --> 00:01:01,135
+there should be no more input.
+
+20
+00:01:01,135 --> 00:01:02,755
+For the next two rules,
+
+21
+00:01:02,755 --> 00:01:06,380
+I should mention that the Greek letters alpha and beta represent
+
+22
+00:01:06,380 --> 00:01:10,735
+arbitrary strings of both terminal and non-terminal symbols.
+
+23
+00:01:10,735 --> 00:01:12,835
+Now, for rule two,
+
+24
+00:01:12,835 --> 00:01:15,995
+you take all the productions of the form X goes to
+
+25
+00:01:15,995 --> 00:01:21,035
+alpha Y beta and add the FIRST set of beta to the FOLLOW set of Y.
+
+26
+00:01:21,035 --> 00:01:23,540
+This is because whatever beta starts with,
+
+27
+00:01:23,540 --> 00:01:25,290
+it comes after Y.
+
+28
+00:01:25,290 --> 00:01:29,540
+Also, we do not propagate epsilon sent to FOLLOW sets.
+
+29
+00:01:29,540 --> 00:01:32,360
+Rule three takes care of that though.
+
+30
+00:01:32,360 --> 00:01:35,660
+If we have a production of the form X goes to alpha Y,
+
+31
+00:01:35,660 --> 00:01:39,110
+either because there's nothing after Y or because there is a beta
+
+32
+00:01:39,110 --> 00:01:42,635
+after Y and epsilon is a member of beta's FIRST set,
+
+33
+00:01:42,635 --> 00:01:46,310
+then we add X's FOLLOW set to Y's FOLLOW set.
+
+34
+00:01:46,310 --> 00:01:49,475
+I find that this third rule sometimes confuses people,
+
+35
+00:01:49,475 --> 00:01:50,600
+so in the next slide,
+
+36
+00:01:50,600 --> 00:01:53,850
+I have a picture to illustrate what's going on.
+
+37
+00:01:54,350 --> 00:01:59,295
+Example one here shows the rule X go to alpha Y beta.
+
+38
+00:01:59,295 --> 00:02:01,705
+You see that the beta follows Y.
+
+39
+00:02:01,705 --> 00:02:05,900
+Example two shows what happens when we have X goes to alpha Y.
+
+40
+00:02:05,900 --> 00:02:09,825
+If we know that when X is done we could see Z,
+
+41
+00:02:09,825 --> 00:02:12,460
+then that means Y is done, we could see Z.
+
+42
+00:02:12,460 --> 00:02:14,330
+My favorite analogy is this,
+
+43
+00:02:14,330 --> 00:02:17,715
+suppose you know that after the weekend is over, it will be Monday.
+
+44
+00:02:17,715 --> 00:02:20,170
+So, Monday is to FOLLOW set of weekend.
+
+45
+00:02:20,170 --> 00:02:23,030
+Well, a weekend consists of Saturday and Sunday,
+
+46
+00:02:23,030 --> 00:02:25,145
+so that means after Sunday is over,
+
+47
+00:02:25,145 --> 00:02:26,630
+we can see a Monday.
+
+48
+00:02:26,630 --> 00:02:29,090
+But because Monday is in the FOLLOW set of weekend,
+
+49
+00:02:29,090 --> 00:02:32,430
+it also gets to be in the FOLLOW set of Sunday.
+
+50
+00:02:32,870 --> 00:02:35,670
+Here's some small examples.
+
+51
+00:02:35,670 --> 00:02:38,330
+In example one, we would have a dollar sign in
+
+52
+00:02:38,330 --> 00:02:41,860
+the FOLLOW set of S. I've not bothered putting that here.
+
+53
+00:02:41,860 --> 00:02:44,930
+We see in the rule that y comes after A,
+
+54
+00:02:44,930 --> 00:02:47,695
+so y is a member of A's FOLLOW set.
+
+55
+00:02:47,695 --> 00:02:52,875
+Example two, we have a B at the end of the A rule and since A's FOLLOW set is y,
+
+56
+00:02:52,875 --> 00:02:55,170
+we add y to B's FOLLOW set.
+
+57
+00:02:55,170 --> 00:02:57,780
+In example three, we have B goes to C, E,
+
+58
+00:02:57,780 --> 00:03:02,220
+D. If we assume the FIRST set of D is a and b,
+
+59
+00:03:02,220 --> 00:03:08,190
+then we have to add B's FOLLOW set to D and D's FOLLOW set to E. In example four,
+
+60
+00:03:08,190 --> 00:03:13,175
+let's see what happens if we also add an epsilon to the FIRST set of D. That case,
+
+61
+00:03:13,175 --> 00:03:16,610
+we add B's FOLLOW set to D as before but we would
+
+62
+00:03:16,610 --> 00:03:21,150
+also have to add it to E's FOLLOW sets since the D could drop out.
+
+63
+00:03:22,580 --> 00:03:27,075
+Let's take the FOLLOW sets of those examples from the last video.
+
+64
+00:03:27,075 --> 00:03:28,815
+Like the FIRST set algorithm,
+
+65
+00:03:28,815 --> 00:03:32,210
+the FOLLOW set algorithm is iterative and builds up its answer.
+
+66
+00:03:32,210 --> 00:03:36,120
+We start by adding dollar sign to S's FOLLOW set.
+
+67
+00:03:37,280 --> 00:03:42,740
+The first rule gives us then following E and semicolon
+
+68
+00:03:42,740 --> 00:03:48,230
+following S. The second and third rules give
+
+69
+00:03:48,230 --> 00:03:53,870
+us semicolon and plus following E. The fourth rule
+
+70
+00:03:53,870 --> 00:03:59,990
+has ID following P. The fourth rule also has a P at the end of an E production.
+
+71
+00:03:59,990 --> 00:04:05,030
+So we add E's FOLLOW set to P. We would then want to
+
+72
+00:04:05,030 --> 00:04:07,070
+iterate over the rules again to be sure nothing has
+
+73
+00:04:07,070 --> 00:04:11,610
+changed but in our case nothing has so we're done.
+
+74
+00:04:12,100 --> 00:04:15,080
+Now, let's look at the crazy example.
+
+75
+00:04:15,080 --> 00:04:21,120
+We start by adding dollar sign to the FOLLOW set of S. Now, x comes after A,
+
+76
+00:04:21,120 --> 00:04:23,715
+so we add x to A's FOLLOW set,
+
+77
+00:04:23,715 --> 00:04:27,845
+y follows B so we add y to B's FOLLOW set.
+
+78
+00:04:27,845 --> 00:04:34,080
+These four rules don't add anything to any of the FOLLOW sets so we're done with them.
+
+79
+00:04:34,310 --> 00:04:37,365
+We have a B at the end of an A production.
+
+80
+00:04:37,365 --> 00:04:40,380
+So add A's FOLLOW set to B.
+
+81
+00:04:40,380 --> 00:04:42,735
+B can become epsilon,
+
+82
+00:04:42,735 --> 00:04:45,555
+so we add A's FOLLOW set to see as well.
+
+83
+00:04:45,555 --> 00:04:48,989
+Finally, since C is at the end of the B production,
+
+84
+00:04:48,989 --> 00:04:53,850
+we add B's FOLLOW set to C. That's it for FIRST and FOLLOW sets.
+
+85
+00:04:53,850 --> 00:04:57,590
+We will use them in the coming parsing lectures
+
+86
+00:04:57,590 --> 00:05:01,655
+as part of our algorithms in order to do LO and LR parsing.
+
+87
+00:05:01,655 --> 00:05:04,740
+So, that's why we need to compute these things.

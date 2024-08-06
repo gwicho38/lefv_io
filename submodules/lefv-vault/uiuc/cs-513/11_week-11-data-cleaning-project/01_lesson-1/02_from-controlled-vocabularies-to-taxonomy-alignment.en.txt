@@ -1,0 +1,135 @@
+[MUSIC] So I want to talk about controlled
+vocabularies and taxonomy alignment. And there we have another tool developed
+that can help with this problem. But first let's illustrate
+what the problem is. Assume the following little dialogue. So Tina and Amy talk. Tina says, hey, any recommended
+signature dish from where you live? What's typical where you live? Amy says, well, definitely
+the half-smokes here from the Northeast. They are these tasty for meat lovers. That's the assumption, I guess. That's a wonderful dish that
+we have in the Northeast. And then Tina says, what a coincidence,
+we have half-smokes in the South, too. Where do you live in the Northeast? New York, Boston. Amy says, no, but
+where do you live on the South? And so in the end Amy and Tina says well
+they are both from DC, Washington DC. So here we have a fictitious
+dialogue where two people talk about a signature dish from the
+Northeast and from the South, same dish. Turns out, not only is it the same dish,
+they come, actually, from a region that is
+both in the Northeast and in the South, which sounds like
+a contradiction, doesn't it? Sounds like a conflict to me. How could something be both in
+Northeast and in the South? Yeah, this is related to
+data quality because when we have data we have often annotations
+with controlled vocabularies. We use certain terms and
+these terms might not be agreeing. Maybe from a different context, maybe
+we are part of a different community. We use a different vocabulary. And now we're all confused
+what these things mean. And so we need to sort things out. We need to reconcile this. So here's the example, concretely. This is an organization called
+the National Diversity Council. It has created a map of the US
+with regions, with five regions. The West, Midwest, Southwest,
+Southeast and the Northeast. And in that map or splitting up of the regions I like
+to think of this as a taxonomy. As we will see in a moment you can
+think of this as a geotaxonomy. In this geotaxonomy the C
+is part of the north east. But we can split up
+the US in other ways and here's another taxonomy or another map. This one derived from the US
+government Census Bureau where the US is cut up into four regions. Yeah, so before we head up to the five
+buckets now we have four buckets. And these buckets don't quite line up. If I flip back and forth, you can try to
+focus on the certain point on the map And you see it just doesn't quite match. And in particular you see
+that the sea on this map, or on this geo taxonomy is in the South. And here it is in the Northeast. That's what the confusion was all about. How does it relate to us? So I have one slide,
+it tries to explain it all. We can use a GIS system,
+a Geographic Information System. For this very particular case,
+to sort out the confusion, we can take, okay say here's my one map,
+here's my other map. I can overlay them, I can do the overlay
+actually in PowerPoint which is the thing that I did there. You see all these all
+of funny colors occur. So you can just use Powerpoint for
+the overlay with transparency, you can play with that. Or you use a proper GIS, which I did,
+and then you get to map on the side. So you now see that if you have the
+partition of the US into four regions, and another partition on this case into five,
+they intersect and overlap in certain ways
+giving rise to seven regions. It's like you have four words or four
+terms, the other guy has five, but really, to sort this out, you should talk
+about seven different things. And the approach and the tool that I
+want to talk about now is allowing you to create that vocabulary of seven
+things and sort out the relationships. And that can be used in vocabulary
+mapping Cross walking of vocabularies or very particularly here alignment and
+reconciling of different taxonomies. So what do I mean by a taxonomy? By taxonomy I mean little trees,
+hierarchies of concepts like you see here. Normally we draw them top-down. So here we have, for example, the USA I
+can split it into the Midwest, the South, the West, and then the Northeast. Now, that's the census hierarchy or
+the census taxonomy. This region is split
+into these four regions. But there's other people out there,
+who for good reasons, have split up the US into five regions. Now they all talk about their vocabulary. They say, you know,
+this is going on in the West. What's happened in the Midwest,
+what's happening in the northeast. So they use very similar vocabulary. They might use this even to annotate that
+data but if you don't know the context, you are not aware of the fact that
+the terms mean different things. So in order to sort this out and
+solve this possible vocabulary confusion. What we want to do is we want to use
+a mechanism, in this case a tool, that first connects the different
+vocabularies and then creates a combined sort of uber taxonomy, a merged taxonomy,
+that combines the different inputs. So what will happen as I explain this,
+we take these two inputs, then some expert or through some other mechanism,
+it could be an automatic mechanism. I find what we call articulations,
+these are constraints, linkages. In the library information
+sciences world you might sometimes call these a cross walk. You're kind of cross walking
+between the different vocabularies. And you assert certain relationships. Maybe two terms are the same,
+maybe Midwest is the same. But sometimes you say, well, what these
+guys call the South on the census side, and what these guys call
+the Southeast on the NDC side. They are related in the following way,
+that the Southeast is part of the South. And then there might be
+really messy situations. For example, well,
+first a simple situation. What here, the green team,
+the NBC team calls the west. You see,
+that's this west here is contained in or is a subset of or is included in what the
+yellow team, the Census calls the west. So if you look at this west,
+look how large this red is. And look at this west, well,
+there's something cut out. So clearly, I mean clearly,
+once you overlay them, clearly, the west from here this team,
+which is green or blue, yeah? Is contained in what the yellow or
+red team here call the west. So that's why I get this one. But there's a part that some
+of them called the West, the others called the Southwest. So our goal is to do with
+the general vocabulary, with the general taxonomy that
+may not be geographic in nature. It might come from some conceptual domain,
+some terminology, maybe scientific names of birds. We want to do what we can do with the GIS
+here we want to do this in general and to explain that it can be done in
+general we can still use this example. So the tool that I'm going to talk about
+in the approach I'm going to talk about takes this input. Basically, what we call an alignment, this initial alignment is input
+alignment on the lower left. And then we give it to this tool and it
+will speed out a solution emerge taxonomy. So now T1, would be something called T1,
+taxonomy 1 the yellow one and taxonomy 2 the green one have been
+fused together into single taxonomy. And in that single taxonomy, we know now
+how everything relates to everything else. In a way that's what we call solving
+the taxonomy alignment problem. So we have two input taxonomies and
+one initial input articulation, initial alignment,
+how typically the leaves line up. And then we want to get the combined
+solution solution taxonomy T3. In general the output can be unique,
+that's what we want. What can be ambiguous, because we haven't
+Done a good job with our alignment, we have not given enough links. So therefore the result taxonomies,
+there's many of them. There could be millions. Now it could be easily doable. Or we have done, we've claimed too much,
+we've made too many connections or the wrong connections. So now they actually don't fit together,
+there's a logical contradiction. We said two things that bite each other,
+okay. So in general we have unique solutions
+to the taxonomy alive in property three. That's what we want or we get many
+T3s which is not ideal but it's okay, it's a start. But we have an inconsistency
+which we need to repair. We need something, we claimed something
+like one equal zero, that's not right, we gotta fix that. This work came out of a real world
+application, where this guy Nico Franz, this is a picture from
+a couple of years ago I think. He works as entomologist, so
+somebody who studies insects, and in particular his speciality of Weevils. I hear that family or genus that has very
+many species, very many different ones. And so they try to sort out
+how they were organized and their sort of phylogeny and so on. We've worked with him so normally what
+this guy is doing is going into the field, having fun, sometimes you
+question your career choices. You say hey why don't I do that,
+more field trips? But he is not only going into the field, he's also working formally with these
+taxonomies that other people have created, that he's creating and
+he's trying to make sense of it. And trying to combine them and
+integrate them and align them. So here is a third example, again we have
+the green and the yellow taxonomy here. These pinkish connections are what
+an expert, for example, makes, or what you get directly from the data. And then you want to fuse
+these things together. So the general setting, again, is here. Now here I draw the taxonomies how
+they are traditionally drawn in trees. And I have in this case
+only grey the connections, but these connections are important. So the goal is given these taxonomies,
+find the merged taxonomy. That satisfies all the constraints
+that are in the input and sort of reveal everything
+that we can reveal. And so in this case, and
+this might not be obvious, we have a combination of the yellow and
+the green taxonomy. And the things that we
+write in drawing gray, the shapes sometimes change a little bit. What we put in grey this is
+what we completely agree. So those are the ones that we
+don't have to argue about. So the idea is that when we
+look at the combined taxonomy, then the parts that are still sort of
+original, we keep the original color. If there's complete agreement between
+the two teams, the two taxonomies, we can make it grey so
+to indicate complete agreement. [MUSIC] [SOUND]

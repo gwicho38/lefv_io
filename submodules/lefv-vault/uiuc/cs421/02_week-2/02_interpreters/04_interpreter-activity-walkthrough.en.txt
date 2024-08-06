@@ -1,0 +1,120 @@
+Hello everyone.
+Welcome to CS 421. Today we're going to talk
+about the Interpreter Activity, and as always, we hope that you will have
+gone through this either by yourself or with some friends
+before watching this video. Your objectives are to be able to read the source code for a simple interpreter and to understand how
+everything works. We're going to talk about
+lifting and how we make actual Haskell functions work
+on our interpreter types, and then we're going to add
+a few features, namely, we're going to add variables
+and comparison operations. Now first let's talk
+about the types. We have two levels for this; we have a type to represent the source code
+that the programmer types in and that's going to be the Exp type from lines
+five through seven. We're going to start with
+two kinds of expressions; the integer expression and the integer operation expression. We're going to have one type
+to represent the output, that's Val, and we're going to start off with
+just integer values, but we'll add more later. Finally, to be able to
+add variables later, we're going to have
+an environment type. When we have a variable, we need some way to look up what the corresponding value is. The type on the
+slide is listed as list of pair with
+string and expression, and that's a bug because we
+want to have a value instead. Now there are some languages
+which might allow you to put expression inside of
+variables, that's pretty rare. Let's talk about
+how we're going to make Haskell functions work with the types we have
+for our interpreter. One way to do that
+is first I create a dictionary to map strings to the actual
+Haskell functions, so one variation of the
+type is given above. It's very similar to
+the environment type, but it remaps strings to
+integer error, integer error, integer instead of to value, so this allows the programmer
+to specify slash and their source code and we get the actual function div
+out the other side. Now, to make these
+functions work with values, we have what we call
+lifting operation. You see this on line
+six through eight, though we have a
+function as the input, which is a Haskell function, and then we input
+two integer values, and then we basically extract the actual integers
+out of the IntVals, apply them to the
+function and then rewrap that into another IntVal. The bug is on line 8, so you see we're
+returning a zero here, and that's a numeric type
+or IntVal is a Val type, you can't have two separate types coming out on the same
+function like that. Once you have this thing working, it allows you to say things like, liftIntOp star and
+then give it IntVal 3 and IntVal 7 and give
+it IntVal 21 back. Now, if you want to
+take care of that bug, there is two ways
+you could do with. Line 8 gives what you might
+call the JavaScript way, where if something
+breaks, it just says, oh well and keeps going, so maybe just return a zero
+and hope for the best. A little bit better is to have an error message
+like you would on line 9, so you'll pick one of
+these two lines to use, and the combined is
+actually going to give you a warning that the
+code is unreachable. This is because we only
+have one value type, which means line 7
+is going to handle every possible thing you could call this function
+with at the time. Now line zero,
+there's another way we could have done this; we can be a little bit
+more general and say that this works for all
+types that are integrals, integral just means you could
+turn it into a fraction. It's more general than what
+we need for our interpreter, but well, who knows, maybe we want to extend it later. Now we get to the heart of the interpreter, which is eval. The eval takes your expression
+in the environment, the assignment of variables and then gives you back the
+corresponding values. This is the thing that's actually going to run your program. The line 1, we have
+integer expressions, we just return the
+corresponding integer value. We've already talked about this that we are not just
+going to return integers because we expect to have other kinds of values later. The lines three through seven, we have integer
+operation expressions, so we have two
+sub-expressions, e1 and e2. This is a big thing
+that you're going to find in the language class, is that the value
+of an expression is determined by composing the values of its subexpressions. When I say value, I can mean other properties too, like the type and the pattern
+is almost always the same. We're going to look at
+the subexpressions first, and then we're going to
+combine those results. We do that here on
+lines four and five, we call eval on e1 and
+e2 to get v1 and v2. We look up the operator
+and intOps from line 6, and you see that
+they're returning a just f, or assuming that. The reason that lookup does this, so if you look up something in a dictionary and it's not there, you really have three
+options to deal with it; option 1 is to throw an error message and then the programmer has to put a
+try-catch block around that. Option 2 is to return
+a default value, which is actually a
+terrible thing to do unless that really is what
+you want to have happen. The other way is to
+use this maybe type. So you return a nothing
+if it's not there and adjust with the thing
+if you found it. Now, I'm circumventing
+that on line 6 because I'm directly pattern-matching
+against just f. So if the lookup
+returns a nothing, you'll get a runtime error. This is basically the same thing as throwing an exception. Now, this can be
+appropriate if you are generating this expression
+problematically so you know by construction, as we said that the expression
+is going to be correct. Finally, line 7, we call it lift operation on f. In this bug 3, you see there's e1 and e2 there, it should be v1 and v2. Let's add a feature
+to our language now. We can start the variables
+since they are easy to add. First, we have to
+modify the Exp type. We add one new constructor to represent variable
+expressions. Next, we have to add a
+corresponding clause to val to process those
+variable expressions. Line 1 does the lookup, and the result can be
+either that we found the variable and got a just back, in which case we return the value we get
+picked to the color, or else we might get a nothing. Again, we have two choices
+how to handle that; we could just do it the way shell scripting languages do it and give it a default value. In our case, we'll
+have it return a zero and hope for the best. This of course, is
+terrible language design if you want reliability. The better way is to simply
+return an error message. Now, let's add comparison
+operations to the language. We need a new constructor
+for Val since we will have both integer and Boolean
+values and the language. We also need a new
+constructor for Exp to represent
+comparison operations. Now, we would really
+have liked to use the intOps dictionary to store these comparison
+operations, but a comparison operator has a different type than
+the arithmetic operator, it outputs a Boolean
+instead of an integer. Because of this, we need a separate dictionary and separate lifting operation
+to deal with them. Now, other than the types
+and the specific names, the code here uses
+the same idea as the liftIntOp code we had before. One nice thing though, now that we have more than one constructor and our value type, the compiler warnings
+will go away. Finally, we can add
+the clause to eval. It has the same structure
+as a clause for intOpExp, only now we're using
+the CompOpEx dictionary and the liftCompOp functions. That will be all for this video. In the next activity,
+we'll show you how to add functions to your language.

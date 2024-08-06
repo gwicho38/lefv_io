@@ -1,0 +1,179 @@
+1
+00:00:00,000 --> 00:00:07,338
+[MUSIC]
+
+2
+00:00:07,338 --> 00:00:11,910
+Hello and welcome back to Theory and
+Practice of Data Cleaning.
+
+3
+00:00:11,910 --> 00:00:15,980
+This week we will get started with the
+relational model and relational queries.
+
+4
+00:00:15,980 --> 00:00:19,860
+Last week we learned about data
+normalization using OpenRefine.
+
+5
+00:00:19,860 --> 00:00:23,590
+This pattern based approach allows us
+to clean individual data columns and
+
+6
+00:00:23,590 --> 00:00:28,070
+generate canonical representations of data
+which is a prerequisite for all subsequent
+
+7
+00:00:28,070 --> 00:00:32,370
+steps, with this logic based data cleaning
+we study this week and data analysis.
+
+8
+00:00:33,590 --> 00:00:36,880
+So now that we know how to fix some
+technical issues arising in individual
+
+9
+00:00:36,880 --> 00:00:40,940
+columns, it is time to study how we
+can deal with logical constraints
+
+10
+00:00:40,940 --> 00:00:43,860
+that span multiple columns and
+multiple data tables.
+
+11
+00:00:44,940 --> 00:00:47,780
+In this week we will therefore talk
+about the relational model and
+
+12
+00:00:47,780 --> 00:00:50,679
+give a brief introduction
+to relational databases.
+
+13
+00:00:50,679 --> 00:00:54,334
+If you have already worked with such
+data bases this may just be a refresher.
+
+14
+00:00:54,334 --> 00:00:58,767
+But one which may in the end make you
+appreciate even more the power that comes
+
+15
+00:00:58,767 --> 00:01:03,352
+with relational queries in particular for
+checking logical data integrity.
+
+16
+00:01:03,352 --> 00:01:07,118
+We will look at key notions such
+as the Relational Model itself and
+
+17
+00:01:07,118 --> 00:01:08,900
+various associated notions,
+
+18
+00:01:08,900 --> 00:01:13,833
+that is relational schemas describing
+the structure of data, database instances,
+
+19
+00:01:13,833 --> 00:01:18,100
+that is the actual content in
+the database tables, and query languages.
+
+20
+00:01:19,260 --> 00:01:22,730
+In particular using a simple
+example I will show how rather
+
+21
+00:01:22,730 --> 00:01:26,960
+different looking relational query
+languages share many commonalities and
+
+22
+00:01:26,960 --> 00:01:30,370
+have in fact a common core in
+first order predicate logic.
+
+23
+00:01:31,730 --> 00:01:35,190
+After having worked through this weeks
+materials, you should be able to recognize
+
+24
+00:01:35,190 --> 00:01:38,740
+queries in different languages
+in particular data log and SQL.
+
+25
+00:01:38,740 --> 00:01:41,010
+And see the common
+underlying logical core.
+
+26
+00:01:42,590 --> 00:01:43,734
+In the assignment,
+
+27
+00:01:43,734 --> 00:01:48,379
+you'll will practice how to write simple
+relation queries in data log, and how to
+
+28
+00:01:48,379 --> 00:01:53,390
+express logical integrity constraints as
+data log queries in so-called denial form.
+
+29
+00:01:53,390 --> 00:01:56,980
+Learning a bit of Datalog allows you to
+see more directly the underlying logic
+
+30
+00:01:56,980 --> 00:02:00,560
+patterns use to express and
+check relational data integrity.
+
+31
+00:02:02,110 --> 00:02:06,330
+In future lectures we will then also go
+more mainstream by employing SQL queries
+
+32
+00:02:06,330 --> 00:02:09,200
+for similar queries and
+integrity constraint checks.
+
+33
+00:02:10,670 --> 00:02:12,350
+While highly relevant in practice,
+
+34
+00:02:12,350 --> 00:02:16,210
+SQL sometimes obscures the underlying
+logical kernel of queries and
+
+35
+00:02:16,210 --> 00:02:20,040
+integrity constraints which is
+why we look at Datalog first.
+
+36
+00:02:20,040 --> 00:02:22,615
+Okay, let's jump right
+into the first lecture.
+
+37
+00:02:22,615 --> 00:02:32,615
+[MUSIC]

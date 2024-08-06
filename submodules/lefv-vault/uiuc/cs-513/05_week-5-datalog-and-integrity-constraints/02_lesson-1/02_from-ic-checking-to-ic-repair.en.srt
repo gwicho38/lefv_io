@@ -1,0 +1,575 @@
+1
+00:00:07,919 --> 00:00:10,750
+So we go back to one of our readings.
+
+2
+00:00:10,750 --> 00:00:13,880
+The article by Bertossi and Bravo.
+
+3
+00:00:13,880 --> 00:00:16,780
+So you recall, we were looking at that same example,
+
+4
+00:00:16,780 --> 00:00:17,855
+dataset with students and enrollments,
+
+5
+00:00:17,855 --> 00:00:20,725
+we had functional dependencies,
+
+6
+00:00:20,725 --> 00:00:22,585
+and now, we also looked at,
+
+7
+00:00:22,585 --> 00:00:24,425
+for example, referential integrity constraints.
+
+8
+00:00:24,425 --> 00:00:28,815
+I just mentioned that foreign key of a child table references the parent key.
+
+9
+00:00:28,815 --> 00:00:31,908
+Just to remind you quickly what this is here.
+
+10
+00:00:31,908 --> 00:00:34,104
+If you look here at the Enrollment table,
+
+11
+00:00:34,104 --> 00:00:40,234
+the Enrollment table here you can think of it as having a pointer to the Students table.
+
+12
+00:00:40,234 --> 00:00:43,994
+So for example, the Enrollment table has a student number of 104.
+
+13
+00:00:43,994 --> 00:00:45,100
+Then we look over here, well,
+
+14
+00:00:45,100 --> 00:00:46,295
+who is that?
+
+15
+00:00:46,295 --> 00:00:47,770
+That's Claire Stevens.
+
+16
+00:00:47,770 --> 00:00:50,695
+So that's why the first column of the Enrollment table
+
+17
+00:00:50,695 --> 00:00:54,170
+acts as a foreign key to the primary key for the Students table.
+
+18
+00:00:54,170 --> 00:00:56,560
+Okay? So, we can see,
+
+19
+00:00:56,560 --> 00:00:58,334
+is there an integrity violation?
+
+20
+00:00:58,334 --> 00:01:01,325
+For example, 105 doesn't show up here.
+
+21
+00:01:01,325 --> 00:01:04,090
+That would be a violation and we can write a simple rule,
+
+22
+00:01:04,090 --> 00:01:07,420
+either in data log or in SQL that finds us the quote and quote,
+
+23
+00:01:07,420 --> 00:01:11,364
+"bad guys", and then we can try and repair this manually, typically.
+
+24
+00:01:11,364 --> 00:01:15,480
+Here is a foreign key violation or an inclusion dependency violation.
+
+25
+00:01:15,480 --> 00:01:18,474
+And over here, we see here for example,
+
+26
+00:01:18,474 --> 00:01:23,554
+two different students apparently John Bell and Joe Logan have the same student number,
+
+27
+00:01:23,554 --> 00:01:26,185
+that's a functional dependency that's violated,
+
+28
+00:01:26,185 --> 00:01:29,844
+because we are hoping that the student name uniquely identifies a role,
+
+29
+00:01:29,844 --> 00:01:32,079
+key constraint or functional dependency.
+
+30
+00:01:32,079 --> 00:01:35,439
+This is not the case, so this is broken. We need to fix that.
+
+31
+00:01:35,439 --> 00:01:39,549
+Over here, that's not a problem because the Enrollment table, again,
+
+32
+00:01:39,549 --> 00:01:41,435
+the first column is not the key here,
+
+33
+00:01:41,435 --> 00:01:45,040
+it's just the combination of two things should be a key.
+
+34
+00:01:45,040 --> 00:01:46,299
+So what really this is,
+
+35
+00:01:46,299 --> 00:01:49,067
+is a bridge table, when we're talking about ER model,
+
+36
+00:01:49,067 --> 00:01:51,939
+you might recall there were entities and relationships,
+
+37
+00:01:51,939 --> 00:01:53,989
+this Enrollment table really represents
+
+38
+00:01:53,989 --> 00:01:57,790
+a relationship where we link students with courses.
+
+39
+00:01:57,790 --> 00:01:59,847
+So this Enrollment table here,
+
+40
+00:01:59,847 --> 00:02:02,986
+has really two pointers: one to the Students table,
+
+41
+00:02:02,986 --> 00:02:06,280
+for each row it points to the Student table; and then another point,
+
+42
+00:02:06,280 --> 00:02:08,224
+are not shown here in the figure,
+
+43
+00:02:08,224 --> 00:02:10,875
+to the Course table where we learn more about courses.
+
+44
+00:02:10,875 --> 00:02:15,150
+So, we check integrity constraints but now we want to repair them.
+
+45
+00:02:15,150 --> 00:02:17,860
+So there's this notion of a minimal repair.
+
+46
+00:02:17,860 --> 00:02:19,449
+Basically, the idea of repair is,
+
+47
+00:02:19,449 --> 00:02:22,900
+if we have an inconsistent database that violates some constraints,
+
+48
+00:02:22,900 --> 00:02:26,969
+we basically look at other instances -- what changes could I make to
+
+49
+00:02:26,969 --> 00:02:31,240
+the database so that the integrity constraint is satisfied again?
+
+50
+00:02:31,240 --> 00:02:33,280
+That's a basic notion of a repair.
+
+51
+00:02:33,280 --> 00:02:35,710
+Sometimes you can delete the whole database and say, "Oh, look!
+
+52
+00:02:35,710 --> 00:02:37,725
+No integrity constraint is violated."
+
+53
+00:02:37,725 --> 00:02:40,120
+I have the entire database but that's sort of minimal repair.
+
+54
+00:02:40,120 --> 00:02:42,055
+Just because you do nothing, or in this case,
+
+55
+00:02:42,055 --> 00:02:45,370
+I have no information in the database -- yeah, maybe formerly,
+
+56
+00:02:45,370 --> 00:02:47,634
+you're not violating any of the integrity constraints but you're
+
+57
+00:02:47,634 --> 00:02:50,020
+violating another very big informal constraint that says,
+
+58
+00:02:50,020 --> 00:02:54,490
+you should keep your database as close to what you had before only make minimal changes.
+
+59
+00:02:54,490 --> 00:02:57,935
+So, that's why this notion of minimality is crucial here.
+
+60
+00:02:57,935 --> 00:03:01,090
+Among all the space of changes that we can do to the database,
+
+61
+00:03:01,090 --> 00:03:04,564
+we want to find the ones that keep, as much as possible,
+
+62
+00:03:04,564 --> 00:03:07,030
+the database as is and only change
+
+63
+00:03:07,030 --> 00:03:10,220
+hopefully a few tuples that then satisfy the constraint.
+
+64
+00:03:10,220 --> 00:03:12,830
+And we're going to jump into a hands-on session,
+
+65
+00:03:12,830 --> 00:03:17,056
+I'm going to switch gears in a moment and now work with this dataset.
+
+66
+00:03:17,056 --> 00:03:19,449
+So let's have first a quick look of what's happening here,
+
+67
+00:03:19,449 --> 00:03:21,844
+and see whether we can understand this.
+
+68
+00:03:21,844 --> 00:03:23,694
+So, we have our Student table.
+
+69
+00:03:23,694 --> 00:03:26,175
+First column is the ID, second column is the Name.
+
+70
+00:03:26,175 --> 00:03:28,300
+So, this is a functional dependency,
+
+71
+00:03:28,300 --> 00:03:32,400
+where we say the same rule that we saw before -- if I have a student (tuple X,
+
+72
+00:03:32,400 --> 00:03:35,024
+Y) and another student (tuple X,Z ),
+
+73
+00:03:35,024 --> 00:03:37,814
+but Y is different from Z, we have a problem.
+
+74
+00:03:37,814 --> 00:03:40,884
+So we report the key for which this is a problem,
+
+75
+00:03:40,884 --> 00:03:43,824
+and the Y and Z value where there's sort of disagreement.
+
+76
+00:03:43,824 --> 00:03:45,064
+Let's look at this for example,
+
+77
+00:03:45,064 --> 00:03:46,824
+here we have Bell, Ball, and Logan,
+
+78
+00:03:46,824 --> 00:03:50,000
+all sharing the ID 101 -- that's a problem.
+
+79
+00:03:50,000 --> 00:03:54,865
+So hopefully, a rule like this will tell us that 101 is a problem,
+
+80
+00:03:54,865 --> 00:03:56,680
+and it would also tell us what
+
+81
+00:03:56,680 --> 00:03:59,604
+the names are of the students that are here in conflict anyway.
+
+82
+00:03:59,604 --> 00:04:02,370
+And then we come to the actual repair part,
+
+83
+00:04:02,370 --> 00:04:04,870
+and so let me give you a first flavor about this already.
+
+84
+00:04:04,870 --> 00:04:08,805
+And if you look in section three-one of the Bertossi paper,
+
+85
+00:04:08,805 --> 00:04:11,518
+you might have seen this a few weeks ago,
+
+86
+00:04:11,518 --> 00:04:13,509
+we can do the following.
+
+87
+00:04:13,509 --> 00:04:17,038
+And this is the whole trick of these repair rules when we encode
+
+88
+00:04:17,038 --> 00:04:20,910
+them in this language and you just did a look as follows.
+
+89
+00:04:20,910 --> 00:04:23,860
+If we have a violation where the key X could either stand
+
+90
+00:04:23,860 --> 00:04:26,834
+for Y or for Z which it shouldn't,
+
+91
+00:04:26,834 --> 00:04:28,531
+Y and Z should be the same;
+
+92
+00:04:28,531 --> 00:04:31,420
+but if it's in this table here and this auxiliary relation,
+
+93
+00:04:31,420 --> 00:04:32,795
+we know Y and Z are different,
+
+94
+00:04:32,795 --> 00:04:34,814
+otherwise it would not have ended up there.
+
+95
+00:04:34,814 --> 00:04:39,310
+So if it does that, then we can execute two hypothetical operations,
+
+96
+00:04:39,310 --> 00:04:42,050
+we can say well, either Y has to go,
+
+97
+00:04:42,050 --> 00:04:43,089
+or Z has to go.
+
+98
+00:04:43,089 --> 00:04:44,500
+If there's Y and Z,
+
+99
+00:04:44,500 --> 00:04:46,735
+two different names for the same key X,
+
+100
+00:04:46,735 --> 00:04:49,068
+then either Y or Z has to be deleted.
+
+101
+00:04:49,068 --> 00:04:51,645
+And this little v here in the head of the rule,
+
+102
+00:04:51,645 --> 00:04:54,954
+that's where all the power comes from from this particular system.
+
+103
+00:04:54,954 --> 00:04:56,754
+So, in the regular data log system,
+
+104
+00:04:56,754 --> 00:05:00,485
+I cannot say in the head of a rule either this or that.
+
+105
+00:05:00,485 --> 00:05:04,394
+Same in SQL, you write a query to define what the result is,
+
+106
+00:05:04,394 --> 00:05:06,430
+there's no or, but this little v,
+
+107
+00:05:06,430 --> 00:05:08,529
+this logical or gives you all the power of
+
+108
+00:05:08,529 --> 00:05:11,079
+this language so the system that we're going to use here is
+
+109
+00:05:11,079 --> 00:05:12,834
+one that can sort of keep
+
+110
+00:05:12,834 --> 00:05:16,675
+the two different possibilities in mind and calculate with them,
+
+111
+00:05:16,675 --> 00:05:19,245
+and do this for all kinds of other possibilities as well.
+
+112
+00:05:19,245 --> 00:05:23,769
+So this is why this underlying data log system is really more like a constraint solver,
+
+113
+00:05:23,769 --> 00:05:25,975
+it's more of a fancy, more expressive system,
+
+114
+00:05:25,975 --> 00:05:28,060
+has also repercussions in terms of efficiency.
+
+115
+00:05:28,060 --> 00:05:29,944
+It's not terribly efficient because of that,
+
+116
+00:05:29,944 --> 00:05:31,865
+because it needs to try out a lot of combinations,
+
+117
+00:05:31,865 --> 00:05:34,475
+but it is a very powerful tool in the right hand.
+
+118
+00:05:34,475 --> 00:05:38,059
+So with a lot power comes also responsibility.
+
+119
+00:05:38,059 --> 00:05:40,415
+All right. So, how would we use that?
+
+120
+00:05:40,415 --> 00:05:41,610
+We can then say well,
+
+121
+00:05:41,610 --> 00:05:43,569
+in the new student relation,
+
+122
+00:05:43,569 --> 00:05:46,329
+if you have previously used student X, Y,
+
+123
+00:05:46,329 --> 00:05:49,705
+and it just not the case that the student has been deleted,
+
+124
+00:05:49,705 --> 00:05:53,084
+then in the new student relation that student will be there.
+
+125
+00:05:53,084 --> 00:05:54,279
+What is the effect of that?
+
+126
+00:05:54,279 --> 00:05:56,375
+That creates a new copy of the Student table.
+
+127
+00:05:56,375 --> 00:05:59,410
+But since the deletion has these choices,
+
+128
+00:05:59,410 --> 00:06:01,266
+we get different copies,
+
+129
+00:06:01,266 --> 00:06:02,500
+how the world might be.
+
+130
+00:06:02,500 --> 00:06:05,009
+In logic, we call this different possible worlds.
+
+131
+00:06:05,009 --> 00:06:07,100
+There's something called possible world semantics.
+
+132
+00:06:07,100 --> 00:06:08,680
+So just like we, in the abstract,
+
+133
+00:06:08,680 --> 00:06:11,314
+saw previously maybe different repairs.
+
+134
+00:06:11,314 --> 00:06:16,355
+For example here, here are two different repairs of an inconsistent database.
+
+135
+00:06:16,355 --> 00:06:18,730
+The system will not generate these different worlds for us.
+
+136
+00:06:18,730 --> 00:06:22,745
+So in one world, the student ID 101 belongs to John Bell,
+
+137
+00:06:22,745 --> 00:06:26,339
+and in the other world it belongs to Joe Logan.
+
+138
+00:06:26,339 --> 00:06:29,475
+Both of these repairs make some sense.
+
+139
+00:06:29,475 --> 00:06:30,879
+They also both now,
+
+140
+00:06:30,879 --> 00:06:33,731
+are consistent with respect to integrity constraints.
+
+141
+00:06:33,731 --> 00:06:35,035
+Which one it is?
+
+142
+00:06:35,035 --> 00:06:39,615
+We might not know, but maybe we have other rules that tell us which one is more likely.
+
+143
+00:06:39,615 --> 00:06:41,889
+But the point is that, the system can generate
+
+144
+00:06:41,889 --> 00:06:46,490
+those repairs automatically for us, which is nice.

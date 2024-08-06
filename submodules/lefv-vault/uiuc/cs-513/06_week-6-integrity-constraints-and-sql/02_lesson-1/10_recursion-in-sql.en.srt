@@ -1,0 +1,223 @@
+1
+00:00:00,150 --> 00:00:08,119
+[MUSIC]
+
+2
+00:00:08,119 --> 00:00:15,410
+And now we jump into something new to wrap
+up the topic of SQL, and that's recursion.
+
+3
+00:00:15,410 --> 00:00:17,320
+So I want to show you
+some examples of that and
+
+4
+00:00:17,320 --> 00:00:20,680
+also motivate a little bit why
+we do not recursion in SQL.
+
+5
+00:00:20,680 --> 00:00:21,690
+So let's get started with that.
+
+6
+00:00:23,000 --> 00:00:24,060
+Recursion in SQL.
+
+7
+00:00:24,060 --> 00:00:28,352
+Well, first of all, it's important to
+notice that in first-order logic or
+
+8
+00:00:28,352 --> 00:00:32,909
+predicate logic, as we've called it, and
+in the relational algebra as you would
+
+9
+00:00:32,909 --> 00:00:36,673
+learn it, for example,
+in more detail in the database course, and
+
+10
+00:00:36,673 --> 00:00:40,205
+originally in SQL you
+do not have recursion.
+
+11
+00:00:40,205 --> 00:00:43,770
+You cannot traditionally express
+these recursive queries.
+
+12
+00:00:43,770 --> 00:00:44,598
+And that's a problem.
+
+13
+00:00:44,598 --> 00:00:50,340
+And the academic community,
+the research community,
+
+14
+00:00:50,340 --> 00:00:55,100
+has been advancing one of the reasons for
+putting datalog forward was as sort of
+
+15
+00:00:55,100 --> 00:01:00,400
+a simple query language that's very
+close to logic that you can also study
+
+16
+00:01:00,400 --> 00:01:03,800
+theoretically, but also practically,
+that would give you recursive queries.
+
+17
+00:01:03,800 --> 00:01:05,960
+But if you don't have that in SQL,
+you have a problem.
+
+18
+00:01:05,960 --> 00:01:12,210
+For example, here on the right, you see
+a part that's assembled from other parts.
+
+19
+00:01:13,300 --> 00:01:17,970
+So it's often necessary
+in practice that you have
+
+20
+00:01:17,970 --> 00:01:20,760
+a bill of materials that tells you what
+are all the parts that are in there.
+
+21
+00:01:20,760 --> 00:01:25,318
+And if you want to compute that,
+you will typically need a recursive query.
+
+22
+00:01:25,318 --> 00:01:28,820
+Otherwise you can't in general sort of
+walk through this hierarchy of parts.
+
+23
+00:01:28,820 --> 00:01:30,310
+So over here, this is hard to see, but
+
+24
+00:01:30,310 --> 00:01:35,570
+this is essentially the output of
+an analysis of what the parts are.
+
+25
+00:01:35,570 --> 00:01:40,900
+So parts have sub-parts which
+have further sub-parts and so on.
+
+26
+00:01:40,900 --> 00:01:44,566
+And sometimes you need three of them or
+five or two.
+
+27
+00:01:44,566 --> 00:01:48,310
+And in the end you want to have
+sort of this bill and say,okay,
+
+28
+00:01:48,310 --> 00:01:52,909
+these are the parts that I need
+to make the whole assembly.
+
+29
+00:01:54,430 --> 00:01:56,160
+So you can look a little bit closer.
+
+30
+00:01:56,160 --> 00:01:58,370
+For example,
+Wikipedia has a decent article,
+
+31
+00:01:58,370 --> 00:02:04,430
+from which I took this figure here,
+explains what a bill of material is.
+
+32
+00:02:04,430 --> 00:02:06,270
+And this is very practically relevant.
+
+33
+00:02:06,270 --> 00:02:13,520
+I'll just show you one example,
+which is also taken here from Wikipedia.
+
+34
+00:02:13,520 --> 00:02:16,340
+It's a product structure modeling.
+
+35
+00:02:16,340 --> 00:02:20,560
+So I don't know whether you can see
+this here, but here for example,
+
+36
+00:02:20,560 --> 00:02:24,150
+we see that a car is made, of course,
+of an engine and a body, and
+
+37
+00:02:24,150 --> 00:02:26,010
+the engine is made of other parts and
+so on.
+
+38
+00:02:26,010 --> 00:02:29,720
+And this is, of course,
+the normal assembly view.
+
+39
+00:02:29,720 --> 00:02:33,160
+But in practice you need to have also
+quite a bit of other views, right?
+
+40
+00:02:33,160 --> 00:02:35,320
+You might have a service view.
+
+41
+00:02:35,320 --> 00:02:40,140
+You might have a design view,
+purchasing view, sales view.
+
+42
+00:02:40,140 --> 00:02:44,610
+The objects that you sell here
+are organized in different ways, and
+
+43
+00:02:44,610 --> 00:02:47,330
+you need flexible ways to
+work with these hierarchies.
+
+44
+00:02:47,330 --> 00:02:49,870
+And again,
+SQL is not traditionally good at that.
+
+45
+00:02:49,870 --> 00:02:53,808
+If you don't have recursion, you have
+a problem because you cannot walk these
+
+46
+00:02:53,808 --> 00:02:55,787
+trees and you cannot assemble things.
+
+47
+00:02:55,787 --> 00:03:05,787
+[MUSIC]

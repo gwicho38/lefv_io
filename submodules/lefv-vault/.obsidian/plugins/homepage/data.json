@@ -1,0 +1,32 @@
+{
+  "version": 3,
+  "homepages": {
+    "Main Homepage": {
+      "version": 2,
+      "hasRibbonIcon": true,
+      "openMode": "Replace all open notes",
+      "manualOpenMode": "Keep open notes",
+      "view": "Default view",
+      "refreshDataview": false,
+      "autoCreate": true,
+      "value": "lefv/README",
+      "kind": "File",
+      "commands": []
+    },
+    "Mobile Homepage": {
+      "version": 2,
+      "hasRibbonIcon": true,
+      "openMode": "Keep open notes",
+      "manualOpenMode": "Keep open notes",
+      "view": "Default view",
+      "refreshDataview": false,
+      "autoCreate": true,
+      "value": "lefv/README",
+      "kind": "File",
+      "commands": [],
+      "pin": true,
+      "openOnStartup": true
+    }
+  },
+  "separateMobile": true
+}

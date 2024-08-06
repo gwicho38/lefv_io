@@ -1,0 +1,192 @@
+1
+00:00:07,640 --> 00:00:10,290
+So up to now, we've been using
+
+2
+00:00:10,290 --> 00:00:12,130
+Datalog was for simple queries,
+
+3
+00:00:12,130 --> 00:00:13,920
+and you might not
+realize that you have
+
+4
+00:00:13,920 --> 00:00:16,230
+really a power tool at
+your fingertips here.
+
+5
+00:00:16,230 --> 00:00:18,150
+Just to summarize what
+is it that we can do,
+
+6
+00:00:18,150 --> 00:00:21,390
+we can specify integrity
+constraints as rules,
+
+7
+00:00:21,390 --> 00:00:24,320
+and then those rules are also
+queries that allow us to
+
+8
+00:00:24,320 --> 00:00:27,470
+check whether a given database
+satisfies these rules.
+
+9
+00:00:27,470 --> 00:00:29,565
+So we can see for example,
+
+10
+00:00:29,565 --> 00:00:32,780
+whether a certain column or
+a set of columns is a key,
+
+11
+00:00:32,780 --> 00:00:35,330
+whether a foreign key
+is really satisfied.
+
+12
+00:00:35,330 --> 00:00:36,965
+So whether for every occurrence
+
+13
+00:00:36,965 --> 00:00:38,660
+of foreign key attributes,
+
+14
+00:00:38,660 --> 00:00:41,585
+there is a corresponding
+occurrence in the parent table.
+
+15
+00:00:41,585 --> 00:00:44,165
+So this is quite convenient
+how we can do this.
+
+16
+00:00:44,165 --> 00:00:46,520
+We can also do datalog
+as a query language
+
+17
+00:00:46,520 --> 00:00:49,085
+has a built-in mechanism
+for recursion.
+
+18
+00:00:49,085 --> 00:00:50,120
+Why is that useful?
+
+19
+00:00:50,120 --> 00:00:51,545
+That's useful when you have
+
+20
+00:00:51,545 --> 00:00:54,740
+data structures that themselves
+are trees or graphs,
+
+21
+00:00:54,740 --> 00:00:56,435
+you can use that query
+language as well.
+
+22
+00:00:56,435 --> 00:00:59,330
+So if you have a question
+about a graph or a tree,
+
+23
+00:00:59,330 --> 00:01:01,580
+you will have a rather hard time
+doing that in SQL.
+
+24
+00:01:01,580 --> 00:01:03,500
+There are some tricks
+and some workarounds but
+
+25
+00:01:03,500 --> 00:01:06,230
+it's rather tedious and
+not always possible.
+
+26
+00:01:06,230 --> 00:01:08,840
+When we use the data
+look language we can actually
+
+27
+00:01:08,840 --> 00:01:11,420
+ask questions about trees
+and graphs as well.
+
+28
+00:01:11,420 --> 00:01:14,440
+So this is something we're
+going to do in a future class.
+
+29
+00:01:14,440 --> 00:01:15,800
+Now, I want to jump into
+
+30
+00:01:15,800 --> 00:01:18,320
+this topic called
+Answer Set Programming.
+
+31
+00:01:18,320 --> 00:01:20,360
+Again, that's a whole
+topic by itself for
+
+32
+00:01:20,360 --> 00:01:23,240
+a class, logic-based AI class,
+
+33
+00:01:23,240 --> 00:01:24,140
+but we're going to just look
+
+34
+00:01:24,140 --> 00:01:25,655
+at the particular application
+
+35
+00:01:25,655 --> 00:01:28,490
+for automatic repair
+of a database,
+
+36
+00:01:28,490 --> 00:01:31,595
+when a database violates
+a certain integrity constraint.
+
+37
+00:01:31,595 --> 00:01:33,395
+Okay. So we just want to
+get a flavor of that,
+
+38
+00:01:33,395 --> 00:01:36,305
+otherwise it's a rather deep
+topic that requires a lot of
+
+39
+00:01:36,305 --> 00:01:39,230
+additional lectures to
+really do full justice.
+
+40
+00:01:39,230 --> 00:01:41,030
+But we can get
+an idea of it so we
+
+41
+00:01:41,030 --> 00:01:44,100
+know that this technique exists.

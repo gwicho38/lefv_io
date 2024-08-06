@@ -1,0 +1,37 @@
+[MUSIC] Hello and welcome back to Theory and
+Practice of Data Cleaning. Last week we looked at
+the relational data model and provided a brief introduction
+to relational queries. This week we will continue our work with
+the relational model and delve further into relational queries and integrity
+constraints, specifically in Datalog. Now that we have left syntax and pattern
+based data quality issues behind us, the key idea going forward is to operate
+at the logical or semantic level. Now dirty data means
+logically inconsistent data. And we will use relational queries to
+check whether integrity constraints are satisfied or not. Specifically we will write
+queries in denial form, that is in a form that describes the bad
+situations that we want to avoid. First we will look at common
+relational constraints, that is, functional dependencies or
+key constraints as they're also called. And inclusion dependencies, for example, foreign keys in relational
+databases are a special case. While these constraints can be
+understood as formulas in first order predicate logic. It is much more convenient and practical to write them down in
+the form of executable Datalog rules. Datalog rules consist of a head
+to the left-hand side and a body to the right-hand side. And we can think of it as follows, the body of a rule specifies various
+query conditions and is evaluated first. Then, for those variable
+bindings that satisfy the body or right-hand side of the rule, the head or
+left-hand side can be asserted. That is, new answers are generated. After having worked through
+this week's materials and the associated assignment, you should be
+able to formulate and execute queries and integrity constraints in Datalog. You will also be able to recognize and
+deal with common Datalog pitfalls, for example rules that are not safe. For a rule to be safe, every variable must occur positively
+at least once in the body. In other words, if a variable only
+occurs in the head of the rule or only negatively in the body then we
+cannot limit this variable's range. That is we cannot enumerate
+its possible values and the Datalog system will report an error. In the assignment you will practice how to
+write simple relational queries in Datalog and how to express logical
+integrity constraints as Datalog queries in denial form. Learning a bit of Datalog allows you to
+see more directly the underlying logic patterns used to express and
+check relational data integrity. In subsequent lectures we will then
+also go more mainstream by employing SQL queries for
+similar integrity constraint checks. While highly relevant in practice, a skill
+sometimes obscures the underlying logical kernel of queries and
+integrity constraints. Which is why we look at Datalog first. Okay, let's jump right
+into the first lecture. [MUSIC] [SOUND]

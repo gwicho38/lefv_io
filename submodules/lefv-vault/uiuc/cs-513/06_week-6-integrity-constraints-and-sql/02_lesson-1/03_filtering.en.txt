@@ -1,0 +1,60 @@
+[MUSIC] So what we mean by filtering is
+actually quite a bit different from what we saw earlier from
+the data log filter. That one was really just a very
+high level switch in that system. Here, filtering is really
+the way we think of it. We run a query,
+we get a table as an answer. But in the table,
+maybe only certain roles you want to keep. And this is the where clause. Okay, so for example, if we run the. This is a table, want to see. Select * from the visited table, visited. Let's see what's in there. Okay, that's the visited table. But maybe you're interested in only one of
+the sites, say DR-1 as in th example here. Then we would say where. Okay, I'm going to highlight again
+the SQL keywords to make it clear. So this is where clause
+in SQL where I can say, I can specify now a condition on the row. These conditions are very similar to
+the conditions we have in our data log rule in the body. We'll have a constraint that this
+equals that, that's greater than this, this is not equal to that. So here we want to say okay, we want to
+say maybe that the site equals DR1. And then we only get the DL1 tuples. Remember the story about
+the case insensitivity? Well, if I put DR1 here, I get nothing. Because of course, the selection in here,
+the condition, where a side equals this, is case sensitive. We're looking at a particular data value,
+right? So this really makes a difference,
+whereas it doesn't make a different whether I write select
+from where uppercase or lowercase. That does not make a difference, okay? All right, and so here's a visual
+representation of what's happening. We can think of the system going
+through the table, row by row and checking whether the condition,
+the where clause, is satisfied, and if it is, you keep the result. And then there's actually another feature,
+it's a projection here. Let's look at this. So here we said select * from
+visited where the site is this. So we want to sort of now we're drilling
+down, we're looking only at this site. But maybe we only want the id
+instead of the whole table. You see we get three columns here. Three rows and three columns. Maybe we only interested in the id. So we would just say select id from
+this and now we get this answer. So in a way first we go
+through table row by row. And the where clause tells us which row
+to keep and which row to throw out. And when we're done with that, we saw
+well which column should I focus on? And that's what that select id is for. Again, so there's a lot going on. Again, it's a little
+bit of a crash course. It's either very boring or very challenging for you, depending
+on whether you do or don't know this. So but this is very nice that we see here that the kind of tool phases
+of how the scale statement is executed. So first with with the where statement
+here which filters the rows. And the ones were down there,
+the select statement, which really should be called project
+because we're projecting on a column. This is rather unfortunate
+terminology of SQL here. It's a projection. We're projecting only on the first column,
+throwing away the second and the fifth column. And that's how we arrive at this result. So this is really critical that you get
+a good understanding of how a basic SQL query works like select from where. You can then put the condition in
+the where clause that selects the rows can be much more complicated
+than just an equality. You can say for example well I
+want the site to be this, but the date to be less than that. And since we use an ISO date,
+it actually works. The normal comparison works here, even the string comparison
+will work here for dates. Now if you compare dates you have to be
+very careful whether you compare strings, then they better be
+an isoformic which just works. Or if they're enough strings, then hopefully you use the whatever
+built in support for comparing dates. But here,
+again we go into the visitor table, we're focusing on the side,
+the R1 and also we only keep the row. If it was done before January 1st, 1930. And sure enough we got 1927 dates here. If I were to remove the dated constraint, I get also a third row with 1932. If the input table format is
+sort of messed up or dirty, then a scale will be very unhappy
+in giving you the wrong result. So that's why with a typical data cleaning
+pipeline, you would first have done something like open refine or maybe
+regular expression based replacement, matching and replacement,
+otherwise you're in trouble. In this particular case,
+is this a string comparison? It works because the ISO standard
+was carefully chosen to put year then month then day, so that a regular
+string comparison will get the job done. If you use any of the other date formats, you could write special
+code that compares them. But since pretty much any system has
+a string comparison function built in, why not choose a representation so that
+it works for free, in a way, for dates. I'm sure one of the rationales
+why the ISO standards organization has chosen that format. [MUSIC] [SOUND]

@@ -1,0 +1,36 @@
+1
+00:00:00,000 --> 00:00:08,564
+[MUSIC]
+
+2
+00:00:08,564 --> 00:00:13,151
+In this week's lectures,
+we have seen that work flows are about a,
+
+3
+00:00:13,151 --> 00:00:17,417
+automation, s, scaling, and
+another a, for abstraction,
+
+4
+00:00:17,417 --> 00:00:21,950
+that is the work flow is a sharable
+artifact, and p, provenance.
+
+5
+00:00:21,950 --> 00:00:24,200
+We can summarize this as ASAP for short.
+
+6
+00:00:25,240 --> 00:00:29,465
+The letter that his provenance kept us
+the original and processing history or
+
+7
+00:00:29,465 --> 00:00:32,658
+lineage data and
+this will the topic of the next lectures.
+
+8
+00:00:32,658 --> 00:00:42,658
+[MUSIC]

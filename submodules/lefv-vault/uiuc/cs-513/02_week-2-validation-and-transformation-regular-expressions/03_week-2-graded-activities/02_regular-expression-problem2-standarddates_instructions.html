@@ -1,0 +1,128 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h1 level="1" variant="h1semibold">
+  About Test Cases and Grading
+ </h1>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    You have to write two regexes (Part a, Part b), each worth 12.5 points, so this problem is worth 25 points total.
+   </p>
+  </li>
+  <li>
+   <p>
+    Each regex will be checked against 10 test cases for correctness (each test case is worth 1.25 points).
+   </p>
+  </li>
+  <li>
+   <p>
+    Note that we test your regular expressions against positive and  negative examples, i.e., we check that your regex is indeed matching the  positive examples, but that it is not matching the negative examples.
+   </p>
+  </li>
+  <li>
+   <p>
+    To check whether you're on the right path, we provide two positive  and two negative test cases. (You can also make up more test cases of  your own.) The four test cases are worth 1.25 * 4 = 5 points.
+   </p>
+  </li>
+  <li>
+   <p>
+    After submission, we  run each of your regexes against three  positive and three negative examples. Together these six test cases are  worth 1.25 * 6 = 7.5 points. Thus the total points for each regex part  is 5 + 7.5 = 12.5 points.
+   </p>
+  </li>
+ </ul>
+ <h1 level="1" variant="h1semibold">
+  Regex to Match ISO-8601 Dates
+ </h1>
+ <p>
+  There is an international standard called
+  <a href="https://en.wikipedia.org/wiki/ISO_8601" title="">
+   ISO 8601
+  </a>
+  for date and time-related date. Develop regular expressions for the following:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    (a) Simple standard dates, e.g.,
+    <strong>
+     2017-02-14
+    </strong>
+    and similar.
+   </p>
+  </li>
+  <li>
+   <p>
+    (b) Date
+    <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations" title="">
+     combined with time
+    </a>
+    but without
+    <a href="https://en.wikipedia.org/wiki/ISO_8601#Time_zone_designators" title="">
+     time zone designators
+    </a>
+    , e.g.,
+    <strong>
+     2007-02-14T14:30
+    </strong>
+    .
+   </p>
+  </li>
+ </ul>
+ <p>
+  Treat all months
+  <strong>
+   as if they have 31 days
+  </strong>
+  . You do not  have to differentiate 28, 29, 30, 31 days of different months!  Similarly, you do not need to consider leap years in any of the  questions
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

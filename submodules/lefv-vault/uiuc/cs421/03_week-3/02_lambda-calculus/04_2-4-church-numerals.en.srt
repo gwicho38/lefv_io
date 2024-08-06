@@ -1,0 +1,729 @@
+1
+00:00:03,026 --> 00:00:04,480
+Hello everyone and welcome back.
+
+2
+00:00:05,640 --> 00:00:08,670
+This video we're going to talk about
+something called Church numerals.
+
+3
+00:00:08,670 --> 00:00:10,910
+Now, these are not numerals
+that are religious,
+
+4
+00:00:10,910 --> 00:00:14,970
+they are a representation of
+numbers in lambda calculus.
+
+5
+00:00:14,970 --> 00:00:15,819
+And in fact,
+
+6
+00:00:15,819 --> 00:00:21,244
+we can represent any type you can think of
+in lambda calculus using this technique.
+
+7
+00:00:21,244 --> 00:00:24,819
+So we'll talk about how to do some
+operations on Church numerals, how to
+
+8
+00:00:24,819 --> 00:00:29,510
+define increment, plus, and times, and
+we'll also talk about boolean operations.
+
+9
+00:00:29,510 --> 00:00:32,180
+And then I'm going to show you how
+to extend this to other types.
+
+10
+00:00:32,180 --> 00:00:36,030
+Just kind of extra, I'm not going to
+make you do that in class, but
+
+11
+00:00:36,030 --> 00:00:38,855
+I just want you to see
+what the technique is.
+
+12
+00:00:38,855 --> 00:00:41,620
+Let's start off thinking about numbers.
+
+13
+00:00:41,620 --> 00:00:46,600
+Now, I want to make the distinction here,
+kind of a Plato type of thing to do,
+
+14
+00:00:46,600 --> 00:00:48,360
+a number is an idea.
+
+15
+00:00:48,360 --> 00:00:52,420
+It's not something you can touch,
+it's something we can think about.
+
+16
+00:00:52,420 --> 00:00:55,620
+And a numeral is
+a representation of a number.
+
+17
+00:00:55,620 --> 00:01:00,238
+So you see on this slide here, there's
+plenty of numerals, there's 1, 2, 3,
+
+18
+00:01:00,238 --> 00:01:00,961
+4, and 0.
+
+19
+00:01:00,961 --> 00:01:03,180
+Those are numerals, those aren't numbers.
+
+20
+00:01:03,180 --> 00:01:05,010
+They represent numbers, though.
+
+21
+00:01:05,010 --> 00:01:09,120
+So in the same way, we can use lambda
+calculus to represent numbers, and
+
+22
+00:01:09,120 --> 00:01:10,586
+these are called Church numerals.
+
+23
+00:01:10,586 --> 00:01:12,960
+So how are we going to do this?
+
+24
+00:01:12,960 --> 00:01:17,858
+The way is we have to think
+of a number as a potential.
+
+25
+00:01:17,858 --> 00:01:22,230
+The idea is if we have the number n,
+I mean someday we're going to do n
+
+26
+00:01:22,230 --> 00:01:27,660
+things to some victim, or some object.
+
+27
+00:01:27,660 --> 00:01:29,000
+So here's how we can represent it.
+
+28
+00:01:29,000 --> 00:01:33,080
+So zero, is we take f,
+which is our action, we take x,
+
+29
+00:01:33,080 --> 00:01:37,680
+which is our target, and
+then we don't perform the action at all.
+
+30
+00:01:37,680 --> 00:01:41,320
+The numeral one,
+we perform the action one time.
+
+31
+00:01:41,320 --> 00:01:43,518
+The numeral two,
+we perform the action twice.
+
+32
+00:01:43,518 --> 00:01:47,178
+The numeral three,
+we do it three times, so on and so on.
+
+33
+00:01:47,178 --> 00:01:50,760
+So you've noticed here that I've written
+this in Haskell not in actual lambda
+
+34
+00:01:50,760 --> 00:01:54,880
+calculus, you can really implement
+this and play with it and see it work.
+
+35
+00:01:54,880 --> 00:01:59,865
+So to print these out, Haskell won't
+let you print out a function directly,
+
+36
+00:01:59,865 --> 00:02:04,927
+but we can write a function show, which
+takes in one of these Church numerals,
+
+37
+00:02:04,927 --> 00:02:09,170
+and then for the action we put in +1,
+for the target we put in 0.
+
+38
+00:02:09,170 --> 00:02:13,043
+So this way you see if you call
+show on this Church numeral for
+
+39
+00:02:13,043 --> 00:02:16,290
+2, then we get the number 2 back.
+
+40
+00:02:16,290 --> 00:02:19,690
+So how are we going to do incrementation?
+
+41
+00:02:20,810 --> 00:02:23,610
+So think about what a Church numeral is,
+we have one,
+
+42
+00:02:23,610 --> 00:02:25,270
+what do we want to do with it?
+
+43
+00:02:25,270 --> 00:02:30,130
+Well first we can take in our Church
+numeral that we want to increment.
+
+44
+00:02:30,130 --> 00:02:32,140
+So that'll be the lambda m.
+
+45
+00:02:32,140 --> 00:02:36,150
+So just to let you know what I'm doing
+is I'm writing this function piecemeal.
+
+46
+00:02:36,150 --> 00:02:39,161
+So the part that's undefined is
+what we're going to talk about, and
+
+47
+00:02:39,161 --> 00:02:42,040
+we're just going to keep
+adding this incrementally.
+
+48
+00:02:42,040 --> 00:02:45,070
+So next what we want to do
+is return a Church numeral.
+
+49
+00:02:45,070 --> 00:02:48,040
+And a Church numeral is something
+that takes an action on a target.
+
+50
+00:02:48,040 --> 00:02:50,590
+And so finally, what is the body of this?
+
+51
+00:02:50,590 --> 00:02:56,150
+Well, so we have our Church numeral m, and
+we've asked for an action on a target.
+
+52
+00:02:56,150 --> 00:03:01,110
+So what we want to do then is apply
+m to the action and the target,
+
+53
+00:03:01,110 --> 00:03:05,830
+and that's going to perform
+f onto the target m times.
+
+54
+00:03:05,830 --> 00:03:09,820
+And then we want to have one
+further call to f on that result.
+
+55
+00:03:09,820 --> 00:03:12,850
+So that'll be m plus 1 times.
+
+56
+00:03:12,850 --> 00:03:14,740
+Addition is very similar.
+
+57
+00:03:14,740 --> 00:03:19,200
+You take two numerals, m and n,
+and then you take your action and
+
+58
+00:03:19,200 --> 00:03:20,870
+your target, f and x.
+
+59
+00:03:20,870 --> 00:03:22,610
+So we apply the m to f, and
+
+60
+00:03:22,610 --> 00:03:27,680
+that will apply f,
+m times to the result of applying m to f.
+
+61
+00:03:27,680 --> 00:03:32,788
+So that's n times, f is applied to x,
+and then m more times.
+
+62
+00:03:32,788 --> 00:03:35,060
+So see if you can figure
+out multiplication.
+
+63
+00:03:35,060 --> 00:03:37,910
+Subtraction is a lot more tricky,
+actually.
+
+64
+00:03:37,910 --> 00:03:42,760
+It's very easy to add a function call
+to a chain of function calls, but
+
+65
+00:03:42,760 --> 00:03:44,800
+it's hard to pull one off.
+
+66
+00:03:44,800 --> 00:03:49,450
+Now, for booleans, we have a little
+bit different representation.
+
+67
+00:03:49,450 --> 00:03:53,480
+What we're going to do is we are going
+to represent booleans as a choice.
+
+68
+00:03:53,480 --> 00:03:55,250
+You have two possibilities.
+
+69
+00:03:55,250 --> 00:03:56,450
+True means you go one way.
+
+70
+00:03:56,450 --> 00:03:58,220
+False means you go the other.
+
+71
+00:03:58,220 --> 00:04:02,560
+So this is kind of you have
+a response to some question.
+
+72
+00:04:02,560 --> 00:04:05,970
+So true we're going to
+represent by lambda ab arrow a.
+
+73
+00:04:05,970 --> 00:04:08,750
+False is going to to be lambda ab arrow b.
+
+74
+00:04:08,750 --> 00:04:11,410
+And for our show function,
+for showing booleans,
+
+75
+00:04:11,410 --> 00:04:15,300
+we're just going to apply f to
+the Haskell values true and false.
+
+76
+00:04:15,300 --> 00:04:19,552
+So what I want you to try now is see
+if you can figure out what the Church
+
+77
+00:04:19,552 --> 00:04:21,874
+representations for and and or are.
+
+78
+00:04:21,874 --> 00:04:24,790
+Remember, you're going to have to take and
+to Church booleans and
+
+79
+00:04:24,790 --> 00:04:27,000
+then do something to combine them.
+
+80
+00:04:27,000 --> 00:04:29,190
+So go ahead, hit pause,
+see if you can figure it out or
+
+81
+00:04:29,190 --> 00:04:33,690
+guess what they may look like, and
+then continue to see their answers.
+
+82
+00:04:33,690 --> 00:04:35,150
+There's a couple of ways you could do it.
+
+83
+00:04:35,150 --> 00:04:36,060
+Here's one of them.
+
+84
+00:04:36,060 --> 00:04:40,010
+So and, you take x and
+y as our Church booleans, and
+
+85
+00:04:40,010 --> 00:04:41,970
+then you take x and you apply y to it.
+
+86
+00:04:41,970 --> 00:04:44,420
+So if x is true, it's going to pick y.
+
+87
+00:04:44,420 --> 00:04:47,940
+And then if y is true, it'll be true,
+otherwise it'll be false.
+
+88
+00:04:47,940 --> 00:04:51,714
+If x is false, then we just pass
+in false to the second parameter.
+
+89
+00:04:51,714 --> 00:04:58,120
+And similarly for or, we take x and
+y, and apply x to true and y.
+
+90
+00:04:58,120 --> 00:04:59,720
+And if is really, really simple.
+
+91
+00:04:59,720 --> 00:05:02,450
+You just take the condition that
+then branch to the else branch, and
+
+92
+00:05:02,450 --> 00:05:04,840
+you feed the then branch and
+the else branch to the condition.
+
+93
+00:05:05,960 --> 00:05:09,400
+Now, we can use this technique for
+any data type you want.
+
+94
+00:05:09,400 --> 00:05:13,070
+So the idea is that a data type has
+a certain number of constructors,
+
+95
+00:05:13,070 --> 00:05:14,970
+let's say it's n constructors.
+
+96
+00:05:14,970 --> 00:05:19,306
+And then what will happen is the Church
+representation will be a function that has
+
+97
+00:05:19,306 --> 00:05:20,721
+n different parameters.
+
+98
+00:05:20,721 --> 00:05:24,152
+Now, each parameter is supposed
+to take a function that says,
+
+99
+00:05:24,152 --> 00:05:27,620
+what should I do if I happen
+to be this kind of thing?
+
+100
+00:05:27,620 --> 00:05:29,500
+So let's show a concrete example.
+
+101
+00:05:29,500 --> 00:05:31,120
+Here's The Maybe type.
+
+102
+00:05:31,120 --> 00:05:36,550
+There's two constructors since that
+means that Church Maybe would take
+
+103
+00:05:36,550 --> 00:05:37,890
+two arguments, a j and a n.
+
+104
+00:05:37,890 --> 00:05:40,200
+So j is the Just part, and
+
+105
+00:05:40,200 --> 00:05:45,078
+the j function needs to take one argument
+itself because it encodes something.
+
+106
+00:05:45,078 --> 00:05:49,310
+So lambda jn.ja would be just a.
+
+107
+00:05:49,310 --> 00:05:51,170
+And nothing doesn't take any arguments.
+
+108
+00:05:51,170 --> 00:05:54,210
+So lambda jn.n represents nothing.
+
+109
+00:05:54,210 --> 00:05:57,680
+So think how you'd represent
+the lambda calculus for just three.
+
+110
+00:05:57,680 --> 00:05:59,450
+So it looks like this.
+
+111
+00:05:59,450 --> 00:06:02,300
+So you have lambda jn.j,
+because it's a just, and
+
+112
+00:06:02,300 --> 00:06:07,710
+the argument to the j is this
+whole lambda x f3 time thing.
+
+113
+00:06:07,710 --> 00:06:09,769
+Now, linked list is similar.
+
+114
+00:06:09,769 --> 00:06:13,280
+We have two constructors,
+so we need two arguments.
+
+115
+00:06:13,280 --> 00:06:14,440
+We'll call one cons and
+
+116
+00:06:14,440 --> 00:06:19,020
+one nil, but the cons now takes two
+parameters instead of just one.
+
+117
+00:06:19,020 --> 00:06:25,355
+So if I have cons xy,
+we'll have lambda cn.c applied to x and y.
+
+118
+00:06:25,355 --> 00:06:29,450
+Now think of how you represent cons true,
+cons false nil.
+
+119
+00:06:29,450 --> 00:06:31,287
+So it looks like this thing.
+
+120
+00:06:31,287 --> 00:06:33,209
+A little crazy to look at.
+
+121
+00:06:33,209 --> 00:06:36,990
+Now, you can write length, that would
+take the length of one of these.
+
+122
+00:06:36,990 --> 00:06:39,790
+I haven't shown you how to do
+recursion in lambda calculus yet,
+
+123
+00:06:39,790 --> 00:06:41,480
+that's the next video.
+
+124
+00:06:41,480 --> 00:06:44,860
+But if you were to do it,
+it might look something like this.
+
+125
+00:06:44,860 --> 00:06:49,650
+So cons says what to do, so x, so
+length of x, the first argument is,
+
+126
+00:06:49,650 --> 00:06:51,470
+what to do if it's a cons.
+
+127
+00:06:51,470 --> 00:06:55,290
+So here if it's a cons we're going to
+pass in this function which takes
+
+128
+00:06:55,290 --> 00:06:55,990
+two parameters.
+
+129
+00:06:55,990 --> 00:07:00,370
+The first is going to be the data,
+the second is going to be tally list, and
+
+130
+00:07:00,370 --> 00:07:03,110
+I'm just going to
+increment the length of y.
+
+131
+00:07:03,110 --> 00:07:07,491
+And then the second argument, if it's
+a nil, which is going to return zero.
+
+132
+00:07:07,491 --> 00:07:11,560
+Now, don't worry if this seems to be
+going over your head at the moment.
+
+133
+00:07:11,560 --> 00:07:15,430
+Like I said at the beginning, I'm not
+going to ask you this part on any exams.
+
+134
+00:07:15,430 --> 00:07:17,502
+So I just want you to
+see this is possible.
+
+135
+00:07:17,502 --> 00:07:20,549
+If you play with this with pen and
+paper or whatever,
+
+136
+00:07:20,549 --> 00:07:25,480
+then you'll see how this works,
+you'll be able to follow the logic.
+
+137
+00:07:25,480 --> 00:07:29,524
+Now, going even farther we can actually
+represent lambda-calculus in lambda
+
+138
+00:07:29,524 --> 00:07:30,135
+calculus.
+
+139
+00:07:30,135 --> 00:07:33,990
+So for
+lambda-calculus we have arbitrary term M.
+
+140
+00:07:33,990 --> 00:07:38,130
+There's three different constructions
+in lambda calculus, but
+
+141
+00:07:38,130 --> 00:07:39,530
+we only need to represent two of them.
+
+142
+00:07:39,530 --> 00:07:42,641
+Variables, we can just
+let them be themselves.
+
+143
+00:07:42,641 --> 00:07:46,270
+And then what we're going to is
+we're going to have lambda fa.
+
+144
+00:07:46,270 --> 00:07:52,710
+So f is what to do for abstractions,
+and a is what to do for applications.
+
+145
+00:07:52,710 --> 00:07:55,520
+So f standing for function here.
+
+146
+00:07:55,520 --> 00:07:59,690
+So you will see the f and the a on this
+side of the these weird looking brackets.
+
+147
+00:07:59,690 --> 00:08:02,090
+These are called symmetric brackets.
+
+148
+00:08:02,090 --> 00:08:07,010
+Again, I don't necessarily expect you to
+understand this or get this completely on
+
+149
+00:08:07,010 --> 00:08:12,030
+your first go, but I just want you to see
+that it is actually possible to do this.
+
+150
+00:08:12,030 --> 00:08:16,570
+So for abstractions, we use the f term,
+and then pass in the abstraction and
+
+151
+00:08:16,570 --> 00:08:20,500
+convert what's inside of that for
+applications, we use the A term.
+
+152
+00:08:20,500 --> 00:08:22,906
+And then pass in two parameters for that.
+
+153
+00:08:22,906 --> 00:08:26,740
+So you can even write an interpreter for
+this if you wanted to, here it is.
+
+154
+00:08:26,740 --> 00:08:28,620
+It's very straight forward.
+
+155
+00:08:28,620 --> 00:08:32,693
+On our next video I'm going to show
+you something called the y combinator,
+
+156
+00:08:32,693 --> 00:08:35,164
+which is a way of
+implementing recursion and
+
+157
+00:08:35,164 --> 00:08:38,125
+it's a kind of famous result
+in lambda of calculus.

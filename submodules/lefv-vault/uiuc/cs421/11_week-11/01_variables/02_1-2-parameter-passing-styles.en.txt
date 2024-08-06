@@ -1,0 +1,108 @@
+Hello and welcome back. In the last lesson,
+we talked about variables and the different properties
+that they could have. In this part, we're going to talk
+about the different ways we can pass the variable into, or
+sometimes even out of a function. And when you're done with this video, you'll be able to explain these five
+kinds of parameter passing styles. Since you can read, I'm just going to
+pause and let you read it, and not read it to you. Now there are two major classes
+of parameter passing styles, the eager styles and the lazy styles. For the eager styles,
+we'll use this running example. Suppose to look sort of like but let's
+pretend we have variable reassignment. Now the terms parameter in argument
+are often used interchangeably, but for this video, I'm going to make
+a distinction between them. So our parameter will be the variable
+listed in the function declaration, like the x, y, and z above. And the argument's going to be a value
+passed into the function by the function call, like a, b, and
+a plus b on the bottom. Our first style is called a value. It's one of the most common choices
+because it's really efficient. The argument to a function is evaluated
+before a function call happens and the resulting value gets placed
+into the parameter of the function. Values in the computer typically one
+word such as an integer or float or a pointer to a larger structure. And the computations that generate
+these values are usually larger. So since we intend to
+use the value anyway, it just makes sense to
+do the evaluation first. Now there are two problems with this. One problem, and
+this might not be obvious at first, is that we may in fact not always
+want to evaluate an argument. Now here's an example of
+a projection function, pi1, that takes two arguments and
+returns the first, ignoring the second. Mathematically, the function call
+here where pi1 is called on 5 and foo should just return 5, but
+in the Call By Value language, this will crash since the second
+argument causes an infinite loop. Now this case is rare enough that most
+programming language designers don't care, will instead say that the program
+shouldn't be writing code that does things like that in the first place,
+and they kind of have a point. Here's a running example
+using Call By Value. The a gets copied to y and
+b gets copied to y. And a+b gets evaluated to 30 and
+it's the 30 that gets copied to z. Inside the function,
+x gets 30 times 30 time 20 and y gets 5. When the function 2 returns, a still has
+the value 10 and b still has the value 20. Now sometimes we don't want
+that kind of behavior. Sometimes we want the function to
+have the ability to assign into the variable we pass into it. Or perhaps the value is so large we want
+to pass an appointer to the object rather than a copy of the object itself. This is classic call by reference. Now the advantage is speed,
+especially for a large object. And also the ability to
+cause side effects or modifications in the variables
+that were passed in. If indeed you consider
+that to be an advantage. You kind of know how we feel
+about that in this course. Now going to our running example, you can
+see how this differs from call by value. A and
+x share the same memory location now and this is the scene like what we talked
+about in the variable binding video. Similarly, for b and y,
+a+b is not a variable, so it's getting evaluated like call by value. When x is assigned to 30 times 30
+times 20, both x and a get that value. When y is assigned 5,
+then b also gets that value. Now the C language allows for
+call by reference, but you have to pass in a pointer explicitly. It's clear from the syntax that you're
+offering the function a chance to modify your variable if that's what it wants. C++ allows you to blur
+this syntactically and I'm not sure that this
+is always a good thing. So for example, look at this code,
+inc(i) will return 11 and the i retains its original value. The inc function is using
+call by value now, but let's change that to call by reference. Now the incrementation happens in main,
+as well. You might think that this cout will
+now output to 11's and depending on the compiler you could be right, but
+the left arrow operators are functions and some compilers will evaluate the second
+i before returning the inc i. So output might still be 11 and 10 even though i roles have the value
+10 when the expression is done. The last eager style is very strange
+is called call by result and sometimes known as call by value-result. The idea behind this is that the function
+can modify one of its parameters and after the function returns, that value is copied
+back into the argument that was passed in. Sometimes called the poor
+man call by result. Because it does similar things. It's sometimes called as
+a poorer mans call by reference, because of the similar things. In a running example,
+we have a copied to x and b copied to y, just like in call by value. X is assigned a 30 times 30 times 20 and y is assigned a 5 just
+like in call by value. Foo returns a+b, which is 10 plus 20. But after the return, a and b will get updated with the values
+that were stored into x and y. So it's kind of like a delayed
+reaction called by reference. A normally used case for is to have functions that
+initialize variables for you. So if you've ever done Windows
+programming in the late 90s, you'll see an initialization
+functions that do this kind of thing. As for programming languages,
+this feature's kind of rare. Prolog kind of acts like this due to
+using unification to populate variables. But C# has this explicitly through
+what they call out parameters. So now let's talk about the lazy styles. Lazy styles do not evaluate the arguments
+unless it's necessary to do so to return the value of the function. First of these is called call by name. In this style, arguments are substituted
+for the parameters into the function body as if someone did a search and
+replace operation. This means that if a computation
+happens not to use a parameter the corresponding
+argument never gets evaluated. So in the pi1 example we had before,
+the call to foo now works as we hoped. Returns five without
+risking an infinite loop. It's not all good news though. Consider this example. Here, foo has three parameters,
+x, y and z. This is x and y twice each but
+it does not touch the z at all. So I mean it calls foo with 10 plus 10 for
+x and 20 plus 20 for y and
+a looping occurs in foo z. Since c doesn't occur in the body of foo,
+it never gets evaluated, but both copies of x get
+replaced by 10 plus 10. So that computation happens twice,
+similarly with the 20 plus 20 replacing y. The call by name is not used very often, you will see it in the c pre-processing
+language when you use number to find for things, and the scripting language
+TCL has some limited support for it. The final style we'll talk
+about today is call by need. This is the style that Haskell uses. It's like call by name, but we will first wrap a data structure
+around it called a thunk. Now a thunk has three states. Unevaluated, evaluated,
+and pending evaluation. When we pass a thunk to a function, all copies of a parameter refer
+to the same thunk in memory. The first time a thunk is evaluated,
+the code gets replaced by the result. The second and
+following times the thunk gets evaluated, and it just returns a value. So think of it as web caching for
+variables. So here's what happens with foo and
+main, x and y get thunks. The first x computes 10 plus 10,
+and the second x just returns 20. The first y computes 20 plus 20. The second y just returns 40. And the z is never used,
+so it's never evaluated. The call by need is optimal in that
+a parameter will only be evaluated at most one time, and
+only if it's actually needed. There's usually some overhead in
+setting up the thunk if you're doing this in an eager language, but languages like Haskell are designed
+to make this very efficient. And so that's it for
+the different parameter passing styles and for variables.

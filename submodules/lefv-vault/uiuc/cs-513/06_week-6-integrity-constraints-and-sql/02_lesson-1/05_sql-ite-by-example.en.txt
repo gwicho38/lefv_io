@@ -1,0 +1,99 @@
+[MUSIC] Okay, so what we want to do here
+is to look at SQL(ite) by example. We're going to run through a couple of
+examples at a certain level of detail, I'll try to go a little slow to
+show you how SQL works by way of a mini-tutorial that is quite nice,
+from Software Carpentry. So we're going to go to this website,
+it's called sql-novice-survey. We're going to go to this website and
+in particular, so the website itself is on GitHub,
+that's quite nice, so software carpentry has made all
+its material available on GitHub. So you can clone it from there, download
+it from there but you can also look at the website through the browser and
+there's a particular link given here, and when you click on that link,
+what you see is that little tutorial. So that's what we're going to do but
+before we go there, I just want to say a few
+words about SQL itself. So the Structured Query Language SQL, is a
+very large language has been standardized since quite a while, and it's really
+the world runs on relational databases. The language itself is based on
+the relational algebra, and as we've also seen, the relational calculus sometimes
+called Predicate Calculus but there's a particular version that's
+very closely related to SQL. The language itself has many parts and we're going to look at only one part
+in more detail which is queries. But also it's good to know that there
+are other parts for example the data definition language contains
+statements on how you create tables. So for example there is a create table
+statement that would allow you to define the name of a table, the name
+of a relation, the name of the columns, the data types of the columns, primary
+keys, foreign keys, other constraints. There's a data manipulation language
+that would allow you to define updates. So when you for example say you want to
+give every employee in the database a raise, or you want to delete every
+customer who has not ordered something in a long time, maybe not such a good idea. Or maybe you want to, if a customer is
+deleted then maybe you want to delete the pending orders,
+that's maybe a better idea. So that would be statements you can
+find in the data manipulation language. And data control language says
+how to give access to certain tables to certain users and so on. Some of these features you
+don't find in SQL(ite). SQL(ite) is very different from
+traditional database systems that have meant for server based
+data management where many users simultaneously can access SQL(ite)
+of your personal database. But it's very powerful for
+individual users and for our purposes using data queries and negative constraint checking,
+it's a good first choice. So we are going to look in
+particular at queries in SQL and SQL is sometimes also called
+a declarative language of 4GL. That means it focuses not how
+a certain operation is executed, but what is the operation
+that you want to execute. If you had to implement some
+of these operations yourself, say in Python or C or in another
+programming language, Java, say. You would spend all the effort
+on writing data structures, writing loops, writing indexes,
+all of that and easily lose track of what you want to
+do is ask questions about your data. So we call SQL a declarative language
+because it allows you at a higher level to ask questions about your data, and that's
+what we going to see in the examples. Just very briefly what are the basic
+building blocks of the language. So a typical SQL query looks like this. There is a statement of the form select,
+from, where. And what are the different parts? In the select part of the select clause, we'll list the attributes
+that we want to have output. So we run a query against the bunch
+of tables, one or more tables and we specify some conditions. So, from these relations or other tables, that's where we select from. The select clause itself corresponds
+more to a projection of operations and the relational algebra. If you recall those of you who have
+background in databases will know there is a projectional operation of pi where
+we project onto certain columns. And these are the columns
+on which we project. And the where clause is where
+we can specify a condition. We can say well, we're only interested in certain rows
+that match maybe a certain value or that are greater than another value,
+this is also where we can define joins. We want to say that this column
+in this table should align, be equal to another
+column in another table. So this select from where is
+really a basic building block. And once you get the hang of it, it's
+quite intuitive to write simple queries. And so today, we're going to
+look at some simple queries, and at some more advanced queries as well. So again, the As are the attributes. The rs here are the relations or
+table names. And the P is a predicate, it can be
+complicated, it can have and or not, we can even have a nested query inside. But overall, just so for those of you who are fans of
+the relational algebra or math. To get a first idea of how
+a relation query is executed, let's have a look at this expression. You see here r1 x r2 x dot, dot, dot, all the way to rk,
+say if you have k tables or k relations. What that means is you multiply out
+these tables, what does that mean? You build a Cartesian product,
+or cross product, you look at all possible combinations of all
+the tables that you have questions about. So the database system will not actually
+implement it typically that way, because that's very wasteful. Imagine you have let's say,
+just two tables, each has a thousand rows. Well a thousand times, a thousand,
+that's a million rows right there. Or if you have three tables
+with a thousand rows each, you would have a billion combinations. So one of the benefits of a database
+systems to be clever about running this query not by generating
+a billion possibilities but having a query plan that reduces
+quite a lot what you need to look at. How can you reduce that? Well, for starters, there's this sigma, this little symbol here, sigma,
+which is a selection condition. This selection condition
+is actually this P here, so you have conditions that
+you apply to the columns. So you might say,
+okay I want the name to be, or let's say a year,
+maybe if a year column you want to say, the year should be after 2000 or
+before 2010. Yeah, so, here you can specify these
+conditions and then instead of looking at these whole cross product, the system will
+kind of evaluate those conditions early. Database people say it, the selection
+is pushed down into the query plan, into the operator tree and so you get
+a much more efficient query evaluation. So this explains the from and the where,
+which is basically the cross product, and then the sigma, the selection. And then finally, what is called
+unfortunately select in SQL, is really this projection, where you say, well now we're really only
+interested in a certain number of columns. So maybe out of those 20 columns that my
+three tables having when I combine them, I'm only interested in two of them. But then I can say, well, just to let
+me that column and the other column, all right? So this is basically just as an idea to
+give you a first idea how a statement that is fairly readable in
+SQL can be translated into an internal representation in
+algebraic representation than, that the database can further optimize and
+evaluate efficiently. [MUSIC] [SOUND]

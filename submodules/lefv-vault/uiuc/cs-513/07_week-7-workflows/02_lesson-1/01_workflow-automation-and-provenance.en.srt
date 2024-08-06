@@ -1,0 +1,1100 @@
+1
+00:00:00,162 --> 00:00:08,131
+[MUSIC]
+
+2
+00:00:08,131 --> 00:00:12,270
+So we're going to start a new topic called
+Workflow Automation and Provenance.
+
+3
+00:00:13,460 --> 00:00:17,570
+So before I go into the details,
+let me just introduce the problem.
+
+4
+00:00:19,350 --> 00:00:23,750
+There is something that has been
+called a reproducibility, crisis and
+
+5
+00:00:23,750 --> 00:00:25,540
+it's hitting the airwaves.
+
+6
+00:00:25,540 --> 00:00:30,460
+So I've seen this, for
+example, in certain magazines,
+
+7
+00:00:30,460 --> 00:00:35,580
+you see this in Science and the Economist,
+in Nature or Scientific American.
+
+8
+00:00:35,580 --> 00:00:39,030
+So I've put some covers from journals,
+
+9
+00:00:39,030 --> 00:00:41,430
+like How Science Goes Wrong,
+very dramatic.
+
+10
+00:00:41,430 --> 00:00:45,400
+Or not too long ago I heard on BBC4,
+I was in the UK at the time.
+
+11
+00:00:45,400 --> 00:00:50,920
+I heard just in the morning radio a report
+about this reproducibility crisis.
+
+12
+00:00:50,920 --> 00:00:53,200
+And what was mentioned is, so
+
+13
+00:00:53,200 --> 00:00:58,490
+the fundamental problem is that a lot of
+published studies are hard to reproduce.
+
+14
+00:00:58,490 --> 00:01:02,360
+And sometimes what is the reason,
+what might be the reason?
+
+15
+00:01:02,360 --> 00:01:06,490
+Maybe they're hard to reproduce
+because they're wrong, yeah?
+
+16
+00:01:06,490 --> 00:01:10,250
+That's why you can't reproduce them,
+they're just not true.
+
+17
+00:01:11,760 --> 00:01:14,260
+Another reason why something might
+be hard to reproduce is, of course,
+
+18
+00:01:14,260 --> 00:01:16,180
+if you haven't documented well enough.
+
+19
+00:01:16,180 --> 00:01:20,690
+So it could be reproducible,
+if only it had more details.
+
+20
+00:01:20,690 --> 00:01:24,340
+Because you have not done a not so
+great job at providing the details.
+
+21
+00:01:24,340 --> 00:01:27,910
+That is what makes it basically
+hard to reproduce or impossible.
+
+22
+00:01:29,300 --> 00:01:33,930
+And there are different,
+there are different causes for this.
+
+23
+00:01:33,930 --> 00:01:38,880
+For example,
+the culture in science, in general,
+
+24
+00:01:38,880 --> 00:01:41,310
+rewards novel, eye-catching results.
+
+25
+00:01:41,310 --> 00:01:43,590
+Actually, it's also more
+of a societal problem.
+
+26
+00:01:43,590 --> 00:01:49,490
+Everybody wants to report the greatest
+findings, and some boring details or
+
+27
+00:01:49,490 --> 00:01:53,779
+non-findings are often
+not really published.
+
+28
+00:01:54,900 --> 00:01:59,280
+So the resources that went into this
+BBC report that I can link to as well.
+
+29
+00:01:59,280 --> 00:02:03,810
+Are for example, you actually make
+mistakes in your mathematics, or
+
+30
+00:02:03,810 --> 00:02:04,620
+in your statistics.
+
+31
+00:02:05,650 --> 00:02:09,690
+The selective reporting, you only report
+certain things and not other things.
+
+32
+00:02:09,690 --> 00:02:15,759
+And then generally, the desire to hype
+up things can lead to these aspects.
+
+33
+00:02:17,440 --> 00:02:19,130
+Now in particular,
+
+34
+00:02:19,130 --> 00:02:23,300
+the thing we want to focus on in this
+course is computational reproducibility.
+
+35
+00:02:24,320 --> 00:02:29,660
+Okay, so different sciences have
+different reproducibility crisis,
+
+36
+00:02:29,660 --> 00:02:32,098
+but our focus is really
+computational reproducibility.
+
+37
+00:02:32,098 --> 00:02:38,850
+So when you create a scientific workflow,
+for example for
+
+38
+00:02:38,850 --> 00:02:44,050
+data analysis pipeline, you might use
+a particular workflow system for that.
+
+39
+00:02:44,050 --> 00:02:48,250
+Or you might do it sort of the old
+fashioned way, and a very common way and
+
+40
+00:02:48,250 --> 00:02:49,650
+in fact very powerful way.
+
+41
+00:02:49,650 --> 00:02:51,460
+So not necessarily old fashioned,
+
+42
+00:02:52,860 --> 00:02:56,340
+it might also be practical
+to do this using scripts.
+
+43
+00:02:56,340 --> 00:03:00,920
+You might use R which is an open
+source statistics platform and
+
+44
+00:03:00,920 --> 00:03:05,740
+system, MATLAB, Python and so on.
+
+45
+00:03:05,740 --> 00:03:09,980
+In order to facilitate this
+reproducibility for computational and
+
+46
+00:03:09,980 --> 00:03:14,420
+data scientists in their studies,
+often what you want to do is to automate.
+
+47
+00:03:14,420 --> 00:03:15,900
+What you do, we'll automate it so
+
+48
+00:03:15,900 --> 00:03:20,555
+it's not a one of a kind thing that
+you yourself forget how you did it.
+
+49
+00:03:20,555 --> 00:03:23,392
+That's why you want to use
+workflow systems and scripts.
+
+50
+00:03:23,392 --> 00:03:26,810
+You want to be very transparent about it,
+so you want to document thinks,
+
+51
+00:03:26,810 --> 00:03:30,788
+keep log files around,
+note files around, a digital notebook.
+
+52
+00:03:30,788 --> 00:03:32,670
+And then want to to keep
+something called provenance,
+
+53
+00:03:32,670 --> 00:03:34,950
+which is the processing history and
+lineage.
+
+54
+00:03:34,950 --> 00:03:36,590
+Some of this can be automated, so
+
+55
+00:03:36,590 --> 00:03:40,990
+that the tools themselves somehow
+trace what it is that they're doing.
+
+56
+00:03:44,170 --> 00:03:48,290
+Before I go into these workflows and
+provenance in more detail,
+
+57
+00:03:48,290 --> 00:03:53,090
+I just want to point out something
+about reproducibility studies.
+
+58
+00:03:53,090 --> 00:03:56,720
+Because nowadays it's actually
+become more fashionable and
+
+59
+00:03:56,720 --> 00:04:01,770
+more feasible to actually study,
+not something just brand new.
+
+60
+00:04:01,770 --> 00:04:07,030
+But really just reproduce something and
+create a publication out of that.
+
+61
+00:04:07,030 --> 00:04:09,100
+So these reproducibility
+studies themselves,
+
+62
+00:04:10,330 --> 00:04:14,350
+traditionally they're not super exciting,
+often.
+
+63
+00:04:14,350 --> 00:04:18,540
+But nowadays there's a recognition
+that they are in fact very valuable.
+
+64
+00:04:18,540 --> 00:04:25,020
+And they need to be more supported and
+more actively pursued.
+
+65
+00:04:25,020 --> 00:04:29,590
+So from the reproducibility studies here,
+the question's often also,
+
+66
+00:04:29,590 --> 00:04:31,830
+what is the outcome of such a study?
+
+67
+00:04:31,830 --> 00:04:36,530
+If you think about it, a successful
+outcome of a reproducability study
+
+68
+00:04:37,740 --> 00:04:40,090
+is at first, of course, a good thing.
+
+69
+00:04:40,090 --> 00:04:41,990
+It increases the trust in a prior study,
+
+70
+00:04:43,210 --> 00:04:45,320
+because you were able
+to reproduce something.
+
+71
+00:04:45,320 --> 00:04:46,205
+Means well,
+
+72
+00:04:46,205 --> 00:04:51,940
+there's a good chance that what the other
+guys reported is not a fluke, it's real.
+
+73
+00:04:51,940 --> 00:04:56,472
+On the other hand, unless the previous
+study was just outrageous.
+
+74
+00:04:56,472 --> 00:05:00,884
+If it was just a good, solid study,
+that's not a huge surprise.
+
+75
+00:05:00,884 --> 00:05:04,862
+And the information gain,
+the gain in terms of knowledge and
+
+76
+00:05:04,862 --> 00:05:07,516
+information is actually not that high.
+
+77
+00:05:07,516 --> 00:05:11,940
+Again, if it was an outrageous claim,
+you confirm it, that's great.
+
+78
+00:05:11,940 --> 00:05:15,540
+But if it was sort of something to
+be expected, and now you redid it,
+
+79
+00:05:15,540 --> 00:05:19,310
+and, again, it is confirmed,
+that's slightly less exciting.
+
+80
+00:05:19,310 --> 00:05:23,050
+On the other hand, if you have
+a failed reproducibility study,
+
+81
+00:05:23,050 --> 00:05:25,170
+there's actually a lot
+you can learn from that.
+
+82
+00:05:25,170 --> 00:05:29,220
+So on the one hand, of course,
+you decrease the trust in the prior study.
+
+83
+00:05:29,220 --> 00:05:32,766
+Maybe you falsify it even, and
+you say this prior study is just wrong.
+
+84
+00:05:32,766 --> 00:05:37,167
+Because we tried it, we followed exactly
+the procedures and look what we got.
+
+85
+00:05:38,565 --> 00:05:41,835
+But it's certainly surprising,
+because you do normally expect
+
+86
+00:05:41,835 --> 00:05:44,990
+the reproducibility study
+to yield the same result.
+
+87
+00:05:44,990 --> 00:05:47,784
+So the failure yields also new
+information, new knowledge.
+
+88
+00:05:47,784 --> 00:05:51,880
+You'll learn also probably something
+about the flaws maybe that the original
+
+89
+00:05:51,880 --> 00:05:53,350
+study had.
+
+90
+00:05:53,350 --> 00:05:56,890
+So learning from failures is something
+that applies generally in life.
+
+91
+00:05:56,890 --> 00:06:00,250
+This is how we learn, we try out things,
+we fail, and then we know better.
+
+92
+00:06:01,960 --> 00:06:06,030
+Okay so the idea is that in many
+of these computational studies,
+
+93
+00:06:06,030 --> 00:06:11,023
+we want to also facilitate
+the way that errors
+
+94
+00:06:11,023 --> 00:06:15,290
+are detected early and often in a way.
+
+95
+00:06:15,290 --> 00:06:20,290
+This is actually also very related to
+how you should, to programming, right?
+
+96
+00:06:20,290 --> 00:06:23,390
+You want to in some sense
+write programs in such a way
+
+97
+00:06:23,390 --> 00:06:26,280
+that they don't silently fail and
+just move on.
+
+98
+00:06:26,280 --> 00:06:30,270
+You want,
+if things go in a way that they shouldn't.
+
+99
+00:06:30,270 --> 00:06:36,710
+You want the system to raise an exception
+or stop or do something about it.
+
+100
+00:06:36,710 --> 00:06:40,490
+Okay, so much for
+the reproducibility studies.
+
+101
+00:06:40,490 --> 00:06:46,090
+But now let's turn to the topic of
+workflows which deal with automating
+
+102
+00:06:46,090 --> 00:06:48,070
+computational tasks.
+
+103
+00:06:48,070 --> 00:06:52,600
+Could also be automating business tasks,
+they're called business workflows.
+
+104
+00:06:52,600 --> 00:06:56,600
+But our focus is on sort of these signs,
+data signs, workflows,
+
+105
+00:06:56,600 --> 00:06:58,030
+scientific workflows, as they're called.
+
+106
+00:06:59,110 --> 00:07:03,213
+So I like to use this acronym,
+
+107
+00:07:03,213 --> 00:07:08,144
+ASAP, as a mechanism to remember.
+
+108
+00:07:08,144 --> 00:07:14,990
+As a mnemonic to remember what some of the
+goals are of scientific workflow systems.
+
+109
+00:07:14,990 --> 00:07:17,520
+First and foremost,
+it's all about automation, right?
+
+110
+00:07:17,520 --> 00:07:21,610
+If you want to automate
+a particular data analysis job,
+
+111
+00:07:21,610 --> 00:07:25,060
+or data cleaning job,
+it's good to have a script.
+
+112
+00:07:25,060 --> 00:07:27,576
+So if you compare back,
+if you look at OpenRefine,
+
+113
+00:07:27,576 --> 00:07:32,390
+in OpenRefine you will
+interactively work with the tool.
+
+114
+00:07:32,390 --> 00:07:36,280
+But maybe you can extract some
+recipes that you can then
+
+115
+00:07:36,280 --> 00:07:39,140
+apply on similar datasets over and
+over again.
+
+116
+00:07:39,140 --> 00:07:41,510
+So maybe you've once cleaned up
+cleaned up certain names and
+
+117
+00:07:41,510 --> 00:07:42,860
+map them to standard names.
+
+118
+00:07:42,860 --> 00:07:46,040
+Wouldn't it be nice if that
+recipe could be reused later?
+
+119
+00:07:46,040 --> 00:07:49,920
+So you put it maybe into a script, yeah.
+
+120
+00:07:49,920 --> 00:07:54,560
+Scaling is another advantage that
+workflow systems try to address.
+
+121
+00:07:54,560 --> 00:07:57,690
+Things that work on your laptop,
+with a small dataset,
+
+122
+00:07:57,690 --> 00:08:02,400
+a couple of thousand rows
+might not naturally scale up,
+
+123
+00:08:02,400 --> 00:08:06,529
+for use cases where you have a million
+rows, or many millions or more.
+
+124
+00:08:07,600 --> 00:08:14,418
+And so, sometimes workflow systems provide
+access to parallel computer resources.
+
+125
+00:08:14,418 --> 00:08:19,230
+They have libraries, maybe you can
+work with a two cluster, for example,
+
+126
+00:08:19,230 --> 00:08:20,720
+in the background.
+
+127
+00:08:20,720 --> 00:08:25,370
+And do that fairly,
+transparently maybe, that's the idea.
+
+128
+00:08:25,370 --> 00:08:32,740
+There's some systems and approaches, for
+example Swift here is a workflow language.
+
+129
+00:08:32,740 --> 00:08:36,170
+It's a little bit more like a scripting
+language, but that has support for
+
+130
+00:08:36,170 --> 00:08:37,620
+certain parallel operations.
+
+131
+00:08:37,620 --> 00:08:40,720
+So which then would make it easier
+to scale up certain analysis.
+
+132
+00:08:42,110 --> 00:08:45,630
+So that's another thing, what you
+want to do with the workflows approach.
+
+133
+00:08:45,630 --> 00:08:49,010
+Then the next letter here is abstraction.
+
+134
+00:08:49,010 --> 00:08:53,150
+Abstraction is when you share your
+work with somebody else, you can say,
+
+135
+00:08:53,150 --> 00:08:53,910
+here's my code.
+
+136
+00:08:53,910 --> 00:08:57,720
+Look, I'm a good citizen,
+I put it in GitHub, take it.
+
+137
+00:08:57,720 --> 00:09:03,265
+Well, if you've ever seen somebody else's
+code that's complex and so-so documented.
+
+138
+00:09:03,265 --> 00:09:06,170
+It doesn't mean that you
+really know what's going on.
+
+139
+00:09:06,170 --> 00:09:08,600
+And if, you know,
+you have to make a decision.
+
+140
+00:09:08,600 --> 00:09:12,560
+Do I invest, now, a couple of days
+af my life trying to work with this?
+
+141
+00:09:12,560 --> 00:09:16,100
+Or is this even not doing the right
+thing that I want to use?
+
+142
+00:09:16,100 --> 00:09:20,980
+So wouldn't it be nice if you had a higher
+level description that really shows
+
+143
+00:09:22,310 --> 00:09:26,030
+you what this workflow is doing?
+
+144
+00:09:26,030 --> 00:09:31,320
+Yeah, and so workflow systems
+themselves often have a visual layout.
+
+145
+00:09:31,320 --> 00:09:34,910
+A sort of diagramming layout,
+looks a little bit like a flowchart.
+
+146
+00:09:34,910 --> 00:09:37,070
+But technically it's often
+a data flow diagram,
+
+147
+00:09:37,070 --> 00:09:41,650
+which is basically showing you the steps
+and how the data flows between the steps.
+
+148
+00:09:41,650 --> 00:09:44,740
+If you have such a thing, that's helpful.
+
+149
+00:09:44,740 --> 00:09:48,239
+To share what it is that you're doing with
+others who then can decide whether they
+
+150
+00:09:48,239 --> 00:09:50,580
+want to adopt or not adopt this workflow.
+
+151
+00:09:50,580 --> 00:09:54,250
+Also, sometimes,
+the systems are fairly good at
+
+152
+00:09:54,250 --> 00:09:57,970
+allowing you to easily change
+the workflow diagrams.
+
+153
+00:09:57,970 --> 00:10:01,030
+By taking out components,
+plugging in new components and so on.
+
+154
+00:10:03,270 --> 00:10:06,590
+And then last, not least,
+this notion of provenance.
+
+155
+00:10:06,590 --> 00:10:11,760
+As I mentioned briefly, it is the idea
+that the processing history and
+
+156
+00:10:11,760 --> 00:10:16,200
+the lineage of data,
+how data was derived from other data.
+
+157
+00:10:16,200 --> 00:10:20,040
+It would be nice if that could
+be automatically tracked and
+
+158
+00:10:20,040 --> 00:10:22,550
+captured, and also then queried.
+
+159
+00:10:22,550 --> 00:10:26,760
+So you understand, if you have
+questions about your data history
+
+160
+00:10:26,760 --> 00:10:29,770
+of the family tree of
+your data if you like.
+
+161
+00:10:29,770 --> 00:10:32,260
+Wouldn't it be nice if you
+could ask questions about that?
+
+162
+00:10:33,530 --> 00:10:39,530
+And this in particular leads to
+sort of a traceable data history.
+
+163
+00:10:40,740 --> 00:10:45,980
+And this also facilitates in that
+sense reproducible science if you
+
+164
+00:10:45,980 --> 00:10:48,790
+can sort of debug and
+result after the fact.
+
+165
+00:10:48,790 --> 00:10:51,790
+You've created a data product,
+
+166
+00:10:51,790 --> 00:10:56,400
+and later you'll learn that some
+of your input data was faulty.
+
+167
+00:10:56,400 --> 00:10:59,980
+There was some quality issue or some
+calibration wasn't right, or something.
+
+168
+00:10:59,980 --> 00:11:04,140
+You could, and maybe you're sitting on all
+of these datasets that you've derived.
+
+169
+00:11:04,140 --> 00:11:07,438
+And among the input data was one
+dataset that was problematic.
+
+170
+00:11:07,438 --> 00:11:10,170
+Now it wouldn't be nice if
+I could tell which of my
+
+171
+00:11:10,170 --> 00:11:13,600
+products are sort of contaminated or
+tainted by this.
+
+172
+00:11:13,600 --> 00:11:16,830
+So if you kept carefully track
+of your derivation history,
+
+173
+00:11:16,830 --> 00:11:17,830
+you could answer that question.
+
+174
+00:11:19,140 --> 00:11:21,640
+And again the idea is that
+the workflow system, actually,
+
+175
+00:11:21,640 --> 00:11:23,041
+hopefully should support that.
+
+176
+00:11:23,041 --> 00:11:25,329
+Because you're working in
+a controlled environment,
+
+177
+00:11:25,329 --> 00:11:26,749
+you're working with the system.
+
+178
+00:11:26,749 --> 00:11:28,676
+So hopefully that system
+can tell you that.
+
+179
+00:11:28,676 --> 00:11:31,463
+As I will say in a little moment,
+
+180
+00:11:31,463 --> 00:11:36,943
+a lot of people prefer to work
+with the environments they know.
+
+181
+00:11:36,943 --> 00:11:43,470
+Scripting environments, R, Python for
+example, and then, the task shifts now.
+
+182
+00:11:43,470 --> 00:11:45,130
+You ask now, okay, well R and
+
+183
+00:11:45,130 --> 00:11:49,990
+Python natively might not have this
+support of keeping track off data lineage.
+
+184
+00:11:49,990 --> 00:11:53,650
+So maybe you can add new libraries,
+new components,
+
+185
+00:11:53,650 --> 00:11:58,910
+well then take that job and support that
+reproduceability through prominence track.
+
+186
+00:12:00,300 --> 00:12:03,890
+All right, so so much about the workflows,
+this is a very high level view, yeah, and
+
+187
+00:12:03,890 --> 00:12:07,670
+I have just these four letters there,
+ASAP, there's more to be said.
+
+188
+00:12:07,670 --> 00:12:10,880
+Here's an alternative view,
+I like to think
+
+189
+00:12:10,880 --> 00:12:15,710
+of this as the ten commandments from my
+colleague and collaborator Tim McPhllips.
+
+190
+00:12:16,750 --> 00:12:19,510
+So, there's more details,
+I don't want to go into all of them,
+
+191
+00:12:19,510 --> 00:12:21,350
+just let me maybe highlight a few of them.
+
+192
+00:12:22,780 --> 00:12:25,460
+Again, this is basically saying
+what should a workflow system
+
+193
+00:12:25,460 --> 00:12:27,330
+provide in terms of functionality.
+
+194
+00:12:27,330 --> 00:12:31,700
+You see the automation is there, excuse
+me, you see the scheduling is there for
+
+195
+00:12:31,700 --> 00:12:32,710
+parallel resources.
+
+196
+00:12:33,810 --> 00:12:38,330
+Managing the data flow, of course,
+
+197
+00:12:38,330 --> 00:12:41,600
+enabling scientist to
+change to workflows easily.
+
+198
+00:12:43,100 --> 00:12:45,650
+and then there's these two notions and
+we're going to hear more about these two
+
+199
+00:12:45,650 --> 00:12:48,180
+notions of prospective and
+retrospective provenance.
+
+200
+00:12:49,600 --> 00:12:53,340
+So provenance is normally
+about history about the past.
+
+201
+00:12:53,340 --> 00:12:54,500
+What's the origin of something?
+
+202
+00:12:55,700 --> 00:12:57,470
+How did this something get here?
+
+203
+00:12:57,470 --> 00:12:57,970
+Yeah?
+
+204
+00:12:59,320 --> 00:13:03,710
+So the term retrospective provenance
+sounds like okay well that's obvious
+
+205
+00:13:03,710 --> 00:13:05,680
+provenance is obviously retrospective.
+
+206
+00:13:05,680 --> 00:13:09,210
+But some people have introduced
+this term prospective provenance
+
+207
+00:13:09,210 --> 00:13:12,390
+which now forces us to
+sometimes distinguish the two.
+
+208
+00:13:12,390 --> 00:13:18,680
+So retrospective provenance is our
+typical provenance, what has happened.
+
+209
+00:13:18,680 --> 00:13:23,870
+But prospective provenance is
+a very powerful construct as well.
+
+210
+00:13:23,870 --> 00:13:27,370
+It's basically about predicting what
+a workflow will do when you execute it.
+
+211
+00:13:28,660 --> 00:13:32,710
+So basically when you put a prospective
+provenance graph out there,
+
+212
+00:13:32,710 --> 00:13:36,810
+you can call a prospective provenance
+actually the workflow graph.
+
+213
+00:13:36,810 --> 00:13:41,590
+It's telling you what the dependencies
+will be if you run it.
+
+214
+00:13:41,590 --> 00:13:44,630
+And then you can sometimes you can
+actually do very interesting things.
+
+215
+00:13:44,630 --> 00:13:46,990
+This is is kind of
+subject of some research,
+
+216
+00:13:46,990 --> 00:13:50,140
+how can you reconcile prospective and
+retrospective?.
+
+217
+00:13:51,320 --> 00:13:55,380
+So i work for diagram is a form
+respective permanence that tells
+
+218
+00:13:56,420 --> 00:13:58,504
+how a certain data flow works.
+
+219
+00:13:58,504 --> 00:14:01,689
+What steps are executed, and
+in what order and what depends on what.
+
+220
+00:14:03,010 --> 00:14:06,600
+When you now run the extra
+workflow on the script and
+
+221
+00:14:06,600 --> 00:14:12,580
+then capture retrospective provenance
+now you say well, does this align,
+
+222
+00:14:12,580 --> 00:14:17,780
+does this match actually what
+the workflow diagram was claiming.
+
+223
+00:14:17,780 --> 00:14:23,400
+So is the predicted prospective provenance
+compatible with The actual observed and
+
+224
+00:14:23,400 --> 00:14:24,140
+recorded problems.
+
+225
+00:14:25,360 --> 00:14:27,510
+So that a rather interesting topic.
+
+226
+00:14:29,350 --> 00:14:32,930
+So revealing inquiring provenance
+is another important aspect and
+
+227
+00:14:32,930 --> 00:14:35,330
+we will actually end this
+classwork with that as well.
+
+228
+00:14:36,640 --> 00:14:37,361
+Okay, so
+
+229
+00:14:37,361 --> 00:14:43,235
+this is sort of a more detailed view of
+what workflow systems should be doing.
+
+230
+00:14:43,235 --> 00:14:53,547
+[MUSIC]
+
+231
+00:14:53,547 --> 00:14:56,987
+[SOUND]

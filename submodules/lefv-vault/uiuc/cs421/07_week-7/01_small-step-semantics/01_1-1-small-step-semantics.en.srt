@@ -1,0 +1,539 @@
+1
+00:00:00,000 --> 00:00:03,105
+Hello everyone, welcome to CS 421.
+
+2
+00:00:03,105 --> 00:00:04,800
+Earlier in the semester,
+
+3
+00:00:04,800 --> 00:00:07,200
+you saw big step semantics which gives
+
+4
+00:00:07,200 --> 00:00:11,640
+a precise way to define the meaning of expressions in a programming language.
+
+5
+00:00:11,640 --> 00:00:13,830
+This time, we're going to talk about another way of modeling
+
+6
+00:00:13,830 --> 00:00:16,440
+the meaning of language is called Small Steps Semantics.
+
+7
+00:00:16,440 --> 00:00:18,030
+When you're done with this video,
+
+8
+00:00:18,030 --> 00:00:20,220
+you'll be able to use the small step semantics
+
+9
+00:00:20,220 --> 00:00:22,350
+that determined the value of an expression.
+
+10
+00:00:22,350 --> 00:00:24,630
+You'll also be able to give an explanation about why
+
+11
+00:00:24,630 --> 00:00:27,570
+semantics informal methods are useful to us.
+
+12
+00:00:27,570 --> 00:00:30,600
+A semantics of a language is a formal system.
+
+13
+00:00:30,600 --> 00:00:33,915
+So, let's start by taking a high-level view of formal systems.
+
+14
+00:00:33,915 --> 00:00:36,000
+We say that a system is formal,
+
+15
+00:00:36,000 --> 00:00:39,000
+we mean that we pay special attention to its forms,
+
+16
+00:00:39,000 --> 00:00:41,325
+it doesn't mean that we dress in fancy clothes,
+
+17
+00:00:41,325 --> 00:00:43,005
+but you can do that if you want.
+
+18
+00:00:43,005 --> 00:00:46,615
+Anyway, a formal system needs four parts.
+
+19
+00:00:46,615 --> 00:00:49,640
+First, you specify an alphabet or a set of symbols.
+
+20
+00:00:49,640 --> 00:00:53,405
+This is analogous to specifying the terminal symbols in a grammar.
+
+21
+00:00:53,405 --> 00:00:56,995
+Second, you define what a valid sentence in your system looks like.
+
+22
+00:00:56,995 --> 00:01:00,140
+Third, you specify transformation rules which
+
+23
+00:01:00,140 --> 00:01:03,320
+allow you to make new valid sentences from old ones.
+
+24
+00:01:03,320 --> 00:01:08,270
+Finally, you specify a set of initial sentences we consider to be valid.
+
+25
+00:01:08,270 --> 00:01:11,675
+The fun thing is we do not have to have an interpretation
+
+26
+00:01:11,675 --> 00:01:15,005
+of the symbols in order to use the formal system.
+
+27
+00:01:15,005 --> 00:01:17,345
+If we are using the formal system correctly,
+
+28
+00:01:17,345 --> 00:01:20,050
+it will preserve whatever interpretation you have given it.
+
+29
+00:01:20,050 --> 00:01:23,750
+As computers are good at manipulating systems they don't understand,
+
+30
+00:01:23,750 --> 00:01:28,070
+you can see how formal methods might be useful to computer scientists.
+
+31
+00:01:28,070 --> 00:01:31,340
+Here's a fun and silly example to illustrate this.
+
+32
+00:01:31,340 --> 00:01:34,210
+I'm going to define something called a furbitz.
+
+33
+00:01:34,210 --> 00:01:36,480
+We will have these symbols S,
+
+34
+00:01:36,480 --> 00:01:39,225
+paren, Z, P, x and y.
+
+35
+00:01:39,225 --> 00:01:44,770
+Z is going to be a furbitz and x and y are going to be of type furbitz as well.
+
+36
+00:01:44,770 --> 00:01:48,405
+We can use S to take a furbitz and give us another furbitz.
+
+37
+00:01:48,405 --> 00:01:50,895
+We can use P to take two furbitzi,
+
+38
+00:01:50,895 --> 00:01:53,575
+furbitzi is a plural of furbitz by the way,
+
+39
+00:01:53,575 --> 00:01:55,690
+and combine them into a new furbitz.
+
+40
+00:01:55,690 --> 00:01:58,760
+We can also define a relation we call gloppit.
+
+41
+00:01:58,760 --> 00:02:00,845
+We define that inductively.
+
+42
+00:02:00,845 --> 00:02:04,610
+Then, giving two furbitzi that have the gloppit relation,
+
+43
+00:02:04,610 --> 00:02:06,860
+we can show how different combinations of P,
+
+44
+00:02:06,860 --> 00:02:10,825
+S and Z can be combined to preserve that gloppit relation.
+
+45
+00:02:10,825 --> 00:02:12,350
+Now, if we stopped here,
+
+46
+00:02:12,350 --> 00:02:14,720
+each of you could work through these definitions and
+
+47
+00:02:14,720 --> 00:02:17,225
+everyone who decided something about two furbitzi,
+
+48
+00:02:17,225 --> 00:02:19,475
+whether they had the gloppit relationship or not,
+
+49
+00:02:19,475 --> 00:02:23,315
+would agree, assuming you all manipulated this symbols correctly.
+
+50
+00:02:23,315 --> 00:02:27,110
+You could even feed these definitions to a theorem prover and automate this,
+
+51
+00:02:27,110 --> 00:02:29,810
+but you still couldn't tell me what a furbitz is and you
+
+52
+00:02:29,810 --> 00:02:32,720
+don't even need to know in order to get the correct answers.
+
+53
+00:02:32,720 --> 00:02:35,065
+Now, let me show you this.
+
+54
+00:02:35,065 --> 00:02:37,610
+This system is more recognizable,
+
+55
+00:02:37,610 --> 00:02:39,845
+if I tell you that if furbitz as an integer.
+
+56
+00:02:39,845 --> 00:02:43,355
+Z is zero, P is plus and S as successor.
+
+57
+00:02:43,355 --> 00:02:46,420
+This illustrates another power that formal systems have.
+
+58
+00:02:46,420 --> 00:02:48,440
+If you define a system and discover
+
+59
+00:02:48,440 --> 00:02:50,790
+that it can be mapped to another system you already know,
+
+60
+00:02:50,790 --> 00:02:53,090
+then all the theorems you've proven over on
+
+61
+00:02:53,090 --> 00:02:55,780
+that other system can be applied to your new one.
+
+62
+00:02:55,780 --> 00:02:58,170
+All that said, now let's talk about
+
+63
+00:02:58,170 --> 00:03:01,620
+small steps semantics and start with a small toy language.
+
+64
+00:03:01,620 --> 00:03:04,760
+It's pretty famous, a simple imperative programming language,
+
+65
+00:03:04,760 --> 00:03:07,265
+sometimes it's called SIMP or maybe just IMP.
+
+66
+00:03:07,265 --> 00:03:09,475
+We have five constructs.
+
+67
+00:03:09,475 --> 00:03:12,989
+SKIP does nothing, it's like a NOOP of assembler,
+
+68
+00:03:12,989 --> 00:03:14,935
+colon equals just assignment,
+
+69
+00:03:14,935 --> 00:03:17,570
+semicolon separates two statements.
+
+70
+00:03:17,570 --> 00:03:21,250
+Note that it is not a statement terminator like in C plus plus.
+
+71
+00:03:21,250 --> 00:03:23,835
+We have if statements and while statements.
+
+72
+00:03:23,835 --> 00:03:25,010
+It's language is simple,
+
+73
+00:03:25,010 --> 00:03:27,380
+but complex enough to do real things with it.
+
+74
+00:03:27,380 --> 00:03:32,650
+Small step semantics express how a computer could go about evaluating a bit of code.
+
+75
+00:03:32,650 --> 00:03:35,660
+We're given a configuration which is an environment together
+
+76
+00:03:35,660 --> 00:03:38,780
+with the program placed within these angle brackets.
+
+77
+00:03:38,780 --> 00:03:43,190
+We use the arrow to document what one step of computation would look like,
+
+78
+00:03:43,190 --> 00:03:47,740
+that is executing one step of a program or result in a new configuration.
+
+79
+00:03:47,740 --> 00:03:51,780
+The program will be one step closer determination if it terminates,
+
+80
+00:03:51,780 --> 00:03:54,830
+and the environment could have been modified by the program.
+
+81
+00:03:54,830 --> 00:03:58,625
+Let's define the small steps semantics for SIMP now.
+
+82
+00:03:58,625 --> 00:04:01,910
+If we have a configuration with Skip and Sigma in
+
+83
+00:04:01,910 --> 00:04:05,510
+one step we will get the configuration E with Sigma unchanged.
+
+84
+00:04:05,510 --> 00:04:07,850
+Here E represents the empty program.
+
+85
+00:04:07,850 --> 00:04:11,845
+It's a very fancy way of saying that Skip doesn't do anything.
+
+86
+00:04:11,845 --> 00:04:15,480
+For assignment of t to u with environment Sigma,
+
+87
+00:04:15,480 --> 00:04:17,565
+we also get the empty program,
+
+88
+00:04:17,565 --> 00:04:19,695
+but we say that Sigma gets modified.
+
+89
+00:04:19,695 --> 00:04:24,695
+We update the mapping of u to be whatever evaluating t would be in the original Sigma.
+
+90
+00:04:24,695 --> 00:04:28,175
+There's also a bit more detail of what Sigma looks like.
+
+91
+00:04:28,175 --> 00:04:31,520
+We will write it down as a set of assignments where each one
+
+92
+00:04:31,520 --> 00:04:34,880
+of the us are a variable and they should be distinct.
+
+93
+00:04:34,880 --> 00:04:37,070
+We can apply Sigma to an expression as if it were
+
+94
+00:04:37,070 --> 00:04:40,115
+a function and get back the value of that expression.
+
+95
+00:04:40,115 --> 00:04:41,660
+Here, again, at the bottom,
+
+96
+00:04:41,660 --> 00:04:44,525
+is what it looks like if we update Sigma.
+
+97
+00:04:44,525 --> 00:04:46,970
+The next rule is sequencing.
+
+98
+00:04:46,970 --> 00:04:51,830
+Remember that things on top are assumptions and the thing on the bottom is a conclusion.
+
+99
+00:04:51,830 --> 00:04:56,560
+This rule says that if we can evaluate S1 as Sigma and get S2 and Tau,
+
+100
+00:04:56,560 --> 00:05:00,000
+then we can put a semicolon S at the end of S1 and
+
+101
+00:05:00,000 --> 00:05:03,840
+evaluate that and Sigma and get S2 semicolon S and Tau.
+
+102
+00:05:03,840 --> 00:05:07,260
+We then declare that the empty program, semicolon S,
+
+103
+00:05:07,260 --> 00:05:08,925
+is just S itself.
+
+104
+00:05:08,925 --> 00:05:10,755
+Next there's if.
+
+105
+00:05:10,755 --> 00:05:12,630
+We need two versions,
+
+106
+00:05:12,630 --> 00:05:17,010
+one for if the condition is true and one for if the condition is false.
+
+107
+00:05:17,010 --> 00:05:22,195
+That symbol that looks like a sideways Pi is pronounced models or proves.
+
+108
+00:05:22,195 --> 00:05:27,385
+Sigma models B means that B is true given the contents of Sigma.
+
+109
+00:05:27,385 --> 00:05:30,410
+The definition of while is pretty interesting.
+
+110
+00:05:30,410 --> 00:05:36,200
+Most of the rules removed part of the program but in the case that B is found to be true,
+
+111
+00:05:36,200 --> 00:05:42,005
+we rewrite the program to have the body S1 duplicated and put out in front of the while.
+
+112
+00:05:42,005 --> 00:05:46,415
+If B is false then the while loop is done in the whole thing goes away.
+
+113
+00:05:46,415 --> 00:05:50,485
+Here's an example of using the small step semantics execute a program.
+
+114
+00:05:50,485 --> 00:05:53,520
+You start off with this program x assigned to one,
+
+115
+00:05:53,520 --> 00:05:56,735
+n assigned to three and while n greater than one set
+
+116
+00:05:56,735 --> 00:06:00,650
+x equal x times n and n equal to n minus one.
+
+117
+00:06:00,650 --> 00:06:04,460
+We write down our initial configuration like this and we use
+
+118
+00:06:04,460 --> 00:06:08,900
+the combination of the semicolon rule and the assignment rule to get to the next step.
+
+119
+00:06:08,900 --> 00:06:13,885
+See if you can work out the next step before going onto the next slide.
+
+120
+00:06:13,885 --> 00:06:20,370
+Now, we have an environment with x equal one and n assigned three is the next statement.
+
+121
+00:06:20,930 --> 00:06:25,055
+Now, we have done both of the assignments and we're at the while loop.
+
+122
+00:06:25,055 --> 00:06:29,970
+Try to work out what the next transition is before resuming.
+
+123
+00:06:29,990 --> 00:06:33,310
+This time, the bounding greater one is true,
+
+124
+00:06:33,310 --> 00:06:37,565
+so we copy the body of the while loop all upfront and now we get the execute it.
+
+125
+00:06:37,565 --> 00:06:42,200
+We have x assigned to x times n and then n assign to n minus one,
+
+126
+00:06:42,200 --> 00:06:44,380
+and now we're at the while loop again.
+
+127
+00:06:44,380 --> 00:06:45,870
+Well, n is two,
+
+128
+00:06:45,870 --> 00:06:47,250
+which is still greater than one,
+
+129
+00:06:47,250 --> 00:06:48,780
+so we have to go again.
+
+130
+00:06:48,780 --> 00:06:55,505
+x gets x times n and n gets n minus one and we're at the while loop a third time,
+
+131
+00:06:55,505 --> 00:06:57,670
+this time the bound is false.
+
+132
+00:06:57,670 --> 00:07:01,520
+This makes the program empty and gives us our final configuration.
+
+133
+00:07:01,520 --> 00:07:05,165
+There will be some practice problems available for you to try this yourself.
+
+134
+00:07:05,165 --> 00:07:08,450
+Our next topic will be an interesting property called the Church-Rosser
+
+135
+00:07:08,450 --> 00:07:13,890
+property and we will use something that looks like small step semantics to discuss it.

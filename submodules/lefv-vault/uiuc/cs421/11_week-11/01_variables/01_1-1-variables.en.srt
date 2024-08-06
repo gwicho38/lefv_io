@@ -1,0 +1,567 @@
+1
+00:00:00,000 --> 00:00:02,610
+You think you know what a variable is, don't you?
+
+2
+00:00:02,610 --> 00:00:04,965
+They're actually somewhat complicated.
+
+3
+00:00:04,965 --> 00:00:07,830
+Turns out all variables have four properties and you can
+
+4
+00:00:07,830 --> 00:00:11,400
+pick when those properties are conferred to the variable.
+
+5
+00:00:11,400 --> 00:00:13,830
+When we're done with this video, you'll be able to explain
+
+6
+00:00:13,830 --> 00:00:16,290
+the difference between static and dynamic binding,
+
+7
+00:00:16,290 --> 00:00:20,100
+and you'll be able to explain the four properties of variables in half.
+
+8
+00:00:20,100 --> 00:00:21,450
+That is value, type,
+
+9
+00:00:21,450 --> 00:00:23,550
+location, and even scope.
+
+10
+00:00:23,550 --> 00:00:27,915
+We'll also talk a little bit about declaration and aliasing as we go.
+
+11
+00:00:27,915 --> 00:00:30,180
+What is a variable anyway?
+
+12
+00:00:30,180 --> 00:00:35,405
+In Mathematics, a variable represents quantity or values possibly unknown.
+
+13
+00:00:35,405 --> 00:00:40,580
+In programming, a variable is an implementation of this mathematical construct.
+
+14
+00:00:40,580 --> 00:00:43,520
+Now, this has implications that we often forget about.
+
+15
+00:00:43,520 --> 00:00:47,150
+So, for example, variables and math don't have memory locations.
+
+16
+00:00:47,150 --> 00:00:49,150
+The variables in the computer do.
+
+17
+00:00:49,150 --> 00:00:51,440
+Integers and math never overflow,
+
+18
+00:00:51,440 --> 00:00:53,960
+but integers in the computer may.
+
+19
+00:00:53,960 --> 00:00:57,620
+So, if a property is conferred to variable at compiled time,
+
+20
+00:00:57,620 --> 00:00:59,800
+we call it static binding.
+
+21
+00:00:59,800 --> 00:01:02,810
+Property can be hard coded this way and the compiler can take
+
+22
+00:01:02,810 --> 00:01:06,370
+advantage of this knowledge to make more efficient executables.
+
+23
+00:01:06,370 --> 00:01:09,270
+If the property is bound at runtime,
+
+24
+00:01:09,270 --> 00:01:10,965
+we call it dynamic binding.
+
+25
+00:01:10,965 --> 00:01:13,214
+Now, dynamic binding is more flexible,
+
+26
+00:01:13,214 --> 00:01:16,455
+but sometimes it causes our program to be less efficient.
+
+27
+00:01:16,455 --> 00:01:19,550
+So, the first property we will talk about is value.
+
+28
+00:01:19,550 --> 00:01:23,840
+Values are the easy seem to choose between static and dynamic binding.
+
+29
+00:01:23,840 --> 00:01:28,360
+Usually is statically bound variables called a constant most languages.
+
+30
+00:01:28,360 --> 00:01:31,050
+But usually, we want dynamic binding.
+
+31
+00:01:31,050 --> 00:01:33,310
+Because if we don't want variables to vary,
+
+32
+00:01:33,310 --> 00:01:36,155
+then we probably shouldn't be calling them variables.
+
+33
+00:01:36,155 --> 00:01:40,940
+Now, static binding of value is not the same thing as immutability.
+
+34
+00:01:40,940 --> 00:01:43,520
+Haskell's variables for instance are immutable.
+
+35
+00:01:43,520 --> 00:01:45,470
+Once you assign a value to them,
+
+36
+00:01:45,470 --> 00:01:46,955
+you cannot change them.
+
+37
+00:01:46,955 --> 00:01:48,710
+The assignment happens at runtime though,
+
+38
+00:01:48,710 --> 00:01:51,695
+so the value is still considered to be dynamic.
+
+39
+00:01:51,695 --> 00:01:55,670
+Next property we're going to talk about is a type of variable.
+
+40
+00:01:55,670 --> 00:02:00,245
+Now, the programming language world can easily be divided into two camps.
+
+41
+00:02:00,245 --> 00:02:03,800
+Static typing camp which gives rise to C++, OCaml,
+
+42
+00:02:03,800 --> 00:02:07,415
+and Haskell, point to the safety that static types give you.
+
+43
+00:02:07,415 --> 00:02:09,830
+You've probably noticed that if your program gets passed
+
+44
+00:02:09,830 --> 00:02:13,100
+Haskell's type-checker then you are close to being done.
+
+45
+00:02:13,100 --> 00:02:18,040
+Now, the dynamic typing people like languages such as Perl, Lisp, and Closure.
+
+46
+00:02:18,040 --> 00:02:20,475
+The Lisp and Clojure community have a saying,
+
+47
+00:02:20,475 --> 00:02:22,325
+"Variables don't have types.
+
+48
+00:02:22,325 --> 00:02:24,260
+Only values have types.
+
+49
+00:02:24,260 --> 00:02:28,420
+A trade-off you get is between safety and expressability."
+
+50
+00:02:28,420 --> 00:02:31,320
+Now, related idea is polymorphism.
+
+51
+00:02:31,320 --> 00:02:33,740
+We're not content just to choose between
+
+52
+00:02:33,740 --> 00:02:36,650
+completely static and completely dynamic with their types.
+
+53
+00:02:36,650 --> 00:02:41,590
+So, polymorphism could be a principled way to provide the advantage of dynamic typing,
+
+54
+00:02:41,590 --> 00:02:43,295
+but still has static types.
+
+55
+00:02:43,295 --> 00:02:48,020
+So, for example, most languages overload plus to work with both integers and floats.
+
+56
+00:02:48,020 --> 00:02:53,960
+We can use parameterized types to allow containers contain many different kinds of types.
+
+57
+00:02:53,960 --> 00:02:58,130
+Haskell's type classes are also an effort to provide much of the advantages of
+
+58
+00:02:58,130 --> 00:03:03,500
+dynamic typing while still preserving the advantages of a strong type system.
+
+59
+00:03:03,500 --> 00:03:06,160
+The third property is location.
+
+60
+00:03:06,160 --> 00:03:09,500
+Now, location of a variable is either completely dynamic,
+
+61
+00:03:09,500 --> 00:03:12,350
+if it's allocated on the heap or partially static,
+
+62
+00:03:12,350 --> 00:03:14,000
+if it's allocated on the stack.
+
+63
+00:03:14,000 --> 00:03:17,060
+So, what I mean by that is that a function will
+
+64
+00:03:17,060 --> 00:03:20,425
+no relative to a frame pointer where a local variable is.
+
+65
+00:03:20,425 --> 00:03:22,210
+Frame pointer will change every call,
+
+66
+00:03:22,210 --> 00:03:25,085
+but the offset will be known at compile time.
+
+67
+00:03:25,085 --> 00:03:27,290
+So, there's one very strange language.
+
+68
+00:03:27,290 --> 00:03:31,930
+So, where all the variables were statically allocated even function parameters.
+
+69
+00:03:31,930 --> 00:03:34,410
+This language is called Fortran.
+
+70
+00:03:34,410 --> 00:03:39,140
+Fortran is the oldest language still unused followed by one-year by Lisp.
+
+71
+00:03:39,140 --> 00:03:42,185
+The modern versions are completely different.
+
+72
+00:03:42,185 --> 00:03:45,425
+The modern versions look different than the originals of course.
+
+73
+00:03:45,425 --> 00:03:47,720
+But they're still recognizable.
+
+74
+00:03:47,720 --> 00:03:53,005
+The earliest machines had very little RAM and CPUs were not that fast.
+
+75
+00:03:53,005 --> 00:03:54,680
+So, scientists tended to code in
+
+76
+00:03:54,680 --> 00:03:57,200
+machine code to get the most performance from the machine,
+
+77
+00:03:57,200 --> 00:04:00,955
+especially since CPU time is often built by the hour.
+
+78
+00:04:00,955 --> 00:04:04,115
+Now, to be sure that Fortran was a good option,
+
+79
+00:04:04,115 --> 00:04:06,620
+all variables were statically allocated.
+
+80
+00:04:06,620 --> 00:04:11,525
+So, that Fortran compiled code could be competitive with handwritten assembly.
+
+81
+00:04:11,525 --> 00:04:13,640
+As a result, you could not use recursion on
+
+82
+00:04:13,640 --> 00:04:16,205
+functions without implementing recursion by hand.
+
+83
+00:04:16,205 --> 00:04:19,385
+Now of course, modern Fortran fixes that.
+
+84
+00:04:19,385 --> 00:04:21,305
+Now, if you use C++,
+
+85
+00:04:21,305 --> 00:04:25,330
+you're probably familiar with the idea that two variables can share a memory location.
+
+86
+00:04:25,330 --> 00:04:27,060
+Is called aliasing.
+
+87
+00:04:27,060 --> 00:04:32,270
+They have arrays allocated next to each other in memory and go past the end of an array.
+
+88
+00:04:32,270 --> 00:04:37,400
+You can actually access the memory of the secondary without meaning to.
+
+89
+00:04:37,400 --> 00:04:40,730
+One of the strangest bugs ever encountered was a result of that.
+
+90
+00:04:40,730 --> 00:04:46,625
+Now, on C++ aliasing happens when you call the reference or even return by reference.
+
+91
+00:04:46,625 --> 00:04:48,980
+Haskell's variables also use aliasing.
+
+92
+00:04:48,980 --> 00:04:53,059
+So, if you use let to assign one variable to be the value of another variable,
+
+93
+00:04:53,059 --> 00:04:56,390
+then they'll both use the same memory location.
+
+94
+00:04:56,390 --> 00:04:58,325
+Now, since the memory cannot change,
+
+95
+00:04:58,325 --> 00:04:59,950
+this is completely safe.
+
+96
+00:04:59,950 --> 00:05:03,155
+The final property we'll talk about is lifetime and scope.
+
+97
+00:05:03,155 --> 00:05:06,950
+You might not think about that initially as a property of a variable.
+
+98
+00:05:06,950 --> 00:05:11,800
+But in fact, the variables only valid in certain places and at certain times.
+
+99
+00:05:11,800 --> 00:05:15,230
+Now, most languages use what's called static scoping.
+
+100
+00:05:15,230 --> 00:05:17,300
+So, in other words, simply by looking at the code,
+
+101
+00:05:17,300 --> 00:05:19,390
+you can tell whether variable exists.
+
+102
+00:05:19,390 --> 00:05:21,210
+So, consider the variable in
+
+103
+00:05:21,210 --> 00:05:24,560
+the function foo and know that it can only be used on line two and
+
+104
+00:05:24,560 --> 00:05:26,060
+three and that the variable J in
+
+105
+00:05:26,060 --> 00:05:30,335
+the function bar on line six and nine is a different variable.
+
+106
+00:05:30,335 --> 00:05:32,950
+It just happens to have the same name.
+
+107
+00:05:32,950 --> 00:05:37,709
+Here's an example in C. What will this function bar return,
+
+108
+00:05:37,709 --> 00:05:39,465
+if I run this program?
+
+109
+00:05:39,465 --> 00:05:43,490
+Well, of course, it should return four since the variable i in function foo
+
+110
+00:05:43,490 --> 00:05:47,780
+on line three refers to the global variable i not the local variable i.
+
+111
+00:05:47,780 --> 00:05:51,245
+Now, let's look at the equivalent code in Emacs Lisp.
+
+112
+00:05:51,245 --> 00:05:56,030
+Now, set Q i2 creates a new global variable i and initializes it to two.
+
+113
+00:05:56,030 --> 00:06:00,715
+Lines two and three creating a function foo that returns i squared.
+
+114
+00:06:00,715 --> 00:06:04,010
+Line six to eight create a new function bar that creates
+
+115
+00:06:04,010 --> 00:06:07,940
+a local variable called i initialize it to be 10 and then calls bar.
+
+116
+00:06:07,940 --> 00:06:11,390
+Now, by the mere fact that I even bring this up,
+
+117
+00:06:11,390 --> 00:06:16,130
+you can probably guess that the result is going to be 100 and you would be right.
+
+118
+00:06:16,130 --> 00:06:19,370
+Emacs Lisp use something called dynamic scope.
+
+119
+00:06:19,370 --> 00:06:22,700
+Free variables and functions access the scope of the code.
+
+120
+00:06:22,700 --> 00:06:24,604
+That call them at runtime,
+
+121
+00:06:24,604 --> 00:06:27,445
+not the scope that exist at compiled time.
+
+122
+00:06:27,445 --> 00:06:29,840
+Now, for Emacs which is an editor,
+
+123
+00:06:29,840 --> 00:06:31,775
+if he didn't happen to know about that,
+
+124
+00:06:31,775 --> 00:06:34,520
+this is the feature since a function can override
+
+125
+00:06:34,520 --> 00:06:39,135
+a configuration variables simply by creating local copy of it.
+
+126
+00:06:39,135 --> 00:06:44,045
+Then that variable will appear to its original value and the function is done.
+
+127
+00:06:44,045 --> 00:06:46,520
+But for most applications there's only
+
+128
+00:06:46,520 --> 00:06:48,950
+serves to make the program more difficult to reason about.
+
+129
+00:06:48,950 --> 00:06:51,130
+It's considered a pretty bad thing.
+
+130
+00:06:51,130 --> 00:06:55,100
+So, imagine you had a function and you change the name of one of your local variables,
+
+131
+00:06:55,100 --> 00:06:59,120
+and suddenly another function in your system started changing its behavior as a result.
+
+132
+00:06:59,120 --> 00:07:03,055
+It's exactly what dynamic binding is scope causes to happen.
+
+133
+00:07:03,055 --> 00:07:05,680
+Now, the first dialect of lisp use this style.
+
+134
+00:07:05,680 --> 00:07:08,510
+By the time people decided it was a bad thing,
+
+135
+00:07:08,510 --> 00:07:11,705
+the user base was dependent on the bug as a feature.
+
+136
+00:07:11,705 --> 00:07:15,590
+So, other than Emacs Lisp which is actually a very old language,
+
+137
+00:07:15,590 --> 00:07:19,800
+is languages go, most of the other Lisp use static binding of scope.
+
+138
+00:07:19,800 --> 00:07:22,460
+Now, there you can usually declare
+
+139
+00:07:22,460 --> 00:07:26,770
+a variable to have dynamic scope if you wanted to in a Lisp language.
+
+140
+00:07:26,770 --> 00:07:30,620
+So, those are the four properties of variables and what
+
+141
+00:07:30,620 --> 00:07:34,580
+happens when the properties conferred to the variable either at compile time or runtime.
+
+142
+00:07:34,580 --> 00:07:38,460
+In our next lesson, we will talk about parameter passing styles.

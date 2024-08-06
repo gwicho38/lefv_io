@@ -1,0 +1,106 @@
+[MUSIC] We have now a variant of
+the problem where we look at two taxonomies where the vocabularies
+of one level deeper. Instead of aligning it at
+the region level, we say, well, let the states speak for themselves. So we say, okay, according to the census,
+the US consists of four regions. But each of those four regions,
+we spell it out. We just spell out the Northeast has these,
+the Midwest has that, the South has that, and the West has that. Now, for our second taxonomy, NDC,
+we say, well, the USA has five regions. And now we spell out what
+the five regions are. And here's the benefit of this. Because we went down one level
+further into the vocabulary, sort of looking more closely,
+now the articulation we get for free. It's a long articulation,
+but it's totally trivial. It's all equals, nothing about overlap and
+contained in and whatnot. It's just now the leaves, because we
+went further down, it's all clear. So in a way, this problem is now larger, because we have more terms
+in our vocabularies. It's going to actually
+run a little longer. But the relationships at the bottom,
+in this particular case, were completely automatically generated,
+right? Because the states are just the same. So we're going to run this example. Okay, so this example is called, so we're going to say
+align CEN-NDC-with-DC. Now, this is going to take I think about
+30 seconds or so, or maybe a little less. The reasoning approach that we use
+here is called answer set programming. You might recall that you've
+been using that already. There it comes,
+it's going to have a lot of output data. And you've used this system,
+it's called TLV. You used it, for example,
+to enumerate different repair solutions. If you have an integrity constraint, you can use State & Local SQL
+to find the violations. But then you can use this answer set
+programming solution to create multiple worlds, multiple fixes. And we're kind of using
+that same idea here. But we've computed the solution, it doesn't look very pretty in ASCII,
+does it? So we're going to show
+it as a possible world. Actually, I'm going to show the taxonomies
+first, then I'm going to show the input visualization, and then I'm
+going to show the possible worlds. Okay, in this case, that's one possible
+world, and let's look at that. So we have just created this new thing,
+the newest run done at 11:06. Let's look at the input first,
+so first, the input taxonomies. What do the input taxonomies look like? So we have the West, which has these
+states, and we have the Midwest, and then we the Northeast, and we have the South,
+and the same thing for the other taxonomy. So we have the same two taxonomies, but
+now expanded one level further down. What does that give us? It allows us to now look at
+the alignment in this way, which is kind of very simple now. So we put them next to each other, and all the alignments are equalities,
+it's very simple. So Massachusetts according
+to this guy is the same as Massachusetts according to that guy. New York according to this guy
+is the same as that New York. So at the leaves, so we point the taxonomies at each other,
+the leaves we have complete agreement. But then over here, what is the South,
+and what is the Southeast here? We don't have, I mean,
+this doesn't quite match up, right? Well, there's some things that line up and
+others that don't line up. If you look at the Midwest,
+it looks actually pretty good. That Midwestern state and those
+Midwestern states look exactly the same, if you look closely. So hopefully propagates this up and
+says the Midwest is actually the same. But the South or the West is
+actually different in the two, okay? So that's the input alignment. Again, this one in this case was
+completely automatically generated, because at the states,
+there's no controversy. Now, let's go into
+the possible worlds folder, where we have generated the solution
+that the system came up with. And this is now really very helpful, because we have now the high
+resolution at the state level. Let's first look at some easy findings. So, for example, we see here that
+the Midwest is completely agreed upon, so obviously,
+we agree about all the individual states. So at the state level, we always
+agree between the two taxonomies. But now at the regional level,
+for the Midwest, we do also agree, because exactly
+the same states are in there. But for the other regions, we don't. So again, look at the rightmost part,
+at the state level, we are always in complete agreement,
+but what about the half-smokes? So, for example,
+if you are from DC here, again, both vocabularies agree on what DC is. But in one taxonomy,
+it's in the South, and in the other case, it's in the Northeast. And you see that now, right there. So DC, Maryland, and Delaware
+are precisely the overlapping states where the concepts of South and
+Northeast overlap. So you saw earlier, when we modeled
+this whole thing at the regions level, we couldn't name the overlap. It didn't have a name,
+it's where they overlap. Now that when we went one level
+further down into the state level, we got a better resolution
+of the vocabularies. And actually, another benefit what we got
+is that we got the alignment for free, it was automatic. And so we can now sort out our
+vocabulary differences and say, well, if you're in any of these three states,
+you can be considered either a Southerner or a Northeasterner,
+depending on who you ask. Okay, and there are other interests,
+for example, New Mexico according to the Census is in the West, but according
+to the NDC, it's not in the West. In fact,
+it's specifically not in the West. Over here is the West,
+it's part of the Southwest. So you can read all of this information
+off of this combined taxonomy. So I think you see how a tool
+like this can be useful. If you align different vocabularies, it
+can sort out differences and reconcile it. I showed you how this Euler tool
+works with a geotaxonomy example. You see here, this was the resolution
+at the regional level. But once we added the states, these somewhat cryptic names are now
+associated with particular states. You see here the states
+actually drawn in here. So we talked about New Mexico,
+which I think is, these parts, region R2 is the intersection between
+what the Census calls West and what NDC calls the Southwest. So these two states, the Southwest and
+the West overlap, New Mexico and Arizona, precisely two states. If we model it at the level of regions,
+we can't pinpoint what they're called. But we know such a thing must exist
+based on the input alignment. But in our case here, we had an input alignment that was
+completely automatically generated, which is kind of nicer, and
+we get a better resolution at the end. When input alignments are inconsistent, we have to diagnose the faults
+that can lead to very big graphs. This is now not the taxonomy alignment. This is just the diagnostic lattice
+that tells us what the problem is, to pinpoint logic errors. And we've developed a notation that sort
+of focuses on the maximal consistent subsets and
+the minimal inconsistent subsets. For example,
+in a graph that has only ten nodes, already you get 2 to the 10,
+1,024 possible combinations, okay? So now we're in a situation where you have
+given ten inputs, you made ten links, and the system said no. Makes you very unhappy, because you put the effort in
+putting those ten connections there. And the system says, inconsistent,
+I'm sorry, it can't do. I mean, A less than B and B less than A,
+that's just not possible. You can visualize it, but
+it's not very helpful. So we visualize it in a way that
+the maximal consistent subsets and the minimal inconsistent
+subsets are highlighted. And then we can look at those and
+sort of scrutinize that and say, well, where's the mistake? [MUSIC] [SOUND]

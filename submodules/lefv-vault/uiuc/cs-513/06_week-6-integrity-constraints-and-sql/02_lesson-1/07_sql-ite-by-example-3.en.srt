@@ -1,0 +1,763 @@
+1
+00:00:00,000 --> 00:00:09,266
+[MUSIC]
+
+2
+00:00:09,266 --> 00:00:14,990
+Okay, now let's introduce another very
+important topic called Aggregation.
+
+3
+00:00:14,990 --> 00:00:18,950
+This allows us to do certain
+simple data analysis if you like
+
+4
+00:00:18,950 --> 00:00:21,150
+right there within SQL.
+
+5
+00:00:21,150 --> 00:00:26,040
+So for example, let's say we want to
+know how many temperature readings
+
+6
+00:00:26,040 --> 00:00:30,540
+did Frank Pabodie record, and
+what was their average value?
+
+7
+00:00:31,970 --> 00:00:32,760
+Temperature readings.
+
+8
+00:00:32,760 --> 00:00:38,450
+So first of all,
+we need to go again into our data table.
+
+9
+00:00:38,450 --> 00:00:39,170
+That has the main data.
+
+10
+00:00:39,170 --> 00:00:40,990
+That's the survey table.
+
+11
+00:00:40,990 --> 00:00:43,890
+Let's look again at
+the schema just to be sure.
+
+12
+00:00:45,372 --> 00:00:50,620
+So that's the survey table let's
+take in by certain person and
+
+13
+00:00:50,620 --> 00:00:53,610
+a certain quality at a certain reading.
+
+14
+00:00:53,610 --> 00:00:54,978
+So the question was,
+
+15
+00:00:54,978 --> 00:00:59,510
+how many temperature readings
+different did Frank Pabodie records?
+
+16
+00:00:59,510 --> 00:01:03,780
+So let's start first by maybe
+saying select Star from survey so
+
+17
+00:01:03,780 --> 00:01:05,308
+we can get started with a simple query.
+
+18
+00:01:05,308 --> 00:01:07,904
+Aha!
+
+19
+00:01:07,904 --> 00:01:09,610
+Mr. Pabodie here is I think PB.
+
+20
+00:01:09,610 --> 00:01:13,920
+So let's just focus on his values.
+
+21
+00:01:13,920 --> 00:01:17,910
+So we would say where person equals
+the idea of that person is PB.
+
+22
+00:01:19,830 --> 00:01:20,333
+Oops!
+
+23
+00:01:23,460 --> 00:01:27,090
+Did you see that error message
+that was hopefully instructive?
+
+24
+00:01:27,090 --> 00:01:31,918
+When I say a person equals PB,
+without the quotes,
+
+25
+00:01:31,918 --> 00:01:35,413
+what I'm asking SQL to kind of join.
+
+26
+00:01:35,413 --> 00:01:39,800
+Basically, look at what's in the person
+column and what's in the PB column.
+
+27
+00:01:39,800 --> 00:01:43,290
+Well, there is no PB column for
+that table.
+
+28
+00:01:43,290 --> 00:01:44,980
+When I put the quotes, I indicate well no,
+
+29
+00:01:44,980 --> 00:01:48,220
+that's a value in the person
+table that I'm looking for.
+
+30
+00:01:49,370 --> 00:01:50,420
+So that's helpful.
+
+31
+00:01:53,350 --> 00:01:55,200
+So we want to do what?
+
+32
+00:01:55,200 --> 00:02:00,105
+We want to count how many
+readings there were and
+
+33
+00:02:00,105 --> 00:02:03,385
+what the average reading was.
+
+34
+00:02:06,801 --> 00:02:08,010
+But only for temperature.
+
+35
+00:02:08,010 --> 00:02:12,328
+So first of all, we need to also
+say where the quantity, and
+
+36
+00:02:12,328 --> 00:02:16,717
+quantity equals temperature.
+
+37
+00:02:16,717 --> 00:02:23,200
+So let's make upper case our key words
+again from SQL SELECT FROM WHERE.
+
+38
+00:02:24,300 --> 00:02:28,040
+Person equals the person we're interested
+in and quantity equals temperature.
+
+39
+00:02:30,130 --> 00:02:32,650
+Now, we want the average temperature and
+the number of values.
+
+40
+00:02:32,650 --> 00:02:35,320
+In this case it's easy to,
+there's two values.
+
+41
+00:02:35,320 --> 00:02:36,214
+So how would we do that?
+
+42
+00:02:42,239 --> 00:02:47,000
+So we're interested in the person,
+we're selecting on the person.
+
+43
+00:02:48,070 --> 00:02:50,290
+And then we count how
+many readings there are.
+
+44
+00:02:51,620 --> 00:02:56,220
+So we can put an aggregation operation
+in the head of the clause if you like,
+
+45
+00:02:56,220 --> 00:02:58,060
+in the select part of the clause.
+
+46
+00:02:58,060 --> 00:02:59,580
+Where we select the result columns.
+
+47
+00:02:59,580 --> 00:03:04,410
+We say well the result column that I
+want is the count of the readings.
+
+48
+00:03:04,410 --> 00:03:07,120
+So, how many reading values are there?
+
+49
+00:03:07,120 --> 00:03:12,490
+And then, I want to actually report
+on the average reading itself.
+
+50
+00:03:12,490 --> 00:03:17,159
+So, that's another operation
+called average reading.
+
+51
+00:03:17,159 --> 00:03:18,970
+And let's see what we get.
+
+52
+00:03:24,320 --> 00:03:30,160
+So, we see there are two readings indeed.
+
+53
+00:03:30,160 --> 00:03:31,810
+We've seen this before.
+
+54
+00:03:31,810 --> 00:03:33,490
+But now we have this s data in our hand.
+
+55
+00:03:33,490 --> 00:03:36,960
+It's now a value in our data table itself.
+
+56
+00:03:36,960 --> 00:03:39,040
+And the average, that looks reasonable.
+
+57
+00:03:39,040 --> 00:03:41,630
+If you add up these values, we get what?
+
+58
+00:03:41,630 --> 00:03:48,186
+Minus 40 adds up nicely and
+then, so the average,
+
+59
+00:03:48,186 --> 00:03:54,200
+because they're two values is minus 20.
+
+60
+00:03:54,200 --> 00:04:00,390
+And we can also round this, but
+I let you check this out yourself.
+
+61
+00:04:00,390 --> 00:04:03,250
+In this case, let's pick somebody else.
+
+62
+00:04:03,250 --> 00:04:06,420
+Who else is doing
+temperature measurements?
+
+63
+00:04:06,420 --> 00:04:07,240
+Let's go back up.
+
+64
+00:04:09,410 --> 00:04:12,190
+It's only Lake is also doing
+temperature measurements.
+
+65
+00:04:12,190 --> 00:04:14,060
+Let's see what's the story with Lake.
+
+66
+00:04:15,350 --> 00:04:21,110
+He has only one temperature measurement,
+not very exciting.
+
+67
+00:04:21,110 --> 00:04:23,760
+Who is doing lots of measurements?
+
+68
+00:04:23,760 --> 00:04:25,791
+Maybe Dyer and radiation.
+
+69
+00:04:25,791 --> 00:04:27,720
+Let's pick another one.
+
+70
+00:04:27,720 --> 00:04:32,580
+So you see how it's fairly
+easy once you get the pattern,
+
+71
+00:04:32,580 --> 00:04:35,400
+you can write all kinds of other things.
+
+72
+00:04:35,400 --> 00:04:37,670
+Dyer, is Dyer measuring temperature?
+
+73
+00:04:37,670 --> 00:04:40,990
+Oops no, but he's measuring radiation.
+
+74
+00:04:42,050 --> 00:04:47,470
+And here's two values and
+the average is 8.81.
+
+75
+00:04:47,470 --> 00:04:54,920
+We can also round this, again, so
+there's lots of other operations in SQL.
+
+76
+00:04:54,920 --> 00:04:59,116
+If you feel you want to round
+this maybe to one digit.
+
+77
+00:04:59,116 --> 00:05:04,340
+And you see 8.8.
+
+78
+00:05:06,690 --> 00:05:11,518
+So there's quite a bit of functionality
+that even SQLite gives you right there.
+
+79
+00:05:15,835 --> 00:05:16,584
+Okay.
+
+80
+00:05:21,025 --> 00:05:25,100
+So let's generalize this query for
+other people using GROUP BY.
+
+81
+00:05:25,100 --> 00:05:28,530
+This is where actually the real power
+of aggregation comes into play.
+
+82
+00:05:28,530 --> 00:05:29,730
+So, this basic example,
+
+83
+00:05:29,730 --> 00:05:33,250
+like we got there from software carpentry,
+that doesn't use group by.
+
+84
+00:05:33,250 --> 00:05:35,790
+It feels like it's falling
+short a little bit.
+
+85
+00:05:35,790 --> 00:05:40,484
+So the real power comes from group by.
+
+86
+00:05:40,484 --> 00:05:44,651
+So, let's go back to our original query.
+
+87
+00:05:44,651 --> 00:05:46,625
+So, where we're looking at
+the count of the reading and
+
+88
+00:05:46,625 --> 00:05:47,844
+the average reading from survey.
+
+89
+00:05:47,844 --> 00:05:52,300
+Where the person was PB and
+the quantity of temperature.
+
+90
+00:05:53,770 --> 00:05:57,988
+But instead, I could say, well,
+let's not select any particular person PB.
+
+91
+00:06:00,910 --> 00:06:05,831
+But let's group by person, so for
+each person create a group and
+
+92
+00:06:05,831 --> 00:06:09,128
+calculate the aggregate for each person.
+
+93
+00:06:09,128 --> 00:06:13,900
+So, GROUP BY person.
+
+94
+00:06:13,900 --> 00:06:19,750
+So the difference here was previously
+we selected exactly one person and
+
+95
+00:06:19,750 --> 00:06:22,190
+we didn't aggregate for that one person.
+
+96
+00:06:22,190 --> 00:06:25,330
+But now we want to do lots of
+aggregates one for each person.
+
+97
+00:06:25,330 --> 00:06:29,730
+And there are certain rules that
+when you use a group by clause,
+
+98
+00:06:29,730 --> 00:06:35,180
+most database systems will tell you
+that the attributes or columns by
+
+99
+00:06:35,180 --> 00:06:40,760
+which you group are exactly the ones that
+you should use in the select clause here.
+
+100
+00:06:41,790 --> 00:06:44,689
+And then you can have aggregates
+of the remaining attributes.
+
+101
+00:06:47,130 --> 00:06:48,680
+Okay, but let's see this first.
+
+102
+00:06:48,680 --> 00:06:49,980
+We'll come to it in a moment.
+
+103
+00:06:51,240 --> 00:06:52,770
+So that's interesting.
+
+104
+00:06:52,770 --> 00:06:59,032
+So Lake has one reading with
+an average temperature of minus 16.
+
+105
+00:06:59,032 --> 00:07:05,324
+And PB has two readings with
+an average temperature of minus 20.
+
+106
+00:07:05,324 --> 00:07:13,426
+And then nobody has one
+reading with minus 26.
+
+107
+00:07:13,426 --> 00:07:15,580
+So what's going on there?
+
+108
+00:07:15,580 --> 00:07:21,168
+So let's look at the table again select
+star from survey, so what happen there.
+
+109
+00:07:21,168 --> 00:07:26,020
+Okay, so here
+
+110
+00:07:33,011 --> 00:07:34,000
+Temperature minus 26.
+
+111
+00:07:34,000 --> 00:07:37,030
+So this is basically,
+we don't know who that is.
+
+112
+00:07:37,030 --> 00:07:40,150
+But this comes out correctly here.
+
+113
+00:07:43,740 --> 00:07:47,380
+So now we were grouping by person and
+by quantity.
+
+114
+00:07:49,300 --> 00:07:54,050
+How about, so we were, excuse me,
+
+115
+00:07:54,050 --> 00:07:57,430
+the quantity was fixed to temperature and
+we were grouping by person.
+
+116
+00:07:57,430 --> 00:07:59,210
+We can push this one level further.
+
+117
+00:07:59,210 --> 00:08:03,910
+We can say, well, let's group it for
+each quantity also.
+
+118
+00:08:03,910 --> 00:08:07,250
+So if you had to implement this, we're
+looking now at loops and nested loops and
+
+119
+00:08:07,250 --> 00:08:08,220
+all of that.
+
+120
+00:08:08,220 --> 00:08:11,000
+We're in SQL,
+this is fairly straight-forward.
+
+121
+00:08:11,000 --> 00:08:13,410
+So, we take instead of GROUP By person,
+
+122
+00:08:13,410 --> 00:08:17,010
+we also say we're going to
+group this by quantity.
+
+123
+00:08:17,010 --> 00:08:21,500
+And what we should do here is we
+should list the quantity here.
+
+124
+00:08:21,500 --> 00:08:23,070
+So we have a person and the quantity.
+
+125
+00:08:24,600 --> 00:08:28,850
+Or we can do it like quantity and person.
+
+126
+00:08:28,850 --> 00:08:30,450
+But it doesn't matter.
+
+127
+00:08:30,450 --> 00:08:31,590
+There.
+
+128
+00:08:31,590 --> 00:08:34,750
+And then we look at how many measurements
+are there and what's the average.
+
+129
+00:08:34,750 --> 00:08:37,450
+So it's pretty powerful.
+
+130
+00:08:37,450 --> 00:08:38,085
+Of course,
+
+131
+00:08:38,085 --> 00:08:41,770
+the WHERE quantity equals temperature
+we're going to get rid of that.
+
+132
+00:08:41,770 --> 00:08:45,099
+Because we're going to GROUP BY
+all possible quantities.
+
+133
+00:08:51,584 --> 00:08:53,440
+So let's see what we got.
+
+134
+00:08:56,610 --> 00:08:59,740
+So, Dyer has radiation measurements,
+two of them.
+
+135
+00:09:00,850 --> 00:09:04,230
+And the average is 8.81.
+
+136
+00:09:04,230 --> 00:09:10,589
+And so, we have all the radiation
+measurements here first
+
+137
+00:09:12,630 --> 00:09:17,760
+by four different people,
+Dyer, Lake, PB, and Roe.
+
+138
+00:09:17,760 --> 00:09:21,540
+The most radiation
+measurements were done by PB.
+
+139
+00:09:21,540 --> 00:09:25,430
+Then we have a bunch of
+salinity measurements.
+
+140
+00:09:26,480 --> 00:09:28,700
+Here, Lake has done the most.
+
+141
+00:09:28,700 --> 00:09:30,540
+Aptly named, Lake.
+
+142
+00:09:30,540 --> 00:09:33,130
+As the most salinity measurements, and
+
+143
+00:09:33,130 --> 00:09:35,000
+then we have a bunch of
+temperature measurements.
+
+144
+00:09:35,000 --> 00:09:36,570
+We can flip the order a little bit.
+
+145
+00:09:36,570 --> 00:09:40,944
+We can say, well, maybe we want to
+have it grouped first by person, and
+
+146
+00:09:40,944 --> 00:09:42,143
+then by quantity.
+
+147
+00:09:44,829 --> 00:09:47,652
+What happens if I leave
+the GROUP BY statement like this?
+
+148
+00:09:50,424 --> 00:09:56,967
+Still works out okay, right, first by
+person, hold on let's flip it like this.
+
+149
+00:10:00,402 --> 00:10:02,490
+So this is actually what we want.
+
+150
+00:10:02,490 --> 00:10:08,290
+So we're selecting first by person and
+then by quantity and we group by these.
+
+151
+00:10:08,290 --> 00:10:11,250
+So for each person and
+each quantity, what is it we have?
+
+152
+00:10:11,250 --> 00:10:15,670
+So, for example, for Dyer,
+he was measuring radiation,
+
+153
+00:10:15,670 --> 00:10:18,320
+had two values and that's the average.
+
+154
+00:10:18,320 --> 00:10:21,100
+And he was measuring salinity and
+he has two values.
+
+155
+00:10:21,100 --> 00:10:22,820
+But he wasn't measuring temperature,
+for example.
+
+156
+00:10:24,010 --> 00:10:29,320
+Lake, on the other hand, was measuring
+radiation, salinity, and temperature.
+
+157
+00:10:29,320 --> 00:10:33,260
+PB was measuring radiation,
+temperature, but not salinity.
+
+158
+00:10:33,260 --> 00:10:36,570
+And Roe was measuring radiation,
+salinity, but not temperature.
+
+159
+00:10:38,240 --> 00:10:42,600
+So you see there's a rather
+powerful query here.
+
+160
+00:10:42,600 --> 00:10:43,520
+We can round a little bit.
+
+161
+00:10:44,750 --> 00:10:49,260
+Again, if you want to say just one digit,
+one decimal.
+
+162
+00:10:50,660 --> 00:10:52,240
+So we get this for example,
+a little bit rounded.
+
+163
+00:10:52,240 --> 00:10:55,590
+And you've seen also I can
+group it either by person and
+
+164
+00:10:55,590 --> 00:10:57,140
+quantity or by quantity and person.
+
+165
+00:10:58,490 --> 00:11:02,485
+So I think this should give you a first
+idea of how powerful SQL can be for
+
+166
+00:11:02,485 --> 00:11:04,676
+doing simple analytics right there.
+
+167
+00:11:06,768 --> 00:11:09,187
+On your data.
+
+168
+00:11:09,187 --> 00:11:10,666
+So this is what we got here.
+
+169
+00:11:10,666 --> 00:11:20,666
+[MUSIC]

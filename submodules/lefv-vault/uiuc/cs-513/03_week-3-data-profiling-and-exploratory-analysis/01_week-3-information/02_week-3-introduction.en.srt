@@ -1,0 +1,152 @@
+1
+00:00:00,000 --> 00:00:08,205
+[MUSIC]
+
+2
+00:00:08,205 --> 00:00:11,770
+Hello and welcome back to Theory and
+Practice of Data Cleaning.
+
+3
+00:00:11,770 --> 00:00:15,290
+Last week, we learned about our first
+hands-on tool, regular expressions,
+
+4
+00:00:15,290 --> 00:00:19,000
+which we can use to check whether
+data matches a certain pattern, or
+
+5
+00:00:19,000 --> 00:00:20,670
+conforms to a certain standard.
+
+6
+00:00:21,850 --> 00:00:24,538
+Regular expressions can also
+be used in a power tool for
+
+7
+00:00:24,538 --> 00:00:27,410
+data cleaning that we are studying
+this week OpenRefine.
+
+8
+00:00:28,550 --> 00:00:32,400
+In this week, we will talk about how
+to normalize data, it is eliminates and
+
+9
+00:00:32,400 --> 00:00:36,980
+tactic differences in data such as
+different spellings of names, places or
+
+10
+00:00:36,980 --> 00:00:38,600
+other entities.
+
+11
+00:00:38,600 --> 00:00:42,510
+Other differences for example, the use of
+upper case or lower case letters Or mixed
+
+12
+00:00:42,510 --> 00:00:46,860
+forms of these, or the use of additional
+white spaces, punctuation symbols and so
+
+13
+00:00:46,860 --> 00:00:50,510
+on can all be nicely addressed and
+cleaned up with OpenRefine.
+
+14
+00:00:50,510 --> 00:00:54,160
+Specifically, we will learn about
+common transformations in OpenRefine,
+
+15
+00:00:54,160 --> 00:00:56,070
+facets and clustering.
+
+16
+00:00:56,070 --> 00:00:59,000
+By collecting the different or
+similar values in a cluster,
+
+17
+00:00:59,000 --> 00:01:03,060
+a single canonical name can be selected
+to represent the single entity that
+
+18
+00:01:03,060 --> 00:01:07,980
+is referred to by the slightly different
+spellings and syntactic variances.
+
+19
+00:01:07,980 --> 00:01:11,210
+The goal of this week is to enable you
+to create a new OpenRefine project, and
+
+20
+00:01:11,210 --> 00:01:13,430
+load tabular data into the system.
+
+21
+00:01:13,430 --> 00:01:16,700
+After which, you can then apply
+common syntactic transformations,
+
+22
+00:01:16,700 --> 00:01:18,370
+such as trimming white spaces.
+
+23
+00:01:18,370 --> 00:01:21,590
+And finally, you should be able
+to use facets at clustering.
+
+24
+00:01:21,590 --> 00:01:24,980
+The letter is a particular strength of
+OpenRefine that let's you normalize
+
+25
+00:01:24,980 --> 00:01:28,420
+different variations and
+bring them into canonical form
+
+26
+00:01:28,420 --> 00:01:31,870
+which is really a prerequisite for
+most subsequent data analysis projects.
+
+27
+00:01:33,340 --> 00:01:36,300
+When you master OpenRefine,
+even at the beginners level, you will have
+
+28
+00:01:36,300 --> 00:01:40,030
+a power tool at your disposal that can
+help you get your data cleaning job done.
+
+29
+00:01:41,560 --> 00:01:44,740
+At the end of this week, you will again
+be able to test what you've learned
+
+30
+00:01:44,740 --> 00:01:47,030
+using your hands on
+assignment using OpenRefine.
+
+31
+00:01:48,060 --> 00:01:50,165
+All right, so much for now and
+let's go to the first lecture.
+
+32
+00:01:50,165 --> 00:02:00,165
+[MUSIC]

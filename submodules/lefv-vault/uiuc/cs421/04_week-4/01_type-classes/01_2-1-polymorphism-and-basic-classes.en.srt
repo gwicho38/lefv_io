@@ -1,0 +1,511 @@
+1
+00:00:02,390 --> 00:00:06,345
+Hello everyone, and welcome to CS 421.
+
+2
+00:00:06,345 --> 00:00:09,120
+In a programming language, we often want to apply
+
+3
+00:00:09,120 --> 00:00:11,280
+an operation to more than one kind of thing.
+
+4
+00:00:11,280 --> 00:00:13,320
+So, for example, in most programming languages,
+
+5
+00:00:13,320 --> 00:00:15,600
+the plus operator works on both integers and
+
+6
+00:00:15,600 --> 00:00:19,325
+floating point numbers without us needing to distinguish it in any way.
+
+7
+00:00:19,325 --> 00:00:22,410
+When a function or operation is allowed to work on more than one type,
+
+8
+00:00:22,410 --> 00:00:23,700
+it is said to be polymorphic.
+
+9
+00:00:23,700 --> 00:00:24,990
+So, when you're done with this video,
+
+10
+00:00:24,990 --> 00:00:26,580
+you'll be able to describe polymorphism.
+
+11
+00:00:26,580 --> 00:00:28,380
+There is several ways of accomplishing it.
+
+12
+00:00:28,380 --> 00:00:30,020
+You'll also be able to describe
+
+13
+00:00:30,020 --> 00:00:33,970
+Haskell's type classes and use them to define some polymorphic functions.
+
+14
+00:00:33,970 --> 00:00:36,110
+So, like I said, it's very common to want to use
+
+15
+00:00:36,110 --> 00:00:38,600
+the same thing such as a function, or an operator,
+
+16
+00:00:38,600 --> 00:00:41,045
+or a container, over many different types,
+
+17
+00:00:41,045 --> 00:00:44,140
+and different languages had developed different ways to handle this.
+
+18
+00:00:44,140 --> 00:00:45,660
+For example, in C ++,
+
+19
+00:00:45,660 --> 00:00:46,800
+we have function overloading,
+
+20
+00:00:46,800 --> 00:00:48,945
+which is called Adhoc polymorphism.
+
+21
+00:00:48,945 --> 00:00:52,130
+Many languages support a form of objects and inheritance,
+
+22
+00:00:52,130 --> 00:00:54,325
+which allows similar types to be grouped together.
+
+23
+00:00:54,325 --> 00:00:57,920
+Languages like Haskell and OCaml that have the Henley Milner type system,
+
+24
+00:00:57,920 --> 00:01:00,905
+support parameterize types such as lists.
+
+25
+00:01:00,905 --> 00:01:05,480
+Languages like C ++ in Java support templatized classes or the generics.
+
+26
+00:01:05,480 --> 00:01:07,190
+The Haskell supports a construct called
+
+27
+00:01:07,190 --> 00:01:10,320
+a type class which we're going to talk about in great detail.
+
+28
+00:01:10,320 --> 00:01:14,540
+Now, here's an example of overloading and C ++.
+
+29
+00:01:14,540 --> 00:01:17,165
+You see here, we have two function thing Inc,
+
+30
+00:01:17,165 --> 00:01:21,040
+and we would like the function to work on both integers and doubles.
+
+31
+00:01:21,040 --> 00:01:24,320
+So, we declare the function twice with different parameters.
+
+32
+00:01:24,320 --> 00:01:26,270
+This was a huge, huge,
+
+33
+00:01:26,270 --> 00:01:28,370
+improvement over the C programming language.
+
+34
+00:01:28,370 --> 00:01:30,470
+In C, you'd have to give the functions
+
+35
+00:01:30,470 --> 00:01:33,185
+different names so that the compiler could distinguish them.
+
+36
+00:01:33,185 --> 00:01:35,110
+Here, we can give them the same name.
+
+37
+00:01:35,110 --> 00:01:39,095
+In C, you would have a function inc integer and another function inc double,
+
+38
+00:01:39,095 --> 00:01:41,660
+and as you can imagine, this gets tedious quickly.
+
+39
+00:01:41,660 --> 00:01:42,830
+If you have a lot of types,
+
+40
+00:01:42,830 --> 00:01:44,110
+do you want to operate on,
+
+41
+00:01:44,110 --> 00:01:47,660
+and the way C++ handles this is a process called mangling.
+
+42
+00:01:47,660 --> 00:01:53,780
+The compiler uses the types of the parameters as part of the function's name internally,
+
+43
+00:01:53,780 --> 00:01:55,955
+which allows it to tell them apart.
+
+44
+00:01:55,955 --> 00:01:59,300
+This is similar to what we would have had to do and C,
+
+45
+00:01:59,300 --> 00:02:01,685
+but it's all handled by the compiler for us.
+
+46
+00:02:01,685 --> 00:02:04,865
+Here's an example in Java of inheritance.
+
+47
+00:02:04,865 --> 00:02:08,845
+We have a class shape and another class square that inherits from shape.
+
+48
+00:02:08,845 --> 00:02:12,410
+So, we can have it a collection of objects that inherit from shape and loop over them,
+
+49
+00:02:12,410 --> 00:02:15,320
+knowing they all support certain fields or operations.
+
+50
+00:02:15,320 --> 00:02:18,205
+Now, I'm going to assume you've worked with this before.
+
+51
+00:02:18,205 --> 00:02:20,395
+So, I'm not going to go into much detail now, though,
+
+52
+00:02:20,395 --> 00:02:24,394
+in the future, we're going to have a more detailed lecture about objects.
+
+53
+00:02:24,394 --> 00:02:26,585
+Compare a metric polymorphism,
+
+54
+00:02:26,585 --> 00:02:29,180
+allows your types to have a perimeter of some kind,
+
+55
+00:02:29,180 --> 00:02:32,255
+and it's often used for type sediment to be containers,
+
+56
+00:02:32,255 --> 00:02:34,010
+though that's not the only use for them.
+
+57
+00:02:34,010 --> 00:02:35,600
+So, Java calls them generics,
+
+58
+00:02:35,600 --> 00:02:37,340
+C++ calls them templates.
+
+59
+00:02:37,340 --> 00:02:40,525
+In Haskell, they're referred to as parameterized types.
+
+60
+00:02:40,525 --> 00:02:43,015
+So, let's look at type classes.
+
+61
+00:02:43,015 --> 00:02:47,830
+Type class is just a collection of types that support a set of functions.
+
+62
+00:02:47,830 --> 00:02:52,225
+So, here's the Eq type class for types that support equality.
+
+63
+00:02:52,225 --> 00:02:55,140
+This declaration says that type A,
+
+64
+00:02:55,140 --> 00:02:59,485
+is a member of the Eq type class if it supports equal and not equal.
+
+65
+00:02:59,485 --> 00:03:04,630
+The second line of the declaration gives the types of the functions we want to support,
+
+66
+00:03:04,630 --> 00:03:08,035
+and then the last two lines give default definitions.
+
+67
+00:03:08,035 --> 00:03:10,870
+Later on, when you declare a type to be a member of this class,
+
+68
+00:03:10,870 --> 00:03:13,210
+you have the option of giving your own definition of
+
+69
+00:03:13,210 --> 00:03:16,125
+these functions or keeping the default definitions.
+
+70
+00:03:16,125 --> 00:03:18,440
+Notice that the double equal and not equal
+
+71
+00:03:18,440 --> 00:03:20,530
+are defined recursively in terms of each other.
+
+72
+00:03:20,530 --> 00:03:25,780
+This allows you to define one of the two and then the other one you get automatically.
+
+73
+00:03:25,780 --> 00:03:28,890
+Now, the reason we have an Eq type class is,
+
+74
+00:03:28,890 --> 00:03:32,810
+Haskell does not define equality for user-defined types automatically.
+
+75
+00:03:32,810 --> 00:03:36,830
+For one thing not all types can be compared, for example, functions.
+
+76
+00:03:36,830 --> 00:03:39,560
+For another thing, we may have a different idea about when
+
+77
+00:03:39,560 --> 00:03:42,755
+we want to consider two pieces of data to be equal.
+
+78
+00:03:42,755 --> 00:03:47,090
+So, for an example, you might have a node type that contains data and a common field.
+
+79
+00:03:47,090 --> 00:03:51,880
+Maybe you don't want the comment field to be considered when you compare for equality.
+
+80
+00:03:51,880 --> 00:03:55,005
+In this example, I've created a type Foo,
+
+81
+00:03:55,005 --> 00:03:56,550
+and made two variables, X and Y,
+
+82
+00:03:56,550 --> 00:03:58,330
+both assigned to Foo 10.
+
+83
+00:03:58,330 --> 00:03:59,750
+If we try to compare them,
+
+84
+00:03:59,750 --> 00:04:01,565
+we get this error message.
+
+85
+00:04:01,565 --> 00:04:05,225
+It's an indication we did not make Foo to be a member of the Eq type class.
+
+86
+00:04:05,225 --> 00:04:07,135
+So, let's look how to do that.
+
+87
+00:04:07,135 --> 00:04:11,780
+The instance keyword is how we declare a type to be a member of a type class.
+
+88
+00:04:11,780 --> 00:04:17,630
+Here, I've told Haskell that Foo is a member of Eq and given the definition for equality,
+
+89
+00:04:17,630 --> 00:04:21,340
+and I'll get the default definition of not equal from the class declaration.
+
+90
+00:04:21,340 --> 00:04:24,225
+So, now, equal works for X and Y.
+
+91
+00:04:24,225 --> 00:04:26,475
+So, too long, didn't code,
+
+92
+00:04:26,475 --> 00:04:30,695
+there are many type classes in Haskell and many of them are super basic,
+
+93
+00:04:30,695 --> 00:04:33,440
+and if you're thinking that the compiler should be able to just
+
+94
+00:04:33,440 --> 00:04:37,175
+make Foo and EQ instance for us, you would be right.
+
+95
+00:04:37,175 --> 00:04:39,695
+So, the Haskell implementers just got the same thing.
+
+96
+00:04:39,695 --> 00:04:44,390
+So, they put in a keyword deriving that we can use to tell the compiler to make Foo,
+
+97
+00:04:44,390 --> 00:04:46,635
+and instance of the type class for us.
+
+98
+00:04:46,635 --> 00:04:51,300
+So, let's take a look at some of the other basic type classes now.
+
+99
+00:04:51,300 --> 00:04:56,000
+So, we have 0rd, which is not just the code for Chicago's O'Hare Airport.
+
+100
+00:04:56,000 --> 00:04:59,845
+The 0rd type class indicates that a type has an ordering.
+
+101
+00:04:59,845 --> 00:05:02,315
+A minimal definition is the compare function
+
+102
+00:05:02,315 --> 00:05:05,180
+though you could define the operators instead.
+
+103
+00:05:05,180 --> 00:05:09,260
+One thing that's a bit unusual but is type is that it makes use of
+
+104
+00:05:09,260 --> 00:05:13,630
+another one called ordering and it has three members LT, GT and EQ.
+
+105
+00:05:13,630 --> 00:05:15,530
+Then you might want to pause this video and review
+
+106
+00:05:15,530 --> 00:05:18,060
+the functions to see how it makes use of it all,
+
+107
+00:05:18,060 --> 00:05:21,625
+and just resuming you're ready to see the next type class.
+
+108
+00:05:21,625 --> 00:05:25,855
+Now, if you want to convert a type into a string,
+
+109
+00:05:25,855 --> 00:05:27,610
+we have the show type class.
+
+110
+00:05:27,610 --> 00:05:29,825
+It has just one function show.
+
+111
+00:05:29,825 --> 00:05:34,820
+Usually, we just use a deriving clause to have the compiler show for us,
+
+112
+00:05:34,820 --> 00:05:38,545
+but sometimes it's preferable to for us to write our own definition.
+
+113
+00:05:38,545 --> 00:05:40,680
+Similarly, we have the read type class.
+
+114
+00:05:40,680 --> 00:05:42,105
+Is the opposite of show.
+
+115
+00:05:42,105 --> 00:05:44,540
+It converts a string into a member of the given type.
+
+116
+00:05:44,540 --> 00:05:47,240
+Now, you'll note that if you want to use read,
+
+117
+00:05:47,240 --> 00:05:50,615
+you have to tell Haskell the type that you expect to get back.
+
+118
+00:05:50,615 --> 00:05:53,115
+It won't infer it automatically.
+
+119
+00:05:53,115 --> 00:05:56,820
+It has to know from the context what you're expecting.
+
+120
+00:05:56,820 --> 00:05:59,570
+So, this is one of the consequences of type classes.
+
+121
+00:05:59,570 --> 00:06:02,750
+Type inferencing is not decidable.
+
+122
+00:06:02,750 --> 00:06:06,565
+So, like show, we can derive read to have function created for us.
+
+123
+00:06:06,565 --> 00:06:09,035
+So, those are some of the basic type classes.
+
+124
+00:06:09,035 --> 00:06:11,630
+You've also seen numb for numeric types
+
+125
+00:06:11,630 --> 00:06:14,330
+and you seen integral for types of support modulus.
+
+126
+00:06:14,330 --> 00:06:17,720
+There are many other type classes that come with Haskell, and in the next video,
+
+127
+00:06:17,720 --> 00:06:21,050
+we're going to go over the functor and applicative type classes which allow
+
+128
+00:06:21,050 --> 00:06:25,530
+for a much more advanced operations on user-defined types.

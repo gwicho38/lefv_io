@@ -1,0 +1,451 @@
+1
+00:00:00,000 --> 00:00:02,535
+Hello everyone, welcome back.
+
+2
+00:00:02,535 --> 00:00:06,765
+In the last video, I left you with this grammar to build a state machine firm,
+
+3
+00:00:06,765 --> 00:00:08,070
+and if you haven't done that yet,
+
+4
+00:00:08,070 --> 00:00:09,780
+please do that before watching this video,
+
+5
+00:00:09,780 --> 00:00:12,465
+because it'll help you understand the material here.
+
+6
+00:00:12,465 --> 00:00:14,354
+Now, if you did it correctly,
+
+7
+00:00:14,354 --> 00:00:17,970
+you notice that one of the states in the action table seem to need two actions.
+
+8
+00:00:17,970 --> 00:00:19,590
+If you did not get that result,
+
+9
+00:00:19,590 --> 00:00:22,335
+continue watching anyway as a way to check your work.
+
+10
+00:00:22,335 --> 00:00:26,920
+I'll let you know when to pause if you want to try it again and get interactive feedback.
+
+11
+00:00:27,560 --> 00:00:32,070
+Now, when a single state seems to require both the shift and reduce action,
+
+12
+00:00:32,070 --> 00:00:34,200
+it's called the shift reduce conflict.
+
+13
+00:00:34,200 --> 00:00:37,005
+These are caused by ambiguities in the grammar.
+
+14
+00:00:37,005 --> 00:00:38,310
+When you're done with this video,
+
+15
+00:00:38,310 --> 00:00:41,970
+you'll be able to explain how a shift reduce conflict signals ambiguity,
+
+16
+00:00:41,970 --> 00:00:45,170
+and give some suggestions for how you could fix such an ambiguity.
+
+17
+00:00:45,170 --> 00:00:48,140
+You also know what a standard LR parser generator such as
+
+18
+00:00:48,140 --> 00:00:51,955
+yak would do to handle a shift reduce conflict in Y.
+
+19
+00:00:51,955 --> 00:00:54,480
+Now, here's the grammar we gave you.
+
+20
+00:00:54,480 --> 00:00:56,470
+Before we start building the state machine,
+
+21
+00:00:56,470 --> 00:00:58,430
+notice you can already tell just by
+
+22
+00:00:58,430 --> 00:01:03,025
+visual inspection that this grammar is ambiguous. Do you see how?
+
+23
+00:01:03,025 --> 00:01:07,370
+The answer is in the E goes to ExE production.
+
+24
+00:01:07,370 --> 00:01:10,940
+This is one of the forms we showed you in the introduction to grammars video,
+
+25
+00:01:10,940 --> 00:01:14,190
+which we call W in the recursion.
+
+26
+00:01:14,300 --> 00:01:18,040
+So, if you had a sentence b x b x b,
+
+27
+00:01:18,040 --> 00:01:20,885
+you would know which way the parentheses should go.
+
+28
+00:01:20,885 --> 00:01:26,310
+So, let's build a state machine now and see how this causes a conflict in the table.
+
+29
+00:01:27,070 --> 00:01:30,274
+So, here are our action and go to tables,
+
+30
+00:01:30,274 --> 00:01:34,525
+we'll create an initial state as zero and take its closure.
+
+31
+00:01:34,525 --> 00:01:37,460
+Now, both of these items will shift on a.
+
+32
+00:01:37,460 --> 00:01:40,205
+So, let's use that to create the next state,
+
+33
+00:01:40,205 --> 00:01:42,960
+pause now and resume when you're ready.
+
+34
+00:01:43,480 --> 00:01:47,105
+The a input causes a shift to state one,
+
+35
+00:01:47,105 --> 00:01:48,545
+and we're building state one,
+
+36
+00:01:48,545 --> 00:01:50,135
+the cursor moves in front of an E,
+
+37
+00:01:50,135 --> 00:01:53,860
+so we need to add in the initial E productions as well.
+
+38
+00:01:53,860 --> 00:01:57,755
+Our next step will be to process these items that cursor before
+
+39
+00:01:57,755 --> 00:02:02,280
+the E. Pause now and resume when you're ready to see the next state.
+
+40
+00:02:02,660 --> 00:02:08,945
+State i2 looks like this and results from a go-to action on E from state i1.
+
+41
+00:02:08,945 --> 00:02:11,405
+We'll now work on the shift b actions.
+
+42
+00:02:11,405 --> 00:02:14,490
+Pause now and resume when you're ready.
+
+43
+00:02:16,220 --> 00:02:20,735
+State i3 results from a shift b on state one.
+
+44
+00:02:20,735 --> 00:02:23,540
+Notice we have to add in the s productions again
+
+45
+00:02:23,540 --> 00:02:27,420
+because the cursor is in front of an s in the first line.
+
+46
+00:02:27,830 --> 00:02:31,020
+Now we'll look at the shift b in state two,
+
+47
+00:02:31,020 --> 00:02:33,820
+pause now and resume when you're ready.
+
+48
+00:02:34,430 --> 00:02:37,650
+Shifting b gives a state i4.
+
+49
+00:02:37,650 --> 00:02:41,565
+Now, we'll shift the x in state i2,
+
+50
+00:02:41,565 --> 00:02:44,680
+pause now and resume when you're ready.
+
+51
+00:02:45,670 --> 00:02:49,055
+Shifting x gives you state i5.
+
+52
+00:02:49,055 --> 00:02:52,410
+We have to close over the E productions.
+
+53
+00:02:54,260 --> 00:02:58,550
+Now, we're going to make a go-to action over the s in state i3.
+
+54
+00:02:58,550 --> 00:03:01,980
+Pause now and resume when you're ready to see the answers.
+
+55
+00:03:03,250 --> 00:03:07,060
+The go-to over s produces state i6.
+
+56
+00:03:07,060 --> 00:03:13,690
+Now, we'll do a reduce on this E goes to b rule.
+
+57
+00:03:13,880 --> 00:03:16,890
+Follow set of E is x and b,
+
+58
+00:03:16,890 --> 00:03:21,930
+and since that was a fourth rule we put in r4 in the x and b columns of the table.
+
+59
+00:03:22,880 --> 00:03:27,359
+Now, we're going to shift the a's in the last two items of state i3,
+
+60
+00:03:27,359 --> 00:03:30,550
+pause now and resume when ready to see the result.
+
+61
+00:03:31,820 --> 00:03:36,710
+Now, it turns out that shifting a makes the same configuration of state i1,
+
+62
+00:03:36,710 --> 00:03:39,120
+so we just reuse it.
+
+63
+00:03:39,710 --> 00:03:44,335
+Now, we're going to turn our attention to state i5 and i6.
+
+64
+00:03:44,335 --> 00:03:48,545
+I6 is just to reduce recorded in the table and not say any more about it,
+
+65
+00:03:48,545 --> 00:03:51,930
+but i5 starts to get interesting.
+
+66
+00:03:52,370 --> 00:03:55,530
+When we make are go-to on E and i5,
+
+67
+00:03:55,530 --> 00:03:57,375
+we get state i7.
+
+68
+00:03:57,375 --> 00:03:59,205
+Now, this state has problems.
+
+69
+00:03:59,205 --> 00:04:03,240
+Here's a hint, what is the follow set of E?
+
+70
+00:04:03,240 --> 00:04:06,630
+Right, the follow set of E is x and b.
+
+71
+00:04:06,630 --> 00:04:10,230
+So, we want to reduce rule three if we see an x or a b.
+
+72
+00:04:10,230 --> 00:04:12,575
+But look at the second production in the state.
+
+73
+00:04:12,575 --> 00:04:14,120
+It says that if we see an x,
+
+74
+00:04:14,120 --> 00:04:16,435
+we should make a state that looks like i5.
+
+75
+00:04:16,435 --> 00:04:19,395
+How should we fill out the table now?
+
+76
+00:04:19,395 --> 00:04:21,570
+As tables getting long,
+
+77
+00:04:21,570 --> 00:04:24,110
+so I chopped out some of the beginning rows,
+
+78
+00:04:24,110 --> 00:04:26,555
+row seven is where the interesting bit happens.
+
+79
+00:04:26,555 --> 00:04:29,080
+We have r3 in columns b and x,
+
+80
+00:04:29,080 --> 00:04:32,990
+but we also want to shift in column x that would bring us back to state five.
+
+81
+00:04:32,990 --> 00:04:36,720
+This is the dreaded shift reduce conflict.
+
+82
+00:04:37,810 --> 00:04:43,155
+Now, shift reduce conflict happens when one row uses a symbol to consume input,
+
+83
+00:04:43,155 --> 00:04:45,530
+that is to shift, while another row uses
+
+84
+00:04:45,530 --> 00:04:48,005
+a symbol to indicate that a sub tree is finished,
+
+85
+00:04:48,005 --> 00:04:49,375
+that is to reduce.
+
+86
+00:04:49,375 --> 00:04:51,710
+It indicates that the grammar is ambiguous.
+
+87
+00:04:51,710 --> 00:04:56,575
+Usually you can fix this by introducing precedence levels or associativity information.
+
+88
+00:04:56,575 --> 00:04:59,540
+LR parser generator will have annotations to do this,
+
+89
+00:04:59,540 --> 00:05:02,875
+or you can do it manually by stratifying the grammar.
+
+90
+00:05:02,875 --> 00:05:06,514
+Now, if you decide to be lazy and not fix the conflict,
+
+91
+00:05:06,514 --> 00:05:10,490
+and the parser is going to have to pick which one of the two actions to do.
+
+92
+00:05:10,490 --> 00:05:12,725
+The standard reaction is to pick shift,
+
+93
+00:05:12,725 --> 00:05:17,100
+because it is more likely to give you a successful parse.
+
+94
+00:05:17,620 --> 00:05:20,000
+Now, to see why this should be the case,
+
+95
+00:05:20,000 --> 00:05:22,130
+consider the dangling else problem.
+
+96
+00:05:22,130 --> 00:05:26,930
+Suppose we have an if statement nested inside the then branch of another if statement,
+
+97
+00:05:26,930 --> 00:05:29,465
+we parse up to the first time we see an else.
+
+98
+00:05:29,465 --> 00:05:31,330
+Now you have to decide,
+
+99
+00:05:31,330 --> 00:05:35,310
+does that else belong to the if x or to the if y?
+
+100
+00:05:35,310 --> 00:05:38,930
+You could pick either one and get a valid parse in this case,
+
+101
+00:05:38,930 --> 00:05:41,840
+though clearly we can't tell which one the programmer meant.
+
+102
+00:05:41,840 --> 00:05:46,250
+But what if there's another else coming?
+
+103
+00:05:46,250 --> 00:05:51,050
+If we say the else q belongs to the if x by picking reduce,
+
+104
+00:05:51,050 --> 00:05:55,370
+then we have no where to put the else w. But if we shift the else q,
+
+105
+00:05:55,370 --> 00:05:57,740
+we indicate that it belongs to the inner if y,
+
+106
+00:05:57,740 --> 00:06:01,390
+and then the else w can belong to the if x,
+
+107
+00:06:01,390 --> 00:06:04,100
+and that's the basics of the shift reduce conflict.
+
+108
+00:06:04,100 --> 00:06:06,320
+Indicate that your grammar is ambiguous
+
+109
+00:06:06,320 --> 00:06:09,940
+somehow but the good news is it's usually not hard to fix it.
+
+110
+00:06:09,940 --> 00:06:13,875
+So, this was the second parser technology we wanted to show you,
+
+111
+00:06:13,875 --> 00:06:17,300
+both LR and LR parsers have been around for a long time.
+
+112
+00:06:17,300 --> 00:06:19,960
+An ex parser is much newer technology,
+
+113
+00:06:19,960 --> 00:06:22,360
+and I think you're going to like it.

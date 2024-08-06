@@ -1,0 +1,268 @@
+[MUSIC] Okay, this is the YesWorkFlow annotation
+of the script that was published for LIGO as sort of documenting how you
+do the detection from the data. It's called LIGO Tutorial,
+it's a Python script. It's very nicely documented,
+they have a Jupyter Notbook for that. They have just the Python script itself. And as a summer intern
+project from last year, a student here annotated that script and
+created various products from that. So we can look at that in more
+detail in a moment as well. So that's another example, and
+then we have hybrid graphs. We've also some no workflow graphs
+in here you've seen before. Okay, so
+now let me jump into the actual demo. So I'm going to my editor here, eMacs, which is kind of my command line
+environment among other things. It's a browser and a command line,
+everything all in one. And so
+I've cloned this white w idcc repository. And in particular, where we want to
+go is into the examples folder, where the various use cases are. So, we look at C3C4,
+that's going to be our first example. And then, we look at the second example,
+the LIGO example. We're going to look at those two. But before branching into the sub-folders
+where the examples live, let me just point out a few others of levels
+of other folders of this repository. So there's a yw job folder. Interestingly enough, the jar files,
+the Java archive files for the YesWorkflow tool are in here as well. So probably you want to copy that to
+a binaries folder where your system will find it. And so, this is of a detail that
+has to do with the installation. I don't want to get further into that. But then here is a rules folder,
+so that's interesting. The rules folder contains data log
+rules that have to do with the demo, that do some of the demo functionality. In this case, the rules look
+a little bit like datalog rules, but they're prolog rules. So, we ship this demo, or we require
+that when you install this demo, you use a system called XSB prolog. It's sort of a hybrid between
+a datalog system and a prolog system, it can kind of do both. And this is, you see, for example, here is
+used to create reports from provenance. So this might as well be a Python script,
+look at it. It says print horizontal lines and
+print Name, Description and so on. So it prints out stuff. So this is kind of plumbing for the demo. Look at what is GV rules? GV rules is a set of rules
+that creates Graphviz files. So what are Graphviz files? That is the external tool that
+we use to render the graphs. So, we create a model, sort of a data
+structure from the user annotations. And that to render it maybe
+in different colors and different styles we use
+an external tool called Graphviz. Sometimes the files that Graphviz
+uses as input are called DOT files. We still have the extension
+DOT which creates a lot of confusion with Microsoft files. I don't know, document templates or
+whatever that stands for. So we try newer versions of the demo,
+we tried to create .gv files for Graphviz, so we avoid the name
+clash with the extension there. So again,
+these look like plumbing rules too. They basically look inside here. These are essentially print statements,
+glorified print statements where we create in a file, where we print into a file the
+graph structure that we want to render. And then, we invoke the Graphviz tool to
+actually do the rendering of the graph. I'm just going to walk you through some
+of the sort of nuts and bolts of this. Reconstruction rules,
+okay there's not too much going on here. Let's see, yw graph rules,
+again these are views. So these are a little bit more now
+like datalog rules the way we already know them. So these are the rules and
+then there are queries. So, this is now closer to the user, rated that user's question
+against the provenance. So, for example, if you say you want to
+render the complete workflow graph. And here is the program that
+gets executed for this. Okay, but
+I think we're deep into the weeds, so let's go into the particular example
+folder that we want to look at, so C3C4. You see each example has sub-folders, and the structure of those sub-folders
+is pretty organized as well. But the thing that we first note is
+there's a clean and a make script. What the clean script does, it basically deletes previous files
+that were created from a previous run. And then, the make script kind of makes or builds the demonstration
+artifacts files and so on. Let's look at the clean script first. You see what the clean script is doing. It's basically looking some,
+looking up some directory variables. And then, it removes three folders, three
+sub-folders for facts, views, and results. So if they exist from a previous run, or
+maybe through a check out of the code or of the demo,
+then we want to first delete them. So let's do that, let's create a shell. Editor likes to, it has its own mind
+where to create those sub windows. So, we're going to run this clean first. So again, this is the folder in
+which we are, we say clean.sh. That was easy, not a lot of output there. And sometimes this command line
+demos are a little anticlimactic. So, we remove some folders great. Now let's look at this make. Okay, the make is there's
+a little bit more going on. So let's just skim through it. I'm not expecting you to really understand
+the shell script, but just I'm pointing out a few things so that you see
+what are the ingredients being used. So we're creating these folders, and the folder names we get apparently
+from the settings parent directory. So let's just go up one level
+to the settings, so in settings, we've set lots of environmental variables. We tell what is the example directory,
+what is the project route. We declare, for example,
+facts directory and view directory and result directories to be
+wherever the example is living. And then there are sub-folders for
+facts and views and results. If we've done a clean,
+now we need to make those folders first. And then what we do is we
+run the YesWorkflow tool. You notice there's sort
+of a YesWorkflow command. So how is that defined, yw command, cmd. So you see we use, the YesWorkflow command
+as defined as a environment variable that has the value Java minus jar. So we're going to run
+the Java archive file. And where does that come from? Well that again is defined in
+another environment variable, which itself uses project root. So it's heavily parameterized
+to make things generic and work across multiple examples and also in a way expose really the structure
+of this prototype and of this demo. So we run YesWorkflow,
+the command that we run is called model. It means create a model, output a model,
+well, what are the inputs? The inputs are from the script directory
+we take, in this case a MATLAB script. Now this MATLAB script has
+DCS workflow annotations. We declare that the script
+is written in MATLAB. I mean it's kind of implicit
+in the extension, but we are explicit about it here. And then we have to tell
+to YesWorkflow also, where should the outputs
+from the YesWorkflow run go? So we declare what is the extract,
+the fact file and the models. So where do the extracted facts go? So you got,
+basically the user annotations. And where is the model itself going,
+and what is the model? The model is a graph,
+how do we represent the graph? As relational effects What
+kind of relational facts, we could use SQLite or any SQL facts? But here we'll use this .P for Prolog, because we can run
+recursive queries on them. Everybody who's done recursion in SQL
+knows how tough this can be sometimes. And for our purposes, running powerful
+queries in XSP is much easier. You can do everything from plumbing
+to actual declarative queries to recursive prolog queries, we can all
+do it in this one system called XSP. And so we declare that the query engine
+in fact is XSP because that's what we want to use subsequently. And then we run a script that says,
+okay, materialize to views and then that goes somewhere. And then we run another command,
+ywmetlabreconcommand. So what is that? There is another Java file that we run for
+that. And on it goes. And then eventually, we draw graphs. Here's that doc tool or graphics tool. So the command itself
+is actually called dot. The package itself is called graphics, but
+the executable command is called dot, so you have to have dot installed. So you can then, in the previous step,
+the dot file was created and now you can render the graph itself and you can
+render it as a PDF file or as a SVG file. So here's in particular the command. What this is saying,
+go to the queries directory, look for a script called Render
+complete workflow graph and this script will output or
+generate a graphics file. So that's the extension .gv. That sometimes also called .dot,
+confusingly. So period D-O-T, again confusing for
+many reasons including because the operating system might
+think it's a Microsoft dot file. So that's why we call it .gv, and
+then we call the dot tool to read that just generated file, and create a PDF
+file from it, as well as a SVG file. So one is good to look at in the browser, the other is good to look
+at in the PDF viewer. And then there are particular queries. We just number them here, query1,
+query2, 3, and so on, and several of them are prospective
+problems queries. And some of them are I think, well not
+here in this folder, hybrid queries, okay? All right, so let's run the demo after this sort
+of somewhat lengthy introduction. So we already have seen what happens
+when we run the clean script, now let's run this long make script
+that makes all these things. We wait a moment while all of
+these commands are being executed, and we are done. Okay, that is very exciting at this point. A script has been executed, no error was
+reported, but the good news is we can now look into those various folders to find
+what the script has generated, okay. So, again this is a demo where
+sort of lots of queries have been assembled together. Everything is executed sort
+of in one batch, if you like. So let's navigate those folders. So first of all, I'm showing this inside
+of Emac so I can use it as a file browser and I could look also
+at the execution time. We see at 10:37,
+there's results folder and the facts folder and the views folder were
+kind of touched, so these are brand new. Let's go first to the results folder and
+maybe cut to the chase. And you see there's all these files
+that have been created at 10:37. Just going to open slightly,
+how do you say, optimistically all GV
+files that were generated. So there are 14 graphic files that
+have been generated by this script. So, apparently 14 questions were asked? And let's look at the answers
+of those 14 questions. And here they come. So they're being opened and this certainly
+could be improved in terms of explanation. These are the answers, but
+what are the questions? We all know 42 is the answer, but
+what was the question for that? Right, you might recall, anybody read
+The Hitchhiker's Guide to the Galaxy? Not the right audience, okay? So here are the answers,
+let's look at the question. The question is given away a little
+bit in the file names here. So, here we see workflow
+upstream of grass fraction data. What does that mean? It means, it is the workflow upstream of this output
+product called grass fraction data. Another way to say that,
+we can say that's the lineage, that's the data lineage
+of grass fraction data. Grass fraction data,
+according to the model that we've created, depends on only one input,
+called SYNMAP, land cover map data. It does not depend on all these
+other files that you've seen before. Yeah then, mean temperature and
+mean precipitation data. It does not depend on that. Why does not it depend on it? Because as you can see it in the graph,
+the other inputs are not mentioned. So it just depends on it,
+it only depends on this one thing. And how does it depend on it? Well, there's a step called fetch
+sinmap line covermap variable, okay. So first we apparently fetch this data and
+then we generate the next CDR file for it. Is there any other input
+that we need to consider? Yes, if you go to the right,
+there's something called grass variable which comes from a step called
+initialize grass matrix. So really, there's one external input
+that feeds into this grass fraction data output, and then there's [INAUDIBLE]
+internal data called Grass_variable. And we could now go to the script and try to look more closely
+what the code actually does. But we have a high-level conceptual
+overview, so that's one of the products. Here we see upstream of C4 fraction data. Now upstream of C4 in some
+sense looks similar, but now there's kind of more stuff going on. So C4 fraction data also
+has this step generate material file, but in this case for C4. And then also we have this length
+cover map variable dependency, so we have that as well, but
+we don't have the grass fraction, Actually we have the dependency on SYNMAP
+blank cover map data, but the grass fraction output here is not there and
+some of its details are not here. That grass, to initialize,
+remember the initialize grass metrics? That's not here on this diagram. C3's just the same as C4, apart from the
+fact that it's the output is different and the last step is different. So basically,
+you could now begin to compare, how does the lineage of this
+data compare to the other? You could do sort of
+a graph diff if you like. What's the same and what's different? That would be an interesting question. Tell me how C3 fraction data and C4
+fraction data are the same or different. You could maybe grey out
+the parts that are the same and highlight the parts that are different. No? Okay, now whenever there's
+something orange going on here, then this is the hybrid providence,
+where we have sort of instantiated some of the data elements as per
+the available files on disk. And as we have linked them
+to the ES workflow model by way of these uri templates. So you might recall that
+there were uri templates, let's look at the script again itself. To make that connection very clear. So we go here to the script subfolder and
+here is the actual script, the MATLAB script that we've
+been asking questions about. And whoops, it zoomed out again. And if I look at these URI templates, I see that they are in multiple places. So for example, the grass fraction output is over here, this file. But there are also inputs, yeah. So for example here,
+the monthly precipitation probably and the monthly air temperature over here. They are declared through a variable. And actually,
+let me see whether I can create this also quickly ad-hoc in
+the workflow user interface. If I change the scripting
+language to MATLAB. This is for the syntax, okay. So here, so this is now the browser,
+right, I just ran that in the browser. And you see here these URI
+template variables, you see that? Let me zoom in even more. See how's that, yeah. So these are the UI templates
+that I declared in the script. And those are really valuable hooks that
+connect the conceptual model to the files that this code reads and writes. And you see over here is a part,
+when we ask for C3 and C4 fraction data input, there's
+a part that we don't reach from here, like generate netcdf file for
+grass fraction. These guys over here don't care about it, they don't care about the grass variable
+and they don't care about this step. On the other hand, they do care about the
+latitude and the longitude variables and so on. Okay, so back to the script. So this is what we've seen. And now this helps us understand
+these diagrams that we're looking at. Okay, let's look at this one here. This is what I mentioned before again, this file was just created
+from sort of the demo facts. And we see that this particular
+output file depends, according to the model, and
+according to the reconstructed problems that was found on disk,
+it depends on 25 files. And when you look closely,
+you see this precipitation data. The file name is actually APCP. Now we know it's precipitation,
+[INAUDIBLE] rain. The years are there, between 2000-2010. And per month. This is not sorted nicely, but
+you see there's 12 of them. So these are 12 netcdf files. And similar for air temperature. And so these are really the products,
+and there's quite a few more. And again, the file name here gives away what the question was. So again, this is a prototype. Of course you could maybe embed this
+as a little text in the graph itself. Or make this whole thing
+more dynamic instead of sort of a batch processing demo. But for us, the important part
+was that everything is there. Okay now, what about this one? Now, this one looks very different,
+what is this? Why does this look so different? Any idea why this looks so different? So we know that c3 fraction data and c4
+fraction data depend on a lot of things. If you look at the files,
+it's even 25 files. If you look conceptually,
+it's three inputs. But we don't see three inputs here. Any idea? Again, this is the answer,
+but what was the question? The question here was not what was
+upstream of C3 or C4_fraction_data. The question is,
+what is downstream of mean precipitation? This is a different question. It's subtle, when you all look at these
+graphs, if you only look at the graphs and don't think more about it, you might
+miss out on a lot of the finer points. Normally, we're interested in sort of
+the upstream lineage of an output. We say, okay, here's an output,
+what went into it? Why, because maybe you want to
+publish that output and you want to just cut out
+as much as you need, right? You don't want to publish
+more than you need, so you output just that particular
+product that you're interested in together with everything
+that you need to produce it. On the other hand, maybe you know that
+some of your input data sets was tainted, there's some problem with it. Now you have a different question. Now you say, okay, what output products
+are influenced by this particular input? It's not the same question. It's not the same graph. So here you would say, well,
+if my precipitation data has flaws. Later we found out there was
+something wrong with it. But what are my products that
+are now spoiled because of it? And what we see here is
+the C3_fraction_data and the C4_fraction_data will be spoiled. If you were to go upstream again, there's
+many more things that C3 and C4 depend on. But that was not the question. The question here was, what is
+downstream of mean precipitation data? So what is the influence of this
+particular input on outputs? And then we see, well,
+these are the paths taken. So this is how this particular input
+could flow into the output data products. And if the input was problematic,
+then maybe these two products have to be recreated, but not the third, because
+that's not influenced by this input, okay? And of course, I was hiding this from you. If you look at the file name, it is
+called downstream of mean precipitation. Well, it's text, so where is that encoded? So somewhere in the query,
+there's an encoding. So think of it as an equivalent maybe
+Datalog or SQL where you write a query that corresponds to, take this node and
+go downstream of it. That's actually the query
+being executed here. And this is just a rendering
+of the output subgraph. But it looks very different from
+the other graphs we've seen, because it seems to be missing,
+whoops, time to do other things. My calendar likes to jump into the action,
+not very nice. So again, over here we see this
+downstream question answered. And we see that several items on the right
+are missing, or upstream are missing. But they're missing on purpose,
+because we had asked another question. Okay, so
+let's go through the other data products. What is this, downstream. And so there's lots of
+little queries in a way now. So downstream of the latitude variable. Again, this is a downstream query,
+not an upstream one. More downstream business. This is the complete workflow graph. Of course, this is sort of the user model, with the only exception that the URI
+templates are not mentioned here. But it is the full graph. And, again,
+you can see when you ask an upstream and a downstream question how
+they would be different. If you say, upstream of C_fraction_data,
+you will get all the inputs, mean precip, mean air temperature,
+and SYNMAP land cover map data, if you go upstream from C3. But if you go say downstream
+from mean temperature only, if you only go downstream,
+well, first of all, all of this stuff on the right
+you will never hit, yeah. But you will get C3 and C4, but
+you will not get grass friction data. Also you will not get this stuff up
+here that has to do with precipitation. We just get the temperature stuff, yeah. So again, depending on whether you go
+upstream or downstream, obviously that's a different question and you got different
+answers, you shouldn't be surprised. It's like asking about your offspring
+versus about your ancestors, not the same question. But when you just look at the graph,
+unless you say in the caption or in the explanation close to
+the graph what the question was, you might read the graph the wrong way. Very tempting or very easy pitfall here because it's easy to
+create these artifacts. [MUSIC]

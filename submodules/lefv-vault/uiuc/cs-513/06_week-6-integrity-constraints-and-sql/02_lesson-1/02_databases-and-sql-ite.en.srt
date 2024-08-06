@@ -1,0 +1,1381 @@
+1
+00:00:00,319 --> 00:00:05,597
+[SOUND] We're going to run SQL lite,
+
+2
+00:00:05,597 --> 00:00:10,685
+and then give the name of the data
+
+3
+00:00:10,685 --> 00:00:14,466
+base we're going to use.
+
+4
+00:00:14,466 --> 00:00:18,660
+So let's see whether we can run this,
+SQLite survey.db.
+
+5
+00:00:18,660 --> 00:00:23,550
+There it is says sqlite this is particular
+version I have installed 3.8 and
+
+6
+00:00:23,550 --> 00:00:25,120
+to help for usage hints why not?
+
+7
+00:00:25,120 --> 00:00:28,808
+So .help, these dot commands
+are self directives that
+
+8
+00:00:28,808 --> 00:00:31,728
+SQLite command line directly understand.
+
+9
+00:00:31,728 --> 00:00:35,939
+Again this maybe an advantage
+of using a tool from the command
+
+10
+00:00:35,939 --> 00:00:37,681
+line over using the GUI.
+
+11
+00:00:37,681 --> 00:00:40,283
+Or a Firefox plugin often plugin or
+
+12
+00:00:40,283 --> 00:00:44,240
+the GUIs may be easier at
+first to get to know things.
+
+13
+00:00:44,240 --> 00:00:48,380
+But then once you know your way around the
+command line is actually very powerful and
+
+14
+00:00:48,380 --> 00:00:52,490
+has maybe some additional functions
+that the GUI maybe hides from you.
+
+15
+00:00:52,490 --> 00:00:56,400
+So if I run help I see there's a lot
+of kind of commands available here.
+
+16
+00:00:56,400 --> 00:01:00,980
+I need to scroll a little bit, so some of
+these we're going to use to help us Is
+
+17
+00:01:00,980 --> 00:01:03,170
+command and
+there's other of these commands.
+
+18
+00:01:03,170 --> 00:01:05,440
+Again, you see they all start with a dot.
+
+19
+00:01:05,440 --> 00:01:09,360
+And these are the sort of specific SQLite,
+specific directives to do certain things.
+
+20
+00:01:09,360 --> 00:01:12,653
+To load a file,
+to change how results are displayed and
+
+21
+00:01:12,653 --> 00:01:15,238
+so on but
+the proper SQL is the dot command.
+
+22
+00:01:15,238 --> 00:01:18,232
+So let's have first a look
+maybe what's in the database,
+
+23
+00:01:18,232 --> 00:01:22,450
+there is a command called schema I think,
+.schema show the create statements and
+
+24
+00:01:22,450 --> 00:01:25,950
+if the table is specified only sort
+of table matching this pattern.
+
+25
+00:01:25,950 --> 00:01:29,804
+Let's just say .schema, start
+the SQLite with the survey db I want to
+
+26
+00:01:29,804 --> 00:01:32,005
+get an idea of what's In the database.
+
+27
+00:01:32,005 --> 00:01:36,080
+I say .schema, I say okay there's four
+tables, Person table, Site table,
+
+28
+00:01:36,080 --> 00:01:38,080
+Visited table and Survey table.
+
+29
+00:01:38,080 --> 00:01:41,340
+Every table has a bunch of columns, and
+we see the data type of the column.
+
+30
+00:01:41,340 --> 00:01:45,720
+So we see the person table has
+a person ID which is text or string or
+
+31
+00:01:45,720 --> 00:01:48,190
+var character in other SQL dialects.
+
+32
+00:01:48,190 --> 00:01:50,620
+There's a personal field and
+the family field.
+
+33
+00:01:50,620 --> 00:01:53,660
+We don't really quite know what that
+means right now, but we'll find out.
+
+34
+00:01:53,660 --> 00:01:59,260
+There's a site table, recite name,
+latitude and longitude.
+
+35
+00:01:59,260 --> 00:02:03,470
+These are typical friends of the grill
+columns that can get confused.
+
+36
+00:02:03,470 --> 00:02:05,506
+There's often data quality issues,
+
+37
+00:02:05,506 --> 00:02:08,260
+lat long can sometimes be
+flipped in your data set.
+
+38
+00:02:08,260 --> 00:02:13,500
+Or they're off by 90 degrees or
+180, sine errors and so on.
+
+39
+00:02:13,500 --> 00:02:15,680
+Endless source of fun.
+
+40
+00:02:15,680 --> 00:02:18,540
+And sort of a Visited table and
+a Survey table.
+
+41
+00:02:18,540 --> 00:02:21,730
+So okay, so we see the data is there.
+
+42
+00:02:21,730 --> 00:02:23,640
+And let's have a look.
+
+43
+00:02:25,418 --> 00:02:30,990
+If I look here in our website, we can also
+look at what's supposedly in the table.
+
+44
+00:02:30,990 --> 00:02:32,590
+So we'll confirm that in a moment.
+
+45
+00:02:32,590 --> 00:02:39,590
+So there's a person table that has an ID,
+personal, and family.
+
+46
+00:02:39,590 --> 00:02:45,100
+So this naming of the columns,
+I don't think is particularly fortunate.
+
+47
+00:02:45,100 --> 00:02:49,500
+I guess this means family name,
+and this means maybe first name.
+
+48
+00:02:50,830 --> 00:02:52,960
+First and last name would be
+maybe a more common way or
+
+49
+00:02:52,960 --> 00:02:56,260
+surname and given name and yeah.
+
+50
+00:02:56,260 --> 00:02:57,540
+All right, so be it.
+
+51
+00:02:59,280 --> 00:03:00,630
+The site information.
+
+52
+00:03:00,630 --> 00:03:06,842
+Sites have some sort of identifier,
+DR-1, DR-3, MSK-4.
+
+53
+00:03:06,842 --> 00:03:08,850
+They have a location.
+
+54
+00:03:09,910 --> 00:03:14,483
+Lat, long, anybody can plug that into
+Google Maps or something similar and
+
+55
+00:03:14,483 --> 00:03:15,630
+see where that is.
+
+56
+00:03:15,630 --> 00:03:20,060
+I don't know whether
+they're interesting places.
+
+57
+00:03:20,060 --> 00:03:23,260
+There's a visited table that says, okay,
+
+58
+00:03:23,260 --> 00:03:27,910
+it has a timestamp when
+a site was visited.
+
+59
+00:03:27,910 --> 00:03:31,790
+There's an ID, we don't quite know yet
+where that ID comes from.
+
+60
+00:03:31,790 --> 00:03:34,710
+But we see the site id here being used.
+
+61
+00:03:34,710 --> 00:03:37,974
+And then, there's timestamps, and
+sometimes there isn't a timestamp,
+
+62
+00:03:37,974 --> 00:03:40,219
+which makes it all sort of interesting for
+queries.
+
+63
+00:03:40,219 --> 00:03:47,230
+The surveys then, the actual data
+that was measured, so maybe.
+
+64
+00:03:49,130 --> 00:03:53,970
+This seems to indicate your
+connection between the visitor table.
+
+65
+00:03:53,970 --> 00:03:56,600
+Let's say there's and ID 619 and
+
+66
+00:03:56,600 --> 00:03:59,730
+over here at the survey table
+there's another ID 619.
+
+67
+00:03:59,730 --> 00:04:04,550
+So that seems to correlate,
+link these two together.
+
+68
+00:04:04,550 --> 00:04:09,230
+So this site information or
+this measurement was taken at that side.
+
+69
+00:04:09,230 --> 00:04:12,790
+So this is like a foreign key
+as we heard about before.
+
+70
+00:04:12,790 --> 00:04:16,300
+So dyer was measuring a quantity.
+
+71
+00:04:16,300 --> 00:04:19,010
+What quantity did he or she measure?
+
+72
+00:04:19,010 --> 00:04:21,500
+Radiation, that's probably
+what rad stands for.
+
+73
+00:04:21,500 --> 00:04:22,947
+And then there's an actual value.
+
+74
+00:04:22,947 --> 00:04:27,599
+So at a certain site,
+a person was measuring
+
+75
+00:04:27,599 --> 00:04:32,378
+a quantity and
+recording a certain value, so
+
+76
+00:04:32,378 --> 00:04:37,684
+that seems to be what's
+in that simple database.
+
+77
+00:04:37,684 --> 00:04:42,810
+Yeah, okay, so there's another
+
+78
+00:04:42,810 --> 00:04:46,877
+command called .tables,
+
+79
+00:04:46,877 --> 00:04:52,900
+which really is in a way more condensed.
+
+80
+00:04:52,900 --> 00:04:56,290
+It just tells us what tables there are and
+you've seen schema
+
+81
+00:04:56,290 --> 00:04:59,520
+tells us not only what tables there
+are but how they were created.
+
+82
+00:04:59,520 --> 00:05:00,670
+So this gives us more detail.
+
+83
+00:05:03,656 --> 00:05:08,782
+If we want to change how
+SQL represents answers,
+
+84
+00:05:08,782 --> 00:05:12,380
+we can use one of these commands.
+
+85
+00:05:12,380 --> 00:05:14,270
+Let's first not use this command and
+
+86
+00:05:14,270 --> 00:05:17,850
+then see what happens if I
+just write a simple query.
+
+87
+00:05:19,420 --> 00:05:24,990
+So let's maybe say,
+I want to say select * from person.
+
+88
+00:05:24,990 --> 00:05:26,230
+And I'm going to be a little bit lazy,
+
+89
+00:05:26,230 --> 00:05:29,289
+we're just going to say just give me
+everything that is in a person table.
+
+90
+00:05:30,380 --> 00:05:36,600
+And I as I is usually in SQL I put
+a semi colon at the end of my query.
+
+91
+00:05:36,600 --> 00:05:37,820
+So I say select stuff from person,
+
+92
+00:05:37,820 --> 00:05:42,510
+hit Enter and
+then you see I get these answers.
+
+93
+00:05:42,510 --> 00:05:43,760
+They're not exactly pretty.
+
+94
+00:05:43,760 --> 00:05:48,670
+There's this vertical bar as a separator,
+there's also no header line, yeah.
+
+95
+00:05:48,670 --> 00:05:54,000
+Which is why we want to use these two
+directives here we want to say well,
+
+96
+00:05:54,000 --> 00:05:55,880
+can you please switch to column modes so
+
+97
+00:05:55,880 --> 00:06:01,050
+that columns are aligned not
+like this ugly like that, yeah?
+
+98
+00:06:01,050 --> 00:06:05,025
+And also headers would be nice if I had
+a header so I know what I'm looking at.
+
+99
+00:06:05,025 --> 00:06:10,341
+We're going to do that let's
+just put switch header on and
+
+100
+00:06:10,341 --> 00:06:14,990
+if I run my query again
+select stuff from person.
+
+101
+00:06:14,990 --> 00:06:20,281
+At least there is a header but
+it's still not nicely aligned so
+
+102
+00:06:20,281 --> 00:06:27,111
+I need the other command, say column on,
+or actually just column mode column.
+
+103
+00:06:27,111 --> 00:06:31,084
+And if I now run my query again,
+so let's start *from person;,
+
+104
+00:06:31,084 --> 00:06:32,970
+now this looks like a table.
+
+105
+00:06:32,970 --> 00:06:38,750
+Yeah, now I have the idea
+how my table looks like.
+
+106
+00:06:39,770 --> 00:06:43,522
+Now if I'm not interested in certain
+columns I can either select or
+
+107
+00:06:43,522 --> 00:06:47,352
+specify instead of star I specify
+what interests me in particular.
+
+108
+00:06:47,352 --> 00:06:53,500
+So I could say for example select
+family comma personal from person so
+
+109
+00:06:53,500 --> 00:06:58,050
+I only get I first get the last name,
+actually.
+
+110
+00:06:58,050 --> 00:07:02,220
+Look at this, I first get the Dyer,
+Pabodie, Lake, yata yata, and
+
+111
+00:07:02,220 --> 00:07:02,780
+then personal.
+
+112
+00:07:04,290 --> 00:07:06,410
+And I don't get the id, okay?
+
+113
+00:07:06,410 --> 00:07:08,840
+So think of this as a personal id,
+the first column is a personal id,
+
+114
+00:07:08,840 --> 00:07:11,920
+and then first name, last name,
+or last name, first name.
+
+115
+00:07:11,920 --> 00:07:14,780
+This case, I guess first name,
+last name, yeah?
+
+116
+00:07:14,780 --> 00:07:20,760
+But I want the last name first, and
+then the first name, okay, here we go.
+
+117
+00:07:22,460 --> 00:07:26,330
+We also notice that they're not ordered,
+yeah.
+
+118
+00:07:26,330 --> 00:07:28,196
+Something we're going to look at later.
+
+119
+00:07:28,196 --> 00:07:30,538
+I think this is here, but
+
+120
+00:07:30,538 --> 00:07:34,980
+there is statement called order by and
+that's we ordered.
+
+121
+00:07:34,980 --> 00:07:36,550
+Lets give it a try actually.
+
+122
+00:07:36,550 --> 00:07:39,923
+FROM Person order by, let's say, family.
+
+123
+00:07:39,923 --> 00:07:44,560
+A-ha, you see now it's
+ordered by family name.
+
+124
+00:07:44,560 --> 00:07:46,730
+In this case,
+the family name does the job.
+
+125
+00:07:46,730 --> 00:07:50,650
+But if there was multiple people
+with the same family name,
+
+126
+00:07:50,650 --> 00:07:54,170
+then we would maybe secondarily
+sort it by first name
+
+127
+00:07:55,280 --> 00:07:59,880
+then I would write the, second column
+there as well by which I sort.
+
+128
+00:07:59,880 --> 00:08:02,634
+This case again there's
+no difference because,
+
+129
+00:08:02,634 --> 00:08:06,252
+already sorting by family name
+always sorts everything, yeah?
+
+130
+00:08:06,252 --> 00:08:10,454
+Okay, you see also that case,
+doesn't matter so
+
+131
+00:08:10,454 --> 00:08:17,060
+I sometimes write select and from lower
+case get exactly the same answer.
+
+132
+00:08:17,060 --> 00:08:22,030
+Or if you prefer to write upper
+case to show you what is SQL and
+
+133
+00:08:22,030 --> 00:08:24,650
+what is part of the schema
+that's also nice.
+
+134
+00:08:24,650 --> 00:08:30,310
+So now you see SELECT, FROM and
+ORDER BY are SQL keywords.
+
+135
+00:08:30,310 --> 00:08:34,790
+So I put them in uppercase, and
+the rest is from the database schema.
+
+136
+00:08:34,790 --> 00:08:38,360
+Family and personal are column names,
+or attribute names.
+
+137
+00:08:38,360 --> 00:08:39,560
+Person is a table name.
+
+138
+00:08:39,560 --> 00:08:44,870
+And again, family and personal, again,
+column names or header names, if you like.
+
+139
+00:08:44,870 --> 00:08:45,970
+All right, so far so good.
+
+140
+00:08:49,530 --> 00:08:57,540
+And again, if you're totally crazy here
+with your case, low case, upper case yeah.
+
+141
+00:08:57,540 --> 00:08:58,630
+This is hardly readable.
+
+142
+00:08:58,630 --> 00:09:02,290
+This is just to illustrate the point
+that case doesn't matter, right?
+
+143
+00:09:02,290 --> 00:09:03,780
+I don't know whether anybody
+can actually read this.
+
+144
+00:09:03,780 --> 00:09:06,987
+This looks it's interesting
+how mixing lower and
+
+145
+00:09:06,987 --> 00:09:12,112
+upper case mixed things very hard to read
+but it still works, yeah, all right.
+
+146
+00:09:12,112 --> 00:09:16,770
+So SQL with respect to the query
+statements is case insensitive [COUGH] of
+
+147
+00:09:16,770 --> 00:09:20,740
+course when it comes to the data
+that is case sensitive here.
+
+148
+00:09:20,740 --> 00:09:24,236
+You have the role that says
+Dyer with the capital D and
+
+149
+00:09:24,236 --> 00:09:27,350
+then another role with
+dyer with a lower case.
+
+150
+00:09:27,350 --> 00:09:31,642
+Those would be two different values.
+
+151
+00:09:31,642 --> 00:09:34,140
+Okay we did this select star from person.
+
+152
+00:09:34,140 --> 00:09:38,916
+When you're working in the shell,
+you sometimes get
+
+153
+00:09:38,916 --> 00:09:43,694
+this funny thing select star,
+from person, yeah but
+
+154
+00:09:43,694 --> 00:09:48,700
+you have to complete,
+the statement with a semicolon.
+
+155
+00:09:48,700 --> 00:09:52,940
+So you can enter nicely end
+the long statements this way.
+
+156
+00:09:56,790 --> 00:09:59,413
+Okay, you could repeat things,
+
+157
+00:09:59,413 --> 00:10:04,390
+I don't know whether anybody would
+want to do that but you can.
+
+158
+00:10:08,310 --> 00:10:12,624
+Keeps twice the same column or
+in this case three times the same column.
+
+159
+00:10:12,624 --> 00:10:17,462
+Not very exciting select from person,
+done, okay.
+
+160
+00:10:17,462 --> 00:10:22,220
+Let's look at the next sorting and
+removing duplicates.
+
+161
+00:10:22,220 --> 00:10:23,680
+We already did that.
+
+162
+00:10:23,680 --> 00:10:27,138
+Now I just want to make one quick
+connection of course here we're at
+
+163
+00:10:27,138 --> 00:10:29,440
+the level of duplicates
+at the level of SQL.
+
+164
+00:10:29,440 --> 00:10:33,415
+But recall that earlier on we
+spent quite a bit of effort with
+
+165
+00:10:33,415 --> 00:10:37,410
+Open Refine through find
+duplicates in the table.
+
+166
+00:10:37,410 --> 00:10:41,707
+When two strings are really just
+detecting variants of one another,
+
+167
+00:10:41,707 --> 00:10:46,298
+maybe representing the same menu,
+the same city, the same street name or
+
+168
+00:10:46,298 --> 00:10:47,720
+something like that.
+
+169
+00:10:47,720 --> 00:10:51,419
+So when we work with a database here for
+our data,
+
+170
+00:10:51,419 --> 00:10:56,450
+quality purposes that are clean
+purposes at this point.
+
+171
+00:10:56,450 --> 00:11:00,260
+We have to have these things done
+there's very limited functionality.
+
+172
+00:11:00,260 --> 00:11:02,510
+There's some functionality in SQL but
+
+173
+00:11:02,510 --> 00:11:07,487
+limited to deal with irregular expressions
+and things like that that's we should have
+
+174
+00:11:07,487 --> 00:11:10,840
+done this before before we got
+our data into the database.
+
+175
+00:11:12,680 --> 00:11:16,034
+All right, so
+we can go to the survey table.
+
+176
+00:11:16,034 --> 00:11:20,730
+Okay so schema survey, there's a table.
+
+177
+00:11:21,730 --> 00:11:25,390
+Okay, It has these various columns taken,
+person, quantity, reading.
+
+178
+00:11:25,390 --> 00:11:31,030
+And if you wanted to see what
+quantities are showing up in our table.
+
+179
+00:11:31,030 --> 00:11:35,580
+At all,
+I could say select quant from survey.
+
+180
+00:11:35,580 --> 00:11:37,050
+Survey is a table here.
+
+181
+00:11:37,050 --> 00:11:40,140
+The name survey is kind of overloaded,
+there's a survey database, and
+
+182
+00:11:40,140 --> 00:11:43,090
+there's a survey table
+in the survey database.
+
+183
+00:11:46,150 --> 00:11:51,802
+All right, now, oops, rad sal, rad sal,
+maybe rad stands for, you know,
+
+184
+00:11:51,802 --> 00:11:57,330
+hopefully there's meta data available that
+stands for radiation, maybe salinity.
+
+185
+00:11:57,330 --> 00:11:59,340
+Temp is probably temperature.
+
+186
+00:11:59,340 --> 00:12:02,310
+But look at that,
+lots of copies of the same stuff.
+
+187
+00:12:02,310 --> 00:12:02,870
+What's going on?
+
+188
+00:12:06,770 --> 00:12:09,110
+So where did the copies come from?
+
+189
+00:12:09,110 --> 00:12:12,450
+If I just do a complete dump, if you like,
+
+190
+00:12:12,450 --> 00:12:17,430
+of the survey table, yeah, then I see
+there's a bunch of things in there.
+
+191
+00:12:17,430 --> 00:12:21,050
+And if I now only project
+on the third column,
+
+192
+00:12:22,340 --> 00:12:24,510
+that's what that statement was doing,
+there's a rad,
+
+193
+00:12:24,510 --> 00:12:28,250
+there's a sal, there's another rad,
+another salinity, and so on.
+
+194
+00:12:28,250 --> 00:12:30,640
+So when I just say,
+give me the third column, and
+
+195
+00:12:30,640 --> 00:12:35,710
+I say nothing else, I shouldn't be too
+surprised that SQL gives me duplicates.
+
+196
+00:12:35,710 --> 00:12:36,880
+So, SQL, by default,
+
+197
+00:12:36,880 --> 00:12:40,340
+doesn't give you a set semantics
+like the Steel view we saw before.
+
+198
+00:12:40,340 --> 00:12:43,420
+It was a question on which
+order these answers returned.
+
+199
+00:12:43,420 --> 00:12:44,730
+Well, the order, it doesn't matter.
+
+200
+00:12:44,730 --> 00:12:45,400
+It's really a set.
+
+201
+00:12:46,960 --> 00:12:47,890
+Here, SQL, and
+
+202
+00:12:47,890 --> 00:12:53,110
+sometimes the order comes out in
+the way the table is maybe processed.
+
+203
+00:12:53,110 --> 00:12:55,090
+And then, also, duplicates are produced.
+
+204
+00:12:55,090 --> 00:12:59,720
+So, you have to get rid of those
+duplicates explicitly if you,
+
+205
+00:12:59,720 --> 00:13:01,490
+if they bother you if
+that's what you want to do.
+
+206
+00:13:03,120 --> 00:13:07,064
+So, lets see what here our
+tutorial proposes, it says,
+
+207
+00:13:07,064 --> 00:13:10,360
+well how about you say SELECT DISTINCT,
+okay?
+
+208
+00:13:13,410 --> 00:13:19,210
+So that was the quant column, right?
+
+209
+00:13:19,210 --> 00:13:25,050
+And then we could say, Distinct.
+
+210
+00:13:25,050 --> 00:13:30,040
+And there's really only
+three distinct values, okay?
+
+211
+00:13:32,820 --> 00:13:34,571
+Now we could have done,
+
+212
+00:13:34,571 --> 00:13:39,047
+why is it maybe useful to see
+how many Quant values there are?
+
+213
+00:13:39,047 --> 00:13:42,998
+I could for example count them
+to something we really going to
+
+214
+00:13:42,998 --> 00:13:47,930
+look at later but you see there's
+21 rows but only 3 distinct values.
+
+215
+00:13:49,310 --> 00:13:54,350
+So sometimes you just want to
+report the non-distinct
+
+216
+00:13:54,350 --> 00:13:59,890
+values maybe for
+purposes of counting for example.
+
+217
+00:13:59,890 --> 00:14:02,000
+All because the duplicate
+doesn't bother you.
+
+218
+00:14:02,000 --> 00:14:02,669
+Maybe there's reason.
+
+219
+00:14:02,669 --> 00:14:07,036
+There's actually extra effort
+to remove the duplicates and
+
+220
+00:14:07,036 --> 00:14:10,380
+find out that there's three values, right?
+
+221
+00:14:10,380 --> 00:14:14,910
+Because as I showed before,
+if you look at the complete table,
+
+222
+00:14:17,590 --> 00:14:21,480
+yeah, you just do a table scan,
+you just output what you find.
+
+223
+00:14:21,480 --> 00:14:24,100
+Apart from the fact that its
+maybe a very large relation with
+
+224
+00:14:24,100 --> 00:14:25,450
+our net its a very simple operation.
+
+225
+00:14:25,450 --> 00:14:26,780
+You just run through.
+
+226
+00:14:26,780 --> 00:14:27,970
+No extra work.
+
+227
+00:14:27,970 --> 00:14:30,228
+But keeping check of how many
+distinct values there are,
+
+228
+00:14:30,228 --> 00:14:33,580
+is a little bit extra work that's why this
+is distinct is a sort of separate feature.
+
+229
+00:14:35,130 --> 00:14:41,430
+Okay, you can also look at distinct
+combinations so if you look at.
+
+230
+00:14:42,510 --> 00:14:44,360
+Where was something taken, at what site?
+
+231
+00:14:44,360 --> 00:14:50,110
+Was a quantity taken from the survey,
+
+232
+00:14:50,110 --> 00:14:53,350
+you can do it like so.
+
+233
+00:14:53,350 --> 00:14:55,400
+And SELECT DISTINCT taken and
+quantity from survey.
+
+234
+00:14:57,239 --> 00:14:59,029
+And maybe if I wanted to know.
+
+235
+00:15:04,962 --> 00:15:10,670
+If I were to remove the distinct here,
+yeah.
+
+236
+00:15:10,670 --> 00:15:16,105
+Then possibly I get duplicates again here,
+let's see what I can spot one,
+
+237
+00:15:16,105 --> 00:15:20,730
+I actually don't see one right now.
+
+238
+00:15:23,782 --> 00:15:28,770
+Okay, but the point is really
+the distinct applies can also
+
+239
+00:15:28,770 --> 00:15:32,680
+apply to multiple attributes, yeah, okay.
+
+240
+00:15:37,706 --> 00:15:41,679
+The order by I mentioned before, so
+
+241
+00:15:41,679 --> 00:15:49,650
+we can order the person table,
+the entries in the person table.
+
+242
+00:15:49,650 --> 00:15:51,870
+For example by the ID of first name or
+last name.
+
+243
+00:15:51,870 --> 00:15:53,400
+We did this already.
+
+244
+00:15:53,400 --> 00:15:59,280
+So, let's maybe do this variant because
+the other one we already did before.
+
+245
+00:15:59,280 --> 00:16:05,200
+So, we go to the person table, we want
+to order them by id, so by person id but
+
+246
+00:16:05,200 --> 00:16:10,420
+descending as opposed to ascending,
+which is the default.
+
+247
+00:16:10,420 --> 00:16:14,440
+So we see first is roe then there is
+pb then there lake, there's dyer and
+
+248
+00:16:14,440 --> 00:16:15,890
+there's danforth.
+
+249
+00:16:15,890 --> 00:16:18,980
+But let's say, okay actually we
+want to sort them by family name.
+
+250
+00:16:22,616 --> 00:16:27,725
+So, So
+
+251
+00:16:27,725 --> 00:16:32,110
+instead of order by id, we say order
+by family name, yeah, descending.
+
+252
+00:16:33,780 --> 00:16:39,040
+So we see, first comes Roerich then
+Pabodie, Lake, Dyer and Danforth.
+
+253
+00:16:39,040 --> 00:16:43,561
+In this case it might actually be the same
+as the ID, but that's coincidence, right?
+
+254
+00:16:43,561 --> 00:16:46,930
+The ID could be a number and
+might be very different.
+
+255
+00:16:46,930 --> 00:16:50,190
+Yeah, so we see we're ordering
+here by the third column.
+
+256
+00:16:50,190 --> 00:16:53,290
+Just to see a different variant
+let's order by the first name.
+
+257
+00:16:54,940 --> 00:16:57,550
+Descending, now we see Anderson is last.
+
+258
+00:17:00,500 --> 00:17:06,270
+If you remove the descending It'll sort
+it actually ascending and Frank, Frank.
+
+259
+00:17:07,860 --> 00:17:11,840
+Notice this,
+you see how there's two Frank's but
+
+260
+00:17:11,840 --> 00:17:15,000
+the Pabodie Frank comes before
+the Danforth Frank right?
+
+261
+00:17:17,000 --> 00:17:21,960
+So maybe we want to sort it by
+first name and then by family name.
+
+262
+00:17:24,090 --> 00:17:28,400
+And now you see Danforth
+is now first okay?
+
+263
+00:17:28,400 --> 00:17:31,790
+So you got a lot of power there
+with fairly simple statements.
+
+264
+00:17:35,020 --> 00:17:38,137
+Or you can mix even
+things like here is for
+
+265
+00:17:38,137 --> 00:17:43,372
+example you want to go from the survey
+record, the survey database.
+
+266
+00:17:43,372 --> 00:17:46,153
+You order by taken, when was it taken,
+
+267
+00:17:46,153 --> 00:17:50,550
+or rather not when was it taken but
+where was it taken, right?
+
+268
+00:17:50,550 --> 00:17:54,440
+The ID of the station, or
+the ID of the measurement.
+
+269
+00:17:55,640 --> 00:17:59,210
+This is something actually by
+just looking at the data so far.
+
+270
+00:17:59,210 --> 00:18:00,300
+It's not obvious.
+
+271
+00:18:00,300 --> 00:18:04,010
+So we would have to look at the
+documentation or metadata again so we can
+
+272
+00:18:05,200 --> 00:18:12,200
+make the taken attribute ascending but
+the person descending, okay?
+
+273
+00:18:13,580 --> 00:18:16,700
+So, let's see whether
+there's any example of this.
+
+274
+00:18:18,620 --> 00:18:25,630
+Yeah, so here you see 734 for
+example this pb but there's also lake.
+
+275
+00:18:26,670 --> 00:18:31,830
+The name of the person is lake,
+somewhat surprisingly.
+
+276
+00:18:31,830 --> 00:18:35,790
+But because it's this ending,
+right, pb comes before lake.
+
+277
+00:18:35,790 --> 00:18:37,860
+I don't think,
+well do you want to see that?
+
+278
+00:18:37,860 --> 00:18:39,160
+Okay let's just put it there.
+
+279
+00:18:42,280 --> 00:18:43,480
+Let's make a variation.
+
+280
+00:18:43,480 --> 00:18:50,251
+Let's make person ascending and
+taken descending, yeah.
+
+281
+00:18:50,251 --> 00:18:53,907
+And then again you could again
+look at the table now and
+
+282
+00:18:53,907 --> 00:18:56,436
+confirm that this indeed happened.
+
+283
+00:18:56,436 --> 00:18:59,998
+And there's also when
+you do this one first,
+
+284
+00:18:59,998 --> 00:19:04,940
+then this would be the column
+by which you sort first.
+
+285
+00:19:04,940 --> 00:19:07,058
+And then this one will be subsequent.
+
+286
+00:19:07,058 --> 00:19:08,760
+There's also other variants.
+
+287
+00:19:08,760 --> 00:19:14,760
+You could say first sort by this and
+then sort by taken.
+
+288
+00:19:17,592 --> 00:19:20,385
+Okay, seems at first a little boring, but
+
+289
+00:19:20,385 --> 00:19:24,886
+remember that a lot of the benefit
+that people got out of databases for
+
+290
+00:19:24,886 --> 00:19:28,630
+a long time is also these
+sort of different reports.
+
+291
+00:19:28,630 --> 00:19:30,776
+Depending on how your
+write your queries and
+
+292
+00:19:30,776 --> 00:19:34,256
+how you sort your results there's
+certain things that jump out at you.
+
+293
+00:19:34,256 --> 00:19:36,930
+So this is your poor mans
+data analytics if you like.
+
+294
+00:19:36,930 --> 00:19:38,176
+Being able to write such queries.
+
+295
+00:19:38,176 --> 00:19:46,439
+[MUSIC]

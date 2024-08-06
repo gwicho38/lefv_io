@@ -1,0 +1,572 @@
+1
+00:00:00,132 --> 00:00:07,757
+[MUSIC]
+
+2
+00:00:07,757 --> 00:00:10,868
+Let's have a look at how we're working
+with OpenRefine with a farmer's
+
+3
+00:00:10,868 --> 00:00:12,430
+market dataset.
+
+4
+00:00:12,430 --> 00:00:15,580
+So first we're going to select
+the tab here called Create Project.
+
+5
+00:00:15,580 --> 00:00:20,293
+And then hopefully we've by this time
+downloaded the dataset from the farmer's
+
+6
+00:00:20,293 --> 00:00:22,111
+market website from the USDA.
+
+7
+00:00:22,111 --> 00:00:28,650
+And it is now here on the desktop, you see
+here it's been saved as a file Export.csv.
+
+8
+00:00:28,650 --> 00:00:32,780
+So we now can say Create Project,
+Choose File,
+
+9
+00:00:34,150 --> 00:00:37,980
+and we go to the file Export.csv.
+
+10
+00:00:37,980 --> 00:00:41,610
+And say Open and hit the Next button.
+
+11
+00:00:43,440 --> 00:00:48,510
+At this point OpenRefine will try to
+import the data and giving us a preview.
+
+12
+00:00:48,510 --> 00:00:51,698
+There are also some parsing
+options that we can select here.
+
+13
+00:00:51,698 --> 00:00:54,454
+For example, do we think this
+a common separate values file, or
+
+14
+00:00:54,454 --> 00:00:55,943
+is it a tab separated values file.
+
+15
+00:00:55,943 --> 00:01:00,100
+Clearly, we see that the tab
+separated didn't quite work out.
+
+16
+00:01:00,100 --> 00:01:03,610
+So, the default that OpenRefine
+gives us here is the one
+
+17
+00:01:03,610 --> 00:01:06,150
+that seems to worked quite well.
+
+18
+00:01:06,150 --> 00:01:08,460
+So it seems like all the columns
+have been recognized.
+
+19
+00:01:09,810 --> 00:01:13,530
+And all of these other defaults
+seem to be working fine.
+
+20
+00:01:13,530 --> 00:01:15,700
+Let's give this a better project name,
+
+21
+00:01:15,700 --> 00:01:20,490
+call it Farmers-Markets, and
+then we hit Create Project.
+
+22
+00:01:22,700 --> 00:01:23,903
+And that was fairly easy,
+
+23
+00:01:23,903 --> 00:01:26,867
+we see now that the Farmers-Markets
+project has been created.
+
+24
+00:01:26,867 --> 00:01:31,764
+It has 8,664 rows, and
+now we can begin exploring the dataset,
+
+25
+00:01:31,764 --> 00:01:36,840
+profiling it, looking at the data,
+and maybe also cleaning the data.
+
+26
+00:01:37,950 --> 00:01:40,160
+For starters, let's have a look
+at the Market Name column.
+
+27
+00:01:41,220 --> 00:01:43,970
+So one of the main functions
+that you want to do is,
+
+28
+00:01:43,970 --> 00:01:47,920
+if you want to look at the data in the
+column, you select the little triangle.
+
+29
+00:01:47,920 --> 00:01:51,940
+Then look at different options here, in
+this case, we were looking at facets, and
+
+30
+00:01:51,940 --> 00:01:53,790
+we're looking in particular
+at the text facet.
+
+31
+00:01:53,790 --> 00:01:55,426
+You select that,
+
+32
+00:01:55,426 --> 00:02:00,430
+OpenRefine will notice that,
+in this particular column market name,
+
+33
+00:02:00,430 --> 00:02:06,190
+there are 8,095 different values
+out of the 8,664 rows overall.
+
+34
+00:02:06,190 --> 00:02:09,210
+So some of these values
+must appear multiple times,
+
+35
+00:02:09,210 --> 00:02:13,930
+to see which ones they are, we click
+on the count button, which will sort it
+
+36
+00:02:13,930 --> 00:02:18,900
+in a way that the highest occurrences
+come first so in descending order.
+
+37
+00:02:18,900 --> 00:02:22,865
+So we see for example El Mercado Familiar
+request 33 times as a name
+
+38
+00:02:22,865 --> 00:02:27,260
+of a farmer's market, probably
+different markets in different places.
+
+39
+00:02:27,260 --> 00:02:31,649
+Main Street Farmer's market seems
+to be a popular name as well, and
+
+40
+00:02:31,649 --> 00:02:33,349
+this is all nice and good.
+
+41
+00:02:33,349 --> 00:02:39,047
+Now let's use one of the really powerful
+functions here called clustering and
+
+42
+00:02:39,047 --> 00:02:43,324
+this facet again focus our
+attention on the market name.
+
+43
+00:02:43,324 --> 00:02:47,940
+And hitting Cluster will make
+OpenRefine cluster the different
+
+44
+00:02:47,940 --> 00:02:52,840
+values into groups that seem to
+indicate that maybe a single value
+
+45
+00:02:52,840 --> 00:02:56,370
+should be used where different values
+where different values actually appear.
+
+46
+00:02:56,370 --> 00:02:58,740
+So if you look for
+example here at Irvington Farmers Market,
+
+47
+00:02:58,740 --> 00:03:01,620
+you see there are four
+different spellings,
+
+48
+00:03:01,620 --> 00:03:05,630
+although these four different spellings
+are not obviously all different.
+
+49
+00:03:05,630 --> 00:03:08,180
+So there might be invisible
+white space characters and
+
+50
+00:03:08,180 --> 00:03:09,810
+similar things going on here.
+
+51
+00:03:11,040 --> 00:03:15,510
+So what we can do now we can say
+we select to merge these cells
+
+52
+00:03:15,510 --> 00:03:19,050
+with different values
+across these various cells.
+
+53
+00:03:19,050 --> 00:03:24,150
+And we can now put the spelling
+that we prefer to be used for
+
+54
+00:03:24,150 --> 00:03:25,890
+all these different cells here.
+
+55
+00:03:26,930 --> 00:03:29,654
+If you're really brave,
+we might want to say, okay,
+
+56
+00:03:29,654 --> 00:03:31,720
+all of these clusters look pretty good.
+
+57
+00:03:31,720 --> 00:03:34,050
+It seems that OpenRefine has really found
+
+58
+00:03:36,190 --> 00:03:40,550
+all the right values that need to
+be group together and normalized.
+
+59
+00:03:40,550 --> 00:03:43,310
+And we also should check
+on the right hand side,
+
+60
+00:03:43,310 --> 00:03:44,870
+that we like to name that spelled there.
+
+61
+00:03:44,870 --> 00:03:50,140
+For example here WARSAW FARMERS MARKET
+in all upper case, maybe that's
+
+62
+00:03:50,140 --> 00:03:55,258
+not necessarily the one we want, maybe we
+want to use the regular spelling like so.
+
+63
+00:03:55,258 --> 00:04:00,671
+Once we've reviewed all of them and
+think this is looking good,
+
+64
+00:04:00,671 --> 00:04:05,191
+we can select all of them for
+a final merge operation.
+
+65
+00:04:05,191 --> 00:04:08,192
+And then OpenRefine will normalize all of
+
+66
+00:04:08,192 --> 00:04:12,829
+these values to be replacing them
+by the value on the right here.
+
+67
+00:04:15,152 --> 00:04:18,987
+In this particular case there's no
+further clusters to be found so
+
+68
+00:04:18,987 --> 00:04:23,368
+in other settings where you have more
+messy data what might happen is that you
+
+69
+00:04:23,368 --> 00:04:25,779
+have to repeat the step a couple of times.
+
+70
+00:04:28,030 --> 00:04:29,860
+So we now notice that there are,
+
+71
+00:04:29,860 --> 00:04:35,850
+out of these 8,664 rows there are now
+only 7,846 different choices.
+
+72
+00:04:35,850 --> 00:04:38,025
+So several more names
+have been normalized and
+
+73
+00:04:38,025 --> 00:04:42,670
+grouped together just like we intended for
+example Irvington Farmers Market is now
+
+74
+00:04:42,670 --> 00:04:45,600
+a group of five and
+all spelled the same way.
+
+75
+00:04:47,630 --> 00:04:51,635
+So what are other things we can
+do here to explore the dataset?
+
+76
+00:04:52,900 --> 00:04:57,960
+For example, we might wanma look,
+here we see an x and a y value.
+
+77
+00:04:57,960 --> 00:05:02,304
+Those values look a little bit as
+if they were maybe longitude and
+
+78
+00:05:02,304 --> 00:05:05,849
+latitude, the coordinates
+of the farmers market.
+
+79
+00:05:05,849 --> 00:05:07,854
+So let's have a look at that,
+
+80
+00:05:07,854 --> 00:05:12,443
+what we should do first though is
+these are right now still strings.
+
+81
+00:05:12,443 --> 00:05:16,560
+And we need to convert to
+string into numeric values and
+
+82
+00:05:16,560 --> 00:05:19,078
+then we can look at other facets.
+
+83
+00:05:19,078 --> 00:05:22,503
+So first we're going to
+do an edit of the cell,
+
+84
+00:05:22,503 --> 00:05:26,310
+we use a common transform
+in this case to number.
+
+85
+00:05:27,330 --> 00:05:32,685
+So we convert this to numbers, and
+we see 8,635 cells have been converted.
+
+86
+00:05:32,685 --> 00:05:37,486
+So there's still a couple of cells
+missing, but we'll worry about them later.
+
+87
+00:05:39,329 --> 00:05:42,704
+Again, Edit cells, Common transforms, and
+
+88
+00:05:42,704 --> 00:05:47,300
+we're going to transform this
+column now also to numeric value.
+
+89
+00:05:48,720 --> 00:05:55,460
+And we also see 8,635 cells have been
+now converted to numeric values,
+
+90
+00:05:56,950 --> 00:06:01,970
+so, this is very nice and now we can used
+a powerful facet called scatterplot.
+
+91
+00:06:03,130 --> 00:06:09,892
+If we go to Facet, Scatterplot facet,
+we now see an overview of the x and
+
+92
+00:06:09,892 --> 00:06:14,851
+y values of all the records,
+and we see here that this
+
+93
+00:06:14,851 --> 00:06:20,077
+nicely confirms here the shape
+of the continental US.
+
+94
+00:06:20,077 --> 00:06:22,547
+There seem to also be
+some other data points,
+
+95
+00:06:22,547 --> 00:06:26,396
+which at first sight might look like
+they might be outliers or errors.
+
+96
+00:06:26,396 --> 00:06:30,521
+But we can confirm that later to see
+whether this is indeed a problem or
+
+97
+00:06:30,521 --> 00:06:34,719
+whether these data points are in
+effect maybe lying on an island here,
+
+98
+00:06:34,719 --> 00:06:38,300
+possibly Hawaii, or maybe up here,
+this could be Alaska.
+
+99
+00:06:40,450 --> 00:06:44,680
+Alright, so we've created that,
+let's look at another facet.
+
+100
+00:06:46,320 --> 00:06:47,530
+And the very last one,
+
+101
+00:06:47,530 --> 00:06:51,640
+let's look at whether there are some
+columns that look like they are dates.
+
+102
+00:06:51,640 --> 00:06:56,670
+And we see here in the last
+column updateTime is a column
+
+103
+00:06:56,670 --> 00:07:02,530
+that seems to have dates in it, so
+maybe what we can do here is we convert
+
+104
+00:07:02,530 --> 00:07:09,920
+this also as a common transform and
+convert this to date, this column.
+
+105
+00:07:11,260 --> 00:07:15,878
+And then we notice that about 500 cells
+have been missed, but many of them,
+
+106
+00:07:15,878 --> 00:07:20,760
+8,131 have in fact been
+converted to a date.
+
+107
+00:07:22,550 --> 00:07:24,180
+And now that this has been done,
+
+108
+00:07:24,180 --> 00:07:30,670
+we can now create another facet,
+a timeline facet.
+
+109
+00:07:30,670 --> 00:07:34,930
+The timeline facet gives us an overview,
+as you see here on the left,
+
+110
+00:07:34,930 --> 00:07:40,690
+of what times show up in this column, and
+
+111
+00:07:40,690 --> 00:07:45,570
+we can also slide here these
+little sliders and get an idea.
+
+112
+00:07:46,880 --> 00:07:50,576
+If you want to sort of focus in there
+seems to be a little peak here.
+
+113
+00:07:50,576 --> 00:07:57,074
+So a lot of data maybe
+was changed here in 2010.
+
+114
+00:07:57,074 --> 00:08:02,007
+Another thing we notice here that some
+rows are missing data for the products
+
+115
+00:08:02,007 --> 00:08:08,380
+here that are sold in the farmer's market,
+wine, coffee, beans, fruits, and so on.
+
+116
+00:08:08,380 --> 00:08:13,890
+So by playing here with
+the sliders we can see
+
+117
+00:08:13,890 --> 00:08:16,590
+how our data looks like
+across the different time.
+
+118
+00:08:18,420 --> 00:08:20,189
+Okay, so this is all for
+
+119
+00:08:20,189 --> 00:08:25,686
+this initial demonstration of OpenRefine
+with the farmers market data.
+
+120
+00:08:25,686 --> 00:08:33,219
+[MUSIC]

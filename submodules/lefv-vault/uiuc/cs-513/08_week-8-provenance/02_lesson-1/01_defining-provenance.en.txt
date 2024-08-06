@@ -1,0 +1,202 @@
+[MUSIC] So I have here an example
+from the fine arts. And I have a question that relates to
+the following, one of these paintings, the original paintings,
+has been sold for nearly $180 million, which is a non-trivial amount,
+but the other one hasn't. It has been sold for a much smaller
+amount, in the thousands, or tens of thousands of dollars. But maybe, it would also be
+worth as much as the other one. So I'll leave it to you to guess
+which one is the expensive one, currently and
+which one is the bargain, currently. But I want to point out that there is
+a reason why one of them is much more expensive than the other. And that differences is the provenance or
+chain of custody. So we know that one of these
+paintings was painted by Picasso, so maybe that gives it away. And in the other case,
+we suspect, but are not sure, whether it was painted
+by Leonardo da Vinci. In one case, we have the provenance
+record, we know for sure, we can prove that it is
+original work of art. In the other case, we suspect but
+don't have the proof. So this is meant as an illustration
+how provenance, in this case, in the case of art, chain of custody
+records that establish the authenticity of the work of art can
+make a big difference. And in the similar way,
+we have this also with data artifacts. When we produce data, we throw out results
+In our maybe scientific analysis or put it out on the Internet. The value of these artifacts we
+reproduce is often increased if we document how we arrived at them. So that's the connection here. So how is provenance defined? According to
+the Oxford English dictionary, provenance is the place of origin or
+earliest known history of something. An example would be an orange
+rug of Iranian provenance. So we have a rug or a carpet and
+we know where it came from, we may know the location and we might
+know how old it is and so on and so on. So how did it come to us? It's also the beginning
+of something existence so the origin, and here's an example. They try to understand the whole universe,
+its provenance and fate. Also where did everything come from. That's a pretty tall order. So it's not something we're
+going to study in this class. But it is useful to know that
+this is where the word or what provenance means in general terms. And as we see in the case of art,
+a record of ownership of a work of art or an antique, used as a guide
+to authenticity or quality. So for example, you might have a
+manuscript and say it has a distinguished provenance, because this manuscript
+was pass through certain hands and you know its authentic, it is from
+whom it is claimed that it originates. The word provenance
+itself has an origin and it comes from Latin,
+provenire, to come from, okay? And that's how it arrived
+in English today. So you can easily see even using
+the word provenance itself that it is a useful concept that helps
+you explain and understand things. And again, in our context, we want to understand whether
+we could trust some data. We want to understand where it came from,
+and that's why we study these provenance. So data quality is in that sense,
+intimately related to provenance. Because, if we have data of suspicious
+origins, of unknown processing history, that reduces our trust and
+confidence in the quality of the data. And then we might not use this data. Now provenance also has been defined by
+the W3C, the World Wide Web Consortium. And they've come up with a definition
+that tries to be of a minimal standard that's brought
+in all encompassing. So W3C defines provenance as a description
+of how things came to be and how they came to be in
+the state they are in today. So that's very similar to the use
+of dictionary definition. But if we apply it now to
+technical artifacts, and data, for example in particular, we can also say that provenance
+refers to the sources of information, including entities and processes, and
+there's the connection to workflows. Involved in producing or
+delivering an artifact. And then provenance is a record
+that describes the people, institutions, entities, and
+activities involved in producing, influencing, or delivering a piece
+of data or a thing in the world. So again, it's a very general definition. They try to be all income passing and
+we will use much narrower, very particular notions of provenance in our context
+in the context of workflows, automation, scripts and data products. But it's good to see that W3C is
+defined a rather broad notion. One thing I want to point out
+right away here is that they think of the word provenance
+in the past tense. So provenance is really as the name
+suggest where does something come from. So it seems to indicate really
+something about the past. But as we shall see some
+researchers have found this notion of prospective provenance which sounds
+like a contradiction in terms to be rather helpful as well. So here's the PROV-DM, the provenance
+data model, which is a W3C standard. And you can find it on the web. And unfortunately,
+how these standards sometimes go, they're part of a whole
+family of related standards. So I just want to give you
+a glimpse of how that looks like. So if you look at the W3C
+recommendation for provenance, there is the provenance
+of PROV, as the family's called. PROV for provenance, it's not an extremely
+original name, but there you go. So there"s a date model called PROV-DM. There's an ontology, PROV-O. There are constraints, so these are constraints not unlike
+the ones we've seen before. Basically logic formulas or rules that say what things are implied or
+allowed and not allowed. And there's of course a rotation when you
+exchange providence you have to have some sort of notation and
+there were these works and these standards came out of a community
+effort and committees and working groups. Here on the lower part of the figure, you see how these different
+standards relate to one another. It can be a little bit confusing and we don't need to go into
+all of the details of that. I just want to point out here
+that there are a number of these standards that are related. So we'll going to mostly
+scratch the surface and then really look at the underlying
+principles really more so than the particular
+details of the standard. Having said that, I do want to
+show you how provenance fits into something larger that's called
+the Semantic Web Layer Cake. Nothing you can eat. This is something that tries to put
+various web stems together from the W3C, from the World Wide Web Consortium. You just see here where this is situated. So there's lots of standards that
+the W3C advocates and provides. So there's things like URIs and
+how to describe URIs, there's XML. Then there's for
+data interchange, there's RDF. There's query language called
+SPARQL that's somewhat popular in semantic web circles. There's RDF schema language, RDFS. There's a Rule language and then
+there's the ontology web standard, OWL. So it's the ontology web language. And then if you think of the semantic web,
+there's quality of something called the unifying
+logic, proof and then trust on top of it. So this might provide you at least some context of web provenance fits
+in this larger picture, trust is derived from provenance information if
+you know where something comes from. This might increase your trust,
+or you might distrust the source, specifically because you
+know where it comes from. There might be even notions of proof, can
+you verify for example the authenticity? So there's technical ways to check the authenticity of things although
+this is not really the focus here. So the W3C PROV effort came
+out of a community effort that led to an earlier standard, if you like,
+called OPM, the Open Provenance Model. And this is was mostly
+a community of researchers working in scientific workflows. So there's another connection
+between workflows and provenance. One connection is, that workflows and
+provenance are kind of two sides of a coin, the future and the past of
+a competition pipeline if you like. But there's also another connection. It is the scientific
+workflow research community who developed this model called OPM. And in some ways the OPM model is still maybe a good starting point
+to learn about provenance. Because it's maybe somewhat simpler and
+the terminology is quite accessible. So here on the left you see
+different notes that are connected. So the first one is A,
+stands for an artifact. Think of it as data. And P stands for process. So a process maybe used at data item. So if you see that arrow going from the P
+to the A backwards, that's on purpose. It goes backwards because
+the process used that data. So whereas in workflows we often see
+the data flow going from left to right, like time flows from left to right, provenance in the retrospective sense
+typically goes from right to left. It describes sort of dependencies or
+what happened. Where did come from? So P, the process used the artifact,
+or data A. Then in the next item below,
+you see that A, an artifact. What do you think that label says there? It's maybe a little small to read here. But it's going to be in the readings. So A was generated by P. So if you want to use sort of more common
+terminology you could say the process P was maybe reading some data A, and
+the process P was writing some data A. Those are the first two edges. But again,
+it's in the direction from right to left, the process used A, and
+A was generated by P. So this is really in some sense the core, the most basic core of these provenance
+standards in this case the OPM model. And then there are some additional
+relationships I want to briefly mention. So the process p was maybe
+controlled by an agent. That's what you see there. That's the third. Ag that you see here on the left so P was generated,
+was controlled by rather, by an agent. So what was that agent if the process P
+was a human process it might be human, or it might be a program that executes
+a certain function, maybe a data cleaning service or a look up service or
+some other data analysis function. So who's the agent there? It depends how you want to model that but
+it could be, for example the process that executes it,
+that would be an example. Processes themselves can be connected. So kind of, you're jumping over
+the data that flows between them. So normally the way I like to think
+of workflow as a processes or steps that connected through data channels
+so it some data flow between them. But you can also connect
+the processes directly in some sense. You can say well this particular process
+was triggered by this other process. And then in similar ways and in a way
+a more important way is this is really another of the holy grails
+of provenance here, this relationship that
+relates to artifacts. What do you think that might be called? So we have an artifact 2, and we kind of go into the past
+towards an artifact A on the left. So this relationship is called was
+derived from so what does that mean. That's really the lineage it's the data
+lineage you have a new artifact A2 that was derived another artifact A1. Maybe it's an update maybe
+you clean the dataset and A1 is the original dataset and A2 is
+the derived data set that was cleaned. This can happen at the set level,
+at the whole collection level or it might happen at an individual record level,
+or maybe at an individual field level. So standards says nothing about that,
+it's really something that you have to worry about when you work
+with these standards and have tools that create prominence,
+that keep create that history. I should mention one particular
+aspect of the OPM standard and it's also has been inherited
+to the W3C PROV standard. Which is, if you have a process,
+if you have a chain that goes like this, if you look at the first two edges
+here on the slide, on the left, you can say A was generated by P. So the artifact A was generated by P. And then the P itself used
+maybe another A, right? So if you look at the first
+two edges on the top, maybe you have an A2 coming out of the P,
+and then A1 going into the P. Now it is very tempting to say,
+because the A1 went into the P and the A2 came out of the P,
+to say A2 was derived from A1. Very tempting and
+often correct but not always. And it occasionally does happen and
+there's good reasons for this that a process reads something and it
+writes something and what is being written does not depend on and is not derived
+from the thing that was read. And since in general we cannot infer
+that reading and writing something makes those things connected through
+what's derived from relationship. This means that the OPM standard makes a
+point about not implying or not inferring from this chain that I mentioned before,
+was the derived relationship. So again if process P uses A1 and
+then generates A2. This does not necessarily imply
+that A 2 was derived by A1. It may imply or it may not. It's considered a separate assertion. If you want to say that you have to
+assert that as a separate fact in your Provenance database Okay? So there's a reading associated with this. And I recommend,
+as we go into provenance in more detail, to look at this, OPM. Now OPM was sort of overhauled,
+if you like, and made the W3C standard. And so it has now a new vocabulary. Things are called a little differently but the underlying essence is
+still very much the same. And this new model is called Prov. So you see on the right hand
+the kind of a meta model of Prov. So what are the things we
+talk about in Prov a lot. Something called an entity that
+used to be called an artifact. And both entities and
+artifacts in our regular terminology, we'll just call it data. For us, this is often data. Might be a data set, a table, a CSV
+file or it might be a row in a CSV file. Or it might be a field, a slot,
+a variable even, in a script. So that's data. And then activity, which is now more or so the center activity,
+we use to call it process. I mean, OPM called it process. The W3C Prov model calls it activity. And we could think of it as a step,
+computational step. Block of code, a function. Yeah, in most general terms,
+it is an activity. That's why they call it that. The word agent hasn't changed. So an activity can be
+controlled by an agent. That was the terminology
+that was used by OPM. But the W3C Prov calls
+it was associated with. It's sort of a weaker relationship,
+at least, a name such as that. But by and large, these are the same kind
+of relationships that we see in OPM. And the ones that are really
+important here are the used and the ones generated by relationships. They haven't changed. So if you look between activity. You can say an activity used in entity. Or if we translate it into our
+specialized language, we could say, a process or step used a data item. And then conversely, an entity or an artifact or a data item,
+may have been generated by an activity. So you have this back and fourth between
+data and steps, with data and computation. And then another very important
+relationship is between entities and entities, or between data and data. And this is the what's
+derived from relationship. And as I mentioned, the what's derived
+from relationship is not implied by chains of used and
+was generated by relationships. It's very tempting to say a data
+was used by an activity and another data was generated
+by that same activity. It's very tempting to say that what
+comes out, depends on what goes in. And it is often correct but
+it's not always the case so you need to separately
+assert it in your model. [MUSIC]

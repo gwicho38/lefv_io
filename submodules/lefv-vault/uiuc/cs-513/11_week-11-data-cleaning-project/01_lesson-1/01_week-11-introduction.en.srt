@@ -1,0 +1,138 @@
+1
+00:00:00,194 --> 00:00:08,344
+[MUSIC]
+
+2
+00:00:08,344 --> 00:00:11,980
+Hello, and welcome back to Theory and
+Practice of Data Cleaning.
+
+3
+00:00:11,980 --> 00:00:15,450
+In this last series of videos, we will
+look at the very specific data quality
+
+4
+00:00:15,450 --> 00:00:19,060
+issue, that is the use of
+multiple vocabularies.
+
+5
+00:00:19,060 --> 00:00:20,320
+At the beginning of this course,
+
+6
+00:00:20,320 --> 00:00:24,360
+we saw that different spellings of names
+or places can lead to poor data quality.
+
+7
+00:00:25,440 --> 00:00:29,960
+Our remedy was to transform, for example,
+using open refine, those different
+
+8
+00:00:29,960 --> 00:00:34,530
+spellings into a set of canonical names,
+or a controlled vocabulary.
+
+9
+00:00:34,530 --> 00:00:35,230
+So clearly,
+
+10
+00:00:35,230 --> 00:00:40,670
+the use of a controlled, as opposed to
+a wild variety, can improve data quality.
+
+11
+00:00:40,670 --> 00:00:44,510
+There are applications areas where the use
+of controlled vocabularies is widespread
+
+12
+00:00:44,510 --> 00:00:46,070
+and well established.
+
+13
+00:00:46,070 --> 00:00:48,870
+For example, the National Library of
+Medicine has developed many controlled
+
+14
+00:00:48,870 --> 00:00:51,340
+vocabularies for the Biomedical Sciences.
+
+15
+00:00:51,340 --> 00:00:55,730
+The so called
+Unified Medical Language System or UMLS.
+
+16
+00:00:55,730 --> 00:00:58,610
+It provides a mapping structure
+among those vocabularies.
+
+17
+00:00:58,610 --> 00:01:03,020
+And thus, allows one to translate
+among the various terminology systems.
+
+18
+00:01:03,020 --> 00:01:06,010
+It may also be viewed as
+a comprehensive thesaurus and
+
+19
+00:01:06,010 --> 00:01:10,480
+ontology of biomedical concepts and can
+be used for natural language processing.
+
+20
+00:01:11,622 --> 00:01:15,610
+Similarly, biodiversity informatics
+researchers use controlled vocabularies,
+
+21
+00:01:15,610 --> 00:01:19,040
+in particular,
+hierarchical structures called taxonomies
+
+22
+00:01:19,040 --> 00:01:21,510
+to organize the different
+Kingdoms of Life.
+
+23
+00:01:21,510 --> 00:01:25,120
+For example, plants,
+animals, fungi, and so on.
+
+24
+00:01:25,120 --> 00:01:29,585
+In all these cases, the use of controlled
+vocabularies is beneficial and often
+
+25
+00:01:29,585 --> 00:01:34,193
+essential in order to conduct meaningful
+data analysis and scientific studies.
+
+26
+00:01:34,193 --> 00:01:37,443
+But what do you do when data
+coming from different sources or
+
+27
+00:01:37,443 --> 00:01:41,018
+different times,
+maybe historical data from 100 years ago,
+
+28
+00:01:41,018 --> 00:01:45,113
+comes annotated with different
+controlled vocabularies or taxonomies?
+
+29
+00:01:45,113 --> 00:01:55,113
+[MUSIC]

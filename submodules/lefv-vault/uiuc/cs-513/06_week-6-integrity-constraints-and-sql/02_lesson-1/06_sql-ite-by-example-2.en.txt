@@ -1,0 +1,27 @@
+[MUSIC] We're going to go to this website
+from Southwest Carpentry. And they have a nice small
+database called surveydb, and we're going to walk through
+some of these examples. So in particular, if you walk through
+here, you see further details, and I'm going to do some of that right now. So I'm going to use, for this part,
+I'm going to use my friend, the Emacs or AquaMax editor, since that will help me
+to keep track of what I've seen already. So we're going to run a couple
+of queries that I have here. So we're going to start. Maybe I'm going to do it like this, I'm
+going to open two windows, side-by-side, and one of them will
+have the SQLite running. Or you could also use the terminal. Again, I'm going to cheat
+a little bit by using Emacs here. I can go more easily back and
+forth in the history, okay? And we have to first find surveydb. Let's see if I have this available here,
+anywhere on the desktop. So I'm going to go to a sub folder, which I hope has the serverdb in it. Now here it is, okay? So this is going to be
+my shell on the right. And on the left, I'm going to have
+the examples that I'm going to go through. So, in order to start the SQLite system,
+again, we need to say sqlite3. And if you already have a database, for
+example here we might have downloaded, actually let me do this here. I'm going to download this database,
+why don't I do this right now. Download this database. Okay, here it is and
+it's now in my Downloads folder. So I should probably,
+so where are we here? I want to copy from
+the Downloads folder survey.db. I'm going to copy it
+into my current folder. So as you've seen how that works. And now I can run sqlite3
+with that survey.db. Okay, so
+I'm using the latest version of SQLite. As you see, it's from 2017. Help for usage hints, so
+that's not a bad idea. And maybe the first thing I want to do is
+I want to look at what tables are there. So is there a command that
+tells me what tables are there? [MUSIC]

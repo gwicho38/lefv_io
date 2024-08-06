@@ -1,0 +1,943 @@
+1
+00:00:01,310 --> 00:00:04,215
+Hello again, welcome back.
+
+2
+00:00:04,215 --> 00:00:07,380
+This video we're going to talk about closures which
+
+3
+00:00:07,380 --> 00:00:10,785
+is a way of encoding functions for function calls.
+
+4
+00:00:10,785 --> 00:00:14,970
+So, we'll talk really briefly about how to add conditions to your language,
+
+5
+00:00:14,970 --> 00:00:17,580
+that's what we left off the last video with,
+
+6
+00:00:17,580 --> 00:00:20,185
+and we'll talk about functions and function application,
+
+7
+00:00:20,185 --> 00:00:23,895
+and we'll talk about this data structure called a closure and why it's necessary.
+
+8
+00:00:23,895 --> 00:00:25,830
+So, remember what we did last time,
+
+9
+00:00:25,830 --> 00:00:27,085
+we made an interpreter,
+
+10
+00:00:27,085 --> 00:00:28,870
+we added all these good things to it,
+
+11
+00:00:28,870 --> 00:00:32,235
+arithmetic variables, let, and
+
+12
+00:00:32,235 --> 00:00:36,200
+the code for this can be found in the i5 directory, if you want to take a look.
+
+13
+00:00:36,200 --> 00:00:41,425
+So, we also last time we added variable expressions, and let expressions.
+
+14
+00:00:41,425 --> 00:00:43,875
+One of the things I've tried to emphasize is
+
+15
+00:00:43,875 --> 00:00:46,985
+that the way let works is it creates a variable,
+
+16
+00:00:46,985 --> 00:00:49,760
+that variable exists inside the body of the let.
+
+17
+00:00:49,760 --> 00:00:54,090
+Once the let is done and returns, that variable disappears.
+
+18
+00:00:54,090 --> 00:00:56,720
+We talked about this behaving very much like a stack.
+
+19
+00:00:56,720 --> 00:00:59,120
+So, when you make the recursive call,
+
+20
+00:00:59,120 --> 00:01:01,930
+the new environment is created that has this variable,
+
+21
+00:01:01,930 --> 00:01:03,950
+it's like pushing it onto the stack.
+
+22
+00:01:03,950 --> 00:01:08,550
+Then when the recursive call returns that variable disappears.
+
+23
+00:01:08,550 --> 00:01:11,140
+It goes out of scope, but it has the same action,
+
+24
+00:01:11,140 --> 00:01:13,100
+it's popping something off of a stack.
+
+25
+00:01:13,100 --> 00:01:15,330
+So, looking at source code here,
+
+26
+00:01:15,330 --> 00:01:19,060
+you see this let z equal 10 equals z plus 1.
+
+27
+00:01:19,060 --> 00:01:23,495
+So, if we run that we get the number 11 back which is what you should expect.
+
+28
+00:01:23,495 --> 00:01:26,560
+But then, if I try to evaluate z afterwards,
+
+29
+00:01:26,560 --> 00:01:28,045
+it says it's not in scope.
+
+30
+00:01:28,045 --> 00:01:31,345
+Because a let body is done and so z just disappears,
+
+31
+00:01:31,345 --> 00:01:33,430
+and if we run our interpreter i5,
+
+32
+00:01:33,430 --> 00:01:34,830
+we get the same result.
+
+33
+00:01:34,830 --> 00:01:36,335
+We can create a variable z,
+
+34
+00:01:36,335 --> 00:01:39,200
+we evaluate z plus 1 that gives us 11,
+
+35
+00:01:39,200 --> 00:01:41,600
+but then when we try to evaluate z by itself afterwards,
+
+36
+00:01:41,600 --> 00:01:43,420
+it's gone out of scope and disappeared.
+
+37
+00:01:43,420 --> 00:01:45,190
+Now, about adding if.
+
+38
+00:01:45,190 --> 00:01:47,360
+If you wanted to add if to your language,
+
+39
+00:01:47,360 --> 00:01:49,810
+you need to add another constructor for your expression,
+
+40
+00:01:49,810 --> 00:01:53,630
+so here it is IfExp with three parameters now.
+
+41
+00:01:53,630 --> 00:01:55,320
+The first will be the condition,
+
+42
+00:01:55,320 --> 00:01:56,600
+the second will be the then branch,
+
+43
+00:01:56,600 --> 00:01:58,305
+the third will be the else branch,
+
+44
+00:01:58,305 --> 00:02:01,280
+and then for eval, it's fairly straightforward.
+
+45
+00:02:01,280 --> 00:02:05,555
+Evaluate the e1 part because that is the condition,
+
+46
+00:02:05,555 --> 00:02:07,340
+and if it turns into a true thing,
+
+47
+00:02:07,340 --> 00:02:09,990
+you evaluate e2 because that's the then branch.
+
+48
+00:02:09,990 --> 00:02:14,120
+Otherwise, you evaluate the e3 part because that's the else branch,
+
+49
+00:02:14,120 --> 00:02:16,760
+and we're taking the approach that anything that's not
+
+50
+00:02:16,760 --> 00:02:19,595
+explicitly true is going to be considered false.
+
+51
+00:02:19,595 --> 00:02:22,050
+There's other decisions you could've made with this,
+
+52
+00:02:22,050 --> 00:02:24,015
+but this is one way.
+
+53
+00:02:24,015 --> 00:02:25,975
+So, adding functions.
+
+54
+00:02:25,975 --> 00:02:28,510
+So, let's start off with example function.
+
+55
+00:02:28,510 --> 00:02:31,490
+We have lambda x arrow x plus one.
+
+56
+00:02:31,490 --> 00:02:34,460
+While I say lambda it's a backslash but it's supposed to represent
+
+57
+00:02:34,460 --> 00:02:38,285
+lambda which we'll talk about more when we do lambda calculus.
+
+58
+00:02:38,285 --> 00:02:40,435
+What we have is parameter x,
+
+59
+00:02:40,435 --> 00:02:42,810
+we have a function body x plus 10,
+
+60
+00:02:42,810 --> 00:02:44,700
+and we have an argument 20.
+
+61
+00:02:44,700 --> 00:02:50,150
+This should remind you of the let expressions that we created earlier.
+
+62
+00:02:50,150 --> 00:02:52,860
+So, let's talk about how to implement it.
+
+63
+00:02:52,860 --> 00:02:54,045
+Now, this is a wrong way,
+
+64
+00:02:54,045 --> 00:02:56,980
+so don't memorize this code or anything.
+
+65
+00:02:56,980 --> 00:03:01,190
+But if you were to do this without having really thought about languages before,
+
+66
+00:03:01,190 --> 00:03:03,075
+this could be a first attempt.
+
+67
+00:03:03,075 --> 00:03:04,905
+The problem with this first attempt,
+
+68
+00:03:04,905 --> 00:03:07,830
+is it'll actually work for you a lot of the time.
+
+69
+00:03:07,830 --> 00:03:09,450
+So, let's look at this.
+
+70
+00:03:09,450 --> 00:03:14,010
+We have a new Exp type called Fun Expression,
+
+71
+00:03:14,010 --> 00:03:18,200
+which has a string for the variable x that's the parameter,
+
+72
+00:03:18,200 --> 00:03:22,060
+and another expression for the body in this case x plus 10.
+
+73
+00:03:22,060 --> 00:03:24,390
+Then for the value part,
+
+74
+00:03:24,390 --> 00:03:26,870
+we're going to have a function value which has again
+
+75
+00:03:26,870 --> 00:03:30,260
+the string and the expression because when you have a fun expression,
+
+76
+00:03:30,260 --> 00:03:32,235
+it just turns into a function value,
+
+77
+00:03:32,235 --> 00:03:34,555
+and then that value gets applied later.
+
+78
+00:03:34,555 --> 00:03:39,385
+Then we need a way to apply function so that will be an application expression or AppExp.
+
+79
+00:03:39,385 --> 00:03:41,990
+We have two parameters one should be the function,
+
+80
+00:03:41,990 --> 00:03:46,465
+one should be the parameter to the function or argument to the function.
+
+81
+00:03:46,465 --> 00:03:48,540
+So, here would be the code,
+
+82
+00:03:48,540 --> 00:03:51,240
+you would evaluate e1 to get the function value.
+
+83
+00:03:51,240 --> 00:03:53,705
+You evaluate e2 to get the argument.
+
+84
+00:03:53,705 --> 00:03:56,100
+We insert the argument into the environment,
+
+85
+00:03:56,100 --> 00:03:57,850
+and then we evaluate the body.
+
+86
+00:03:57,850 --> 00:04:02,790
+So, this looks just like what we would have done with the let expressions.
+
+87
+00:04:02,790 --> 00:04:05,880
+The only problem is, it doesn't work.
+
+88
+00:04:05,880 --> 00:04:09,575
+So, let's talk about what could possibly go wrong.
+
+89
+00:04:09,575 --> 00:04:11,840
+The way I'm going to do that is I'm going to take
+
+90
+00:04:11,840 --> 00:04:16,820
+that function call that we did earlier the x plus 10 applied to 20,
+
+91
+00:04:16,820 --> 00:04:18,550
+let's expand it out a couple of times.
+
+92
+00:04:18,550 --> 00:04:20,615
+First, let's give that function a name.
+
+93
+00:04:20,615 --> 00:04:22,560
+Let's say that let's call it f,
+
+94
+00:04:22,560 --> 00:04:24,650
+we'll use a let expression to do that.
+
+95
+00:04:24,650 --> 00:04:26,840
+So now, we have f applied to 20,
+
+96
+00:04:26,840 --> 00:04:28,515
+so that should gives us our 30.
+
+97
+00:04:28,515 --> 00:04:31,580
+Then instead of hard-coding 10 into the function,
+
+98
+00:04:31,580 --> 00:04:33,635
+let's create a variable named delta,
+
+99
+00:04:33,635 --> 00:04:35,220
+and we'll put that in there.
+
+100
+00:04:35,220 --> 00:04:38,045
+So, again, we call f to 20,
+
+101
+00:04:38,045 --> 00:04:41,565
+then it adds 20 to delta which is 10 so that's give us a 30.
+
+102
+00:04:41,565 --> 00:04:42,850
+Now here's the trick,
+
+103
+00:04:42,850 --> 00:04:44,975
+when we run f 20,
+
+104
+00:04:44,975 --> 00:04:47,430
+is delta still in scope?
+
+105
+00:04:47,430 --> 00:04:49,950
+It's a trick question,
+
+106
+00:04:49,950 --> 00:04:52,350
+because at the f 20 part,
+
+107
+00:04:52,350 --> 00:04:54,020
+delta is no longer in scope.
+
+108
+00:04:54,020 --> 00:04:56,570
+If you try to print out delta there,
+
+109
+00:04:56,570 --> 00:04:58,020
+it's going to give you an error.
+
+110
+00:04:58,020 --> 00:05:02,405
+However, the function somehow seems to remember what delta was.
+
+111
+00:05:02,405 --> 00:05:05,495
+So, let's expand it out one more time.
+
+112
+00:05:05,495 --> 00:05:08,515
+Let's now create a new variable named delta,
+
+113
+00:05:08,515 --> 00:05:09,910
+set it to be 20,
+
+114
+00:05:09,910 --> 00:05:12,070
+and then call f 20 with that.
+
+115
+00:05:12,070 --> 00:05:14,465
+We still get back 30.
+
+116
+00:05:14,465 --> 00:05:20,135
+So, somehow this function knows that delta is equal to 10 when the function was created,
+
+117
+00:05:20,135 --> 00:05:24,600
+it ignores z delta that was equal to 20 when the function was called.
+
+118
+00:05:24,600 --> 00:05:28,630
+So, this is the reason we need something called a closure.
+
+119
+00:05:28,630 --> 00:05:31,640
+Whenever we create a function value,
+
+120
+00:05:31,640 --> 00:05:33,310
+we need to know three things;
+
+121
+00:05:33,310 --> 00:05:34,890
+we need to know the name of the variable,
+
+122
+00:05:34,890 --> 00:05:36,600
+we need to know the body of the function,
+
+123
+00:05:36,600 --> 00:05:42,655
+but we also need to know what values that variables held when this function was created.
+
+124
+00:05:42,655 --> 00:05:44,795
+So, here's how we're going to do it.
+
+125
+00:05:44,795 --> 00:05:47,980
+The expression types can stay the same,
+
+126
+00:05:47,980 --> 00:05:49,330
+we'll have our function expression,
+
+127
+00:05:49,330 --> 00:05:51,240
+we have our application expression,
+
+128
+00:05:51,240 --> 00:05:52,880
+but for our value,
+
+129
+00:05:52,880 --> 00:05:54,830
+we need a constructor called a closure.
+
+130
+00:05:54,830 --> 00:05:57,510
+It's going to have a string for the parameter.
+
+131
+00:05:57,510 --> 00:05:59,690
+It's going to have an expression for the body,
+
+132
+00:05:59,690 --> 00:06:02,480
+and an environment for keeping track of what
+
+133
+00:06:02,480 --> 00:06:06,610
+the variables were when they were defined or when the closure was defined.
+
+134
+00:06:06,610 --> 00:06:09,970
+So, for eval, we have a function expression.
+
+135
+00:06:09,970 --> 00:06:11,280
+It just returns a closure,
+
+136
+00:06:11,280 --> 00:06:15,845
+and you can see it's stashing a copy of the environment there.
+
+137
+00:06:15,845 --> 00:06:19,805
+Now, the application expression now becomes more complicated.
+
+138
+00:06:19,805 --> 00:06:26,300
+First, we have to evaluate e1 and that had better turn into a closure.
+
+139
+00:06:26,300 --> 00:06:33,150
+In the closure, we're going to call its environment clenv for closure environment.
+
+140
+00:06:33,150 --> 00:06:35,105
+That's to keep it distinct from
+
+141
+00:06:35,105 --> 00:06:38,710
+the environment that was passed into the current call of the eval.
+
+142
+00:06:38,710 --> 00:06:40,280
+We need that current environment,
+
+143
+00:06:40,280 --> 00:06:43,969
+because when we evaluate the argument here in e2,
+
+144
+00:06:43,969 --> 00:06:47,665
+we want to evaluate that in the current environment.
+
+145
+00:06:47,665 --> 00:06:50,150
+But then when we evaluate the body of the closure,
+
+146
+00:06:50,150 --> 00:06:54,075
+we're going to insert that arguments value into the closures environment,
+
+147
+00:06:54,075 --> 00:06:56,335
+not to the current one.
+
+148
+00:06:56,335 --> 00:07:01,030
+So, let's do an example evaluation so you can see how this works.
+
+149
+00:07:01,030 --> 00:07:06,830
+So, here I'm going to say let d equal 10 and lambda x arrow d plus x.
+
+150
+00:07:06,830 --> 00:07:09,890
+That's going to create this call to eval.
+
+151
+00:07:09,890 --> 00:07:12,290
+So, we have let x d,
+
+152
+00:07:12,290 --> 00:07:16,145
+and you should probably pause this slide and make sure you see how
+
+153
+00:07:16,145 --> 00:07:20,740
+the eval call here when I'm passing in their lines up with the expression above.
+
+154
+00:07:20,740 --> 00:07:25,325
+So, go ahead and do that and convince yourself that that's the right thing.
+
+155
+00:07:25,325 --> 00:07:30,630
+So, here we call that eval on the IntExp 10,
+
+156
+00:07:30,630 --> 00:07:32,685
+because that's the first thing you do with let,
+
+157
+00:07:32,685 --> 00:07:35,380
+and that's going to get us an IntVal 10.
+
+158
+00:07:35,380 --> 00:07:39,890
+Then we're going to stash that into an environment and call the function expression,
+
+159
+00:07:39,890 --> 00:07:42,130
+and that's going to give us back this closures.
+
+160
+00:07:42,130 --> 00:07:43,730
+See, we have a closure.
+
+161
+00:07:43,730 --> 00:07:47,990
+It's defined on X when the body is plus x d,
+
+162
+00:07:47,990 --> 00:07:52,900
+and then the closure environment is d is an IntVal 10.
+
+163
+00:07:52,900 --> 00:07:55,265
+Alright. So, now let's call this function.
+
+164
+00:07:55,265 --> 00:07:59,050
+So, we're going to let f equal this closure here.
+
+165
+00:07:59,050 --> 00:08:01,660
+So, this d equal 10 x plus
+
+166
+00:08:01,660 --> 00:08:05,615
+d part that's just the same thing we did in the previous slide.
+
+167
+00:08:05,615 --> 00:08:10,640
+But now we're going to evaluate that in the body of let y equal 20 in f y.
+
+168
+00:08:10,640 --> 00:08:13,045
+So, again hit pause,
+
+169
+00:08:13,045 --> 00:08:17,550
+look at all this code here and see how that lines up with what you saw above.
+
+170
+00:08:17,550 --> 00:08:21,390
+So, let's assume that the let part,
+
+171
+00:08:21,390 --> 00:08:24,220
+this part with a let f has been evaluated,
+
+172
+00:08:24,220 --> 00:08:27,150
+and so f now has been put into the environment,
+
+173
+00:08:27,150 --> 00:08:28,975
+it's equal to this closure,
+
+174
+00:08:28,975 --> 00:08:33,600
+and you see that the closure has its own environment that says d is equal IntVal 10.
+
+175
+00:08:33,600 --> 00:08:38,720
+Now we're going to evaluate the let expression that says y is equal to
+
+176
+00:08:38,720 --> 00:08:44,405
+20 inside of the body saying that we are applying f to y.
+
+177
+00:08:44,405 --> 00:08:48,920
+So, here we evaluate the white part and stick that into the environment.
+
+178
+00:08:48,920 --> 00:08:51,460
+Now we're evaluating the body of that let,
+
+179
+00:08:51,460 --> 00:08:53,725
+so you have application expression,
+
+180
+00:08:53,725 --> 00:08:55,900
+and we have f applied to y.
+
+181
+00:08:55,900 --> 00:08:58,610
+So, we're going to look at the code again just
+
+182
+00:08:58,610 --> 00:09:01,430
+to remind you what eval has to do with function calls.
+
+183
+00:09:01,430 --> 00:09:07,175
+So, we're going to take the e1 part which is f and expand that out to this closure.
+
+184
+00:09:07,175 --> 00:09:10,580
+We're going to take the e2 part and expand that out,
+
+185
+00:09:10,580 --> 00:09:13,210
+that's going to be this IntVal y.
+
+186
+00:09:13,210 --> 00:09:18,770
+We're going to insert that y value into the argument for the x,
+
+187
+00:09:18,770 --> 00:09:21,935
+and then evaluate the body x plus d inside
+
+188
+00:09:21,935 --> 00:09:25,270
+of the closure environment which says d is equal to 10,
+
+189
+00:09:25,270 --> 00:09:28,100
+and then that insertion of x
+
+190
+00:09:28,100 --> 00:09:31,190
+equal to 20 is going to occur inside that closure environment.
+
+191
+00:09:31,190 --> 00:09:33,025
+So, when we do that,
+
+192
+00:09:33,025 --> 00:09:35,790
+and folding this x and y values,
+
+193
+00:09:35,790 --> 00:09:38,095
+you see on the bottom eval here,
+
+194
+00:09:38,095 --> 00:09:40,140
+we have the body of the function,
+
+195
+00:09:40,140 --> 00:09:41,430
+the body of that closures,
+
+196
+00:09:41,430 --> 00:09:45,400
+it says plus x d. The x is going to be equal to
+
+197
+00:09:45,400 --> 00:09:49,750
+IntVal 20 and now left the call to eval uncalled.
+
+198
+00:09:49,750 --> 00:09:52,430
+So, just so let that expanded out so you can see
+
+199
+00:09:52,430 --> 00:09:55,860
+that x is going to be assigned to the value of y,
+
+200
+00:09:55,860 --> 00:09:59,945
+and when you evaluated while it was 20 so that will get simplified away.
+
+201
+00:09:59,945 --> 00:10:03,800
+But I left that in there just to make it explicit where that comes from.
+
+202
+00:10:03,800 --> 00:10:07,990
+D, of course, having IntVal 10 was the original part of the closure.
+
+203
+00:10:07,990 --> 00:10:10,825
+So, that's basically it.
+
+204
+00:10:10,825 --> 00:10:14,960
+I think you know how to take it from here to add x and d to get 30.
+
+205
+00:10:14,960 --> 00:10:17,470
+Now closures have an interesting history.
+
+206
+00:10:17,470 --> 00:10:22,715
+The first language to use them appears to be Peter Landin's SECD machine.
+
+207
+00:10:22,715 --> 00:10:25,600
+Just a fairly old language in a very formal looking language.
+
+208
+00:10:25,600 --> 00:10:27,415
+It looks like a state machine.
+
+209
+00:10:27,415 --> 00:10:30,120
+It's not something used for real programming necessarily,
+
+210
+00:10:30,120 --> 00:10:32,755
+it's more for understanding languages.
+
+211
+00:10:32,755 --> 00:10:38,270
+The first language to really use closures a lot was Scheme which is a dialect of Lisp.
+
+212
+00:10:38,270 --> 00:10:40,190
+One of the interesting things about
+
+213
+00:10:40,190 --> 00:10:43,220
+programming languages is that so many of the things that we
+
+214
+00:10:43,220 --> 00:10:48,310
+use commonly in programming languages first saw the light of day in Lisp.
+
+215
+00:10:48,310 --> 00:10:50,130
+So, today they're very common.
+
+216
+00:10:50,130 --> 00:10:53,990
+Even Java and C++ have introduced closures to them.
+
+217
+00:10:53,990 --> 00:10:55,830
+I'm going to say recently which means these slides are
+
+218
+00:10:55,830 --> 00:10:57,855
+going to be out of date in about 30 seconds,
+
+219
+00:10:57,855 --> 00:11:00,050
+but yeah it's pretty recent.
+
+220
+00:11:00,050 --> 00:11:01,915
+So, some other things to try,
+
+221
+00:11:01,915 --> 00:11:04,625
+this is the last video in this series.
+
+222
+00:11:04,625 --> 00:11:07,490
+But you could try adding C-style ifs,
+
+223
+00:11:07,490 --> 00:11:10,115
+where zero is considered false.
+
+224
+00:11:10,115 --> 00:11:14,930
+You could try expanding us some other function calls to get an idea how they work,
+
+225
+00:11:14,930 --> 00:11:18,075
+and then sometimes you have functions that take multiple parameters.
+
+226
+00:11:18,075 --> 00:11:20,450
+If you want to do that you're going to have to change a few things.
+
+227
+00:11:20,450 --> 00:11:22,910
+You may have to introduce lists of
+
+228
+00:11:22,910 --> 00:11:27,120
+strings where you had a single string to represent parameters before.
+
+229
+00:11:27,120 --> 00:11:29,100
+It's not that hard of a change to
+
+230
+00:11:29,100 --> 00:11:33,150
+make but it could be very informative if you want to try that.
+
+231
+00:11:33,150 --> 00:11:35,700
+So, I hope you've enjoyed writing interpreters.
+
+232
+00:11:35,700 --> 00:11:39,895
+Again, the code is an i5 if you want to take a look.
+
+233
+00:11:39,895 --> 00:11:42,590
+But again, I encourage you try to do
+
+234
+00:11:42,590 --> 00:11:45,170
+this all yourself and see how much of it you can get done.
+
+235
+00:11:45,170 --> 00:11:47,720
+You pick up the examples if you get stuck,
+
+236
+00:11:47,720 --> 00:11:51,540
+and hope you enjoy playing with your interpreter.

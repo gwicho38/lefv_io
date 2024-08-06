@@ -1,0 +1,6 @@
+[MUSIC] In this week's lectures,
+we have seen that work flows are about a, automation, s, scaling, and
+another a, for abstraction, that is the work flow is a sharable
+artifact, and p, provenance. We can summarize this as ASAP for short. The letter that his provenance kept us
+the original and processing history or lineage data and
+this will the topic of the next lectures. [MUSIC]

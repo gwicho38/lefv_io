@@ -1,0 +1,268 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h1 level="1">
+  Week 6: Integrity Constraints and SQL
+ </h1>
+ <h2 level="2">
+  Overview
+ </h2>
+ <p>
+  In this week we  move from the theoretical and logical foundations of relational data to its main practical incarnation: SQL, the structured query language. We will learn how SQL can be used to formulate queries, which in turn can be used to check the integrity of data similar to the way in which Datalog queries and rules in denial form were used before.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Weekly readings:
+ </h2>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    [AHV95] Abiteboul, S., Hull, R., &amp; Vianu, V. (1995).
+    <a href="http://webdam.inria.fr/Alice/" title="">
+     Foundations of databases
+    </a>
+    . Reading: Addison-Wesley (Chapter 7, 8.1, 8.2, 9.1 only)
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Readings continued from Week 5
+   </p>
+   <ul bullettype="bullets">
+    <li>
+     <p variant="body1">
+      [BB13] Bertossi, L., &amp; Bravo, L. (2013).
+      <a href="https://doi.org/10.1007/978-3-642-36257-6_9" title="">
+       Generic and declarative approaches to data quality management
+      </a>
+      . In
+      <em>
+       Handbook of data quality
+      </em>
+      (pp. 181-211). Springer.
+     </p>
+    </li>
+    <li>
+     <p variant="body1">
+      [IC19, Ch 5]
+      <a href="https://ebookcentral.proquest.com/lib/uiuc/reader.action?docID=6954840&amp;ppg=143" title="">
+       Data Quality Rule Definition and Discovery
+      </a>
+      (skip rule discovery sections 5.1.1, 5.2.1, 5.3.1 and other constraints 5.4.2-6)
+     </p>
+    </li>
+   </ul>
+  </li>
+ </ul>
+ <h2 level="2">
+  Time
+ </h2>
+ <p>
+  This module should take
+  <strong>
+   approximately 8 hours
+  </strong>
+  of dedicated time to complete, with its videos, readings, quiz, and assignment.
+ </p>
+ <h2 level="2">
+  Lessons
+ </h2>
+ <p>
+  The lessons for this module are listed below (with assignments in bold italics):
+ </p>
+ <table columns="2" rows="5">
+  <tr>
+   <td>
+    <p>
+     <strong>
+      Activity
+     </strong>
+    </p>
+   </td>
+   <td>
+    <p>
+     <strong>
+      Estimated Time Required
+     </strong>
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     Lesson 1 Lecture Videos
+    </p>
+   </td>
+   <td>
+    <p>
+     2 hours
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     Readings
+    </p>
+   </td>
+   <td>
+    <p>
+     1 hour
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     Quiz
+    </p>
+   </td>
+   <td>
+    <p>
+     1 hour
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     <em>
+      <strong>
+       SQL Homework
+      </strong>
+     </em>
+    </p>
+   </td>
+   <td>
+    <p>
+     4 hours
+    </p>
+   </td>
+  </tr>
+ </table>
+ <h2 level="2">
+  Goals and Objectives
+ </h2>
+ <p>
+  Upon successful completion of this module, you will be able to:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Transfer ideas from Datalog to SQL (i.e., expressing ...
+   </p>
+  </li>
+  <li>
+   <p>
+    ... relational queries and
+   </p>
+  </li>
+  <li>
+   <p>
+    ... relational integrity constraints in SQL).
+   </p>
+  </li>
+  <li>
+   <p>
+    Use SQLite to load and query datasets (that might have been preprocessed and partially cleaned with OpenRefine).
+   </p>
+  </li>
+ </ul>
+ <h2 level="2">
+  Key Phrases/Concepts
+ </h2>
+ <p>
+  Keep your eyes open for the following key terms or phrases as you interact with the lectures and complete the activities.
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Different types of SQL database systems (traditional multi-user, client-server systems vs.  SQLite)
+   </p>
+  </li>
+  <li>
+   <p>
+    SELECT-FROM-WHERE queries in SQL
+   </p>
+  </li>
+  <li>
+   <p>
+    Queries as a means to profile and check data
+   </p>
+  </li>
+  <li>
+   <p>
+    Recursive queries
+   </p>
+  </li>
+ </ul>
+ <h2 level="2">
+  Guiding Questions
+ </h2>
+ <p>
+  Develop your answers to the following guiding questions while watching lectures and working on assignments throughout the module.
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    How can relational queries and integrity constraints be used to explore profile data and to check the integrity of data?
+   </p>
+  </li>
+  <li>
+   <p>
+    How can you write queries in SQL that filter, combine, or aggregate data?
+   </p>
+  </li>
+  <li>
+   <p>
+    Why and when should you use SQL compared to OpenRefine or Datalog, for example?
+   </p>
+  </li>
+ </ul>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>
