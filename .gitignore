@@ -123,3 +123,6 @@ node_modules/**/**
 
 # build directories
 buid/
+
+# ignore obsidian directories
+submodules/lefv-vault/colette/**/*
