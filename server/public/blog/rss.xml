@@ -4,7 +4,7 @@
         <title>lefv.io Blog</title>
         <link>https://lefv.io/blog</link>
         <description>lefv.io Blog</description>
-        <lastBuildDate>Thu, 26 Aug 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 19 Jul 2024 03:29:39 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,70 +12,303 @@
             <title><![CDATA[Welcome]]></title>
             <link>https://lefv.io/blog/welcome</link>
             <guid>https://lefv.io/blog/welcome</guid>
-            <pubDate>Thu, 26 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></description>
-            <content:encoded><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer">blog plugin</a>.</p>
-<p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
-<p>Regular blog authors can be added to <code>authors.yml</code>.</p>
-<p>The blog post date can be extracted from filenames, such as:</p>
-<ul>
-<li><code>2019-05-30-welcome.md</code></li>
-<li><code>2019-05-30-welcome/index.md</code></li>
-</ul>
-<p>A blog post folder can be convenient to co-locate blog post images:</p>
-<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://lefv.io/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ev3q"></p>
-<p>The blog supports tags as well!</p>
-<p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content:encoded>
-            <category>Facebook</category>
+            <pubDate>Fri, 19 Jul 2024 03:29:39 GMT</pubDate>
+            <description><![CDATA[Hi. I hope you have a nice time while you're here.]]></description>
+            <content:encoded><![CDATA[<p>Hi. I hope you have a nice time while you're here.</p>]]></content:encoded>
             <category>Hello</category>
-            <category>Docusaurus</category>
+            <category>index</category>
+            <category>main</category>
+            <category>entry</category>
         </item>
         <item>
-            <title><![CDATA[MDX Blog Post]]></title>
-            <link>https://lefv.io/blog/mdx-blog-post</link>
-            <guid>https://lefv.io/blog/mdx-blog-post</guid>
-            <pubDate>Sun, 01 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></description>
-            <content:encoded><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/" target="_blank" rel="noopener noreferrer">MDX</a>.</p>
-<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>Use the power of React to create interactive blog posts.</p><div class="language-js codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-js codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:#393A34">=</span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">alert</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">'button clicked!'</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">button</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><button>Click me!</button></div></div>]]></content:encoded>
-            <category>Docusaurus</category>
+            <title><![CDATA[Playground]]></title>
+            <link>https://lefv.io/blog/playground</link>
+            <guid>https://lefv.io/blog/playground</guid>
+            <pubDate>Fri, 19 Jul 2024 03:29:39 GMT</pubDate>
+            <description><![CDATA[Have fun while you're here.]]></description>
+            <content:encoded><![CDATA[<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>Have fun while you're here.</p><div class="language-js codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-js codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:#393A34">=</span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">alert</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">'button clicked!'</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">button</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div></div></div>]]></content:encoded>
+            <category>mdx</category>
+            <category>test</category>
+            <category>example</category>
         </item>
         <item>
-            <title><![CDATA[Long Blog Post]]></title>
-            <link>https://lefv.io/blog/long-blog-post</link>
-            <guid>https://lefv.io/blog/long-blog-post</guid>
-            <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[This is the summary of a very long blog post,]]></description>
-            <content:encoded><![CDATA[<p>This is the summary of a very long blog post,</p>
-<p>Use a <code>&lt;!--</code> <code>truncate</code> <code>--&gt;</code> comment to limit blog post size in the list view.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content:encoded>
-            <category>Hello</category>
-            <category>Docusaurus</category>
+            <title><![CDATA[main]]></title>
+            <link>https://lefv.io/blog/main</link>
+            <guid>https://lefv.io/blog/main</guid>
+            <pubDate>Thu, 11 Jul 2024 01:51:57 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[First Blog Post]]></title>
-            <link>https://lefv.io/blog/first-blog-post</link>
-            <guid>https://lefv.io/blog/first-blog-post</guid>
-            <pubDate>Tue, 28 May 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet]]></description>
-            <content:encoded><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content:encoded>
-            <category>Hola</category>
-            <category>Docusaurus</category>
+            <title><![CDATA[FireEye and the Diamond Model]]></title>
+            <link>https://lefv.io/blog/2021/04/28/2.musings/lefv_paper</link>
+            <guid>https://lefv.io/blog/2021/04/28/2.musings/lefv_paper</guid>
+            <pubDate>Wed, 28 Apr 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[This post applies the Diamond Model to the cyberattack on FireEye,]]></description>
+            <content:encoded><![CDATA[<p>This post applies the Diamond Model to the cyberattack on FireEye,
+Inc., a California-based cybersecurity company (FireEye). It proceeds by
+describing and analyzing the incident within the adversary, capability,
+infrastructure, and victim Diamond Model framework.</p>
+<p>The post then examines the Diamond Model's social-political and technological "meta
+features" to contextualize the incident. Finally, this post concludes
+by arguing that the problem of politically motivated cyber-attacks
+carried out by an Advance Persistessnt Threat (APT) is best addressed at
+the international level.</p>
+<h1>FireEye Incident</h1>
+<p>FireEye reported that it was attacked by "foreign government hackers" on
+December 8, 2020 through a press release. The release detailed FireEye's
+assessment that the hack was perpetrated by a "government-sponsored"
+hacking group seeking "information related to [FireEye] government
+customers." [1] Of note, FireEye reported that its proprietary "red
+team tools" were stolen. [2]</p>
+<h1>Diamond Model Applied to FireEye Incident</h1>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="adversary">Adversary<a class="hash-link" aria-label="Direct link to Adversary" title="Direct link to Adversary" href="https://lefv.io/blog/2021/04/28/2.musings/lefv_paper#adversary">​</a></h2>
+<p>FireEye claims that the adversary was part of a "nation-state
+cyber-espionage effort." [2] There has not been an official report
+attributing the adversary operator or customer. Unofficial analyses note
+that the attack is part of a protracted virtual conflict between Russia
+and Western powers.</p>
+<p>One analysist asserts that the "Cozy Bear/APT29" hacking group was the
+primary operator (with Russia being the Adversary Customer). [3] It
+noted that "indications continue to implicate the SVR, the Russian
+Foreign Intelligence Service, which serves as Russia's intelligence and
+global espionage organization and is frequently referred to as Cozy Bear
+or APT29." [3] Additionally, FireEye's attack appeared to leverage
+similar techniques to those used in the SolarWinds incident earlier in
+2020 (which has already been officially attributed to Russia). [4]</p>
+<p>The intent of the adversary can also be imputed as being like that of
+the SolarWinds incident: serve Vladimir Putin's domestic and foreign
+political ambitions while stealing security assessment tools that could
+help the Russians prepare for future cyber-attacks.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="capability">Capability<a class="hash-link" aria-label="Direct link to Capability" title="Direct link to Capability" href="https://lefv.io/blog/2021/04/28/2.musings/lefv_paper#capability">​</a></h2>
+<p>APT29's capability is vast (as is the adversary principal's arsenal).
+The capability employed by APT29 seems to depend on the faction(s) of
+the hacker-group that carries out the attack. [5] It is thought to
+operate through multiple drop points and low activity, use spear
+phishing emails with self-extracting archive attachments, use Windows
+LNK files, the Cobalt Strike rootkit, and use custom malware (known by
+WellMess and WellMail) to target international organizations. [6]
+Additionally, APT29's attacks have been reported to operate with a
+toolset that shares many "functional" and "structural" linkages to the
+MiniDuke, CosmicDuke, and OnionDuke malware components. These linkages
+include UAC bypass, Registry Run keys, encoded PowerShell scripts,
+self-signed certificates, and SDelete. [7] APT29's C2 infrastructure
+is known to use redundancy paths that can use Twitter to look for
+specific tweets from pre-made accounts with specific tags labeling
+encrypted URLs to backdoors. [7] Finally, by exfiltrating FireEye's
+"red-team" tools the adversaries have been able scale up their
+individual capacity with little additional investment.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="infrastructure">Infrastructure<a class="hash-link" aria-label="Direct link to Infrastructure" title="Direct link to Infrastructure" href="https://lefv.io/blog/2021/04/28/2.musings/lefv_paper#infrastructure">​</a></h2>
+<p>APT29 has steadily grown its C2 infrastructure (originally by
+compromising websites that would install payload malware). [8] APT29's
+infrastructure has been particularly studied vis-à-vis the HAMMERTOSS
+malware identified by FireEye in 2015. [9]</p>
+<p>First, APT29 leverages Type 2 infrastructure to build HAMMERTOSS's
+instruction set and begin the data exfiltration. Once installed on an
+infected machine, HAMMERTOSS typically builds and leverages its
+infrastructure through a bifurcated process that calls out to its C2
+server directly (Uploader) or through an intermediary (tDiscoverer).
+APT29 appears to regularly use the tDiscoverer path. The tDiscoverer
+path uses Twitter as an intermediate obfuscation layer before calling
+out to the Uploader domain. [9]</p>
+<p>To generate the C2 Twitter URL, HAMMERTOSS will create a Twitter handle
+built on a time-based string concatenation algorithm. This algorithm is
+shared between the C2 host and the victim malware. The infected PC will
+then then continue to call out to the generated handle daily until the
+C2 attacker chooses to register the shared handle on a particular day.
+If the C2 URL was registered by the attacker, the attacker will then
+include instructions (composed of a URL and a hash tag) pointing the
+malware to seemingly innocuous content hosted on Github. Finally, the
+image downloaded from Github will encode specific instructions directing
+the victim to a cloud-storage server that is pre-configured by the
+attackers as well executed by way of a Windows command shell script.</p>
+<p>Second, APT29 depends on Service Providers to carry almost all
+instructions and data to and from the victim PC. HAMMERTOSS depends on
+the uniformity and predictability of the TCP/IP stack, leveraging ISPs
+and domain registrars to provide reliable routing of their malicious
+instructions. Further, CISA has cautioned that APT29 has specifically
+used "Kerberoasting" to attack Microsoft Active Directory and compromise
+Windows domain controllers. [10]</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="victim">Victim<a class="hash-link" aria-label="Direct link to Victim" title="Direct link to Victim" href="https://lefv.io/blog/2021/04/28/2.musings/lefv_paper#victim">​</a></h2>
+<p>The victim of the incident was FireEye. FireEye provides
+intelligence-based cybersecurity prevention, investigation, response,
+and remediation services. FireEye is particularly known for its work
+uncovering state-sponsored hacking groups. [10] For example, it was
+credited with identifying Russian military hacks against Ukraine's
+energy grid in 2016. [1]</p>
+<p>The "<em>victim persona</em>" was FireEye in its role as a cybersecurity
+provider. FireEye's CEO, Kevin Mandia, unequivocally concluded that the
+attackers "tailored their capabilities to target and attack FireEye."
+[2] Additionally, FireEye noted the sophistication and novelty of the
+techniques used to remain undiscovered and exfiltrate the targeted data
+evinced a purposeful intent. [2]</p>
+<p>The "<em>victim asset</em>" is a mixed bag. The primary asset sought was
+reported by FireEye as being "information related to certain government
+customers." [2] The desire to leverage government contractors as an
+ancillary method of obtaining government data has many precedents, and
+importantly, the end goal is evident -- using the information to attack
+the Federal and State governments of the United States. A clear instance
+of this was the SolarWinds Orion Security Breach, a.k.a. SUNBURST where
+various much of the US Federal government was hacked by APT29.</p>
+<p>However, APT29 is clearly opportunistic. In exfiltrating FireEye's
+red-team tools, the group has shown an openness to redefine the assets
+sought on an <em>ad hoc</em> nature. This willingness to improvise on the
+assets collected suggests that APT29 wants its capabilities to be known,
+highlighted, and grown.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="event-meta-features">Event Meta Features<a class="hash-link" aria-label="Direct link to Event Meta Features" title="Direct link to Event Meta Features" href="https://lefv.io/blog/2021/04/28/2.musings/lefv_paper#event-meta-features">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="social-political-meta-features"><em>Social-Political Meta Features?</em><a class="hash-link" aria-label="Direct link to social-political-meta-features" title="Direct link to social-political-meta-features" href="https://lefv.io/blog/2021/04/28/2.musings/lefv_paper#social-political-meta-features">​</a></h2>
+<p>FireEye provided APT29 with an enviable array of products sought by
+politically motivated APTs: its client-base records and its red-team
+tools/methodologies. First, FireEye's core business focuses on
+"appliance-based detection and prevention of stealthy and targeted
+cyber-attacks." [12] In its public filings, FireEye marketed itself on
+its "relationships with governments around the globe, both as a
+cybersecurity solutions provider and a trusted advisor." [12]
+Practically speaking, intelligence gathering operations in any country
+could "short-circuit" much of their intelligence-gathering process by
+obtaining key-contacts through FireEye. Of even more note, the
+SolarWinds SUNBURST incident earlier in the year was purportedly
+facilitated by targeting government IT employees that were known (or
+presumed) to have highly privileged accounts. It is likely that
+similarly situated individuals would have been responsible for managing
+the relationship with FireEye and were therefore attractive products for
+APT29's consumption.</p>
+<p>Second, FireEye also provided APT29 with an ancillary product that could
+scale APT29's operations at an even greater pace than seen thus far --
+its "red team" tools. While FireEye has reported that none of their
+tools "contain zero-day exploits," these very tools provide APT29 with
+first-hand knowledge of the testing tools used in testing American cyber
+defenses. [13] In consuming FireEye's red team tools, APT29 can
+therefore fulfill a two-fold need: (i) gaining insight into key
+counter-defense information to better tailor future attacks, and (ii)
+potentially raising funds by selling such tools to third parties.</p>
+<p>Finally, APT29's demand for politically connected targets suggest that
+its relationship with FireEye is likely to be more than fleeting.
+FireEye is a market leader in cybersecurity services, establishing it as
+a steady producer of future government contacts. While the effort
+expended by APT29 to maintain operations against sophisticated actors
+such as FireEye may be great, resource/time constraints appear to be
+slim given the social-political posture of Russia.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="technology-meta-features"><em>Technology Meta Features?</em><a class="hash-link" aria-label="Direct link to technology-meta-features" title="Direct link to technology-meta-features" href="https://lefv.io/blog/2021/04/28/2.musings/lefv_paper#technology-meta-features">​</a></h2>
+<p>APT29's demonstrated technological capability is vast. With the full
+backing of the Russian government assumed, the group has demonstrated an
+ability to use social engineering techniques to perform sophisticated
+spear-phishing campaigns, as well as build obfuscated redundancies into
+their C2 infrastructure. Additionally, the structure of APT29's attacks
+rely on the canonical TCP/IP stack, and is often structured to mimic
+actions of legitimate users (e.g., HAMMERTOSS calling out to Twitter
+only once per day). Finally, APT29 is known to target the very trust
+frameworks that buttress the Internet. For example, the SolarWinds
+SUNBURST attack spoofed Active Directory Federation Services token
+signing certificates (referred to as the "Golden SAML" attack). [14]
+In sum, APT29 represents an example of the pinnacle of sophisticated
+threat actors whose actions known and leverage virtually all techniques
+and architectures built into our current networking infrastructure. Such
+sophistication highlights the wisdom of defense-in-depth strategies as
+best practice.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="diamond-model-diagram">Diamond Model Diagram<a class="hash-link" aria-label="Direct link to Diamond Model Diagram" title="Direct link to Diamond Model Diagram" href="https://lefv.io/blog/2021/04/28/2.musings/lefv_paper#diamond-model-diagram">​</a></h2>
+<h1>Policy Assessment to FireEye Incident</h1>
+<blockquote>
+<p>The problem raised by the FireEye incident is how best to address
+politically motivated cyber-attacks carried out by APTs. This post
+argues that these incidents are best addressed at the international
+level.</p>
+<p>Arguments can be made that organizations and private industry are best
+equipped to handle what amount to isolated and infrequent incidents
+that create relatively few long-term financial impacts on firms.
+[15] Mitigating the vulnerabilities that precipitated cyber-attacks
+(APT motivated or not) often mirrors coordination and information
+problems found in common political-economic problems in the past.
+[16] Furthermore, risk pooling frameworks have also been shown to be
+effective in many industries. [17] In sum, the risks appear
+uncommon, risks posed can be minimized by pooling, and the intent of
+government actors can sometimes seem mixed. [18]</p>
+<p>However, a solution that does not address or decrease the incentive
+for states to partake in politically motivated APT attacks against
+private citizens only serves to incentivize actions of opportunistic
+autocrats whose domestic policy is shaped by destabilizing militarism
+abroad. [21] In short, APT attacks are violative of state
+sovereignty (and arguably acts of war) that if not dealt with only
+incentivize further escalation. [22] The result is that firms and
+industry can do little to organize where entire government industries
+are directed at carrying out cyber-attacks.</p>
+<p>While the risks of similar attacks on the same firms or even
+industries may be low, reported APT attacks occur regularly. [23]
+From a state or international perspective, the risks of unimpeded
+cyber-attacks are high. For one, small states could risk a scenario
+where dominant states force a protection racket leveraged around
+crippling domestic infrastructure. For large powers, it seems evident
+that opportunistic states are practicing an international form of
+<em>lingchi.</em> [24] If no global coordination exists to respond to such
+attacks, the door is left open for potentially cataclysmic escalation.
+[25]</p>
+<p>Finally, the lack of all-encompassing international coordination
+around APT and other state-sponsored cyber-attacks appears to be a
+driving factor for their continued use. [26] Part of the difficulty
+in reaching international consensus appears to be that many victims
+are often perpetrators that benefit from the lack of order. [27] In
+the abstract, the resulting scenario is arguably a classic
+Game-Theoretic instance of the Prisoner's Dilemma (lack of cooperation
+is therefore optimal). Yet, the real risk is that this continued
+ratcheting of tensions resembles a period in history that should be
+impossible for us to ignore. [28]</p>
+<p>Thankfully, the solution for this current state is clear: and
+all-encompassing treaty-based solution for state-sponsored APTs. Many
+multinational arrangements have been adopted: (1) Council of Europe
+Convention on Cybercrime, (2) Shanghai Cooperation Organization, and
+(3) ASEAN Declaration to Prevent and Combat Cybercrime. While each
+have their benefits/costs, all would be preferable to a state that
+appears to otherwise be destined for ratcheting tensions that will
+eventually boil over.</p>
+</blockquote>
+<h1>References</h1>
+<h1></h1>
+<hr>
+<p>[1]    Guardian staff and agencies, "US cybersecurity firm FireEye says it was hacked by foreign government".</p>
+<hr>
+<p>[2]    FireEye, Inc., <em>Form 8-K,</em> 2020.</p>
+<p>[3]    S. Ingalls, "eSecurity Planet," 18 December 2020. [Online]. Available: <a href="https://www.esecurityplanet.com/threats/fireeye-solarwinds-breaches-implications-protections/" target="_blank" rel="noopener noreferrer">https://www.esecurityplanet.com/threats/fireeye-solarwinds-breaches-implications-protections/</a>. [Accessed 18 April 2021].</p>
+<p>[4]    E. Nakashima, "The Washington Post," 23 February 2021. [Online]. Available:
+<a href="https://www.washingtonpost.com/national-security/biden-russia-sanctions-solarwinds-hacks/2021/02/23/b77039d6-71fa-11eb-85fa-e0ccb3660358_story.html" target="_blank" rel="noopener noreferrer">https://www.washingtonpost.com/national-security/biden-russia-sanctions-solarwinds-hacks/2021/02/23/b77039d6-71fa-11eb-85fa-e0ccb3660358_story.html</a>. [Accessed 18 April 2021].</p>
+<p>[5]    S. Vavra and T. Starks, "CYBERSCOOP," 18 December 2020. [Online]. Available: <a href="https://www.cyberscoop.com/cozy-bear-apt29-solarwinds-russia-persistent/" target="_blank" rel="noopener noreferrer">https://www.cyberscoop.com/cozy-bear-apt29-solarwinds-russia-persistent/</a>. [Accessed 18 April 2021].</p>
+<p>[6]    National Cyber Security Centre, Communications Security Establishment, National Security Agency, Cybersecurity and Infrastructure Security Agency, <em>Advisory: APT29 targets COVID-19 vaccine development,</em> 2020.</p>
+<p>[7]    Kaspersky, "What's behind APT29?," [Online]. Available: <a href="https://www.kaspersky.com/enterprise-security/mitre/apt29" target="_blank" rel="noopener noreferrer">https://www.kaspersky.com/enterprise-security/mitre/apt29</a>. [Accessed 18 April 2021].</p>
+<p>[8]    Anomali_Threat_Research, "APT29: A Timeline of Malicious Activity," [Online]. Available: <a href="https://forum.anomali.com/t/apt29-a-timeline-of-malicious-activity/2480" target="_blank" rel="noopener noreferrer">https://forum.anomali.com/t/apt29-a-timeline-of-malicious-activity/2480</a>. [Accessed 18 April 2021].</p>
+<p>[9]    FireEye, Inc., "HAMMERTOSS: Stealthy Tactics Define a Russion Cyber Threat Group," July 2015. [Online]. Available:
+<a href="https://www2.fireeye.com/rs/848-DID-242/images/rpt-apt29-hammertoss.pdf?mkt_tok=ODQ4LURJRC0yNDIAAAF8Ztrl1dKsM0psfNu1D-TB80-Z06Cqa4CDzyYEmtmqR6RsQ-ZTqqsqP55YiPTIW6O8KDdKmE_LIQYw4-Qu2EHXI4jNQWsorZ0vfo4f_5ibZzZ89QU" target="_blank" rel="noopener noreferrer">https://www2.fireeye.com/rs/848-DID-242/images/rpt-apt29-hammertoss.pdf?mkt_tok=ODQ4LURJRC0yNDIAAAF8Ztrl1dKsM0psfNu1D-TB80-Z06Cqa4CDzyYEmtmqR6RsQ-ZTqqsqP55YiPTIW6O8KDdKmE_LIQYw4-Qu2EHXI4jNQWsorZ0vfo4f_5ibZzZ89QU</a>.
+[Accessed 18 April 2021].</p>
+<p>[10]   A. Jaquith and P. Roberts, "Latest CISA Warning Hints At Worst Case Scenario In Russia Hack," 18 December 2020. [Online]. Available:
+<a href="https://www.qomplx.com/latest-cisa-warning-hints-at-worst-case-scenario-russia-hack/" target="_blank" rel="noopener noreferrer">https://www.qomplx.com/latest-cisa-warning-hints-at-worst-case-scenario-russia-hack/</a>. [Accessed 21 April 2021].</p>
+<p>[11]   R. Hackett, "FireEye Names New CEO After Months of Rumors," 6 May 2016. [Online]. Available: <a href="https://fortune.com/2016/05/06/fireeye-ceo-rumors/" target="_blank" rel="noopener noreferrer">https://fortune.com/2016/05/06/fireeye-ceo-rumors/</a>. [Accessed 18 April 2021].</p>
+<p>[12]   FireEye, Inc., "Form 10-K," 31 December 2020. [Online]. Available: <a href="https://www.sec.gov/ix?doc=/Archives/edgar/data/1370880/000137088021000010/feye-20201231.htm" target="_blank" rel="noopener noreferrer">https://www.sec.gov/ix?doc=/Archives/edgar/data/1370880/000137088021000010/feye-20201231.htm</a>. [Accessed 18 April 2021].</p>
+<p>[13]   K. Mandia, "FireEye Shares Details of Recent Cyber Attack, Actions to Protect Community," 8 December 2020. [Online]. Available:
+<a href="https://www.fireeye.com/blog/products-and-services/2020/12/fireeye-shares-details-of-recent-cyber-attack-actions-to-protect-community.html" target="_blank" rel="noopener noreferrer">https://www.fireeye.com/blog/products-and-services/2020/12/fireeye-shares-details-of-recent-cyber-attack-actions-to-protect-community.html</a>. [Accessed 18 April 2021].</p>
+<p>[14]   J. Vijayan, "SolarWinds Campaign Focuses Attention on 'Golden SAML' Attack Vector," 12 December 2020. [Online]. Available:
+<a href="https://www.darkreading.com/attacks-breaches/solarwinds-campaign-focuses-attention-on-golden-saml-attack-vector/d/d-id/1339794" target="_blank" rel="noopener noreferrer">https://www.darkreading.com/attacks-breaches/solarwinds-campaign-focuses-attention-on-golden-saml-attack-vector/d/d-id/1339794</a>. [Accessed 18 April 2021].</p>
+<p>[15]   K. Huang and S. Madnick, "A Cyberattack Doesn't Have to Sink Your Stock Price," 14 August 2020. [Online]. Available: <a href="https://hbr.org/2020/08/a-cyberattack-doesnt-have-to-sink-your-stock-price" target="_blank" rel="noopener noreferrer">https://hbr.org/2020/08/a-cyberattack-doesnt-have-to-sink-your-stock-price</a>. [Accessed 19
+April 2021].</p>
+<p>[16]   Depository Trust &amp; Clearing Corporation , "LARGE-SCALE CYBER-ATTACKS ON THE FINANCIAL SYSTEM," March 2018. [Online]. Available:
+<a href="https://www.dtcc.com/%5C~/media/Files/downloads/Thought-leadership/large-scale-cyber-attacks-on-the-financial-system.pdf?utm_source=perspective&amp;utm_medium=forms&amp;utm_campaign=thought_leadership" target="_blank" rel="noopener noreferrer">https://www.dtcc.com/\~/media/Files/downloads/Thought-leadership/large-scale-cyber-attacks-on-the-financial-system.pdf?utm_source=perspective&amp;utm_medium=forms&amp;utm_campaign=thought_leadership</a>. [Accessed 19 April
+2021].</p>
+<p>[17]   E. Simchi-Levi, "The Most Important Concept in Supply Chain Management - Risk Pooling," [Online]. Available:
+<a href="https://www.supplychain247.com/article/the_most_important_concept_in_supply_chain_management%5C_-%5C_risk_pooling/ops_rules_management_consultants" target="_blank" rel="noopener noreferrer">https://www.supplychain247.com/article/the_most_important_concept_in_supply_chain_management\_-\_risk_pooling/ops_rules_management_consultants</a>. [Accessed 198 April 2021].</p>
+<p>[18]   National Public Radio, "GOP Senators Spend Independence Day In Moscow," 6 July 2018. [Online]. Available: <a href="https://www.npr.org/2018/07/06/626664156/gop-senators-spend-july-4-in-moscow" target="_blank" rel="noopener noreferrer">https://www.npr.org/2018/07/06/626664156/gop-senators-spend-july-4-in-moscow</a>. [Accessed 19 April
+2021].</p>
+<p>[19]   M. McFaul, "Putin, Putinism, and the Domestic Determinants of Russian Foreign Policy," <em>International Security,</em> pp. 95-139, 1 October 2020.</p>
+<p>[20]   C. Lotrionte, "State Sovereignty and Self-Defense in Cyberspace: A Normative Framework for Balancing Legal Rights," <em>Emory International Law Review,</em> vol. 12, no. 2, 2012.</p>
+<p>[21]   Positive Technologies Security, "Hack at all cost: putting a price on APT attacks," 1 August 2019. [Online]. Available:
+<a href="https://www.ptsecurity.com/ww-en/analytics/advanced-persistent-threat-apt-attack-cost-report/" target="_blank" rel="noopener noreferrer">https://www.ptsecurity.com/ww-en/analytics/advanced-persistent-threat-apt-attack-cost-report/</a>. [Accessed 19 April 2021].</p>
+<p>[22]   R. Maness, "Death by a Thousand Cuts: Is Russia Winning the Information War with the West?," 9 August 2018. [Online]. Available:
+<a href="https://www.researchgate.net/publication/326926354_Death_by_a_Thousand_Cuts_Is_Russia_Winning_the_Information_War_with_the_West" target="_blank" rel="noopener noreferrer">https://www.researchgate.net/publication/326926354_Death_by_a_Thousand_Cuts_Is_Russia_Winning_the_Information_War_with_the_West</a>. [Accessed 19 April 2021].</p>
+<p>[23]   C. Bronk and E. Tikk-Ringas, "The Cyber Attack on Saudi Aramco," <em>Global Politics and Strategy,</em> vol. 55, no. 2, 2013.</p>
+<p>[24]   A.-M. Taliharm, "Towards Cyberpeace: Managing Cyberwar Through International Cooperation," [Online]. Available:
+<a href="https://www.un.org/en/chronicle/article/towards-cyberpeace-managing-cyberwar-through-international-cooperation" target="_blank" rel="noopener noreferrer">https://www.un.org/en/chronicle/article/towards-cyberpeace-managing-cyberwar-through-international-cooperation</a>. [Accessed 19 April 2021].</p>
+<p>[25]   International Telecommunication Union, "UNDERSTANDING CYBERCRIME<!-- -->:PHENOMENA<!-- -->, CHALLENGES AND LEGAL RESPONSE," 2012. [Online]. Available:
+<a href="https://www.itu.int/ITU-D/cyb/cybersecurity/docs/Cybercrime%20legislation%20EV6.pdf" target="_blank" rel="noopener noreferrer">https://www.itu.int/ITU-D/cyb/cybersecurity/docs/Cybercrime%20legislation%20EV6.pdf</a>. [Accessed 19 April 2021].</p>
+<p>[26]   J. M. Garon, "Cyber-World War III," <em>Journal of Law &amp; Cyber Warfare,</em> vol. 7, no. 1, pp. 1-60, 2018.</p>
+<p>[27]   C. Cimpanu, "FireEye releases tool for auditing networks for techniques used by SolarWinds hackers," 19 January 2021. [Online]. Available:
+<a href="https://www.zdnet.com/article/fireeye-releases-tool-for-auditing-networks-for-techniques-used-by-solarwinds-hackers/" target="_blank" rel="noopener noreferrer">https://www.zdnet.com/article/fireeye-releases-tool-for-auditing-networks-for-techniques-used-by-solarwinds-hackers/</a>. [Accessed 18 April 2021].</p>
+<p>[28]   Cyentia Institute, "Information Risk Insights Study," Advisen, 2020.</p>
+<p>[29]   H. Milner, "The Assumption of Anarchy in International Relations Theory: A Critique," <em>Review of International Studies ,</em> vol. 17, no. 1, pp. 67-85, 1991.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="30---j-mearsheimer-chapter-two-anarchy-and-the-struggle-for-power-in-the-tragedy-of-great-power-politics-new-york-norton--company-2001">[30]   J. Mearsheimer, "Chapter Two, Anarchy and the Struggle for Power," in <em>The tragedy of great power politics</em>, New York, Norton &amp; Company, 2001.<a class="hash-link" aria-label="Direct link to 30---j-mearsheimer-chapter-two-anarchy-and-the-struggle-for-power-in-the-tragedy-of-great-power-politics-new-york-norton--company-2001" title="Direct link to 30---j-mearsheimer-chapter-two-anarchy-and-the-struggle-for-power-in-the-tragedy-of-great-power-politics-new-york-norton--company-2001" href="https://lefv.io/blog/2021/04/28/2.musings/lefv_paper#30---j-mearsheimer-chapter-two-anarchy-and-the-struggle-for-power-in-the-tragedy-of-great-power-politics-new-york-norton--company-2001">​</a></h2>]]></content:encoded>
         </item>
     </channel>
 </rss>

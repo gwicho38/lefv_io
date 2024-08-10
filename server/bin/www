@@ -7,14 +7,12 @@
 var app = require('../app');
 var debug = require('debug')('lefv-io:server');
 var http = require('http');
-//var fs = require('fs')
-//var https = require('https')
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3001');
 app.set('port', port);
 
 /**
