@@ -20,12 +20,12 @@
 
 # Introduction
 
-This paper applies the Diamond Model to the cyberattack on FireEye,
+this post applies the Diamond Model to the cyberattack on FireEye,
 Inc., a California-based cybersecurity company (FireEye). It proceeds by
 describing and analyzing the incident within the adversary, capability,
 infrastructure, and victim Diamond Model framework. The paper then
 examines the Diamond Model's social-political and technological "meta
-features" to contextualize the incident. Finally, this paper concludes
+features" to contextualize the incident. Finally, this post concludes
 by arguing that the problem of politically motivated cyber-attacks
 carried out by an Advance Persistent Threat (APT) is best addressed at
 the international level.
@@ -215,7 +215,7 @@ best practice.
 # Policy Assessment to FireEye Incident
 
 > The problem raised by the FireEye incident is how best to address
-> politically motivated cyber-attacks carried out by APTs. This paper
+> politically motivated cyber-attacks carried out by APTs. this post
 > argues that these incidents are best addressed at the international
 > level.
 >
