@@ -20,3 +20,4 @@ jobs:
           cd server
           npm install
           (nohup npm run start &)
+          exit 0
