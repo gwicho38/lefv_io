@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
-    "prod": "nohup npm run start &"
+    "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.19.2",
+    "get-port": "^7.1.0",
     "hbs": "^4.1.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
@@ -18,6 +18,6 @@
   },
   "devDependencies": {
     "browser-sync": "^3.0.2",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.22"
   }
 }

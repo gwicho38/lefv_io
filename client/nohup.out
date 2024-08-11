@@ -1,0 +1,34 @@
+
+> lefv.io@0.0.0 start
+> docusaurus start
+
+[INFO] Starting the development server...
+[SUCCESS] Docusaurus website is running at: http://localhost:3000/
+ℹ Compiling Client
+✔ Client: Compiled successfully in 19.21s
+client (webpack 5.93.0) compiled successfully
+ℹ Compiling Client
+✔ Client: Compiled with some errors in 1.14s
+Module not found: Error: Can't resolve '@site/blog/0.welcome/index.md' in '/root/lefv_io/client/.docusaurus'
+
+--------------------------
+
+Module not found: Error: Can't resolve '@site/blog/0.welcome/index.md' in '/root/lefv_io/client/.docusaurus'
+
+--------------------------
+
+Module not found: Error: Can't resolve '@site/blog/0.welcome/index.md?truncated=true' in '/root/lefv_io/client/.docusaurus'
+
+--------------------------
+
+Module not found: Error: Can't resolve '@site/blog/0.welcome/index.md?truncated=true' in '/root/lefv_io/client/.docusaurus'
+client (webpack 5.93.0) compiled with 4 errors
+ℹ Compiling Client
+✔ Client: Compiled successfully in 799.90ms
+client (webpack 5.93.0) compiled successfully
+ℹ Compiling Client
+✔ Client: Compiled successfully in 773.64ms
+client (webpack 5.93.0) compiled successfully
+ℹ Compiling Client
+✔ Client: Compiled successfully in 344.26ms
+client (webpack 5.93.0) compiled successfully
