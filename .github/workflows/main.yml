@@ -18,9 +18,12 @@ jobs:
           git fetch -a
           git pull
           cd server
+          node --version
           npm install
           (nohup npm run start &)
           cd ../client
+          node --version
+          npm run build
           npm install
           (nohup npm run start &)
           exit 0
