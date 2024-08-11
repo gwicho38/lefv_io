@@ -13,4 +13,10 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: whoami
+        script: |
+          cd lefv_io
+          git fetch -a
+          git pull
+          cd server
+          npm install
+          (nohup npm run start &)
