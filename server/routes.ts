@@ -3,6 +3,79 @@ import { createServer, type Server } from "http";
 import { db } from "@db";
 import { posts, tags, postTags, galleries } from "@db/schema";
 import { eq, desc, and } from "drizzle-orm";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { marked } from "marked";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+import chokidar from "chokidar";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const POSTS_DIRECTORY = path.join(__dirname, "../content/blog");
+
+// Ensure posts directory exists
+if (!fs.existsSync(POSTS_DIRECTORY)) {
+  fs.mkdirSync(POSTS_DIRECTORY, { recursive: true });
+}
+
+// Watch for file changes in the posts directory
+const watcher = chokidar.watch(POSTS_DIRECTORY, {
+  ignored: /(^|[\/\\])\../,
+  persistent: true
+});
+
+// Function to process markdown files and update database
+async function processMarkdownFile(filePath: string) {
+  try {
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const { data, content } = matter(fileContents);
+    const html = marked(content);
+
+    // Insert or update post in database
+    const [post] = await db.insert(posts).values({
+      title: data.title || path.basename(filePath, '.md'),
+      content: html,
+      createdAt: data.date ? new Date(data.date) : new Date(),
+      updatedAt: new Date()
+    }).onConflictDoUpdate({
+      target: posts.title,
+      set: {
+        content: html,
+        updatedAt: new Date()
+      }
+    }).returning();
+
+    // Process tags if present
+    if (data.tags && Array.isArray(data.tags)) {
+      // First remove existing tags for this post
+      await db.delete(postTags).where(eq(postTags.postId, post.id));
+
+      // Add new tags
+      for (const tagName of data.tags) {
+        const [tag] = await db.insert(tags)
+          .values({ name: tagName })
+          .onConflictDoUpdate({ target: tags.name, set: { name: tagName } })
+          .returning();
+
+        await db.insert(postTags)
+          .values({ postId: post.id, tagId: tag.id });
+      }
+    }
+  } catch (error) {
+    console.error(`Error processing markdown file: ${filePath}`, error);
+  }
+}
+
+// Watch for changes in markdown files
+watcher
+  .on('add', processMarkdownFile)
+  .on('change', processMarkdownFile)
+  .on('unlink', async (filePath) => {
+    const fileName = path.basename(filePath, '.md');
+    await db.delete(posts).where(eq(posts.title, fileName));
+  });
 
 export function registerRoutes(app: Express): Server {
   // Blog routes
@@ -25,27 +98,6 @@ export function registerRoutes(app: Express): Server {
     }));
 
     res.json(transformedPosts);
-  });
-
-  app.post("/api/posts", async (req, res) => {
-    const { title, content, tags: tagNames } = req.body;
-    const post = await db.insert(posts).values({ title, content }).returning();
-
-    if (tagNames?.length) {
-      for (const tagName of tagNames) {
-        // Insert or get existing tag
-        const [tag] = await db.insert(tags)
-          .values({ name: tagName })
-          .onConflictDoUpdate({ target: tags.name, set: { name: tagName } })
-          .returning();
-
-        // Create post-tag relationship
-        await db.insert(postTags)
-          .values({ postId: post[0].id, tagId: tag.id });
-      }
-    }
-
-    res.json(post[0]);
   });
 
   app.get("/api/tags", async (req, res) => {
@@ -91,7 +143,6 @@ export function registerRoutes(app: Express): Server {
         return res.status(404).json({ error: "No weather data available" });
       }
 
-      // Transform and enrich the weather data
       res.json({
         temperature: lastData.tempf || 0,
         humidity: lastData.humidity || 0,
@@ -111,7 +162,6 @@ export function registerRoutes(app: Express): Server {
     }
   });
 
-  // New route for historical weather data
   app.get("/api/weather/history/:type", async (req, res) => {
     try {
       if (!process.env.AMBIENT_API_KEY || !process.env.AMBIENT_APP_KEY || !process.env.AMBIENT_MAC_ADDRESS) {
@@ -119,7 +169,7 @@ export function registerRoutes(app: Express): Server {
       }
 
       const endDate = new Date();
-      const startDate = new Date(endDate.getTime() - 24 * 60 * 60 * 1000); // 24 hours ago
+      const startDate = new Date(endDate.getTime() - 24 * 60 * 60 * 1000);
 
       const response = await fetch(
         `https://api.ambientweather.net/v1/devices/${process.env.AMBIENT_MAC_ADDRESS}/data?` +
@@ -134,8 +184,6 @@ export function registerRoutes(app: Express): Server {
       }
 
       const data = await response.json();
-
-      // Transform the historical data based on the requested type
       const transformedData = data.map((point: any) => ({
         timestamp: new Date(point.dateutc).getTime(),
         [req.params.type === 'temperature' ? 'temperature' : 'precipitation']:
