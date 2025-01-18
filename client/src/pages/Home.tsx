@@ -20,34 +20,6 @@ export default function Home() {
           </h1>
         </div>
       </section>
-
-      <div className="container mx-auto">
-        <div className="grid md:grid-cols-3 gap-6">
-          <Link href="/blog">
-            <Card className="cursor-pointer hover:shadow-lg transition-all">
-              <CardContent className="pt-6">
-                <h2 className="text-xl font-semibold">Blog</h2>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link href="/gallery">
-            <Card className="cursor-pointer hover:shadow-lg transition-all">
-              <CardContent className="pt-6">
-                <h2 className="text-xl font-semibold">Gallery</h2>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link href="/weather">
-            <Card className="cursor-pointer hover:shadow-lg transition-all">
-              <CardContent className="pt-6">
-                <h2 className="text-xl font-semibold">Weather</h2>
-              </CardContent>
-            </Card>
-          </Link>
-        </div>
-      </div>
     </div>
   );
 }
