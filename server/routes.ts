@@ -69,7 +69,7 @@ export function registerRoutes(app: Express): Server {
     res.json(item[0]);
   });
 
-  // Weather route
+  // Enhanced weather route with more data points
   app.get("/api/weather", async (req, res) => {
     try {
       if (!process.env.AMBIENT_API_KEY || !process.env.AMBIENT_APP_KEY) {
@@ -85,14 +85,66 @@ export function registerRoutes(app: Express): Server {
       }
 
       const data = await response.json();
-      res.json(data[0]?.lastData || {
-        temperature: 0,
-        humidity: 0,
-        windSpeed: 0,
-        pressure: 0
+      const lastData = data[0]?.lastData;
+
+      if (!lastData) {
+        return res.status(404).json({ error: "No weather data available" });
+      }
+
+      // Transform and enrich the weather data
+      res.json({
+        temperature: lastData.tempf || 0,
+        humidity: lastData.humidity || 0,
+        windSpeed: lastData.windspeedmph || 0,
+        pressure: lastData.baromrelin || 0,
+        windDir: lastData.winddir || 0,
+        hourlyrainin: lastData.hourlyrainin || 0,
+        dailyrainin: lastData.dailyrainin || 0,
+        weeklyrainin: lastData.weeklyrainin || 0,
+        monthlyrainin: lastData.monthlyrainin || 0,
+        feelsLike: lastData.feelsLike || lastData.tempf || 0,
+        dewPoint: lastData.dewPoint || 0,
+        lastRain: lastData.lastRain || null
       });
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch weather data" });
+    }
+  });
+
+  // New route for historical weather data
+  app.get("/api/weather/history/:type", async (req, res) => {
+    try {
+      if (!process.env.AMBIENT_API_KEY || !process.env.AMBIENT_APP_KEY || !process.env.AMBIENT_MAC_ADDRESS) {
+        return res.status(500).json({ error: "Weather API keys or MAC address not configured" });
+      }
+
+      const endDate = new Date();
+      const startDate = new Date(endDate.getTime() - 24 * 60 * 60 * 1000); // 24 hours ago
+
+      const response = await fetch(
+        `https://api.ambientweather.net/v1/devices/${process.env.AMBIENT_MAC_ADDRESS}/data?` +
+        `apiKey=${process.env.AMBIENT_API_KEY}&` +
+        `applicationKey=${process.env.AMBIENT_APP_KEY}&` +
+        `endDate=${endDate.toISOString()}&` +
+        `startDate=${startDate.toISOString()}`
+      );
+
+      if (!response.ok) {
+        throw new Error('Weather history API request failed');
+      }
+
+      const data = await response.json();
+
+      // Transform the historical data based on the requested type
+      const transformedData = data.map((point: any) => ({
+        timestamp: new Date(point.dateutc).getTime(),
+        [req.params.type === 'temperature' ? 'temperature' : 'precipitation']:
+          req.params.type === 'temperature' ? point.tempf : point.hourlyrainin
+      }));
+
+      res.json(transformedData);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch historical weather data" });
     }
   });
 

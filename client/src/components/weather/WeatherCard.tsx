@@ -3,14 +3,15 @@ import {
   Cloud, 
   Droplets, 
   Thermometer, 
-  Wind 
+  Wind,
+  CloudRain
 } from "lucide-react";
 
 type WeatherMetric = {
   label: string;
   value: number | string;
   unit: string;
-  icon: keyof typeof icons;
+  icon: "temperature" | "humidity" | "wind" | "pressure" | "rain";
 };
 
 const icons = {
@@ -18,6 +19,7 @@ const icons = {
   humidity: Droplets,
   wind: Wind,
   pressure: Cloud,
+  rain: CloudRain
 };
 
 type WeatherCardProps = {
@@ -37,7 +39,7 @@ export function WeatherCard({ metric }: WeatherCardProps) {
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold">
-          {metric.value}
+          {typeof metric.value === 'number' ? metric.value.toFixed(1) : metric.value}
           <span className="ml-1 text-lg font-normal text-muted-foreground">
             {metric.unit}
           </span>
