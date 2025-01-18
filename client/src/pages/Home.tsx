@@ -16,7 +16,7 @@ export default function Home() {
 
         <div className="relative text-center space-y-4 text-white px-4 mt-[400px]">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
-            Welcome to My Site
+            lefv.io
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Explore my blog posts, gallery items, and check out real-time weather data

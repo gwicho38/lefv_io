@@ -15,7 +15,7 @@ export function Navigation() {
     <nav className="border-b bg-card">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center space-x-8">
-          <div className="text-xl font-semibold">My Site</div>
+          <div className="text-xl font-semibold">lefv.io</div>
           <div className="flex space-x-6">
             {links.map(({ href, label }) => (
               <Link
