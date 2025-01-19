@@ -1,6 +1,39 @@
+# Dependencies
 node_modules
+.pnp
+.pnp.js
+
+# Production
 dist
-.DS_Store
+build
 server/public
+
+# Development
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug & Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System Files
+.DS_Store
+*.pem
+.vscode
+.idea
+
+# Vite
+*.timestamp-*.mjs
 vite.config.ts.*
 *.tar.gz
+
+# TypeScript
+*.tsbuildinfo
+
+# Database
+*.sqlite
+*.sqlite3
